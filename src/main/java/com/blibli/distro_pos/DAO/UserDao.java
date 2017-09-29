@@ -86,8 +86,8 @@ public class UserDao {
 
         try {
             String sql = "INSERT INTO users" +
-                    "(namaLengkap, username, password, alamat, noktp, nohp, jeniskelamin, enabled, role)" +
-                    "VALUES(?,?,?,?,?,?,?,?,?)";
+                    "(username, password, enabled)" +
+                    "VALUES(?,?,?)";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

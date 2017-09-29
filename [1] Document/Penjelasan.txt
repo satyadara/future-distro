@@ -1,0 +1,14 @@
+1.Employee to Discount
+>Satu Employee dengan Role Manager dapat menambah 0...lebih Discount.
+2.Employee to Item
+>Satu Employee dengan Role Manager dapat menambah 0...lebih Item.
+3.Employee to Transaction
+>Satu Employee dengan Role Cashier dapat menambah 0...lebih Transaksi.
+4.Discount to Transaction
+>Satu Discount memiliki 0...lebih Transaction
+5.Transaction to OrderLine
+>Satu Transaction memiliki 1...lebih OrderLine
+6.Item to OrderLine
+>Satu Item memiliki 0...lebih OrderLine
+7.Item to Outcome
+>Satu Item memiliki 1...lebih Outcome

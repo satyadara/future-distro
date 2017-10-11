@@ -5,9 +5,10 @@
 <Workspace>
 	<Local Expanded="Yes">
 		<Model Expanded="Yes" ID="{6E7E0DDD-5792-498A-B316-43AA68EA1AC1}" Loaded="No" Name="ERD" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="ERD.cdm"/>
-		<Model Expanded="Yes" ID="{C28EDDBD-0E72-4565-9DE1-EE85B6ECE36B}" Loaded="No" Name="Conceptual_1_2" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Conceptual_1_2.cdm"/>
+		<Model ID="{C28EDDBD-0E72-4565-9DE1-EE85B6ECE36B}" Name="Conceptual_1_2" Selected="Yes" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Conceptual_1_2.cdm"/>
+		<Model Expanded="Yes" ID="{A6CB6485-B14D-4CA1-862C-6F71B3C4D6A2}" Name="PDM" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="PDM.pdm"/>
 		<Model Expanded="Yes" ID="{7631453D-05E8-469B-9B74-36B96850E8D2}" Loaded="No" Name="Conceptual_1_2" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Conceptual_1_2.pdm"/>
-		<Model Expanded="Yes" ID="{0A28943F-6EFD-445F-AE9F-19EF53E9A35A}" Loaded="No" Name="PDM" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="PDM.pdm"/>
+		<Model ID="{7631453D-05E8-469B-9B74-36B96850E8D2}" Loaded="No" Name="Conceptual_1_2" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Conceptual_1_2.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

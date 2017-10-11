@@ -9,7 +9,7 @@ public class User {
     private String alamat;
     private int noKtp;
     private int noTelp;
-    private  char jenisKelamin;
+    private char jenisKelamin;
     private boolean enabled;
 
     public int getId() {

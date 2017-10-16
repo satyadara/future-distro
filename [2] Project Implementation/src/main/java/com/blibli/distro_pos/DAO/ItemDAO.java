@@ -1,0 +1,131 @@
+package com.blibli.distro_pos.DAO;
+
+import com.blibli.distro_pos.Model.Item;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ItemDAO {
+
+    private Connection con;
+
+    public void connect() {
+        try {
+            String db_password = "postgres";
+            String db_username = "postgres";
+            String uri = "jdbc:postgresql://localhost:5432/satyadara";
+            this.con = DriverManager.getConnection(uri, db_username, db_password);
+            System.out.println("open connection");
+
+        } catch (Exception e) {
+            System.out.println("error " + e.toString());
+        }
+    }
+
+    public void disconnect() {
+        try {
+            this.con.close();
+            System.out.println("close connection");
+
+        } catch (Exception e) {
+            System.out.println("error " + e.toString());
+        }
+    }
+
+    public List<Item> getAll() {
+        String sql = "SELECT * FROM item;";
+        List<Item> itemList = new ArrayList<>();
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    System.out.println("getAll : " + rs.getString("id_item"));
+                    Item item = new Item(
+                            rs.getString("id_item"),
+                            rs.getString("id_emp"),
+                            rs.getString("name_item"),
+                            rs.getFloat("price"),
+                            rs.getString("color"),
+                            rs.getString("size"),
+                            rs.getString("type"),
+                            rs.getString("status"));
+                    itemList.add(item);
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return itemList;
+    }
+
+    public Item getOne(String id) {
+        String sql = "SELECT * FROM item WHERE id_item = " + id + ";";
+        Item item = new Item();
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    System.out.println("getOne : " + rs.getString("id_item"));
+                    item.setId_item(rs.getString("id_item"));
+                    item.setId_emp(rs.getString("id_emp"));
+                    item.setName_item(rs.getString("name_item"));
+                    item.setPrice(rs.getFloat("price"));
+                    item.setColor(rs.getString("color"));
+                    item.setType(rs.getString("type"));
+                    item.setStatus(rs.getString("status"));
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return item;
+    }
+
+    public void save(Item item) {
+        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, color_item, size_item, type_item, status_item)"
+                + " VALUES (" + item.getId_item() + ","
+                + item.getId_emp() + ","
+                + item.getName_item() + ","
+                + item.getPrice() + ","
+                + item.getColor() + ","
+                + item.getSize() + ","
+                + item.getType() + ","
+                + item.getStatus() + ");";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.executeQuery(sql);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#INSERT# something error :" + e.toString());
+        }
+    }
+
+    public void update(Item item) {
+        String sql = "UPDATE item SET id_item = " + item.getId_item() +
+                ", id_emp = " + item.getId_emp() +
+                ",name_item = " + item.getName_item() +
+                ", price_item =" + item.getPrice() +
+                ", color_item = " + item.getColor() +
+                ", size_item =" + item.getSize() +
+                ", type_item = " + item.getType() +
+                ", status_item = " + item.getStatus() + "WHERE id_item = " + item.getId_item() + ";";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.executeQuery(sql);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+    }
+}

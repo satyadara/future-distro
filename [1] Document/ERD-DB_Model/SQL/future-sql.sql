@@ -6,7 +6,7 @@
 /*==============================================================*/
 /* Table: DISCOUNT                                              */
 /*==============================================================*/
-create sequence disc START 1001;
+create sequence disc START 101;
 create table DISCOUNT (
    ID_DISC              VARCHAR(10)	     DEFAULT 'DISC-' || nextval('disc'),
    ID_EMP               VARCHAR(10)          not null,
@@ -68,7 +68,7 @@ ID_ROLE
 /*==============================================================*/
 /* Table: ITEM                                                  */
 /*==============================================================*/
-create sequence item START 1001;
+create sequence item START 101;
 
 create table ITEM (
    ID_ITEM              VARCHAR(30)          not null,
@@ -99,7 +99,7 @@ ID_EMP
 /*==============================================================*/
 /* Table: ORDERLINE                                             */
 /*==============================================================*/
-create sequence orl START 1001;
+create sequence orl START 100000000000001;
 
 create table ORDERLINE (
    ID_ORDERLINE         VARCHAR(15)          DEFAULT 'ORL-' || nextval('orl'),
@@ -135,7 +135,7 @@ ID_TRANS
 /*==============================================================*/
 /* Table: OUTCOME                                               */
 /*==============================================================*/
-create sequence outcome START 1001;
+create sequence outcome START 101;
 
 create table OUTCOME (
    ID_OUTCOME           VARCHAR(10)          DEFAULT 'OUT-' || nextval('outcome'),

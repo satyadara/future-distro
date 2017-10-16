@@ -53,46 +53,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ItemDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-184">
-              <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+            <state relative-caret-position="-136">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1508155656331" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
-                <marker date="1508155656331" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
-                <marker date="1508155656331" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
-                <marker date="1508155656331" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
-                <marker date="1508155656331" expanded="true" signature="3941:3990" ph="UPDATE item " />
-                <marker date="1508155656331" expanded="true" signature="3941:4019" ph="UPDATE item " />
-                <marker date="1508155656331" expanded="true" signature="3941:4041" ph="UPDATE item " />
-                <marker date="1508155656331" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
-                <marker date="1508155656331" expanded="true" signature="3941:4380" ph="UPDATE item " />
-                <marker date="1508155656331" expanded="true" signature="3941:4381" ph="UPDATE item " />
+                <marker date="1508156312887" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
+                <marker date="1508156312887" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
+                <marker date="1508156312887" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
+                <marker date="1508156312887" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
+                <marker date="1508156312887" expanded="true" signature="3941:3990" ph="UPDATE item " />
+                <marker date="1508156312887" expanded="true" signature="3941:4019" ph="UPDATE item " />
+                <marker date="1508156312887" expanded="true" signature="3941:4041" ph="UPDATE item " />
+                <marker date="1508156312887" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
+                <marker date="1508156312887" expanded="true" signature="3941:4380" ph="UPDATE item " />
+                <marker date="1508156312887" expanded="true" signature="3941:4381" ph="UPDATE item " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ItemController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="1326">
+              <caret line="84" column="43" lean-forward="false" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#782#783#0" expanded="true" />
+                <element signature="e#820#821#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,11 +150,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DistroPosApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a33e222a-9e49-41a8-b1bb-5267e79d97ee/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java" />
       </list>
     </option>
   </component>
@@ -429,12 +433,12 @@
       <workItem from="1507996919761" duration="1434000" />
       <workItem from="1508033177314" duration="2919000" />
       <workItem from="1508055221105" duration="2237000" />
-      <workItem from="1508153144290" duration="2784000" />
+      <workItem from="1508153144290" duration="3598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10689000" />
+    <option name="totallyTimeSpent" value="11503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -510,28 +514,28 @@
           <caret line="45" column="72" lean-forward="false" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1508155656331" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3941:3990" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4019" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4041" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
-            <marker date="1508155656331" expanded="true" signature="3941:4380" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4381" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3941:3990" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4019" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4041" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
+            <marker date="1508156312887" expanded="true" signature="3941:4380" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4381" ph="UPDATE item " />
           </folding>
         </state>
       </provider>
@@ -540,7 +544,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -607,28 +615,28 @@
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1508155656331" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3941:3990" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4019" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4041" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
-            <marker date="1508155656331" expanded="true" signature="3941:4380" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4381" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3941:3990" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4019" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4041" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
+            <marker date="1508156312887" expanded="true" signature="3941:4380" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4381" ph="UPDATE item " />
           </folding>
         </state>
       </provider>
@@ -637,7 +645,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -696,28 +708,28 @@
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1508155656331" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3941:3990" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4019" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4041" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
-            <marker date="1508155656331" expanded="true" signature="3941:4380" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4381" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3941:3990" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4019" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4041" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
+            <marker date="1508156312887" expanded="true" signature="3941:4380" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4381" ph="UPDATE item " />
           </folding>
         </state>
       </provider>
@@ -726,7 +738,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -900,14 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -954,32 +962,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-184">
-          <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+        <state relative-caret-position="-136">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1508155656331" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
-            <marker date="1508155656331" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
-            <marker date="1508155656331" expanded="true" signature="3941:3990" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4019" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4041" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
-            <marker date="1508155656331" expanded="true" signature="3941:4380" ph="UPDATE item " />
-            <marker date="1508155656331" expanded="true" signature="3941:4381" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="935:953" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2105" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="2071:2106" ph="SELECT * FRO... item" />
+            <marker date="1508156312887" expanded="true" signature="3134:3237" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3267" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3293" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3312" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3334" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3378" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3379" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3418" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3458" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3497" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3536" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3576" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3134:3577" ph="INSERT INTO item... " />
+            <marker date="1508156312887" expanded="true" signature="3941:3990" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4019" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4041" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4365" ph="UPDATE item(... " />
+            <marker date="1508156312887" expanded="true" signature="3941:4380" ph="UPDATE item " />
+            <marker date="1508156312887" expanded="true" signature="3941:4381" ph="UPDATE item " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="84" column="43" lean-forward="false" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,7 @@
 package com.blibli.distro_pos.DAO;
 
 import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.Model.UserRole;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -80,17 +81,23 @@ public class UserDao {
     }
 
     //Memasukkan data user
-    public static int insertUser(User user) {
+    public static int insertUser(User user, UserRole userRole) {
 
         int status = 0;
 
         try {
-            String sql = "INSERT INTO users" +
-                    "(username, password, enabled)" +
-                    "VALUES(?,?,?)";
+            String sql = "INSERT INTO users(username,password,enabled) VALUES (?,?,?);" +
+                    "INSERT INTO user_roles (username, role) VALUES (?,?);";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setBoolean(3, user.isEnabled());
+            
+            preparedStatement.setString(1, userRole.getUsername());
+            preparedStatement.setString(2, userRole.getRole());
 
             status = preparedStatement.executeUpdate();
 

@@ -6,6 +6,9 @@ import com.blibli.distro_pos.Model.UserRole;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
@@ -95,13 +98,72 @@ public class UserDao {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setBoolean(3, user.isEnabled());
-            
+
             preparedStatement.setString(1, userRole.getUsername());
             preparedStatement.setString(2, userRole.getRole());
 
             status = preparedStatement.executeUpdate();
 
             System.out.println("Finished inserting user");
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
+
+    //Menampilkan semua user
+    public static List<User> getAllUser() {
+
+        List<User> userList = new ArrayList<~>();
+
+        String sql = "SELECT * FROM users";
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setNamaLengkap(resultSet.getString("namaLengkap"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+
+
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+    }
+
+    // TODO: Mengedit user
+    public static  int editUser(User user) {
+
+
+    }
+
+    //Menghapus user
+    public static int deleteUser(User user) {
+
+        int status = 0;
+
+        String sql = "DELETE FROM users WHERE id =?";
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, user.getId());
+
+            status = preparedStatement.executeUpdate();
         }
         catch (Exception e) {
 

@@ -16,11 +16,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class ItemController {
+
     private ItemDAO itemDAO;
 
     @Autowired
     public ItemController(ItemDAO itemDAO) {
         this.itemDAO = itemDAO;
+    }
+
+    public ItemController() {
     }
 
     @RequestMapping(value = "/item", method = GET)
@@ -36,13 +40,13 @@ public class ItemController {
 
     @RequestMapping(value = "/item/create", method = GET)
     public ModelAndView goToCreate() {
-        ModelAndView modelAndView = new ModelAndView("form");
+        ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
         modelAndView.addObject("item", item);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/insert", method = POST)
+    @RequestMapping(value = "/item/create", method = POST)
     public ModelAndView doCreate(@ModelAttribute("item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/");
 
@@ -55,12 +59,12 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/{username}/edit", method = GET)
-    public ModelAndView update(@PathVariable("username") String username) {
+    @RequestMapping(value = "/item/{id}/edit", method = GET)
+    public ModelAndView update(@PathVariable("username") String id) {
         ModelAndView modelAndView = new ModelAndView("form");
         Item item = new Item();
         try {
-            item = itemDAO.getOne(username);
+            item = itemDAO.getOne(id);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -71,8 +75,8 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/user/edit/{username}", method = POST)
-    public ModelAndView update(@ModelAttribute Item item) {
+    @RequestMapping(value = "/user/{id}/edit", method = POST)
+    public ModelAndView update(@ModelAttribute Item item, @PathVariable String id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/");
 
         try {

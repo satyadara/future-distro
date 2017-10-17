@@ -1,14 +1,18 @@
 package com.blibli.distro_pos.DAO;
 
 import com.blibli.distro_pos.Model.Item;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class ItemDAO {
-
     private Connection con;
+
+    public ItemDAO() {
+    }
 
     public void connect() {
         try {
@@ -47,11 +51,11 @@ public class ItemDAO {
                             rs.getString("id_item"),
                             rs.getString("id_emp"),
                             rs.getString("name_item"),
-                            rs.getFloat("price"),
-                            rs.getString("color"),
-                            rs.getString("size"),
-                            rs.getString("type"),
-                            rs.getString("status"));
+                            rs.getFloat("price_item"),
+                            rs.getString("color_item"),
+                            rs.getString("size_item"),
+                            rs.getString("type_item"),
+                            rs.getString("status_item"));
                     itemList.add(item);
                 }
             }
@@ -76,10 +80,11 @@ public class ItemDAO {
                     item.setId_item(rs.getString("id_item"));
                     item.setId_emp(rs.getString("id_emp"));
                     item.setName_item(rs.getString("name_item"));
-                    item.setPrice(rs.getFloat("price"));
-                    item.setColor(rs.getString("color"));
-                    item.setType(rs.getString("type"));
-                    item.setStatus(rs.getString("status"));
+                    item.setPrice(rs.getFloat("price_item"));
+                    item.setColor(rs.getString("color_item"));
+                    item.setSize(rs.getString("size_item"));
+                    item.setType(rs.getString("type_item"));
+                    item.setStatus(rs.getString("status_item"));
                 }
             }
             this.disconnect();
@@ -99,7 +104,7 @@ public class ItemDAO {
                 + item.getColor() + ","
                 + item.getSize() + ","
                 + item.getType() + ","
-                + item.getStatus() + ");";
+                + " Tersedia );";
         try {
             this.connect();
             Statement statement = this.con.createStatement();

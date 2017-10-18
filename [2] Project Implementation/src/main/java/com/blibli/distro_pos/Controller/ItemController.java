@@ -29,12 +29,14 @@ public class ItemController {
 
     @RequestMapping(value = "/item", method = GET)
     public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("item/index");
         List<Item> itemList = itemDAO.getAll();
+        int itemCount = itemDAO.count();
         modelAndView.addObject("items", itemList);
-        for (int i = 0; i < itemList.size(); i++) {
-            System.out.println(itemList.get(i).getId_item());
-        }
+        modelAndView.addObject("count", itemCount);
+//        for (int i = 0; i < itemList.size(); i++) {
+//            System.out.println(itemList.get(i).getId_item());
+//        }
         return modelAndView;
     }
 
@@ -48,9 +50,10 @@ public class ItemController {
 
     @RequestMapping(value = "/item/create", method = POST)
     public ModelAndView doCreate(@ModelAttribute("item") Item item) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
-
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
+            String id_item = getTypeCode(item.getType()) + "-" + getColorCode(item.getColor()) + "-" + item.getSize();
+            item.setId_item(id_item);
             itemDAO.save(item);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
@@ -90,4 +93,25 @@ public class ItemController {
 
         return modelAndView;
     }
+
+    private String getTypeCode(String type) {
+        String result = "";
+        if (type.equals("Pakaian"))
+            result = "PKN";
+        else if (type.equals("Celana"))
+            result = "CLN";
+
+        return result;
+    }
+
+    private String getColorCode(String color) {
+        String result = "";
+        if (color.equals("Merah"))
+            result = "MRH";
+        else if (color.equals("Hijau"))
+            result = "HJU";
+
+        return result;
+    }
+
 }

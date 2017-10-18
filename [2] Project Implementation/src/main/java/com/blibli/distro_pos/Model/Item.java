@@ -6,6 +6,7 @@ public class Item {
     private String id_emp;
     private String name_item;
     private float price;
+    private int stock;
     private String color;
     private String size;
     private String type;
@@ -14,11 +15,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(String id_item, String id_emp, String name_item, float price, String color, String size, String type, String status) {
+    public Item(String id_item, String id_emp, String name_item, float price, int stock, String color, String size, String type, String status) {
         this.id_item = id_item;
         this.id_emp = id_emp;
         this.name_item = name_item;
         this.price = price;
+        this.stock = stock;
         this.color = color;
         this.size = size;
         this.type = type;
@@ -55,6 +57,14 @@ public class Item {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getColor() {

@@ -52,6 +52,7 @@ public class ItemDAO {
                             rs.getString("id_emp"),
                             rs.getString("name_item"),
                             rs.getFloat("price_item"),
+                            rs.getInt("stock_item"),
                             rs.getString("color_item"),
                             rs.getString("size_item"),
                             rs.getString("type_item"),
@@ -81,6 +82,7 @@ public class ItemDAO {
                     item.setId_emp(rs.getString("id_emp"));
                     item.setName_item(rs.getString("name_item"));
                     item.setPrice(rs.getFloat("price_item"));
+                    item.setStock(rs.getInt("stock_item"));
                     item.setColor(rs.getString("color_item"));
                     item.setSize(rs.getString("size_item"));
                     item.setType(rs.getString("type_item"));
@@ -96,15 +98,17 @@ public class ItemDAO {
     }
 
     public void save(Item item) {
-        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, color_item, size_item, type_item, status_item)"
-                + " VALUES (" + item.getId_item() + ","
-                + item.getId_emp() + ","
-                + item.getName_item() + ","
+        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, stock_item, color_item, size_item, type_item, status_item)"
+                + " VALUES ('" + item.getId_item() + "-' || nextval('sec_item'), 'EMP-1002', '"
+                /* + item.getId_emp() + "," *******/
+                + item.getName_item() + "',"
                 + item.getPrice() + ","
-                + item.getColor() + ","
-                + item.getSize() + ","
-                + item.getType() + ","
-                + " Tersedia );";
+                + item.getStock() + ",'"
+                + item.getColor() + "','"
+                + item.getSize() + "','"
+                + item.getType() + "',"
+                + " 'Tersedia' );";
+        System.out.println(sql);
         try {
             this.connect();
             Statement statement = this.con.createStatement();
@@ -120,6 +124,7 @@ public class ItemDAO {
                 ", id_emp = " + item.getId_emp() +
                 ",name_item = " + item.getName_item() +
                 ", price_item =" + item.getPrice() +
+                ", stock_item =" + item.getStock() +
                 ", color_item = " + item.getColor() +
                 ", size_item =" + item.getSize() +
                 ", type_item = " + item.getType() +
@@ -132,5 +137,24 @@ public class ItemDAO {
         } catch (Exception e) {
             System.out.println("something error :" + e.toString());
         }
+    }
+
+    public int count() {
+        String sql = "SELECT COUNT(id_item) FROM item;";
+        int result = 0;
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                result = rs.getInt("count");
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#COUNT# something error : " + e.toString());
+        }
+
+        return result;
     }
 }

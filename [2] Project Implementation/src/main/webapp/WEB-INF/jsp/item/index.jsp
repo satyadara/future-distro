@@ -17,7 +17,9 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-default" style="float: right;">+Tambah Stok</button>
+            <a href="${pageContext.request.contextPath}/item/create">
+                <button class="btn btn-default" style="float: right;">+Tambah Stok</button>
+            </a>
         </div>
     </div>
     <br>

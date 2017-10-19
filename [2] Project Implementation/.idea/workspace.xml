@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4873c770-bcf0-4d4e-86ca-61b04789ebcd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java" />
-    </list>
+    <list default="true" id="4873c770-bcf0-4d4e-86ca-61b04789ebcd" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -277,12 +275,12 @@
       <option name="presentableId" value="Default" />
       <updated>1506570750929</updated>
       <workItem from="1506570755947" duration="756000" />
-      <workItem from="1508387187784" duration="247000" />
+      <workItem from="1508387187784" duration="384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1003000" />
+    <option name="totallyTimeSpent" value="1140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />

@@ -5,6 +5,9 @@ import com.blibli.distro_pos.Model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
@@ -80,17 +83,23 @@ public class UserDao {
     }
 
     //Memasukkan data user
-    public static int insertUser(User user) {
+    public static int insertUser(User user, UserRole userRole) {
 
         int status = 0;
 
         try {
-            String sql = "INSERT INTO users" +
-                    "(username, password, enabled)" +
-                    "VALUES(?,?,?)";
+            String sql = "INSERT INTO users(username,password,enabled) VALUES (?,?,?);" +
+                    "INSERT INTO user_roles (username, role) VALUES (?,?);";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setBoolean(3, user.isEnabled());
+
+            preparedStatement.setString(1, userRole.getUsername());
+            preparedStatement.setString(2, userRole.getRole());
 
             status = preparedStatement.executeUpdate();
 
@@ -102,5 +111,35 @@ public class UserDao {
         }
 
         return status;
+    }
+
+    //Menampilkan semua user
+    public static List<User> getAllUser() {
+
+        List<User> userList = new ArrayList<~>();
+
+        String sql = "SELECT * FROM users";
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setNamaLengkap(resultSet.getString("namaLengkap"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+
+
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
     }
 }

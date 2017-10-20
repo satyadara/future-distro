@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,7 +50,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/item/create", method = POST)
-    public ModelAndView doCreate(@ModelAttribute("item") Item item) {
+    public ModelAndView doCreate(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
             String id_item = getTypeCode(item.getType()) + "-" + getColorCode(item.getColor()) + "-" + item.getSize();
@@ -63,7 +64,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/item/{id}/edit", method = GET)
-    public ModelAndView edit(@PathVariable("id") String id) {
+    public ModelAndView edit(@PathVariable(name = "id") String id) {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
         try {
@@ -80,7 +81,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/item/{id}/edit", method = POST)
-    public ModelAndView update(@ModelAttribute("item") Item item) {
+    public ModelAndView update(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
             itemDAO.update(item);
@@ -93,9 +94,9 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/{id}/delete", method = POST)
-    public ModelAndView delete(@PathVariable("id") String id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+    @RequestMapping(value = "/item/{id}/delete", method = GET)
+    public ModelAndView delete(@PathVariable(name = "id") String id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         System.out.println("ssss " + id);
         try {
             itemDAO.delete(id);

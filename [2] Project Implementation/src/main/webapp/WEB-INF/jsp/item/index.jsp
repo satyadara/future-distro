@@ -51,13 +51,9 @@
                                 Edit
                             </a>
                             |
-                            <a onclick="event.preventDefault(); document.getElementById('delete-item').submit()">
+                            <a href="/item/${item.getId_item()}/delete">
                                 Delete
                             </a>
-                            <form id="delete-item" method="POST" action="/item/${item.getId_item()}/delete"
-                                  style="display: none">
-                                <input type="hidden" name="id_item" value="${item.getId_item()}">
-                            </form>
                         </td>
                     </tr>
                 </c:forEach>

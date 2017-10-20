@@ -20,7 +20,7 @@ public class ItemDAO {
             String db_username = "postgres";
             String uri = "jdbc:postgresql://localhost:5432/satyadara";
             this.con = DriverManager.getConnection(uri, db_username, db_password);
-            System.out.println("open connection");
+            System.out.println("*****open connection*****");
 
         } catch (Exception e) {
             System.out.println("error " + e.toString());
@@ -30,7 +30,7 @@ public class ItemDAO {
     public void disconnect() {
         try {
             this.con.close();
-            System.out.println("close connection");
+            System.out.println("*****close connection*****");
 
         } catch (Exception e) {
             System.out.println("error " + e.toString());
@@ -45,8 +45,9 @@ public class ItemDAO {
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if (rs != null) {
+                System.out.println("getAll\t:");
                 while (rs.next()) {
-                    System.out.println("getAll : " + rs.getString("id_item"));
+                    System.out.println("\t" + rs.getString("id_item"));
                     Item item = new Item(
                             rs.getString("id_item"),
                             rs.getString("id_emp"),
@@ -98,21 +99,34 @@ public class ItemDAO {
     }
 
     public void save(Item item) {
-        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, stock_item, color_item, size_item, type_item, status_item)"
-                + " VALUES ( nextval('sec_item') || '-" + item.getId_item() + "'  , 'EMP-1002', '"
-                /* + item.getId_emp() + "," *******/
-                + item.getName_item() + "',"
-                + item.getPrice() + ","
-                + item.getStock() + ",'"
-                + item.getColor() + "','"
-                + item.getSize() + "','"
-                + item.getType() + "',"
-                + " 'Tersedia' );";
-        System.out.println(sql);
+//        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, stock_item, color_item, size_item, type_item, status_item)"
+//                + " VALUES ( nextval('sec_item') || '-" + item.getId_item() + "'  , 'EMP-1002', '"
+//                /* + item.getId_emp() + "," *******/
+//                + item.getName_item() + "',"
+//                + item.getPrice() + ","
+//                + item.getStock() + ",'"
+//                + item.getColor() + "','"
+//                + item.getSize() + "','"
+//                + item.getType() + "',"
+//                + " 'Tersedia' );";
+        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, color_item, size_item, type_item, status_item, stock_item) "
+                + "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?)";
         try {
             this.connect();
-            Statement statement = this.con.createStatement();
-            statement.executeQuery(sql);
+//            Statement statement = this.con.createStatement();
+//            statement.executeQuery(sql);
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, item.getId_item());
+            preparedStatement.setString(2, "EMP-1002");
+            preparedStatement.setString(3, item.getName_item());
+            preparedStatement.setFloat(4, item.getPrice());
+            preparedStatement.setString(5, item.getColor());
+            preparedStatement.setString(6, item.getSize());
+            preparedStatement.setString(7, item.getType());
+            preparedStatement.setString(8, "aktif");
+            preparedStatement.setInt(9, item.getStock());
+            preparedStatement.executeUpdate();
+            System.out.println("\nSaved Item : ");
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#INSERT# something error :" + e.toString());
@@ -167,6 +181,8 @@ public class ItemDAO {
             while (rs.next()) {
                 result = rs.getInt("count");
             }
+
+            System.out.println("Item counted : " + result);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());

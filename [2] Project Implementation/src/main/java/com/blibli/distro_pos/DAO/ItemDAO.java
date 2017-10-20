@@ -38,7 +38,7 @@ public class ItemDAO {
     }
 
     public List<Item> getAll() {
-        String sql = "SELECT * FROM item;";
+        String sql = "SELECT * FROM item ORDER BY id_item;";
         List<Item> itemList = new ArrayList<>();
         try {
             this.connect();
@@ -99,24 +99,12 @@ public class ItemDAO {
     }
 
     public void save(Item item) {
-//        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, stock_item, color_item, size_item, type_item, status_item)"
-//                + " VALUES ( nextval('sec_item') || '-" + item.getId_item() + "'  , 'EMP-1002', '"
-//                /* + item.getId_emp() + "," *******/
-//                + item.getName_item() + "',"
-//                + item.getPrice() + ","
-//                + item.getStock() + ",'"
-//                + item.getColor() + "','"
-//                + item.getSize() + "','"
-//                + item.getType() + "',"
-//                + " 'Tersedia' );";
         String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, color_item, size_item, type_item, status_item, stock_item) "
-                + "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?)";
+                + "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?);";
         try {
             this.connect();
-//            Statement statement = this.con.createStatement();
-//            statement.executeQuery(sql);
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setString(1, item.getId_item());
+            preparedStatement.setString(1, "-" + item.getId_item());
             preparedStatement.setString(2, "EMP-1002");
             preparedStatement.setString(3, item.getName_item());
             preparedStatement.setFloat(4, item.getPrice());
@@ -125,8 +113,8 @@ public class ItemDAO {
             preparedStatement.setString(7, item.getType());
             preparedStatement.setString(8, "aktif");
             preparedStatement.setInt(9, item.getStock());
-            preparedStatement.executeUpdate();
-            System.out.println("\nSaved Item : ");
+            preparedStatement.executeQuery();
+            System.out.println("Success insert item : " + item.getId_item());
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#INSERT# something error :" + e.toString());
@@ -134,24 +122,23 @@ public class ItemDAO {
     }
 
     public void update(Item item) {
-        String sql = "UPDATE item SET id_emp = '" + item.getId_emp() +
-                "',name_item = '" + item.getName_item() +
-                "', price_item = " + item.getPrice() +
-                " , stock_item = " + item.getStock() +
-                " , color_item = '" + item.getColor() +
-                "', size_item = '" + item.getSize() +
-                "', type_item = '" + item.getType() +
-                "', status_item = '" + item.getStatus() + "' WHERE id_item = '" + item.getId_item() + "';";
-        System.out.println(item.getId_item());
-        System.out.println(item.getColor());
+        String sql = "UPDATE item SET name_item = ?, price_item = ?, stock_item = ?, color_item = ?, size_item = ?,"
+                + " type_item = ? WHERE id_item = ?";
         try {
             this.connect();
-            Statement statement = this.con.createStatement();
-            statement.executeQuery(sql);
-            System.out.println("updated");
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, item.getName_item());
+            preparedStatement.setFloat(2, item.getPrice());
+            preparedStatement.setInt(3, item.getStock());
+            preparedStatement.setString(4, item.getColor());
+            preparedStatement.setString(5, item.getSize());
+            preparedStatement.setString(6, item.getType());
+            preparedStatement.setString(7, item.getId_item());
+            preparedStatement.executeQuery();
+            System.out.println("Success update item : " + item.getId_item());
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+            System.out.println("#UPDATE# something error :" + e.toString());
         }
     }
 
@@ -163,10 +150,10 @@ public class ItemDAO {
             Statement statement = this.con.createStatement();
             statement.executeQuery(sql);
 
-            System.out.println(id + " has been delete");
+            System.out.println("Success delete item : " + id);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+            System.out.println("#DELETE# something error :" + e.toString());
         }
     }
 

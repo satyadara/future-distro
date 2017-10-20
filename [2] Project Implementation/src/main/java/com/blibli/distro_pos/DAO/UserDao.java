@@ -1,6 +1,7 @@
 package com.blibli.distro_pos.DAO;
 
 import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.Model.UserRole;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,7 +38,7 @@ public class UserDao {
     public static void createTableUser() {
 
         try {
-            String sql = "CREATE TABLE users(" +
+            String sql = "CREATE TABLE IF NOT EXISTS users(" +
                     "   username varchar(20) NOT NULL," +
                     "   password varchar(20) NOT NULL," +
                     "   enabled boolean NOT NULL DEFAULT FALSE," +
@@ -61,7 +62,7 @@ public class UserDao {
     public static void createTableUserRole() {
 
         try {
-            String sql = "create table user_roles (" +
+            String sql = "create table IF NOT EXISTS user_roles (" +
                     "  user_role_id SERIAL PRIMARY KEY," +
                     "  username varchar(20) NOT NULL," +
                     "  role varchar(20) NOT NULL," +
@@ -116,7 +117,7 @@ public class UserDao {
     //Menampilkan semua user
     public static List<User> getAllUser() {
 
-        List<User> userList = new ArrayList<~>();
+        List<User> userList = new ArrayList<User>();
 
         String sql = "SELECT * FROM users";
         try {
@@ -141,5 +142,7 @@ public class UserDao {
 
             System.out.println(e.toString());
         }
+
+        return userList;
     }
 }

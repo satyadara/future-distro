@@ -82,7 +82,8 @@
                         </div>
                         <div class=" form-group col-md-12">
                             <label>Nama Barang</label>
-                            <input type="text" name="name_item" class="form-control" value="${item.getName_item()}">
+                            <input required type="text" name="name_item" class="form-control"
+                                   value="${item.getName_item()}">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Warna</label>

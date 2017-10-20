@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -30,13 +31,17 @@ public class ItemController {
     @RequestMapping(value = "/item", method = GET)
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("item/index");
-        List<Item> itemList = itemDAO.getAll();
-        int itemCount = itemDAO.count();
-        modelAndView.addObject("items", itemList);
-        modelAndView.addObject("count", itemCount);
-//        for (int i = 0; i < itemList.size(); i++) {
-//            System.out.println(itemList.get(i).getId_item());
-//        }
+        List<Item> itemList;
+        int itemCount;
+        try {
+            itemList = itemDAO.getAll();
+            itemCount = itemDAO.count();
+            modelAndView.addObject("items", itemList);
+            modelAndView.addObject("count", itemCount);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
         return modelAndView;
     }
 
@@ -52,6 +57,7 @@ public class ItemController {
     @RequestMapping(value = "/item/create", method = POST)
     public ModelAndView doCreate(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
+
         try {
             String id_item = getTypeCode(item.getType()) + "-" + getColorCode(item.getColor()) + "-" + item.getSize();
             item.setId_item(id_item);
@@ -96,7 +102,7 @@ public class ItemController {
 
     @RequestMapping(value = "/item/{id}/delete", method = GET)
     public ModelAndView delete(@PathVariable(name = "id") String id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
         System.out.println("ssss " + id);
         try {
             itemDAO.delete(id);
@@ -105,6 +111,24 @@ public class ItemController {
         }
 
         modelAndView.addObject("message", "success delete");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/item/page/{page}", method = GET)
+    public ModelAndView paginate(@PathVariable(name = "page") int page) {
+        ModelAndView modelAndView = new ModelAndView("item/index");
+        List<Item> itemList;
+        int itemCount;
+        try {
+            itemList = itemDAO.paginate(page);
+            itemCount = itemDAO.count();
+
+            modelAndView.addObject("items", itemList);
+            modelAndView.addObject("count", itemCount);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
 
         return modelAndView;
     }

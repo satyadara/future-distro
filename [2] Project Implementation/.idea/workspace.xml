@@ -34,79 +34,17 @@
       <file leaf-file-name="ItemController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="97" column="19" lean-forward="false" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
+            <state relative-caret-position="229">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="method#ItemController#1;class#ItemController#0" expanded="false" />
                 <element signature="method#index#0;class#ItemController#0" expanded="false" />
-                <element signature="e#1195#1248#0" expanded="false" />
                 <element signature="method#goToCreate#0;class#ItemController#0" expanded="false" />
-                <element signature="method#doCreate#0;class#ItemController#0" expanded="false" />
                 <element signature="method#edit#0;class#ItemController#0" expanded="false" />
                 <element signature="method#update#0;class#ItemController#0" expanded="false" />
+                <element signature="method#delete#0;class#ItemController#0" expanded="false" />
                 <element signature="method#getTypeCode#0;class#ItemController#0" expanded="false" />
                 <element signature="method#getColorCode#0;class#ItemController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="100" column="1" lean-forward="false" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
-              <folding>
-                <element signature="method#Item#0;class#Item#0" expanded="false" />
-                <element signature="method#Item#1;class#Item#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="43" column="46" lean-forward="false" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="45" lean-forward="false" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemDAO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
-              <folding>
-                <element signature="method#ItemDAO#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#connect#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#disconnect#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
-                <marker date="1508514832566" expanded="true" signature="1046:1064" ph="SELECT * FRO... item" />
-                <marker date="1508514832566" expanded="true" signature="1046:1081" ph="SELECT * FRO... item" />
-                <marker date="1508514832566" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
-                <marker date="1508514832566" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
-                <marker date="1508514832566" expanded="false" signature="4720:4813" ph="UPDATE item " />
-                <marker date="1508514832566" expanded="false" signature="4720:4848" ph="UPDATE item " />
-                <marker date="1508514832566" expanded="false" signature="4720:4866" ph="UPDATE item " />
-                <marker date="1508514832566" expanded="false" signature="5759:5804" ph="DELETE FROM " />
-                <marker date="1508514832566" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
               </folding>
             </state>
           </provider>
@@ -115,9 +53,50 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
+            <state relative-caret-position="533">
               <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="81" column="30" lean-forward="true" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="184" column="27" lean-forward="true" selection-start-line="184" selection-start-column="27" selection-end-line="184" selection-end-column="27" />
+              <folding>
+                <element signature="method#ItemDAO#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#connect#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#disconnect#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#getAll#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
+                <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
+                <marker date="1508516998706" expanded="false" signature="1046:1064" ph="SELECT * FRO... item" />
+                <marker date="1508516998706" expanded="false" signature="1046:1081" ph="SELECT * FRO... item" />
+                <marker date="1508516998706" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
+                <marker date="1508516998706" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
+                <marker date="1508516998706" expanded="false" signature="4720:4813" ph="UPDATE item " />
+                <marker date="1508516998706" expanded="false" signature="4720:4848" ph="UPDATE item " />
+                <marker date="1508516998706" expanded="false" signature="4720:4866" ph="UPDATE item " />
+                <marker date="1508516998706" expanded="false" signature="5759:5804" ph="DELETE FROM " />
+                <marker date="1508516998706" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+                <marker date="1508516998706" expanded="false" signature="6871:6906" ph="SELECT * FRO... item" />
+                <marker date="1508516998706" expanded="false" signature="6871:6924" ph="SELECT * FRO... item" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,12 +129,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DistroPosApplication.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a33e222a-9e49-41a8-b1bb-5267e79d97ee/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a33e222a-9e49-41a8-b1bb-5267e79d97ee/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp" />
       </list>
     </option>
   </component>
@@ -472,12 +451,12 @@
       <workItem from="1508468730349" duration="20000" />
       <workItem from="1508469244777" duration="33000" />
       <workItem from="1508507358117" duration="3634000" />
-      <workItem from="1508512236889" duration="2595000" />
+      <workItem from="1508512236889" duration="5781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52038000" />
+    <option name="totallyTimeSpent" value="55224000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -491,11 +470,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28478965" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43837753" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43837753" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32605305" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26061493" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -511,7 +491,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -555,20 +534,23 @@
             <element signature="method#ItemDAO#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#connect#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#disconnect#0;class#ItemDAO#0" expanded="false" />
+            <element signature="method#getAll#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
-            <marker date="1508514832566" expanded="true" signature="1046:1064" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="true" signature="1046:1081" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
-            <marker date="1508514832566" expanded="false" signature="4720:4813" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="4720:4848" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="4720:4866" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="5759:5804" ph="DELETE FROM " />
-            <marker date="1508514832566" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+            <marker date="1508516998706" expanded="false" signature="1046:1064" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="1046:1081" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
+            <marker date="1508516998706" expanded="false" signature="4720:4813" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="4720:4848" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="4720:4866" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="5759:5804" ph="DELETE FROM " />
+            <marker date="1508516998706" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+            <marker date="1508516998706" expanded="false" signature="6871:6906" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="6871:6924" ph="SELECT * FRO... item" />
           </folding>
         </state>
       </provider>
@@ -580,11 +562,10 @@
           <folding>
             <element signature="method#ItemController#1;class#ItemController#0" expanded="false" />
             <element signature="method#index#0;class#ItemController#0" expanded="false" />
-            <element signature="e#1195#1248#0" expanded="false" />
             <element signature="method#goToCreate#0;class#ItemController#0" expanded="false" />
-            <element signature="method#doCreate#0;class#ItemController#0" expanded="false" />
             <element signature="method#edit#0;class#ItemController#0" expanded="false" />
             <element signature="method#update#0;class#ItemController#0" expanded="false" />
+            <element signature="method#delete#0;class#ItemController#0" expanded="false" />
             <element signature="method#getTypeCode#0;class#ItemController#0" expanded="false" />
             <element signature="method#getColorCode#0;class#ItemController#0" expanded="false" />
           </folding>
@@ -628,20 +609,23 @@
             <element signature="method#ItemDAO#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#connect#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#disconnect#0;class#ItemDAO#0" expanded="false" />
+            <element signature="method#getAll#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
-            <marker date="1508514832566" expanded="true" signature="1046:1064" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="true" signature="1046:1081" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
-            <marker date="1508514832566" expanded="false" signature="4720:4813" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="4720:4848" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="4720:4866" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="5759:5804" ph="DELETE FROM " />
-            <marker date="1508514832566" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+            <marker date="1508516998706" expanded="false" signature="1046:1064" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="1046:1081" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
+            <marker date="1508516998706" expanded="false" signature="4720:4813" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="4720:4848" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="4720:4866" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="5759:5804" ph="DELETE FROM " />
+            <marker date="1508516998706" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+            <marker date="1508516998706" expanded="false" signature="6871:6906" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="6871:6924" ph="SELECT * FRO... item" />
           </folding>
         </state>
       </provider>
@@ -653,11 +637,10 @@
           <folding>
             <element signature="method#ItemController#1;class#ItemController#0" expanded="false" />
             <element signature="method#index#0;class#ItemController#0" expanded="false" />
-            <element signature="e#1195#1248#0" expanded="false" />
             <element signature="method#goToCreate#0;class#ItemController#0" expanded="false" />
-            <element signature="method#doCreate#0;class#ItemController#0" expanded="false" />
             <element signature="method#edit#0;class#ItemController#0" expanded="false" />
             <element signature="method#update#0;class#ItemController#0" expanded="false" />
+            <element signature="method#delete#0;class#ItemController#0" expanded="false" />
             <element signature="method#getTypeCode#0;class#ItemController#0" expanded="false" />
             <element signature="method#getColorCode#0;class#ItemController#0" expanded="false" />
           </folding>
@@ -849,62 +832,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a33e222a-9e49-41a8-b1bb-5267e79d97ee/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="260" column="23" lean-forward="false" selection-start-line="260" selection-start-column="23" selection-end-line="260" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/f16000df/a33e222a-9e49-41a8-b1bb-5267e79d97ee/satyadara.public.item">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="46" lean-forward="false" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="100" column="1" lean-forward="false" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
-          <folding>
-            <element signature="method#Item#0;class#Item#0" expanded="false" />
-            <element signature="method#Item#1;class#Item#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="97" column="19" lean-forward="false" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
-          <folding>
-            <element signature="method#ItemController#1;class#ItemController#0" expanded="false" />
-            <element signature="method#index#0;class#ItemController#0" expanded="false" />
-            <element signature="e#1195#1248#0" expanded="false" />
-            <element signature="method#goToCreate#0;class#ItemController#0" expanded="false" />
-            <element signature="method#doCreate#0;class#ItemController#0" expanded="false" />
-            <element signature="method#edit#0;class#ItemController#0" expanded="false" />
-            <element signature="method#update#0;class#ItemController#0" expanded="false" />
-            <element signature="method#getTypeCode#0;class#ItemController#0" expanded="false" />
-            <element signature="method#getColorCode#0;class#ItemController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -916,29 +847,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="100" column="1" lean-forward="false" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+          <folding>
+            <element signature="method#Item#0;class#Item#0" expanded="false" />
+            <element signature="method#Item#1;class#Item#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a33e222a-9e49-41a8-b1bb-5267e79d97ee/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="288" column="52" lean-forward="false" selection-start-line="288" selection-start-column="52" selection-end-line="288" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ItemDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
+        <state relative-caret-position="153">
+          <caret line="184" column="27" lean-forward="true" selection-start-line="184" selection-start-column="27" selection-end-line="184" selection-end-column="27" />
           <folding>
             <element signature="method#ItemDAO#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#connect#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#disconnect#0;class#ItemDAO#0" expanded="false" />
+            <element signature="method#getAll#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
-            <marker date="1508514832566" expanded="true" signature="1046:1064" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="true" signature="1046:1081" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
-            <marker date="1508514832566" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
-            <marker date="1508514832566" expanded="false" signature="4720:4813" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="4720:4848" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="4720:4866" ph="UPDATE item " />
-            <marker date="1508514832566" expanded="false" signature="5759:5804" ph="DELETE FROM " />
-            <marker date="1508514832566" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+            <marker date="1508516998706" expanded="false" signature="1046:1064" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="1046:1081" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="2319:2366" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="3525:3711" ph="INSERT INTO item... " />
+            <marker date="1508516998706" expanded="false" signature="4720:4813" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="4720:4848" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="4720:4866" ph="UPDATE item " />
+            <marker date="1508516998706" expanded="false" signature="5759:5804" ph="DELETE FROM " />
+            <marker date="1508516998706" expanded="false" signature="6253:6284" ph="SELECT COUNT... item" />
+            <marker date="1508516998706" expanded="false" signature="6871:6906" ph="SELECT * FRO... item" />
+            <marker date="1508516998706" expanded="false" signature="6871:6924" ph="SELECT * FRO... item" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="method#ItemController#1;class#ItemController#0" expanded="false" />
+            <element signature="method#index#0;class#ItemController#0" expanded="false" />
+            <element signature="method#goToCreate#0;class#ItemController#0" expanded="false" />
+            <element signature="method#edit#0;class#ItemController#0" expanded="false" />
+            <element signature="method#update#0;class#ItemController#0" expanded="false" />
+            <element signature="method#delete#0;class#ItemController#0" expanded="false" />
+            <element signature="method#getTypeCode#0;class#ItemController#0" expanded="false" />
+            <element signature="method#getColorCode#0;class#ItemController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="81" column="30" lean-forward="true" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

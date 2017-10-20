@@ -177,4 +177,38 @@ public class ItemDAO {
 
         return result;
     }
+
+    public List<Item> paginate(int page) {
+        String sql = "SELECT * FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
+        List<Item> itemList = new ArrayList<>();
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setInt(1, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs != null) {
+                System.out.println("getAll\t: ");
+                while (rs.next()) {
+                    System.out.println("\t" + rs.getString("id_item"));
+                    Item item = new Item(
+                            rs.getString("id_item"),
+                            rs.getString("id_emp"),
+                            rs.getString("name_item"),
+                            rs.getFloat("price_item"),
+                            rs.getInt("stock_item"),
+                            rs.getString("color_item"),
+                            rs.getString("size_item"),
+                            rs.getString("type_item"),
+                            rs.getString("status_item"));
+                    itemList.add(item);
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return itemList;
+    }
 }

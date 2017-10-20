@@ -143,6 +143,7 @@ public class UserDao {
             System.out.println(e.toString());
         }
     }
+<<<<<<< HEAD:src/main/java/com/blibli/distro_pos/DAO/UserDao.java
 
     // TODO: Mengedit user
     public static  int editUser(User user) {
@@ -172,4 +173,6 @@ public class UserDao {
 
         return status;
     }
+=======
+>>>>>>> development:[2] Project Implementation/src/main/java/com/blibli/distro_pos/DAO/UserDao.java
 }

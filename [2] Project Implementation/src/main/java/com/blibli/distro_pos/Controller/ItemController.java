@@ -11,8 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
 public class ItemController {
@@ -45,6 +44,7 @@ public class ItemController {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
         modelAndView.addObject("item", item);
+        modelAndView.addObject("method", "POST");
         return modelAndView;
     }
 
@@ -63,25 +63,25 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/item/{id}/edit", method = GET)
-    public ModelAndView update(@PathVariable("username") String id) {
-        ModelAndView modelAndView = new ModelAndView("form");
+    public ModelAndView edit(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
         try {
             item = itemDAO.getOne(id);
+            System.out.println(id + " " + item.getId_item());
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
 
         modelAndView.addObject("message", "success");
-        modelAndView.addObject("user", item);
+        modelAndView.addObject("item", item);
 
         return modelAndView;
     }
 
-    @RequestMapping(value = "/user/{id}/edit", method = POST)
-    public ModelAndView update(@ModelAttribute Item item, @PathVariable String id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
-
+    @RequestMapping(value = "/item/{id}/edit", method = POST)
+    public ModelAndView update(@ModelAttribute("item") Item item) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
             itemDAO.update(item);
         } catch (Exception e) {
@@ -89,7 +89,21 @@ public class ItemController {
         }
 
         modelAndView.addObject("message", "success");
-        modelAndView.addObject("user", item);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/item/{id}/delete", method = POST)
+    public ModelAndView delete(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+        System.out.println("ssss " + id);
+        try {
+            itemDAO.delete(id);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        modelAndView.addObject("message", "success delete");
 
         return modelAndView;
     }
@@ -108,6 +122,8 @@ public class ItemController {
         String result = "";
         if (color.equals("Merah"))
             result = "MRH";
+        else if (color.equals("Kuning"))
+            result = "KNG";
         else if (color.equals("Hijau"))
             result = "HJU";
 

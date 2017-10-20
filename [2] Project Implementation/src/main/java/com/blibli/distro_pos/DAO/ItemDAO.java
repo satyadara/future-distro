@@ -69,7 +69,7 @@ public class ItemDAO {
     }
 
     public Item getOne(String id) {
-        String sql = "SELECT * FROM item WHERE id_item = " + id + ";";
+        String sql = "SELECT * FROM item WHERE id_item = '" + id + "';";
         Item item = new Item();
         try {
             this.connect();
@@ -99,7 +99,7 @@ public class ItemDAO {
 
     public void save(Item item) {
         String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, stock_item, color_item, size_item, type_item, status_item)"
-                + " VALUES ('" + item.getId_item() + "-' || nextval('sec_item'), 'EMP-1002', '"
+                + " VALUES ( nextval('sec_item') || '-" + item.getId_item() + "'  , 'EMP-1002', '"
                 /* + item.getId_emp() + "," *******/
                 + item.getName_item() + "',"
                 + item.getPrice() + ","
@@ -120,19 +120,36 @@ public class ItemDAO {
     }
 
     public void update(Item item) {
-        String sql = "UPDATE item SET id_item = " + item.getId_item() +
-                ", id_emp = " + item.getId_emp() +
-                ",name_item = " + item.getName_item() +
-                ", price_item =" + item.getPrice() +
-                ", stock_item =" + item.getStock() +
-                ", color_item = " + item.getColor() +
-                ", size_item =" + item.getSize() +
-                ", type_item = " + item.getType() +
-                ", status_item = " + item.getStatus() + "WHERE id_item = " + item.getId_item() + ";";
+        String sql = "UPDATE item SET id_emp = '" + item.getId_emp() +
+                "',name_item = '" + item.getName_item() +
+                "', price_item = " + item.getPrice() +
+                " , stock_item = " + item.getStock() +
+                " , color_item = '" + item.getColor() +
+                "', size_item = '" + item.getSize() +
+                "', type_item = '" + item.getType() +
+                "', status_item = '" + item.getStatus() + "' WHERE id_item = '" + item.getId_item() + "';";
+        System.out.println(item.getId_item());
+        System.out.println(item.getColor());
         try {
             this.connect();
             Statement statement = this.con.createStatement();
             statement.executeQuery(sql);
+            System.out.println("updated");
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+    }
+
+    public void delete(String id) {
+        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+        System.out.println(id);
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.executeQuery(sql);
+
+            System.out.println(id + " has been delete");
             this.disconnect();
         } catch (Exception e) {
             System.out.println("something error :" + e.toString());

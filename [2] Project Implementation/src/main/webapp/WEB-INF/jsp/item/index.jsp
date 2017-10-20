@@ -46,7 +46,19 @@
                         <td>${item.getColor()}</td>
                         <td>${item.getPrice()}</td>
                         <td>${item.getStock()}</td>
-                        <td></td>
+                        <td>
+                            <a href="/item/${item.getId_item()}/edit">
+                                Edit
+                            </a>
+                            |
+                            <a onclick="event.preventDefault(); document.getElementById('delete-item').submit()">
+                                Delete
+                            </a>
+                            <form id="delete-item" method="POST" action="/item/${item.getId_item()}/delete"
+                                  style="display: none">
+                                <input type="hidden" name="id_item" value="${item.getId_item()}">
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>

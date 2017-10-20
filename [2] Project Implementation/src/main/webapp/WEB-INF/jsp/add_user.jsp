@@ -72,8 +72,8 @@
                         ROLE
                     </td>
                     <td>
-                        <<input type="radio" name="role" value="admin"> Admin
-                        <input type="radio" name="role" value="cashier"> Cashier
+                        <input type="radio" name="role" value="ADMIN"> Admin
+                        <input type="radio" name="role" value="CASHIER"> Cashier
                     </td>
                 </tr>
             </table>

@@ -2,6 +2,7 @@ package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.DAO.UserDao;
 import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.Model.UserRole;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,9 +47,9 @@ public class WebController {
     }
 
     @PostMapping("/add_user")
-    public ModelAndView addUser(@ModelAttribute("user") User user) {
+    public ModelAndView addUser(@ModelAttribute("user") User user, UserRole userRole) {
 
-        int status = UserDao.insertUser(user);
+        int status = UserDao.insertUser(user, userRole);
 
         if (status == 1) {
 

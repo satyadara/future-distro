@@ -25,7 +25,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-striped table-bordered table-responsive">
+            <table class="table table-striped table-bordered table-responsive" id="mTable">
                 <tr>
                     <th>ID</th>
                     <th>Tipe Barang</th>
@@ -60,7 +60,6 @@
             </table>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

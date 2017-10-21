@@ -1,7 +1,6 @@
 package com.blibli.distro_pos.Model;
 
 public class Item {
-
     private String id_item;
     private String id_emp;
     private String name_item;

@@ -69,4 +69,23 @@ public class WebController {
 
         return new ModelAndView("view_user", "userList", userList);
     }
+
+    @GetMapping(value = "delete_user/{username}")
+    public ModelAndView deleteUser(@ModelAttribute("user") User user) {
+
+        int status = UserDao.deleteUser(user);
+
+        if (status == 1) {
+
+            System.out.println("User with username: " + user.getUsername() + " is deleted");
+
+            return new ModelAndView("redirect:/view_user");
+        }
+        else {
+
+            System.out.println("Gagal delete user " + user.getUsername());
+
+            return new ModelAndView("redirect:/view_user");
+        }
+    }
 }

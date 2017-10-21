@@ -11,24 +11,14 @@
     <div class="col-md-8 col-md-offset-2">
         <table border="1" width="90%">
             <tr>
-                <th>ID</th>
-                <th>Nama Lengkap</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Alamat</th>
-                <th>No KTP</th>
-                <th>No HP</th>
-                <th>Jenis Kelamin</th>
                 <th>Role</th>
-
             </tr>
             <c:forEach items="${userList}" var="user">
                 <tr>
-                    <td>${user.getId()}</td>
-                    <td>${user.getName()}</td>
-                    <td>${user.getEmail()}</td>
-                    <td><a href="edit_user/${user.getId()}">edit</a> </td>
-                    <td><a href="delete_user/${user.getId()}">delete</a></td>
+                    <td>${user.getUsername()}</td>
+                    <td>${user.getPassword()}</td>
                 </tr>
             </c:forEach>
         </table>

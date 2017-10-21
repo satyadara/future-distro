@@ -1,7 +1,6 @@
 package com.blibli.distro_pos.DAO;
 
 import com.blibli.distro_pos.Model.User;
-import com.blibli.distro_pos.Model.UserRole;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,13 +36,14 @@ public class UserDao {
     //Membuat table users
     public static void createTableUser() {
 
+        String sql = "CREATE TABLE IF NOT EXISTS users(" +
+                "   username varchar(20) NOT NULL," +
+                "   password varchar(20) NOT NULL," +
+                "   enabled boolean NOT NULL DEFAULT FALSE," +
+                "   primary key(username)" +
+                ");";
+
         try {
-            String sql = "CREATE TABLE IF NOT EXISTS users(" +
-                    "   username varchar(20) NOT NULL," +
-                    "   password varchar(20) NOT NULL," +
-                    "   enabled boolean NOT NULL DEFAULT FALSE," +
-                    "   primary key(username)" +
-                    ");";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -61,21 +61,22 @@ public class UserDao {
     //Membuat table users_roles
     public static void createTableUserRole() {
 
+        String sql = "create table IF NOT EXISTS user_roles (" +
+                "  user_role_id SERIAL PRIMARY KEY," +
+                "  username varchar(20) NOT NULL," +
+                "  role varchar(20) NOT NULL," +
+                "  UNIQUE (username,role)," +
+                "  FOREIGN KEY (username) REFERENCES users (username)" +
+                ");";
+
         try {
-            String sql = "create table IF NOT EXISTS user_roles (" +
-                    "  user_role_id SERIAL PRIMARY KEY," +
-                    "  username varchar(20) NOT NULL," +
-                    "  role varchar(20) NOT NULL," +
-                    "  UNIQUE (username,role)," +
-                    "  FOREIGN KEY (username) REFERENCES users (username)" +
-                    ");";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.executeUpdate();
 
-            System.out.println("Finished creating user_ role table");
+            System.out.println("Finished creating user_role table");
         }
         catch (Exception e) {
 
@@ -84,13 +85,12 @@ public class UserDao {
     }
 
     //Memasukkan data user
-    public static int insertUser(User user, UserRole userRole) {
+    public static int insertUser(User user) {
 
         int status = 0;
 
         try {
-            String sql = "INSERT INTO users(username,password,enabled) VALUES (?,?,?);" +
-                    "INSERT INTO user_roles (username, role) VALUES (?,?);";
+            String sql = "INSERT INTO users(username,password, enabled) VALUES (?,?,?);";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -99,8 +99,8 @@ public class UserDao {
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setBoolean(3, user.isEnabled());
 
-            preparedStatement.setString(1, userRole.getUsername());
-            preparedStatement.setString(2, userRole.getRole());
+//            preparedStatement.setString(1, userRole.getUsername());
+//            preparedStatement.setString(2, userRole.getRole());
 
             status = preparedStatement.executeUpdate();
 
@@ -117,7 +117,7 @@ public class UserDao {
     //Menampilkan semua user
     public static List<User> getAllUser() {
 
-        List<User> userList = new ArrayList<User>();
+        List<User> userList = new ArrayList<>();
 
         String sql = "SELECT * FROM users";
         try {
@@ -130,12 +130,8 @@ public class UserDao {
             while (resultSet.next()) {
 
                 User user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setNamaLengkap(resultSet.getString("namaLengkap"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
-
-
             }
         }
         catch (Exception e) {

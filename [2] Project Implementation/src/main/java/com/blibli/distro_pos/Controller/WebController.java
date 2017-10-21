@@ -2,13 +2,14 @@ package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.DAO.UserDao;
 import com.blibli.distro_pos.Model.User;
-import com.blibli.distro_pos.Model.UserRole;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -47,9 +48,9 @@ public class WebController {
     }
 
     @PostMapping("/add_user")
-    public ModelAndView addUser(@ModelAttribute("user") User user, UserRole userRole) {
+    public ModelAndView addUser(@ModelAttribute("user") User user) {
 
-        int status = UserDao.insertUser(user, userRole);
+        int status = UserDao.insertUser(user);
 
         if (status == 1) {
 
@@ -59,5 +60,13 @@ public class WebController {
 
             return new ModelAndView("redirect:/view_user");
         }
+    }
+
+    @RequestMapping("/view_user")
+    public ModelAndView viewAllUser() {
+
+        List<User> userList = UserDao.getAllUser();
+
+        return new ModelAndView("view_user", "userList", userList);
     }
 }

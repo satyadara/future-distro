@@ -13,12 +13,15 @@
             <tr>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Role</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <c:forEach items="${userList}" var="user">
                 <tr>
                     <td>${user.getUsername()}</td>
                     <td>${user.getPassword()}</td>
+                    <td><a href="edit_user/${user.getUsername()}">edit</a> </td>
+                    <td><a href="delete_user/${user.getUsername()}">delete</a></td>
                 </tr>
             </c:forEach>
         </table>

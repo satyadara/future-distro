@@ -89,8 +89,9 @@ public class UserDao {
 
         int status = 0;
 
+        String sql = "INSERT INTO users(username,password,enabled) VALUES (?,?,?);";
+
         try {
-            String sql = "INSERT INTO users(username,password, enabled) VALUES (?,?,?);";
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -117,21 +118,21 @@ public class UserDao {
     //Menampilkan semua user
     public static List<User> getAllUser() {
 
-        List<User> userList = new ArrayList<>();
+        List<User> userList = new ArrayList<User>();
 
-        String sql = "SELECT * FROM users";
         try {
-
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT username, password FROM users"
+            );
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-
                 User user = new User();
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
+                userList.add(user);
             }
         }
         catch (Exception e) {
@@ -140,5 +141,29 @@ public class UserDao {
         }
 
         return userList;
+    }
+
+    //Menghapus user
+    public static int deleteUser(User user) {
+
+        int status = 0;
+
+        String sql = "DELETE FROM users, user_roles WHERE username = ?";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getUsername());
+
+            status = preparedStatement.executeUpdate();
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
     }
 }

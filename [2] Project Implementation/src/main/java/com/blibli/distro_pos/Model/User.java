@@ -18,6 +18,10 @@ public class User {
         this.enabled = enabled;
     }
 
+    public User() {
+
+    }
+
     public String getUsername() {
         return username;
     }

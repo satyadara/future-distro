@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Manager - Stok</title>
+    <%--bootstrap.min.css--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -12,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Stok Barang(${count})</h1>
+            <h1>Stok Barang( ${count} )</h1>
         </div>
     </div>
     <div class="row">
@@ -47,11 +48,11 @@
                         <td>${item.getPrice()}</td>
                         <td>${item.getStock()}</td>
                         <td>
-                            <a href="/item/${item.getId_item()}/edit">
+                            <a href="${pageContext.request.contextPath}/item/${item.getId_item()}/edit">
                                 Edit
                             </a>
                             |
-                            <a href="/item/${item.getId_item()}/delete">
+                            <a href="${pageContext.request.contextPath}/item/${item.getId_item()}/delete">
                                 Delete
                             </a>
                         </td>
@@ -61,5 +62,9 @@
         </div>
     </div>
 </div>
+<%--bootstrap.js--%>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
 </html>

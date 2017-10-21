@@ -4,18 +4,15 @@ import com.blibli.distro_pos.DAO.ItemDAO;
 import com.blibli.distro_pos.Model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
+@RequestMapping("/item")
 public class ItemController {
 
     private ItemDAO itemDAO;
@@ -28,7 +25,7 @@ public class ItemController {
     public ItemController() {
     }
 
-    @RequestMapping(value = "/item", method = GET)
+    @RequestMapping(value = "", method = GET)
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("item/index");
         List<Item> itemList;
@@ -45,7 +42,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/create", method = GET)
+    @RequestMapping(value = "/create", method = GET)
     public ModelAndView goToCreate() {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
@@ -54,7 +51,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/create", method = POST)
+    @RequestMapping(value = "/create", method = POST)
     public ModelAndView doCreate(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
 
@@ -69,7 +66,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/{id}/edit", method = GET)
+    @RequestMapping(value = "/{id}/edit", method = GET)
     public ModelAndView edit(@PathVariable(name = "id") String id) {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
@@ -86,7 +83,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/{id}/edit", method = POST)
+    @RequestMapping(value = "/{id}/edit", method = POST)
     public ModelAndView update(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
@@ -100,7 +97,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/{id}/delete", method = GET)
+    @RequestMapping(value = "/{id}/delete", method = GET)
     public ModelAndView delete(@PathVariable(name = "id") String id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         System.out.println("ssss " + id);
@@ -115,7 +112,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/page/{page}", method = GET)
+    @RequestMapping(value = "/page/{page}", method = GET)
     public ModelAndView paginate(@PathVariable(name = "page") int page) {
         ModelAndView modelAndView = new ModelAndView("item/index");
         List<Item> itemList;

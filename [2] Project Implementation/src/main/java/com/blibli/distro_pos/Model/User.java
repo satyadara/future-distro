@@ -6,10 +6,17 @@ public class User {
 //    private String namaLengkap;
     private String username;
     private String password;
+<<<<<<< HEAD
 //    private String alamat;
 //    private int noKtp;
 //    private int noTelp;
 //    private  char jenisKelamin;
+=======
+    private String alamat;
+    private int noKtp;
+    private int noTelp;
+    private char jenisKelamin;
+>>>>>>> ManagerItem
     private boolean enabled;
 
     public User(String username, String password, boolean enabled) {

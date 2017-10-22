@@ -25,8 +25,7 @@ public class UserDao {
             );
 
             System.out.println("Database opened successfully");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
 
@@ -51,8 +50,7 @@ public class UserDao {
             preparedStatement.executeUpdate();
 
             System.out.println("Finished creating user table");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             System.out.println(e.toString());
         }
@@ -76,9 +74,14 @@ public class UserDao {
 
             preparedStatement.executeUpdate();
 
+<<<<<<< HEAD
             System.out.println("Finished creating user_role table");
         }
         catch (Exception e) {
+=======
+            System.out.println("Finished creating user_ role table");
+        } catch (Exception e) {
+>>>>>>> ManagerItem
 
             System.out.println(e.toString());
         }
@@ -106,8 +109,7 @@ public class UserDao {
             status = preparedStatement.executeUpdate();
 
             System.out.println("Finished inserting user");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             System.out.println(e.toString());
         }

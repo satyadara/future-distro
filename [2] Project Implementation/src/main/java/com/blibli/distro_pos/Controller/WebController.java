@@ -14,29 +14,29 @@ import java.util.List;
 @Controller
 public class WebController {
 
-    @RequestMapping(value={"/","home"})
-    public String home(){
+    @RequestMapping(value = {"/", "home"})
+    public String home() {
         return "home";
     }
 
-    @RequestMapping(value={"/welcome"})
-    public String welcome(){
+    @RequestMapping(value = {"/welcome"})
+    public String welcome() {
         return "welcome";
     }
 
-    @RequestMapping(value="/admin")
-    public String admin(){
+    @RequestMapping(value = "/admin")
+    public String admin() {
         return "admin";
     }
 
-    @RequestMapping(value={"/login"})
-    public String login(){
+    @RequestMapping(value = {"/login"})
+    public String login() {
         return "login";
     }
 
 
-    @RequestMapping(value="/403")
-    public String Error403(){
+    @RequestMapping(value = "/403")
+    public String Error403() {
         return "403";
     }
 
@@ -55,8 +55,7 @@ public class WebController {
         if (status == 1) {
 
             return new ModelAndView("redirect:/view_user");
-        }
-        else {
+        } else {
 
             return new ModelAndView("redirect:/view_user");
         }

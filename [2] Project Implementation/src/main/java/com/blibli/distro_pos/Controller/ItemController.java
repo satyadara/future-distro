@@ -1,12 +1,19 @@
 package com.blibli.distro_pos.Controller;
 
+import com.blibli.distro_pos.DAO.ItemColorDAO;
 import com.blibli.distro_pos.DAO.ItemDAO;
+import com.blibli.distro_pos.DAO.ItemMerkDAO;
+import com.blibli.distro_pos.DAO.ItemTypeDAO;
 import com.blibli.distro_pos.Model.Item;
+import com.blibli.distro_pos.Model.ItemColor;
+import com.blibli.distro_pos.Model.ItemMerk;
+import com.blibli.distro_pos.Model.ItemType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -16,10 +23,16 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 public class ItemController {
 
     private ItemDAO itemDAO;
+    private ItemTypeDAO itemTypeDAO;
+    private ItemColorDAO itemColorDAO;
+    private ItemMerkDAO itemMerkDAO;
 
     @Autowired
-    public ItemController(ItemDAO itemDAO) {
+    public ItemController(ItemDAO itemDAO, ItemTypeDAO itemTypeDAO, ItemColorDAO itemColorDAO, ItemMerkDAO itemMerkDAO) {
         this.itemDAO = itemDAO;
+        this.itemTypeDAO = itemTypeDAO;
+        this.itemColorDAO = itemColorDAO;
+        this.itemMerkDAO = itemMerkDAO;
     }
 
     public ItemController() {
@@ -46,17 +59,28 @@ public class ItemController {
     public ModelAndView goToCreate() {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
+        List<ItemType> itemTypeList = new ArrayList<>();
+        List<ItemColor> itemColorList = new ArrayList<>();
+        List<ItemMerk> itemMerkList = new ArrayList<>();
+        try {
+            itemTypeList = itemTypeDAO.getAll();
+            itemColorList = itemColorDAO.getAll();
+            itemMerkList = itemMerkDAO.getAll();
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
         modelAndView.addObject("item", item);
-        modelAndView.addObject("method", "POST");
+        modelAndView.addObject("types", itemTypeList);
+        modelAndView.addObject("colors", itemColorList);
+        modelAndView.addObject("merks", itemMerkList);
         return modelAndView;
     }
 
     @RequestMapping(value = "/create", method = POST)
     public ModelAndView doCreate(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
-
         try {
-            String id_item = getTypeCode(item.getType()) + "-" + getColorCode(item.getColor()) + "-" + item.getSize();
+            String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
             item.setId_item(id_item);
             itemDAO.save(item);
         } catch (Exception e) {
@@ -70,8 +94,14 @@ public class ItemController {
     public ModelAndView edit(@PathVariable(name = "id") String id) {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
+        List<ItemType> itemTypeList = new ArrayList<>();
+        List<ItemColor> itemColorList = new ArrayList<>();
+        List<ItemMerk> itemMerkList = new ArrayList<>();
         try {
             item = itemDAO.getOne(id);
+            itemTypeList = itemTypeDAO.getAll();
+            itemColorList = itemColorDAO.getAll();
+            itemMerkList = itemMerkDAO.getAll();
             System.out.println(id + " " + item.getId_item());
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
@@ -79,6 +109,9 @@ public class ItemController {
 
         modelAndView.addObject("message", "success");
         modelAndView.addObject("item", item);
+        modelAndView.addObject("types", itemTypeList);
+        modelAndView.addObject("colors", itemColorList);
+        modelAndView.addObject("merks", itemMerkList);
 
         return modelAndView;
     }
@@ -130,26 +163,5 @@ public class ItemController {
         return modelAndView;
     }
 
-    private String getTypeCode(String type) {
-        String result = "";
-        if (type.equals("Pakaian"))
-            result = "PKN";
-        else if (type.equals("Celana"))
-            result = "CLN";
-
-        return result;
-    }
-
-    private String getColorCode(String color) {
-        String result = "";
-        if (color.equals("Merah"))
-            result = "MRH";
-        else if (color.equals("Kuning"))
-            result = "KNG";
-        else if (color.equals("Hijau"))
-            result = "HJU";
-
-        return result;
-    }
 
 }

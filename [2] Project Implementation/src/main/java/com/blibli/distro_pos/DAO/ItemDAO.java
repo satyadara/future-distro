@@ -38,6 +38,10 @@ public class ItemDAO {
     }
 
     public List<Item> getAll() {
+//        String sql = "SELECT id_item, id_emp, name_item, price_item, "
+//                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
+//                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
+//                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";
         String sql = "SELECT * FROM item ORDER BY id_item;";
         List<Item> itemList = new ArrayList<>();
         try {
@@ -53,6 +57,7 @@ public class ItemDAO {
                             rs.getString("id_emp"),
                             rs.getString("name_item"),
                             rs.getFloat("price_item"),
+                            rs.getString("merk_item"),
                             rs.getInt("stock_item"),
                             rs.getString("color_item"),
                             rs.getString("size_item"),
@@ -70,6 +75,10 @@ public class ItemDAO {
     }
 
     public Item getOne(String id) {
+//        String sql = "SELECT id_item, id_emp, name_item, price_item, "
+//                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
+//                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
+//                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item WHERE id_item = '" + id + "';";
         String sql = "SELECT * FROM item WHERE id_item = '" + id + "';";
         Item item = new Item();
         try {
@@ -83,6 +92,7 @@ public class ItemDAO {
                     item.setId_emp(rs.getString("id_emp"));
                     item.setName_item(rs.getString("name_item"));
                     item.setPrice(rs.getFloat("price_item"));
+                    item.setMerk(rs.getString("merk_item"));
                     item.setStock(rs.getInt("stock_item"));
                     item.setColor(rs.getString("color_item"));
                     item.setSize(rs.getString("size_item"));
@@ -99,20 +109,26 @@ public class ItemDAO {
     }
 
     public void save(Item item) {
-        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, color_item, size_item, type_item, status_item, stock_item) "
-                + "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?);";
+//        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, merk_item, color_item, size_item, type_item, status_item, stock_item) "
+//                + "VALUES (nextval('sec_item') || ?,?,?,?,"
+//                + "(SELECT id_item_merk FROM item_merk WHERE name_item_merk = ?),"
+//                + "(SELECT id_item_color FROM item_color WHERE name_item_color = ?),?,"
+//                + "(SELECT id_item_type FROM item_type WHERE name_item_type= ?),?,?);";
+        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, merk_item, color_item, size_item, type_item, status_item, stock_item) " +
+                "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?,?)";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setString(1, "-" + item.getId_item());
-            preparedStatement.setString(2, "EMP-1002");
+            preparedStatement.setString(2, "EMP-1001");
             preparedStatement.setString(3, item.getName_item());
             preparedStatement.setFloat(4, item.getPrice());
-            preparedStatement.setString(5, item.getColor());
-            preparedStatement.setString(6, item.getSize());
-            preparedStatement.setString(7, item.getType());
-            preparedStatement.setString(8, "aktif");
-            preparedStatement.setInt(9, item.getStock());
+            preparedStatement.setString(5, item.getMerk());
+            preparedStatement.setString(6, item.getColor());
+            preparedStatement.setString(7, item.getSize());
+            preparedStatement.setString(8, item.getType());
+            preparedStatement.setString(9, "aktif");
+            preparedStatement.setInt(10, item.getStock());
             preparedStatement.executeQuery();
             System.out.println("Success insert item : " + item.getId_item());
             this.disconnect();
@@ -196,6 +212,7 @@ public class ItemDAO {
                             rs.getString("id_emp"),
                             rs.getString("name_item"),
                             rs.getFloat("price_item"),
+                            rs.getString("merk_item"),
                             rs.getInt("stock_item"),
                             rs.getString("color_item"),
                             rs.getString("size_item"),

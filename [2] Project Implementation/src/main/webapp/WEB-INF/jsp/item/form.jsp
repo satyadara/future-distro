@@ -23,25 +23,48 @@
                             <input type="hidden" name="id_emp" value="${item.getId_emp()}">
                             <label>Tipe Barang</label>
                             <select class="form-control" name="type" value="${item.getType()}">
-                                <c:choose>
-                                    <c:when test="${item.getType() == 'Pakaian'}">
-                                        <option selected>Pakaian</option>
-                                        <option>Celana</option>
-                                    </c:when>
-                                    <c:when test="${item.getType() == 'Celana'}">
-                                        <option>Pakaian</option>
-                                        <option selected>Celana</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option>Pakaian</option>
-                                        <option>Celana</option>
-                                    </c:otherwise>
-                                </c:choose>
-
+                                <%--<c:choose>--%>
+                                <%--<c:when test="${item.getType() == 'Pakaian'}">--%>
+                                <%--<option selected>Pakaian</option>--%>
+                                <%--<option>Celana</option>--%>
+                                <%--</c:when>--%>
+                                <%--<c:when test="${item.getType() == 'Celana'}">--%>
+                                <%--<option>Pakaian</option>--%>
+                                <%--<option selected>Celana</option>--%>
+                                <%--</c:when>--%>
+                                <%--<c:otherwise>--%>
+                                <%--<option>Pakaian</option>--%>
+                                <%--<option>Celana</option>--%>
+                                <%--</c:otherwise>--%>
+                                <%--</c:choose>--%>
+                                <c:forEach items="${types}" var="type">
+                                    <c:choose>
+                                        <c:when test="${item.getType() == type.getIdItem_Type()}">
+                                            <option value="${type.getIdItem_Type()}" selected>${type.getNameItem_Type()}
+                                            </option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${type.getIdItem_Type()}">${type.getNameItem_Type()}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <!-- Kosongan  -->
+                            <label>Merek</label>
+                            <select class="form-control" name="merk">
+                                <c:forEach items="${merks}" var="merk">
+                                    <c:choose>
+                                        <c:when test="${item.getMerk() == merk.getIdItem_Merk()}">
+                                            <option value="${merk.getIdItem_Merk()}"
+                                                    selected>${merk.getNameItem_Merk()}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${merk.getIdItem_Merk()}">${merk.getNameItem_Merk()}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Ukuran</label>
@@ -88,28 +111,17 @@
                         <div class="form-group col-md-4">
                             <label>Warna</label>
                             <select class="form-control" name="color">
-                                <c:choose>
-                                    <c:when test="${item.getColor() == 'Merah'}">
-                                        <option selected>Merah</option>
-                                        <option>Kuning</option>
-                                        <option>Hijau</option>
-                                    </c:when>
-                                    <c:when test="${item.getColor() == 'Kuning'}">
-                                        <option>Merah</option>
-                                        <option selected>Kuning</option>
-                                        <option>Hijau</option>
-                                    </c:when>
-                                    <c:when test="${item.getColor() == 'Hijau'}">
-                                        <option>Merah</option>
-                                        <option>Kuning</option>
-                                        <option selected>Hijau</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option>Merah</option>
-                                        <option>Kuning</option>
-                                        <option>Hijau</option>
-                                    </c:otherwise>
-                                </c:choose>
+                                <c:forEach items="${colors}" var="color">
+                                    <c:choose>
+                                        <c:when test="${item.getColor() == color.getIdItem_Color()}">
+                                            <option value="${color.getIdItem_Color()}"
+                                                    selected>${color.getNameItem_Color()}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${color.getIdItem_Color()}">${color.getNameItem_Color()}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="form-group col-md-4">

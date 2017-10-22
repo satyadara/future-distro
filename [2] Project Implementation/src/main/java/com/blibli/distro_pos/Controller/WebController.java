@@ -54,7 +54,7 @@ public class WebController {
         int statusUser = UserDao.insertUser(user);
         int statusUserRole = UserDao.insertUserRole(userRole);
 
-        if (statusUser == 1 && statusUserRole == 1) {
+        if (statusUser == 1) {
 
             return new ModelAndView("redirect:/view_user");
         }

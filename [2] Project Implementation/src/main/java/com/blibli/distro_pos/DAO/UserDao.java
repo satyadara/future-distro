@@ -99,7 +99,7 @@ public class UserDao {
 
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setBoolean(3, user.isEnabled());
+            //preparedStatement.setBoolean(3, user.isEnabled());
 
 //            preparedStatement.setString(1, userRole.getUsername());
 //            preparedStatement.setString(2, userRole.getRole());
@@ -176,7 +176,7 @@ public class UserDao {
 
         int status = 0;
 
-        String sql = "DELETE FROM users, user_roles WHERE username = ?";
+        String sql = "DELETE FROM users WHERE username = ?;";
 
         try {
 

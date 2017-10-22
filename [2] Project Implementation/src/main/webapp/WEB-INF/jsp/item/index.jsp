@@ -29,10 +29,11 @@
             <table class="table table-striped table-bordered table-responsive" id="mTable">
                 <tr>
                     <th>ID</th>
-                    <th>Tipe Barang</th>
+                    <th>Merek</th>
+                    <th>Tipe</th>
                     <th>Ukuran</th>
-                    <th>Nama Barang</th>
-                    <th>Warna</th>
+                    <th>Nama</th>
+                    <th>Warna </th>
                     <th>Harga</th>
                     <th>Kuantitas</th>
                     <th>Pilihan</th>
@@ -41,6 +42,7 @@
                 <c:forEach items="${items}" var="item">
                     <tr>
                         <td>${item.getId_item()}</td>
+                        <td>${item.getMerk()}</td>
                         <td>${item.getType()}</td>
                         <td>${item.getSize()}</td>
                         <td>${item.getName_item()}</td>

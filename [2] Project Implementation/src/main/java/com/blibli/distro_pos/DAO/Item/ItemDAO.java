@@ -1,4 +1,4 @@
-package com.blibli.distro_pos.DAO;
+package com.blibli.distro_pos.DAO.Item;
 
 import com.blibli.distro_pos.Model.Item;
 import org.springframework.stereotype.Repository;
@@ -37,13 +37,48 @@ public class ItemDAO {
         }
     }
 
-    public List<Item> getAll() {
+    public List<Item> getAllOriginal() {
 //        String sql = "SELECT id_item, id_emp, name_item, price_item, "
 //                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
 //                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
 //                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";
         String sql = "SELECT * FROM item ORDER BY id_item;";
         List<Item> itemList = new ArrayList<>();
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs != null) {
+                System.out.println("getAll\t:");
+                while (rs.next()) {
+                    System.out.println("\t" + rs.getString("id_item"));
+                    Item item = new Item(
+                            rs.getString("id_item"),
+                            rs.getString("id_emp"),
+                            rs.getString("name_item"),
+                            rs.getFloat("price_item"),
+                            rs.getString("merk_item"),
+                            rs.getInt("stock_item"),
+                            rs.getString("color_item"),
+                            rs.getString("size_item"),
+                            rs.getString("type_item"),
+                            rs.getString("status_item"));
+                    itemList.add(item);
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return itemList;
+    }
+
+    public List<Item> getAllModify() {
+        String sql = "SELECT id_item, id_emp, name_item, price_item, "
+                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
+                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
+                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";List<Item> itemList = new ArrayList<>();
         try {
             this.connect();
             Statement statement = this.con.createStatement();

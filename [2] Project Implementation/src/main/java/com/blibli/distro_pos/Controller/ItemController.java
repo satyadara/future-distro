@@ -1,9 +1,9 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.ItemColorDAO;
-import com.blibli.distro_pos.DAO.ItemDAO;
-import com.blibli.distro_pos.DAO.ItemMerkDAO;
-import com.blibli.distro_pos.DAO.ItemTypeDAO;
+import com.blibli.distro_pos.DAO.Item.ItemColorDAO;
+import com.blibli.distro_pos.DAO.Item.ItemDAO;
+import com.blibli.distro_pos.DAO.Item.ItemMerkDAO;
+import com.blibli.distro_pos.DAO.Item.ItemTypeDAO;
 import com.blibli.distro_pos.Model.Item;
 import com.blibli.distro_pos.Model.ItemColor;
 import com.blibli.distro_pos.Model.ItemMerk;
@@ -44,7 +44,7 @@ public class ItemController {
         List<Item> itemList;
         int itemCount;
         try {
-            itemList = itemDAO.getAll();
+            itemList = itemDAO.getAllModify();
             itemCount = itemDAO.count();
             modelAndView.addObject("items", itemList);
             modelAndView.addObject("count", itemCount);

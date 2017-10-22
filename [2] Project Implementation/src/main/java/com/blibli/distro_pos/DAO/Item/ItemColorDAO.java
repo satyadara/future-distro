@@ -1,5 +1,6 @@
-package com.blibli.distro_pos.DAO;
+package com.blibli.distro_pos.DAO.Item;
 
+import com.blibli.distro_pos.Model.ItemColor;
 import com.blibli.distro_pos.Model.ItemType;
 import org.springframework.stereotype.Repository;
 
@@ -11,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ItemTypeDAO {
+public class ItemColorDAO {
     private Connection con;
 
-    public ItemTypeDAO() {
+    public ItemColorDAO() {
     }
 
     public void connect() {
@@ -40,27 +41,27 @@ public class ItemTypeDAO {
         }
     }
 
-    public List<ItemType> getAll() {
-        String sql = "SELECT * FROM item_type ORDER BY name_item_type;";
-        List<ItemType> itemTypeList = new ArrayList<>();
+    public List<ItemColor> getAll() {
+        String sql = "SELECT * FROM item_color ORDER BY name_item_color;";
+        List<ItemColor> itemColorList = new ArrayList<>();
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs != null) {
-                System.out.println("getAll Types : ");
+                System.out.println("getAll Colors : ");
                 while (rs.next()) {
-                    System.out.println("\t" + rs.getString("id_item_type"));
-                    ItemType itemType = new ItemType(rs.getString("id_item_type"),
-                            rs.getString("name_item_type"));
-                    itemTypeList.add(itemType);
+                    System.out.println("\t" + rs.getString("id_item_color"));
+                    ItemColor itemColor = new ItemColor(rs.getString("id_item_color"),
+                            rs.getString("name_item_color"));
+                    itemColorList.add(itemColor);
                 }
             }
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
-        return itemTypeList;
+        return itemColorList;
     }
 }

@@ -26,6 +26,14 @@
                         <input type="text" name="password">
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Role
+                    </td>
+                    <td>
+                        <input type="text" name="role">
+                    </td>
+                </tr>
             </table>
             <input type="submit" value="Add">
         </form>

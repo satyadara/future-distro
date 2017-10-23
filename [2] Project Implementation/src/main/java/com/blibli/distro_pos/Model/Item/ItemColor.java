@@ -1,4 +1,4 @@
-package com.blibli.distro_pos.Model.Item;
+package com.blibli.distro_pos.Model.item;
 
 public class ItemColor {
     private String idItem_Color;

@@ -1,6 +1,7 @@
-package com.blibli.distro_pos.DAO.Item;
+package com.blibli.distro_pos.DAO.item;
 
-import com.blibli.distro_pos.Model.Item.Item;
+import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.Model.item.Item;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -8,34 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ItemDAO {
-    private Connection con;
-
-    public ItemDAO() {
-    }
-
-    public void connect() {
-        try {
-            String db_password = "postgres";
-            String db_username = "postgres";
-            String uri = "jdbc:postgresql://localhost:5432/satyadara";
-            this.con = DriverManager.getConnection(uri, db_username, db_password);
-            System.out.println("*****open connection*****");
-
-        } catch (Exception e) {
-            System.out.println("error " + e.toString());
-        }
-    }
-
-    public void disconnect() {
-        try {
-            this.con.close();
-            System.out.println("*****close connection*****");
-
-        } catch (Exception e) {
-            System.out.println("error " + e.toString());
-        }
-    }
+public class ItemDAO extends MyConnection {
 
     public List<Item> getAllOriginal() {
 //        String sql = "SELECT id_item, id_emp, name_item, price_item, "
@@ -78,7 +52,8 @@ public class ItemDAO {
         String sql = "SELECT id_item, id_emp, name_item, price_item, "
                 + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
                 + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
-                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";List<Item> itemList = new ArrayList<>();
+                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";
+        List<Item> itemList = new ArrayList<>();
         try {
             this.connect();
             Statement statement = this.con.createStatement();
@@ -220,7 +195,7 @@ public class ItemDAO {
                 result = rs.getInt("count");
             }
 
-            System.out.println("Item counted : " + result);
+            System.out.println("item counted : " + result);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());

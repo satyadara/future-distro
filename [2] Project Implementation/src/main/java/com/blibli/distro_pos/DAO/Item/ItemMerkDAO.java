@@ -1,6 +1,7 @@
-package com.blibli.distro_pos.DAO.Item;
+package com.blibli.distro_pos.DAO.item;
 
-import com.blibli.distro_pos.Model.Item.ItemMerk;
+import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.Model.item.ItemMerk;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -11,35 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ItemMerkDAO {
-    private Connection con;
-
-    public ItemMerkDAO() {
-    }
-
-    public void connect() {
-        try {
-            String db_password = "postgres";
-            String db_username = "postgres";
-            String uri = "jdbc:postgresql://localhost:5432/satyadara";
-            this.con = DriverManager.getConnection(uri, db_username, db_password);
-            System.out.println("*****open connection*****");
-
-        } catch (Exception e) {
-            System.out.println("error " + e.toString());
-        }
-    }
-
-    public void disconnect() {
-        try {
-            this.con.close();
-            System.out.println("*****close connection*****");
-
-        } catch (Exception e) {
-            System.out.println("error " + e.toString());
-        }
-    }
-
+public class ItemMerkDAO extends MyConnection {
     public List<ItemMerk> getAll() {
         String sql = "SELECT * FROM item_merk ORDER BY name_item_merk;";
         List<ItemMerk> itemMerkList = new ArrayList<>();

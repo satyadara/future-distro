@@ -1,13 +1,13 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.Item.ItemColorDAO;
-import com.blibli.distro_pos.DAO.Item.ItemDAO;
-import com.blibli.distro_pos.DAO.Item.ItemMerkDAO;
-import com.blibli.distro_pos.DAO.Item.ItemTypeDAO;
-import com.blibli.distro_pos.Model.Item.Item;
-import com.blibli.distro_pos.Model.Item.ItemColor;
-import com.blibli.distro_pos.Model.Item.ItemMerk;
-import com.blibli.distro_pos.Model.Item.ItemType;
+import com.blibli.distro_pos.DAO.item.ItemColorDAO;
+import com.blibli.distro_pos.DAO.item.ItemDAO;
+import com.blibli.distro_pos.DAO.item.ItemMerkDAO;
+import com.blibli.distro_pos.DAO.item.ItemTypeDAO;
+import com.blibli.distro_pos.Model.item.Item;
+import com.blibli.distro_pos.Model.item.ItemColor;
+import com.blibli.distro_pos.Model.item.ItemMerk;
+import com.blibli.distro_pos.Model.item.ItemType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -56,7 +56,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/create", method = GET)
-    public ModelAndView goToCreate() {
+    public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
         List<ItemType> itemTypeList = new ArrayList<>();
@@ -77,7 +77,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/create", method = POST)
-    public ModelAndView doCreate(@ModelAttribute(name = "item") Item item) {
+    public ModelAndView store(@ModelAttribute(name = "item") Item item) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
             String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();

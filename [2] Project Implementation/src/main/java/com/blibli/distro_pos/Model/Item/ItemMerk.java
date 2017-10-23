@@ -1,4 +1,4 @@
-package com.blibli.distro_pos.Model;
+package com.blibli.distro_pos.Model.Item;
 
 public class ItemMerk {
     private String idItem_Merk;

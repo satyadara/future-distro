@@ -1,7 +1,6 @@
 package com.blibli.distro_pos.DAO.Item;
 
-import com.blibli.distro_pos.Model.ItemColor;
-import com.blibli.distro_pos.Model.ItemType;
+import com.blibli.distro_pos.Model.Item.ItemColor;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;

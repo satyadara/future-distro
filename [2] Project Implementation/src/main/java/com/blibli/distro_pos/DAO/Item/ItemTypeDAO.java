@@ -1,6 +1,6 @@
 package com.blibli.distro_pos.DAO.Item;
 
-import com.blibli.distro_pos.Model.ItemType;
+import com.blibli.distro_pos.Model.Item.ItemType;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;

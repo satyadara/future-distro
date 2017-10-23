@@ -10,8 +10,29 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Stok</a></li>
+            <li><a href="#">Diskon</a></li>
+            <li><a href="#">Kasir</a></li>
+        </ul>
+    </div>
+</nav>
+
     <div class="container">
         <div class="row">
+
             <div class="col-md-12">
                 <h1>Hi, Raditia.</h1>
                 <h4>Welcome to POS dashboard.</h4>

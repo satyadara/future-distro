@@ -1,17 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="/resources/css/creation.css">-->
     <title>LOGIN</title>
+
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <div class="control-box">
+                <div class="form-wrap">
                     <h2>WELCOME</h2>
                     <div class="panel-body">
                         <div class="row">

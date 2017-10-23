@@ -74,16 +74,10 @@ public class UserDao {
 
             preparedStatement.executeUpdate();
 
-<<<<<<< HEAD
             System.out.println("Finished creating user_role table");
         }
         catch (Exception e) {
-=======
             System.out.println("Finished creating user_ role table");
-        } catch (Exception e) {
->>>>>>> ManagerItem
-
-            System.out.println(e.toString());
         }
     }
 

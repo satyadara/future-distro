@@ -39,38 +39,43 @@ public class DiscountController {
     }
 
     @RequestMapping(value = "/create", method = GET)
-    public ModelAndView create()    {
+    public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("discount/form");
+        try {
+
+        } catch (Exception e) {
+            
+        }
         return modelAndView;
     }
 
     @RequestMapping(value = "/create", method = POST)
-    public ModelAndView store(@ModelAttribute("discount") Discount discount)    {
+    public ModelAndView store(@ModelAttribute("discount") Discount discount) {
         ModelAndView modelAndView = new ModelAndView("redirect:/discount");
 
         return modelAndView;
     }
 
     @RequestMapping(value = "/{id}/edit", method = GET)
-    public ModelAndView edit(@PathVariable("id_disc") String id_disc)    {
+    public ModelAndView edit(@PathVariable("id_disc") String id_disc) {
         ModelAndView modelAndView = new ModelAndView("discount/form");
         return modelAndView;
     }
 
     @RequestMapping(value = "/{id}/edit", method = POST)
-    public ModelAndView update(@ModelAttribute("discount") Discount discount)    {
+    public ModelAndView update(@ModelAttribute("discount") Discount discount) {
         ModelAndView modelAndView = new ModelAndView("discount/form");
         return modelAndView;
     }
 
     @RequestMapping(value = "/{id}/delete", method = GET)
-    public ModelAndView delete(@PathVariable("id_disc") String id_disc)    {
+    public ModelAndView delete(@PathVariable("id_disc") String id_disc) {
         ModelAndView modelAndView = new ModelAndView("discount/form");
         return modelAndView;
     }
 
     @RequestMapping(value = "/page/{page}", method = GET)
-    public ModelAndView paginate(@PathVariable("page") int page)    {
+    public ModelAndView paginate(@PathVariable("page") int page) {
         ModelAndView modelAndView = new ModelAndView("discount/form");
         return modelAndView;
     }

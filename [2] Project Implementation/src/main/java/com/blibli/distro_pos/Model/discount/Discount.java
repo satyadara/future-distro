@@ -3,9 +3,10 @@ package com.blibli.distro_pos.Model.discount;
 import java.sql.Date;
 
 public class Discount {
-    private String id_diso;
+    private String id_disc;
     private String id_emp;
     private String name;
+    private String desc;
     private float percentage;
     private String start_date;
     private String end_date;
@@ -14,10 +15,11 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(String id_diso, String id_emp, String name, float percentage, String start_date, String end_date, String status) {
-        this.setId_diso(id_diso);
+    public Discount(String id_disc, String id_emp, String name, String desc, float percentage, String start_date, String end_date, String status) {
+        this.setId_disc(id_disc);
         this.setId_emp(id_emp);
         this.setName(name);
+        this.setDesc(desc);
         this.setPercentage(percentage);
         this.setStart_date(start_date);
         this.setEnd_date(end_date);
@@ -25,12 +27,12 @@ public class Discount {
     }
 
 
-    public String getId_diso() {
-        return id_diso;
+    public String getId_disc() {
+        return id_disc;
     }
 
-    public void setId_diso(String id_diso) {
-        this.id_diso = id_diso;
+    public void setId_disc(String id_disc) {
+        this.id_disc = id_disc;
     }
 
     public String getId_emp() {
@@ -47,6 +49,14 @@ public class Discount {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public float getPercentage() {

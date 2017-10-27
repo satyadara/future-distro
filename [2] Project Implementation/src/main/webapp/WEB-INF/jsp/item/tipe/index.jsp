@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Manager - Diskon</title>
+    <title>Manager - Stok</title>
     <%--bootstrap.min.css--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -13,44 +13,35 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Diskon( ${count} )</h1>
+            <h1>Tipe Barang( ${count} )</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href="${pageContext.request.contextPath}/discount/create">
-                <button class="btn btn-default" style="float: right;">+Tambah Diskon</button>
+            <a href="${pageContext.request.contextPath}/item/tipe/create">
+                <button class="btn btn-default" style="float: right;">+Tambah Tipe</button>
             </a>
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <table class="table table-striped table-bordered table-responsive" id="mTable">
                 <tr>
-                    <th>ID</th>
-                    <th>Nama</th>
-                    <th>Persentasi</th>
-                    <th>Mulai</th>
-                    <th>Berakhir</th>
-                    <th>Status</th>
-                    <th>Pilhan</th>
+                    <th>ID Tipe</th>
+                    <th>Nama Tipe</th>
                 </tr>
 
-                <c:forEach items="${discounts}" var="discount">
+                <c:forEach items="${types}" var="type">
                     <tr>
-                        <td>${discount.getId_disc()}</td>
-                        <td>${discount.getName()}</td>
-                        <td>${discount.getPercentage()}</td>
-                        <td>${discount.getStart_date()}</td>
-                        <td>${discount.getEnd_date()}</td>
-                        <td>${discount.getStatus()}</td>
+                        <td>${type.getIdItem_Type()}</td>
+                        <td>${type.getNameItem_Type()}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/discount/${discount.getId_disc()}/edit">
+                            <a href="${pageContext.request.contextPath}/item/tipe/${type.getIdItem_Type()}/edit">
                                 Edit
                             </a>
                             |
-                            <a href="${pageContext.request.contextPath}/discount/${discount.getId_disc()}/delete">
+                            <a href="${pageContext.request.contextPath}/item/tipe/${type.getIdItem_Type()}/delete">
                                 Delete
                             </a>
                         </td>

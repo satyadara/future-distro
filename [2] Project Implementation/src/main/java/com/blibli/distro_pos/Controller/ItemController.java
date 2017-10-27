@@ -10,6 +10,7 @@ import com.blibli.distro_pos.Model.item.ItemMerk;
 import com.blibli.distro_pos.Model.item.ItemType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -163,5 +164,10 @@ public class ItemController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/item/tipe", method = GET)
+    public ModelAndView indexTipe() {
+        ModelAndView modelAndView = new ModelAndView("item/tipe/index");
 
+        return modelAndView;
+    }
 }

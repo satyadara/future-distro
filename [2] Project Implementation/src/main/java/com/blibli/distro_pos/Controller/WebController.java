@@ -1,6 +1,6 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.UserDao;
+import com.blibli.distro_pos.DAO.UserDAO;
 import com.blibli.distro_pos.Model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +50,7 @@ public class WebController {
     @PostMapping("/add_user")
     public ModelAndView addUser(@ModelAttribute("user") User user) {
 
-        int status = UserDao.insertUser(user);
+        int status = UserDAO.insertUser(user);
 
         if (status == 1) {
 
@@ -64,7 +64,7 @@ public class WebController {
     @RequestMapping("/view_user")
     public ModelAndView viewAllUser() {
 
-        List<User> userList = UserDao.getAllUser();
+        List<User> userList = UserDAO.getAllUser();
 
         return new ModelAndView("view_user", "userList", userList);
     }
@@ -72,7 +72,7 @@ public class WebController {
     @GetMapping(value = "delete_user/{username}")
     public ModelAndView deleteUser(@ModelAttribute("user") User user) {
 
-        int status = UserDao.deleteUser(user);
+        int status = UserDAO.deleteUser(user);
 
         if (status == 1) {
 

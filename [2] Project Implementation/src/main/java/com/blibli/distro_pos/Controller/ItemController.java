@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,6 @@ public class ItemController {
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
-
         return modelAndView;
     }
 
@@ -164,10 +164,65 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/item/tipe", method = GET)
-    public ModelAndView indexTipe() {
+    @RequestMapping(value = "/tipe", method = GET)
+    public ModelAndView indexType() {
         ModelAndView modelAndView = new ModelAndView("item/tipe/index");
+        List<ItemType> types;
+        try {
+            types = itemTypeDAO.getAll();
+            modelAndView.addObject("types", types);
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error : " + e.toString());
+        }
+        return modelAndView;
+    }
 
+    @RequestMapping(value = "/tipe/create", method = GET)
+    public ModelAndView createType() {
+        ModelAndView modelAndView = new ModelAndView("item/tipe/form");
+
+        try {
+            ItemType type = new ItemType();
+            modelAndView.addObject("type", type);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/tipe/create", method = POST)
+    public ModelAndView storeType(@ModelAttribute("type") ItemType type) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/tipe");
+        try {
+            itemTypeDAO.save(type);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/tipe/{id}/edit", method = GET)
+    public ModelAndView editType(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("item/tipe/form");
+        ItemType type;
+        try {
+            type = itemTypeDAO.getOne(id);
+            modelAndView.addObject("type", type);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/tipe/{id}/edit", method = POST)
+    public ModelAndView updateType(@PathVariable("id") String id, @ModelAttribute("type") ItemType type) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/tipe");
+        try {
+            itemTypeDAO.update(type);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
         return modelAndView;
     }
 }

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDao {
+public class UserDAO {
 
     //Membuat koneksi
     public static Connection getConnection() {

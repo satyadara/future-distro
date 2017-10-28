@@ -37,4 +37,55 @@ public class ItemTypeDAO extends MyConnection {
         }
         return itemTypeList;
     }
+
+    public ItemType getOne(String id) {
+        String sql = "SELECT * FROM item_type WHERE id_item_type = ?";
+        ItemType type = new ItemType();
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    type = new ItemType(
+                            rs.getString("id_item_type"),
+                            rs.getString("name_item_type"));
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#GET ONE# somthing error : " + e.toString());
+        }
+
+        return type;
+    }
+
+    public void save(ItemType type) {
+        String sql = "INSERT INTO ITEM_TYPE (ID_ITEM_TYPE, NAME_ITEM_TYPE) VALUES (?,?);";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, type.getIdItem_Type());
+            preparedStatement.setString(2, type.getNameItem_Type());
+            preparedStatement.executeQuery();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#INSERT# something error : " + e.toString());
+        }
+    }
+
+    public void update(ItemType type) {
+        String sql = "UPDATE item_type SET name_item_type = ? WHERE id_item_type = ?;";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, type.getNameItem_Type());
+            preparedStatement.setString(2, type.getIdItem_Type());
+            preparedStatement.executeQuery();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#UPDATE# something error : " + e.toString());
+        }
+    }
 }

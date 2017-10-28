@@ -30,6 +30,7 @@
                 <tr>
                     <th>ID Tipe</th>
                     <th>Nama Tipe</th>
+                    <th>Pilihan</th>
                 </tr>
 
                 <c:forEach items="${types}" var="type">

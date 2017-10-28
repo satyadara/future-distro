@@ -169,7 +169,8 @@ public class ItemDAO extends MyConnection {
     }
 
     public void delete(String id) {
-        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+//        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+        String sql = "UPDATE item SET status_item = 'Tidak Aktif' WHERE id_item = '" + id + "'";
         System.out.println(id);
         try {
             this.connect();

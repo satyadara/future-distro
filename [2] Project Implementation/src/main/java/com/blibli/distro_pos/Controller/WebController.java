@@ -1,12 +1,10 @@
 package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.DAO.UserDao;
+import com.blibli.distro_pos.Model.Role;
 import com.blibli.distro_pos.Model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -14,29 +12,29 @@ import java.util.List;
 @Controller
 public class WebController {
 
-    @RequestMapping(value = {"/", "home"})
-    public String home() {
+    @RequestMapping(value={"/","home"})
+    public String home(){
         return "home";
     }
 
-    @RequestMapping(value = {"/welcome"})
-    public String welcome() {
+    @RequestMapping(value={"/welcome"})
+    public String welcome(){
         return "welcome";
     }
 
-    @RequestMapping(value = "/admin")
-    public String admin() {
+    @RequestMapping(value="/admin")
+    public String admin(){
         return "admin";
     }
 
-    @RequestMapping(value = {"/login"})
-    public String login() {
+    @RequestMapping(value={"/login"})
+    public String login(){
         return "login";
     }
 
 
-    @RequestMapping(value = "/403")
-    public String Error403() {
+    @RequestMapping(value="/403")
+    public String Error403(){
         return "403";
     }
 
@@ -48,18 +46,24 @@ public class WebController {
     }
 
     @PostMapping("/add_user")
-    public ModelAndView addUser(@ModelAttribute("user") User user) {
+    public ModelAndView addUser(@ModelAttribute("user") User user,
+                                @ModelAttribute("userRole")Role role) {
 
-        int status = UserDao.insertUser(user);
+        user.setEnabled(true);
 
-        if (status == 1) {
+        System.out.println("Username : " + user.getUsername() + ", Password : " + user.getPassword() + ", Role : " + role.getRole());
+        int statusUser = UserDao.insertUser(user, role);
 
+        if (statusUser == 1) {
+            System.out.println("BERHASIL");
             return new ModelAndView("redirect:/view_user");
-        } else {
-
+        }
+        else {
+            System.out.println("GAGAL!");
             return new ModelAndView("redirect:/view_user");
         }
     }
+
 
     @RequestMapping("/view_user")
     public ModelAndView viewAllUser() {
@@ -70,19 +74,21 @@ public class WebController {
     }
 
     @GetMapping(value = "delete_user/{username}")
-    public ModelAndView deleteUser(@ModelAttribute("user") User user) {
+//    public ModelAndView deleteUser(@ModelAttribute("user") User user) {
 
-        int status = UserDao.deleteUser(user);
+    public ModelAndView deleteUser(@PathVariable("username") String username) {
 
+        int status = UserDao.deleteUser(username);
+//
         if (status == 1) {
 
-            System.out.println("User with username: " + user.getUsername() + " is deleted");
+            System.out.println("User with username: " + username + " is deleted");
 
             return new ModelAndView("redirect:/view_user");
         }
         else {
 
-            System.out.println("Gagal delete user " + user.getUsername());
+            System.out.println("Failed to delete " + username);
 
             return new ModelAndView("redirect:/view_user");
         }

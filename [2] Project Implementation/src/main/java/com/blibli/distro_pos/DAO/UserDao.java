@@ -177,16 +177,13 @@ public class UserDao {
 
         return userList;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/com/blibli/distro_pos/DAO/UserDao.java
 
     // TODO: Mengedit user
     public static  int editUser(User user) {
 
+        return 0;
 
     }
-=======
->>>>>>> development
 
     //Menghapus user
     public static int deleteUser(String username) {
@@ -216,22 +213,16 @@ public class UserDao {
 
         String sql = "UPDATE users SET enabled = ? WHERE username = ?";
 
->>>>>>> development
         try {
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-<<<<<<< HEAD
             preparedStatement.setBoolean(1, false);
             preparedStatement.setString(2, username);
-=======
-<<<<<<< HEAD
-            preparedStatement.setInt(1, user.getId());
-=======
-            preparedStatement.setString(1, user.getUsername());
->>>>>>> development
->>>>>>> f2663147247525269af64fc21a520a7dd8d385e4
+
+//            preparedStatement.setInt(1, user.getId());
+//            preparedStatement.setString(1, user.getUsername());
 
             status = preparedStatement.executeUpdate();
         }
@@ -242,9 +233,4 @@ public class UserDao {
 
         return status;
     }
-<<<<<<< HEAD
-=======
->>>>>>> development:[2] Project Implementation/src/main/java/com/blibli/distro_pos/DAO/UserDao.java
-=======
->>>>>>> development
 }

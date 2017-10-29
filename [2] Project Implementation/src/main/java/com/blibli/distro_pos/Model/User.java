@@ -10,11 +10,8 @@ public class User {
 //    private int noKtp;
 //    private int noTelp;
 //    private  char jenisKelamin;
-    private String alamat;
-    private int noKtp;
-    private int noTelp;
-    private char jenisKelamin;
     private boolean enabled;
+    private String role;
 
     public User(String username, String password, boolean enabled) {
         this.username = username;
@@ -48,5 +45,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

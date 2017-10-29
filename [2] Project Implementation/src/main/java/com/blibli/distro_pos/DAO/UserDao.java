@@ -1,6 +1,8 @@
 package com.blibli.distro_pos.DAO;
 
+import com.blibli.distro_pos.Model.Role;
 import com.blibli.distro_pos.Model.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +27,8 @@ public class UserDao {
             );
 
             System.out.println("Database opened successfully");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.toString());
         }
 
@@ -50,7 +53,8 @@ public class UserDao {
             preparedStatement.executeUpdate();
 
             System.out.println("Finished creating user table");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
 
             System.out.println(e.toString());
         }
@@ -77,16 +81,20 @@ public class UserDao {
             System.out.println("Finished creating user_role table");
         }
         catch (Exception e) {
-            System.out.println("Finished creating user_ role table");
+
+            System.out.println(e.toString());
         }
     }
 
     //Memasukkan data user
-    public static int insertUser(User user) {
+    public static int insertUser(User user, Role role) {
 
         int status = 0;
 
         String sql = "INSERT INTO users(username,password,enabled) VALUES (?,?,?);";
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
 
         try {
 
@@ -94,16 +102,45 @@ public class UserDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(2, hashedPassword);
             preparedStatement.setBoolean(3, user.isEnabled());
 
-//            preparedStatement.setString(1, userRole.getUsername());
-//            preparedStatement.setString(2, userRole.getRole());
+//            preparedStatement.setString(1, role.getUsername());
+//            preparedStatement.setString(2, role.getRole());
+
+            status = preparedStatement.executeUpdate();
+            insertUserRole(user.getUsername(), role.getRole());
+
+            System.out.println("Finished inserting user");
+        }
+        catch (Exception e) {
+
+            System.out.println("ERROR : "+ e.getMessage());
+        }
+
+        return status;
+    }
+
+    //Memasukkan data user roles
+    public static int insertUserRole(String username, String role) {
+
+        int status = 0;
+
+        String sql = "INSERT INTO user_roles(username, role) VALUES (?,?)";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, role);
 
             status = preparedStatement.executeUpdate();
 
-            System.out.println("Finished inserting user");
-        } catch (Exception e) {
+            System.out.println("Finished inserting user role");
+        }
+        catch (Exception e) {
 
             System.out.println(e.toString());
         }
@@ -116,18 +153,20 @@ public class UserDao {
 
         List<User> userList = new ArrayList<User>();
 
+        String sql = "select users.username, user_roles.role from users, user_roles where users.enabled = ? AND users.username=user_roles.username;";
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT username, password FROM users"
-            );
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setBoolean(1, true);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 User user = new User();
                 user.setUsername(resultSet.getString("username"));
-                user.setPassword(resultSet.getString("password"));
+                user.setRole(resultSet.getString("role"));
+
                 userList.add(user);
             }
         }
@@ -138,20 +177,61 @@ public class UserDao {
 
         return userList;
     }
+<<<<<<< HEAD
+<<<<<<< HEAD:src/main/java/com/blibli/distro_pos/DAO/UserDao.java
+
+    // TODO: Mengedit user
+    public static  int editUser(User user) {
+
+
+    }
+=======
+>>>>>>> development
 
     //Menghapus user
-    public static int deleteUser(User user) {
+    public static int deleteUser(String username) {
+
+//        int status = 0;
+//
+//        String sql = "DELETE FROM users WHERE username = ?;";
+//
+//        try {
+//
+//            Connection connection = getConnection();
+//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//            preparedStatement.setString(1, user.getUsername());
+//
+//            status = preparedStatement.executeUpdate();
+//        }
+//        catch (Exception e) {
+//
+//            System.out.println(e.toString());
+//        }
+//
+//        return status;
+//    }
 
         int status = 0;
 
-        String sql = "DELETE FROM users, user_roles WHERE username = ?";
+        String sql = "UPDATE users SET enabled = ? WHERE username = ?";
 
+>>>>>>> development
         try {
 
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
+<<<<<<< HEAD
+            preparedStatement.setBoolean(1, false);
+            preparedStatement.setString(2, username);
+=======
+<<<<<<< HEAD
+            preparedStatement.setInt(1, user.getId());
+=======
             preparedStatement.setString(1, user.getUsername());
+>>>>>>> development
+>>>>>>> f2663147247525269af64fc21a520a7dd8d385e4
 
             status = preparedStatement.executeUpdate();
         }
@@ -162,4 +242,9 @@ public class UserDao {
 
         return status;
     }
+<<<<<<< HEAD
+=======
+>>>>>>> development:[2] Project Implementation/src/main/java/com/blibli/distro_pos/DAO/UserDao.java
+=======
+>>>>>>> development
 }

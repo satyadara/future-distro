@@ -76,9 +76,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="jenisKelamin">Jenis Kelamin</label>
+                    <label class="col-md-4 control-label" for="jeniskelamin">Jenis Kelamin</label>
                     <div class="col-md-4">
-                        <select id="jenisKelamin" name="jeniskelamin" class="form-control">
+                        <select id="jeniskelamin" name="jenisKelamin" class="form-control">
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
                         </select>

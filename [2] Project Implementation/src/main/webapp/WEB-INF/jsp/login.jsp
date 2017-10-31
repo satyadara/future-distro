@@ -21,10 +21,10 @@
                             <div class="col-lg-12">
                                 <form:form id="login-form" action="${login}" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="username" class="form-control" placeholder="username">
+                                        <input type="text" name="username" class="form-control" placeholder="Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="password">
+                                        <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">

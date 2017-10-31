@@ -21,16 +21,16 @@ public class UserDao {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5433/raditia",
+                    "jdbc:postgresql://localhost:5433/sandbox_db",
                     "postgres",
                     "password"
             );
-
-            System.out.println("Database opened successfully");
         }
         catch (Exception e) {
             System.out.println(e.toString());
         }
+
+        System.out.println("Database opened successfully");
 
         return connection;
     }
@@ -39,10 +39,15 @@ public class UserDao {
     public static void createTableUser() {
 
         String sql = "CREATE TABLE IF NOT EXISTS users(" +
-                "   username varchar(20) NOT NULL," +
-                "   password varchar(20) NOT NULL," +
-                "   enabled boolean NOT NULL DEFAULT FALSE," +
-                "   primary key(username)" +
+                "namaLengkap TEXT NOT NULL," +
+                "username varchar(20) NOT NULL," +
+                "password TEXT NOT NULL," +
+                "alamat TEXT NOT NULL," +
+                "ktp NUMERIC NOT NULL," +
+                "telp varchar(12) NOT NULL," +
+                "jeniskelamin CHAR(1)," +
+                "enabled boolean NOT NULL DEFAULT FALSE," +
+                "primary key(username)" +
                 ");";
 
         try {
@@ -68,7 +73,7 @@ public class UserDao {
                 "  username varchar(20) NOT NULL," +
                 "  role varchar(20) NOT NULL," +
                 "  UNIQUE (username,role)," +
-                "  FOREIGN KEY (username) REFERENCES users (username)" +
+                "  FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE " +
                 ");";
 
         try {
@@ -91,7 +96,8 @@ public class UserDao {
 
         int status = 0;
 
-        String sql = "INSERT INTO users(username,password,enabled) VALUES (?,?,?);";
+        String sql = "insert into users(namalengkap, username, password, alamat, ktp, telp, jeniskelamin, enabled) " +
+                "values(?,?,?,?,?,?,?,?);";
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -101,12 +107,14 @@ public class UserDao {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, hashedPassword);
-            preparedStatement.setBoolean(3, user.isEnabled());
-
-//            preparedStatement.setString(1, role.getUsername());
-//            preparedStatement.setString(2, role.getRole());
+            preparedStatement.setString(1, user.getNamaLengkap());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, hashedPassword);
+            preparedStatement.setString(4, user.getAlamat());
+            preparedStatement.setString(5, user.getKtp());
+            preparedStatement.setString(6, user.getTelp());
+            preparedStatement.setString(7, user.getJenisKelamin());
+            preparedStatement.setBoolean(8, user.isEnabled());
 
             status = preparedStatement.executeUpdate();
             insertUserRole(user.getUsername(), role.getRole());
@@ -126,7 +134,7 @@ public class UserDao {
 
         int status = 0;
 
-        String sql = "INSERT INTO user_roles(username, role) VALUES (?,?)";
+        String sql = "insert into user_roles(username, role) values(?,?);";
 
         try {
 
@@ -153,7 +161,9 @@ public class UserDao {
 
         List<User> userList = new ArrayList<User>();
 
-        String sql = "select users.username, user_roles.role from users, user_roles where users.enabled = ? AND users.username=user_roles.username;";
+        String sql = "select users.namalengkap, users.username, users.alamat, users.ktp, users.telp, users.jeniskelamin, " +
+                "user_roles.role from users, user_roles where users.enabled = ? " +
+                "AND users.username=user_roles.username ORDER BY role;";
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -164,7 +174,12 @@ public class UserDao {
 
             while (resultSet.next()) {
                 User user = new User();
+                user.setNamaLengkap(resultSet.getString("namalengkap"));
                 user.setUsername(resultSet.getString("username"));
+                user.setAlamat(resultSet.getString("alamat"));
+                user.setKtp(resultSet.getString("ktp"));
+                user.setTelp(resultSet.getString("telp"));
+                user.setJenisKelamin(resultSet.getString("jeniskelamin"));
                 user.setRole(resultSet.getString("role"));
 
                 userList.add(user);

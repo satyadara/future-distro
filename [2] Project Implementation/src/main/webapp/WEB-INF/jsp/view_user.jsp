@@ -44,8 +44,9 @@
                 <button type="button" class="btn btn-default" style="float: right">Tambah Kasir</button>
             </a>
         </div>
-
     </div>
+
+    <br>
 
     <div class="row">
         <div class="table-responsive col-md-12">
@@ -55,8 +56,12 @@
                 <thead>
 
                 <!--<th><input type="checkbox" id="checkall" /></th>-->
+                <th>Nama Lengkap</th>
                 <th>Username</th>
-                <%--<th>Password</th>--%>
+                <th>Alamat</th>
+                <th>No KTP</th>
+                <th>No Telp</th>
+                <th>Jenis Kelamin</th>
                 <th>Role</th>
                 <th>Edit</th>
 
@@ -67,9 +72,13 @@
 
                 <c:forEach items="${userList}" var="user">
                     <tr>
+                        <td>${user.getNamaLengkap()}</td>
                         <td>${user.getUsername()}</td>
-                        <%--<td>${user.getPassword()}</td>--%>
-                            <td>${user.getRole()}</td>
+                        <td>${user.getAlamat()}</td>
+                        <td>${user.getKtp()}</td>
+                        <td>${user.getTelp()}</td>
+                        <td>${user.getJenisKelamin()}</td>
+                        <td>${user.getRole()}</td>
                         <td><a href="edit_user/${user.getUsername()}">edit</a></td>
                         <td><a href="delete_user/${user.getUsername()}">delete</a></td>
                     </tr>

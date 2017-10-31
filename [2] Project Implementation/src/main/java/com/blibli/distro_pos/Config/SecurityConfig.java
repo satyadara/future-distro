@@ -29,17 +29,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select username,password, enabled from users where username=?")
+                        "select username,password,enabled from users where username=?")
                 .authoritiesByUsernameQuery(
                         "select username, role from user_roles where username=?")
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
-//    @Bean(name = "bCryptPasswordEncoder")
-//    public PasswordEncoder passwordEncoder() {
-//
-//        return new BCryptPasswordEncoder();
-//    }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
@@ -64,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers().permitAll()
-                .antMatchers("/admin", "/add_user", "/view_user").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/admin","/add_user","/view_user").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password")

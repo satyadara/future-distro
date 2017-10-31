@@ -17,9 +17,9 @@ public class WebController {
         return "home";
     }
 
-    @RequestMapping(value={"/welcome"})
+    @RequestMapping(value={"/dashboard"})
     public String welcome(){
-        return "welcome";
+        return "dashboard";
     }
 
     @RequestMapping(value="/admin")
@@ -47,14 +47,16 @@ public class WebController {
 
     @PostMapping("/add_user")
     public ModelAndView addUser(@ModelAttribute("user") User user,
-                                @ModelAttribute("userRole")Role role) {
+                                @ModelAttribute("role")Role role) {
 
         user.setEnabled(true);
 
-        System.out.println("Username : " + user.getUsername() + ", Password : " + user.getPassword() + ", Role : " + role.getRole());
-        int statusUser = UserDao.insertUser(user, role);
+        System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
+                ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
+                ", HP: " + user.getTelp() + ", Jenis Kelamin: " + user.getJenisKelamin());
+        int status = UserDao.insertUser(user, role);
 
-        if (statusUser == 1) {
+        if (status == 1) {
             System.out.println("BERHASIL");
             return new ModelAndView("redirect:/view_user");
         }

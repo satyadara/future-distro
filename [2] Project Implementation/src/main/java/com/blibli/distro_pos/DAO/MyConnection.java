@@ -15,8 +15,8 @@ public class MyConnection {
 
     public void connect() {
         try {
-            String db_password = "postgres";
             String db_username = "postgres";
+            String db_password = "postgres";
             String uri = "jdbc:postgresql://localhost:5432/satyadara";
             this.con = DriverManager.getConnection(uri, db_username, db_password);
             System.out.println("*****open connection*****");

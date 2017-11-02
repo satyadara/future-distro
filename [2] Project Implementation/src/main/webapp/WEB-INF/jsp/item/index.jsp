@@ -33,9 +33,10 @@
                     <th>Tipe</th>
                     <th>Ukuran</th>
                     <th>Nama</th>
-                    <th>Warna </th>
+                    <th>Warna</th>
                     <th>Harga</th>
                     <th>Kuantitas</th>
+                    <th>Status</th>
                     <th>Pilihan</th>
                 </tr>
 
@@ -49,6 +50,7 @@
                         <td>${item.getColor()}</td>
                         <td>${item.getPrice()}</td>
                         <td>${item.getStock()}</td>
+                        <td>${item.getStatus()}</td>
                         <td>
                             <a href="${pageContext.request.contextPath}/item/${item.getId_item()}/edit">
                                 Edit
@@ -61,6 +63,34 @@
                     </tr>
                 </c:forEach>
             </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach begin="1" end="${pages}" var="page">
+                        <c:choose>
+                            <c:when test="${page == currentPage}">
+                                <li class="active"><a href="/item/page/${page}">${page}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="/item/page/${page}">${page}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

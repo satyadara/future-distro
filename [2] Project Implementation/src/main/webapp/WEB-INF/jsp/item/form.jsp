@@ -21,6 +21,7 @@
                         <div class="form-group col-md-4">
                             <input type="hidden" name="id_item" value="${item.getId_item()}">
                             <input type="hidden" name="id_emp" value="${item.getId_emp()}">
+                            <input type="hidden" name="image" value="${item.getImage()}">
                             <label>Tipe Barang</label>
                             <select class="form-control" name="type" value="${item.getType()}">
                                 <%--<c:choose>--%>

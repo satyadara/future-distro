@@ -40,7 +40,7 @@ public class ItemMerkDAO extends MyConnection implements BasicDAO<ItemMerk, Stri
 
     @Override
     public ItemMerk getOne(String id) {
-        String sql = "SELECT * FROM item_merk WHERE id_item_merk = ?";
+        String sql = "SELECT * FROM item_merk WHERE id_item_merk = ?;";
         ItemMerk merk = new ItemMerk();
         try {
             this.connect();
@@ -79,7 +79,7 @@ public class ItemMerkDAO extends MyConnection implements BasicDAO<ItemMerk, Stri
 
     @Override
     public void update(ItemMerk merk) {
-        String sql = "UPDATE item_type SET name_item_type = ? WHERE id_item_type = ?;";
+        String sql = "UPDATE item_merk SET name_item_merk = ? WHERE id_item_merk = ?;";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);

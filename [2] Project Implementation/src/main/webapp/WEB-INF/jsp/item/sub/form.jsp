@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <h1>Tambah Stok Barang</h1>
+        <h1>Tambah --- Barang</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -20,12 +20,12 @@
                     <form class="form" method="POST">
                         <div class="row">
                             <div class="form-group col-md-4">
-                                <label>ID Tipe</label>
-                                <input class="form-control" name="idItem_Type" value="${type.getIdItem_Type()}">
+                                <label>ID </label>
+                                <input class="form-control" name="id" value="${data.getId()}">
                             </div>
                             <div class="form-group col-md-4">
-                                <label>Nama Tipe</label>
-                                <input class="form-control" name="nameItem_Type" value="${type.getNameItem_Type()}">
+                                <label>Nama </label>
+                                <input class="form-control" name="name" value="${data.getName()}">
                             </div>
                         </div>
                         <div class="row">

@@ -50,8 +50,8 @@ public class ItemColorDAO extends MyConnection implements BasicDAO<ItemColor, St
             if (rs != null) {
                 while (rs.next()) {
                     color = new ItemColor(
-                            rs.getString("id_item_merk"),
-                            rs.getString("name_item_merk"));
+                            rs.getString("id_item_color"),
+                            rs.getString("name_item_color"));
                 }
             }
             this.disconnect();
@@ -104,7 +104,7 @@ public class ItemColorDAO extends MyConnection implements BasicDAO<ItemColor, St
 
     @Override
     public int count() {
-        String sql = "SELECT COUNT(id_item_merk) FROM item_merk;";
+        String sql = "SELECT COUNT(id_item_color) FROM item_color;";
         int result = 0;
         try {
             this.connect();
@@ -113,7 +113,7 @@ public class ItemColorDAO extends MyConnection implements BasicDAO<ItemColor, St
             while (rs.next()) {
                 result = rs.getInt("count");
             }
-            System.out.println("item merk counted : " + result);
+            System.out.println("item color counted : " + result);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());
@@ -136,8 +136,8 @@ public class ItemColorDAO extends MyConnection implements BasicDAO<ItemColor, St
                 System.out.println("getAll Colors : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_color"));
-                    ItemColor itemColor = new ItemColor(rs.getString("id_item_volor"),
-                            rs.getString("name_item_merk"));
+                    ItemColor itemColor = new ItemColor(rs.getString("id_item_color"),
+                            rs.getString("name_item_color"));
                     itemColorList.add(itemColor);
                 }
             }

@@ -91,10 +91,10 @@ public class DiscountController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = GET)
-    public ModelAndView delete(@PathVariable("id_disc") String id_disc) {
-        ModelAndView modelAndView = new ModelAndView("discount/form");
+    public ModelAndView delete(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         try {
-
+            discountDAO.softDelete(id);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }

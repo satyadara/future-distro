@@ -140,7 +140,18 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
 
     @Override
     public void softDelete(String id) {
-
+        String sql = "UPDATE discount SET status_disc = 'Tidak Aktif'" +
+                "WHERE id_disc = ?;";
+        System.out.println(sql);
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.executeQuery();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#SOFT DELETE# something error : " + e.toString());
+        }
     }
 
     public int count() {

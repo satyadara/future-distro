@@ -86,8 +86,8 @@
       <file leaf-file-name="ItemController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="336" column="34" lean-forward="false" selection-start-line="336" selection-start-column="34" selection-end-line="336" selection-end-column="34" />
+            <state relative-caret-position="321">
+              <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
               <folding>
                 <element signature="e#846#857#0" expanded="false" />
                 <element signature="method#ItemController#0;class#ItemController#0" expanded="false" />
@@ -204,7 +204,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -365,8 +366,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -508,33 +508,41 @@
       <created>1508763826910</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1508763826910</updated>
-      <workItem from="1508763828681" duration="54000" />
-      <workItem from="1508764131555" duration="274000" />
-      <workItem from="1508764958710" duration="523000" />
-      <workItem from="1508770061843" duration="4223000" />
-      <workItem from="1508854484072" duration="7832000" />
-      <workItem from="1508896414837" duration="2728000" />
-      <workItem from="1508923630263" duration="4388000" />
-      <workItem from="1508991978931" duration="169000" />
-      <workItem from="1509019995923" duration="1456000" />
-      <workItem from="1509098445049" duration="508000" />
-      <workItem from="1509099000699" duration="376000" />
-      <workItem from="1509121622073" duration="10000" />
-      <workItem from="1509125296443" duration="1533000" />
-      <workItem from="1509185234307" duration="54000" />
-      <workItem from="1509201729523" duration="598000" />
-      <workItem from="1509247186581" duration="1454000" />
-      <workItem from="1509256585922" duration="33000" />
-      <workItem from="1509275743669" duration="61000" />
-      <workItem from="1509373560442" duration="4717000" />
-      <workItem from="1509616162322" duration="5073000" />
-      <workItem from="1509624177909" duration="12852000" />
+      <updated>1506570750929</updated>
+      <workItem from="1506570755947" duration="756000" />
+      <workItem from="1507996919761" duration="1434000" />
+      <workItem from="1508033177314" duration="2919000" />
+      <workItem from="1508055221105" duration="2237000" />
+      <workItem from="1508153144290" duration="4001000" />
+      <workItem from="1508174014911" duration="234000" />
+      <workItem from="1508200898694" duration="3295000" />
+      <workItem from="1508228082287" duration="3018000" />
+      <workItem from="1508239722834" duration="3746000" />
+      <workItem from="1508305291377" duration="277000" />
+      <workItem from="1508335626567" duration="488000" />
+      <workItem from="1508340352502" duration="6493000" />
+      <workItem from="1508347554841" duration="186000" />
+      <workItem from="1508397235699" duration="154000" />
+      <workItem from="1508397602967" duration="2763000" />
+      <workItem from="1508405561057" duration="3526000" />
+      <workItem from="1508412703840" duration="4815000" />
+      <workItem from="1508430703699" duration="2538000" />
+      <workItem from="1508461471805" duration="1318000" />
+      <workItem from="1508468730349" duration="20000" />
+      <workItem from="1508469244777" duration="33000" />
+      <workItem from="1508507358117" duration="3634000" />
+      <workItem from="1508512236889" duration="6146000" />
+      <workItem from="1508575429296" duration="7068000" />
+      <workItem from="1508597786354" duration="33000" />
+      <workItem from="1508600306903" duration="3018000" />
+      <workItem from="1508641779855" duration="6002000" />
+      <workItem from="1508648877139" duration="40000" />
+      <workItem from="1509642113052" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60681000" />
+    <option name="totallyTimeSpent" value="71765000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -542,7 +550,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -567,6 +574,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32605305" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -821,15 +829,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/form.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/Item.java">
+    <entry file="das://table:/f16000df/a33e222a-9e49-41a8-b1bb-5267e79d97ee/satyadara.public.item" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
@@ -1003,8 +1004,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="336" column="34" lean-forward="false" selection-start-line="336" selection-start-column="34" selection-end-line="336" selection-end-column="34" />
+        <state relative-caret-position="321">
+          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
           <folding>
             <element signature="e#846#857#0" expanded="false" />
             <element signature="method#ItemController#0;class#ItemController#0" expanded="false" />

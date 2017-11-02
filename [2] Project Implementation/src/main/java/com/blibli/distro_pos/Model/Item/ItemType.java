@@ -1,4 +1,4 @@
-package com.blibli.distro_pos.Model;
+package com.blibli.distro_pos.Model.item;
 
 public class ItemType {
     private String idItem_Type;
@@ -8,24 +8,24 @@ public class ItemType {
     }
 
     public ItemType(String idItem_Type, String nameItem_Type) {
-        this.setIdItem_Type(idItem_Type);
-        this.setNameItem_Type(nameItem_Type);
+        this.setId(idItem_Type);
+        this.setName(nameItem_Type);
     }
 
 
-    public String getIdItem_Type() {
+    public String getId() {
         return idItem_Type;
     }
 
-    public void setIdItem_Type(String idItem_Type) {
+    public void setId(String idItem_Type) {
         this.idItem_Type = idItem_Type;
     }
 
-    public String getNameItem_Type() {
+    public String getName() {
         return nameItem_Type;
     }
 
-    public void setNameItem_Type(String nameItem_Type) {
+    public void setName(String nameItem_Type) {
         this.nameItem_Type = nameItem_Type;
     }
 }

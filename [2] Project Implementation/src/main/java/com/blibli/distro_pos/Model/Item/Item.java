@@ -1,10 +1,11 @@
-package com.blibli.distro_pos.Model;
+package com.blibli.distro_pos.Model.item;
 
 public class Item {
     private String id_item;
     private String id_emp;
     private String name_item;
     private float price;
+    private String image;
     private String merk;
     private int stock;
     private String color;
@@ -15,12 +16,13 @@ public class Item {
     public Item() {
     }
 
-    public Item(String id_item, String id_emp, String name_item, float price, String merk, int stock, String color, String size, String type, String status) {
+    public Item(String id_item, String id_emp, String name_item, float price, String merk, int stock, String image, String color, String size, String type, String status) {
         this.id_item = id_item;
         this.id_emp = id_emp;
         this.name_item = name_item;
         this.price = price;
-        this.setMerk(merk);
+        this.image = image;
+        this.merk = merk;
         this.stock = stock;
         this.color = color;
         this.size = size;
@@ -58,6 +60,14 @@ public class Item {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getMerk() {

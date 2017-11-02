@@ -1,6 +1,8 @@
-package com.blibli.distro_pos.DAO.Item;
+package com.blibli.distro_pos.DAO.item;
 
-import com.blibli.distro_pos.Model.Item;
+import com.blibli.distro_pos.DAO.BasicDAO;
+import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.Model.item.Item;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -8,79 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ItemDAO {
-    private Connection con;
-
-    public ItemDAO() {
-    }
-
-    public void connect() {
-        try {
-            String db_password = "postgres";
-            String db_username = "postgres";
-            String uri = "jdbc:postgresql://localhost:5432/satyadara";
-            this.con = DriverManager.getConnection(uri, db_username, db_password);
-            System.out.println("*****open connection*****");
-
-        } catch (Exception e) {
-            System.out.println("error " + e.toString());
-        }
-    }
-
-    public void disconnect() {
-        try {
-            this.con.close();
-            System.out.println("*****close connection*****");
-
-        } catch (Exception e) {
-            System.out.println("error " + e.toString());
-        }
-    }
-
-    public List<Item> getAllOriginal() {
-//        String sql = "SELECT id_item, id_emp, name_item, price_item, "
-//                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
-//                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
-//                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";
-        String sql = "SELECT * FROM item ORDER BY id_item;";
-        List<Item> itemList = new ArrayList<>();
-        try {
-            this.connect();
-            Statement statement = this.con.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            if (rs != null) {
-                System.out.println("getAll\t:");
-                while (rs.next()) {
-                    System.out.println("\t" + rs.getString("id_item"));
-                    Item item = new Item(
-                            rs.getString("id_item"),
-                            rs.getString("id_emp"),
-                            rs.getString("name_item"),
-                            rs.getFloat("price_item"),
-                            rs.getString("merk_item"),
-                            rs.getInt("stock_item"),
-                            rs.getString("color_item"),
-                            rs.getString("size_item"),
-                            rs.getString("type_item"),
-                            rs.getString("status_item"));
-                    itemList.add(item);
-                }
-            }
-            this.disconnect();
-        } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
-        }
-
-        return itemList;
-    }
-
-    public List<Item> getAllModify() {
+public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
+    @Override
+    public List<Item> getAll() {
         String sql = "SELECT id_item, id_emp, name_item, price_item, "
                 + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
                 + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
-                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";List<Item> itemList = new ArrayList<>();
+                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";
+//        String sql = "SELECT * FROM item ORDER BY id_item;";
+        List<Item> itemList = new ArrayList<>();
         try {
-            this.connect();
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if (rs != null) {
@@ -94,6 +33,7 @@ public class ItemDAO {
                             rs.getFloat("price_item"),
                             rs.getString("merk_item"),
                             rs.getInt("stock_item"),
+                            rs.getString("image_item"),
                             rs.getString("color_item"),
                             rs.getString("size_item"),
                             rs.getString("type_item"),
@@ -101,7 +41,6 @@ public class ItemDAO {
                     itemList.add(item);
                 }
             }
-            this.disconnect();
         } catch (Exception e) {
             System.out.println("something error :" + e.toString());
         }
@@ -109,6 +48,7 @@ public class ItemDAO {
         return itemList;
     }
 
+    @Override
     public Item getOne(String id) {
 //        String sql = "SELECT id_item, id_emp, name_item, price_item, "
 //                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
@@ -127,6 +67,7 @@ public class ItemDAO {
                     item.setId_emp(rs.getString("id_emp"));
                     item.setName_item(rs.getString("name_item"));
                     item.setPrice(rs.getFloat("price_item"));
+                    item.setImage(rs.getString("image_item"));
                     item.setMerk(rs.getString("merk_item"));
                     item.setStock(rs.getInt("stock_item"));
                     item.setColor(rs.getString("color_item"));
@@ -143,27 +84,31 @@ public class ItemDAO {
         return item;
     }
 
+    @Override
     public void save(Item item) {
+
 //        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, merk_item, color_item, size_item, type_item, status_item, stock_item) "
 //                + "VALUES (nextval('sec_item') || ?,?,?,?,"
 //                + "(SELECT id_item_merk FROM item_merk WHERE name_item_merk = ?),"
 //                + "(SELECT id_item_color FROM item_color WHERE name_item_color = ?),?,"
 //                + "(SELECT id_item_type FROM item_type WHERE name_item_type= ?),?,?);";
-        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, merk_item, color_item, size_item, type_item, status_item, stock_item) " +
-                "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, image_item, merk_item, color_item, size_item, type_item, status_item, stock_item) " +
+                "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?,?,?)";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setString(1, "-" + item.getId_item());
-            preparedStatement.setString(2, "EMP-1001");
+            preparedStatement.setString(2, item.getId_emp());
             preparedStatement.setString(3, item.getName_item());
             preparedStatement.setFloat(4, item.getPrice());
-            preparedStatement.setString(5, item.getMerk());
-            preparedStatement.setString(6, item.getColor());
-            preparedStatement.setString(7, item.getSize());
-            preparedStatement.setString(8, item.getType());
-            preparedStatement.setString(9, "aktif");
-            preparedStatement.setInt(10, item.getStock());
+//            preparedStatement.setString(5, item.getImage());
+            preparedStatement.setString(5, item.getImage());
+            preparedStatement.setString(6, item.getMerk());
+            preparedStatement.setString(7, item.getColor());
+            preparedStatement.setString(8, item.getSize());
+            preparedStatement.setString(9, item.getType());
+            preparedStatement.setString(10, "Aktif");
+            preparedStatement.setInt(11, item.getStock());
             preparedStatement.executeQuery();
             System.out.println("Success insert item : " + item.getId_item());
             this.disconnect();
@@ -172,8 +117,9 @@ public class ItemDAO {
         }
     }
 
+    @Override
     public void update(Item item) {
-        String sql = "UPDATE item SET name_item = ?, price_item = ?, stock_item = ?, color_item = ?, size_item = ?,"
+        String sql = "UPDATE item SET name_item = ?, price_item = ?, stock_item = ?, image_item = ?, color_item = ?, size_item = ?,"
                 + " type_item = ? WHERE id_item = ?";
         try {
             this.connect();
@@ -181,10 +127,11 @@ public class ItemDAO {
             preparedStatement.setString(1, item.getName_item());
             preparedStatement.setFloat(2, item.getPrice());
             preparedStatement.setInt(3, item.getStock());
-            preparedStatement.setString(4, item.getColor());
-            preparedStatement.setString(5, item.getSize());
-            preparedStatement.setString(6, item.getType());
-            preparedStatement.setString(7, item.getId_item());
+            preparedStatement.setString(4, item.getImage());
+            preparedStatement.setString(5, item.getColor());
+            preparedStatement.setString(6, item.getSize());
+            preparedStatement.setString(7, item.getType());
+            preparedStatement.setString(8, item.getId_item());
             preparedStatement.executeQuery();
             System.out.println("Success update item : " + item.getId_item());
             this.disconnect();
@@ -193,8 +140,15 @@ public class ItemDAO {
         }
     }
 
+    @Override
     public void delete(String id) {
-        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+
+    }
+
+    @Override
+    public void softDelete(String id) {
+//        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+        String sql = "UPDATE item SET status_item = 'Tidak Aktif' WHERE id_item = '" + id + "'";
         System.out.println(id);
         try {
             this.connect();
@@ -208,6 +162,7 @@ public class ItemDAO {
         }
     }
 
+    @Override
     public int count() {
         String sql = "SELECT COUNT(id_item) FROM item;";
         int result = 0;
@@ -215,12 +170,10 @@ public class ItemDAO {
             this.connect();
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-
             while (rs.next()) {
                 result = rs.getInt("count");
             }
-
-            System.out.println("Item counted : " + result);
+            System.out.println("type counted : " + result);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());
@@ -229,8 +182,14 @@ public class ItemDAO {
         return result;
     }
 
+    @Override
     public List<Item> paginate(int page) {
-        String sql = "SELECT * FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
+//        String sql = "SELECT * FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
+        String sql = "SELECT id_item, id_emp, name_item, price_item, image_item,"
+                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
+                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
+                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item "
+                + "FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
         List<Item> itemList = new ArrayList<>();
         try {
             this.connect();
@@ -249,6 +208,7 @@ public class ItemDAO {
                             rs.getFloat("price_item"),
                             rs.getString("merk_item"),
                             rs.getInt("stock_item"),
+                            rs.getString("image_item"),
                             rs.getString("color_item"),
                             rs.getString("size_item"),
                             rs.getString("type_item"),

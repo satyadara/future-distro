@@ -1,8 +1,8 @@
 package com.blibli.distro_pos.Model.item;
 
 public class ItemType {
-    private String idItem_Type;
-    private String nameItem_Type;
+    private String id;
+    private String name;
 
     public ItemType() {
     }
@@ -12,20 +12,19 @@ public class ItemType {
         this.setName(nameItem_Type);
     }
 
-
     public String getId() {
-        return idItem_Type;
+        return id;
     }
 
-    public void setId(String idItem_Type) {
-        this.idItem_Type = idItem_Type;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return nameItem_Type;
+        return name;
     }
 
-    public void setName(String nameItem_Type) {
-        this.nameItem_Type = nameItem_Type;
+    public void setName(String name) {
+        this.name = name;
     }
 }

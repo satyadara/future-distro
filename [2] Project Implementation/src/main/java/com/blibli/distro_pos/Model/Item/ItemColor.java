@@ -1,8 +1,8 @@
 package com.blibli.distro_pos.Model.item;
 
 public class ItemColor {
-    private String idItem_Color;
-    private String nameItem_Color;
+    private String id;
+    private String name;
 
     public ItemColor() {
     }
@@ -12,19 +12,20 @@ public class ItemColor {
         setName(nameItem_Color);
     }
 
+
     public String getId() {
-        return idItem_Color;
+        return id;
     }
 
-    public void setId(String idItem_Color) {
-        this.idItem_Color = idItem_Color;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return nameItem_Color;
+        return name;
     }
 
-    public void setName(String nameItem_Color) {
-        this.nameItem_Color = nameItem_Color;
+    public void setName(String name) {
+        this.name = name;
     }
 }

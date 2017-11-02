@@ -21,11 +21,11 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label>ID Tipe</label>
-                                <input class="form-control" name="idItem_Type" value="${type.getIdItem_Type()}">
+                                <input class="form-control" name="id" value="${data.getId()}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Nama Tipe</label>
-                                <input class="form-control" name="nameItem_Type" value="${type.getNameItem_Type()}">
+                                <input class="form-control" name="name" value="${data.getName()}">
                             </div>
                         </div>
                         <div class="row">

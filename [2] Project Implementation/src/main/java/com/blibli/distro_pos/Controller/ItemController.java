@@ -10,12 +10,9 @@ import com.blibli.distro_pos.Model.item.ItemMerk;
 import com.blibli.distro_pos.Model.item.ItemType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -171,14 +168,17 @@ public class ItemController {
         return modelAndView;
     }
 
-    /** ITEM TYPE **/
-    @RequestMapping(value = "/tipe", method = GET)
+    /**
+     * ITEM TYPE
+     **/
+    @RequestMapping(value = "/type", method = GET)
     public ModelAndView indexType() {
         ModelAndView modelAndView = new ModelAndView("item/sub/index");
         List<ItemType> types;
         int typeCount;
         int pageCount;
         int currentPage = 1;
+        String content = "type";
         try {
             types = itemTypeDAO.paginate(currentPage);
             typeCount = itemTypeDAO.count();
@@ -187,13 +187,14 @@ public class ItemController {
             modelAndView.addObject("count", typeCount);
             modelAndView.addObject("pages", pageCount);
             modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("content", content);
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/tipe/create", method = GET)
+    @RequestMapping(value = "/type/create", method = GET)
     public ModelAndView createType() {
         ModelAndView modelAndView = new ModelAndView("item/sub/form");
 
@@ -207,9 +208,9 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/tipe/create", method = POST)
+    @RequestMapping(value = "/type/create", method = POST)
     public ModelAndView storeType(@ModelAttribute("type") ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/tipe");
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
         try {
             itemTypeDAO.save(type);
         } catch (Exception e) {
@@ -218,7 +219,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/tipe/{id}/edit", method = GET)
+    @RequestMapping(value = "/type/{id}/edit", method = GET)
     public ModelAndView editType(@PathVariable("id") String id) {
         ModelAndView modelAndView = new ModelAndView("item/sub/form");
         ItemType type;
@@ -231,9 +232,9 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/tipe/{id}/edit", method = POST)
+    @RequestMapping(value = "/type/{id}/edit", method = POST)
     public ModelAndView updateType(@ModelAttribute("type") ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/tipe");
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
         try {
             itemTypeDAO.update(type);
         } catch (Exception e) {
@@ -242,12 +243,13 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/tipe/page/{page}", method = GET)
+    @RequestMapping(value = "/type/page/{page}", method = GET)
     public ModelAndView paginateType(@PathVariable(name = "page") String page) {
         ModelAndView modelAndView = new ModelAndView("item/sub/index");
         List<ItemType> types;
         int typeCount;
         int pageCount;
+        String content = "type";
         try {
             types = itemTypeDAO.paginate(1);
             typeCount = itemTypeDAO.count();
@@ -256,6 +258,7 @@ public class ItemController {
             modelAndView.addObject("count", typeCount);
             modelAndView.addObject("pages", pageCount);
             modelAndView.addObject("currentPage", page);
+            modelAndView.addObject("content", content);
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
@@ -263,22 +266,26 @@ public class ItemController {
     }
     /*******************************************************************************/
 
-    /** ITEM MERK **/
+    /**
+     * ITEM MERK
+     **/
     @RequestMapping(value = "/merk", method = GET)
-    public ModelAndView indexType() {
+    public ModelAndView indexMerk() {
         ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemType> types;
-        int typeCount;
+        List<ItemMerk> merks;
+        int merkCount;
         int pageCount;
         int currentPage = 1;
+        String content = "merk";
         try {
-            types = itemTypeDAO.paginate(currentPage);
-            typeCount = itemTypeDAO.count();
-            pageCount = (typeCount / 10) + 1;
-            modelAndView.addObject("datas", types);
-            modelAndView.addObject("count", typeCount);
+            merks = itemMerkDAO.paginate(currentPage);
+            merkCount = itemMerkDAO.count();
+            pageCount = (merkCount / 10) + 1;
+            modelAndView.addObject("datas", merks);
+            modelAndView.addObject("count", merkCount);
             modelAndView.addObject("pages", pageCount);
             modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("content", content);
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
@@ -286,12 +293,12 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/create", method = GET)
-    public ModelAndView createType() {
+    public ModelAndView createMerk() {
         ModelAndView modelAndView = new ModelAndView("item/sub/form");
 
         try {
-            ItemType type = new ItemType();
-            modelAndView.addObject("datas", type);
+            ItemMerk merk = new ItemMerk();
+            modelAndView.addObject("datas", merk);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -299,11 +306,11 @@ public class ItemController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/tipe/create", method = POST)
-    public ModelAndView storeType(@ModelAttribute("type") ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/tipe");
+    @RequestMapping(value = "/merk/create", method = POST)
+    public ModelAndView storeMerk(@ModelAttribute("merk") ItemMerk merk) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
         try {
-            itemTypeDAO.save(type);
+            itemMerkDAO.save(merk);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -311,12 +318,13 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/{id}/edit", method = GET)
-    public ModelAndView editType(@PathVariable("id") String id) {
+    public ModelAndView editMerk(@PathVariable("id") String id) {
         ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemType type;
+        ItemMerk merk;
         try {
-            type = itemTypeDAO.getOne(id);
-            modelAndView.addObject("data", type);
+            merk = itemMerkDAO.getOne(id);
+            System.out.println(merk.getId() + " " + merk.getName());
+            modelAndView.addObject("data", merk);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -324,10 +332,10 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/{id}/edit", method = POST)
-    public ModelAndView updateType(@ModelAttribute("type") ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/tipe");
+    public ModelAndView updateMerk(@ModelAttribute("merk") ItemMerk merk) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
         try {
-            itemTypeDAO.update(type);
+            itemMerkDAO.update(merk);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -335,19 +343,21 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/page/{page}", method = GET)
-    public ModelAndView paginateType(@PathVariable(name = "page") String page) {
+    public ModelAndView paginateMerk(@PathVariable(name = "page") String page) {
         ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemType> types;
-        int typeCount;
+        List<ItemMerk> merks;
+        int merkCount;
         int pageCount;
+        String content = "merk";
         try {
-            types = itemTypeDAO.paginate(1);
-            typeCount = itemTypeDAO.count();
-            pageCount = (typeCount / 10) + 1;
-            modelAndView.addObject("datas", types);
-            modelAndView.addObject("count", typeCount);
+            merks = itemMerkDAO.paginate(1);
+            merkCount = itemMerkDAO.count();
+            pageCount = (merkCount / 10) + 1;
+            modelAndView.addObject("datas", merks);
+            modelAndView.addObject("count", merkCount);
             modelAndView.addObject("pages", pageCount);
             modelAndView.addObject("currentPage", page);
+            modelAndView.addObject("content", content);
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }

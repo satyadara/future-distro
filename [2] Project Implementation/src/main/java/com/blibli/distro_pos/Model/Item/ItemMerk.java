@@ -1,8 +1,8 @@
 package com.blibli.distro_pos.Model.item;
 
 public class ItemMerk {
-    private String idItem_Merk;
-    private String nameItem_Merk;
+    private String id;
+    private String name;
 
     public ItemMerk() {
     }
@@ -12,20 +12,19 @@ public class ItemMerk {
         this.setName(nameItem_Merk);
     }
 
-
     public String getId() {
-        return idItem_Merk;
+        return id;
     }
 
-    public void setId(String idItem_Merk) {
-        this.idItem_Merk = idItem_Merk;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return nameItem_Merk;
+        return name;
     }
 
-    public void setName(String nameItem_Merk) {
-        this.nameItem_Merk = nameItem_Merk;
+    public void setName(String name) {
+        this.name = name;
     }
 }

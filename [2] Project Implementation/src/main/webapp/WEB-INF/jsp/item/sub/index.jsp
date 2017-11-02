@@ -18,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href="${pageContext.request.contextPath}/item/tipe/create">
+            <a href="${pageContext.request.contextPath}/item/${content}/create">
                 <button class="btn btn-default" style="float: right;">+Tambah Tipe</button>
             </a>
         </div>
@@ -33,16 +33,16 @@
                     <th>Pilihan</th>
                 </tr>
 
-                <c:forEach items="${types}" var="type">
+                <c:forEach items="${datas}" var="data">
                     <tr>
-                        <td>${type.getIdItem_Type()}</td>
-                        <td>${type.getNameItem_Type()}</td>
+                        <td>${data.getId()}</td>
+                        <td>${data.getName()}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/item/tipe/${type.getIdItem_Type()}/edit">
+                            <a href="${pageContext.request.contextPath}/item/${content}/${data.getId()}/edit">
                                 Edit
                             </a>
                             |
-                            <a href="${pageContext.request.contextPath}/item/tipe/${type.getIdItem_Type()}/delete">
+                            <a href="${pageContext.request.contextPath}/item/${content}/${data.getId()}/delete">
                                 Delete
                             </a>
                         </td>

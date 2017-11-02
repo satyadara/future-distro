@@ -366,4 +366,104 @@ public class ItemController {
     /*******************************************************************************/
 
 
+    /**
+     * ITEM COLOR
+     **/
+    @RequestMapping(value = "/color", method = GET)
+    public ModelAndView indexColor() {
+        ModelAndView modelAndView = new ModelAndView("item/sub/index");
+        List<ItemColor> colors;
+        int merkCount;
+        int pageCount;
+        int currentPage = 1;
+        String content = "color";
+        try {
+            colors = itemColorDAO.paginate(currentPage);
+            merkCount = itemMerkDAO.count();
+            pageCount = (merkCount / 10) + 1;
+            modelAndView.addObject("datas", colors);
+            modelAndView.addObject("count", merkCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("content", content);
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/color/create", method = GET)
+    public ModelAndView createColor() {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+
+        try {
+            ItemColor color = new ItemColor();
+            modelAndView.addObject("datas", color);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/color/create", method = POST)
+    public ModelAndView storeColor(@ModelAttribute("merk") ItemColor color) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
+        try {
+            itemColorDAO.save(color);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/color/{id}/edit", method = GET)
+    public ModelAndView editColor(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        ItemColor color;
+        try {
+            color = itemColorDAO.getOne(id);
+            System.out.println(color.getId() + " " + color.getName());
+            modelAndView.addObject("data", color);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/color/{id}/edit", method = POST)
+    public ModelAndView updateColor(@ModelAttribute("merk") ItemColor color) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
+        try {
+            itemColorDAO.update(color);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/color/page/{page}", method = GET)
+    public ModelAndView paginateColor(@PathVariable(name = "page") String page) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/index");
+        List<ItemColor> colors;
+        int colorCount;
+        int pageCount;
+        String content = "color";
+        try {
+            colors = itemColorDAO.paginate(1);
+            colorCount = itemColorDAO.count();
+            pageCount = (colorCount / 10) + 1;
+            modelAndView.addObject("datas", colors);
+            modelAndView.addObject("count", colorCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", page);
+            modelAndView.addObject("content", content);
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+    /*******************************************************************************/
+
+
 }

@@ -2,7 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Manager - Stok</title>
+    <c:choose>
+        <c:when test="${content == 'type'}">
+            <title>Manager - Tipe Barang</title>
+        </c:when>
+        <c:when test="${content == 'color'}">
+            <title>Manager - Warna Barang</title>
+        </c:when>
+        <c:when test="${content == 'merk'}">
+            <title>Manager - Merek Barang</title>
+        </c:when>
+    </c:choose>
     <%--bootstrap.min.css--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -13,13 +23,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Tipe Barang( ${count} )</h1>
+            <c:choose>
+                <c:when test="${content == 'type'}">
+                    <h1>Tipe Barang( ${count} )</h1>
+                </c:when>
+                <c:when test="${content == 'color'}">
+                    <h1>Warna Barang( ${count} )</h1>
+                </c:when>
+                <c:when test="${content == 'merk'}">
+                    <h1>Merek Barang( ${count} )</h1>
+                </c:when>
+            </c:choose>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <a href="${pageContext.request.contextPath}/item/${content}/create">
-                <button class="btn btn-default" style="float: right;">+Tambah Tipe</button>
+                <button class="btn btn-default" style="float: right;">+Tambah ${content}</button>
             </a>
         </div>
     </div>
@@ -28,8 +48,8 @@
         <div class="col-md-6">
             <table class="table table-striped table-bordered table-responsive" id="mTable">
                 <tr>
-                    <th>ID Tipe</th>
-                    <th>Nama Tipe</th>
+                    <th>ID </th>
+                    <th>Nama </th>
                     <th>Pilihan</th>
                 </tr>
 
@@ -40,10 +60,6 @@
                         <td>
                             <a href="${pageContext.request.contextPath}/item/${content}/${data.getId()}/edit">
                                 Edit
-                            </a>
-                            |
-                            <a href="${pageContext.request.contextPath}/item/${content}/${data.getId()}/delete">
-                                Delete
                             </a>
                         </td>
                     </tr>

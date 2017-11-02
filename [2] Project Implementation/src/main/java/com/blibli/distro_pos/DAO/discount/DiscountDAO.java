@@ -1,5 +1,6 @@
 package com.blibli.distro_pos.DAO.discount;
 
+import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
 import com.blibli.distro_pos.Model.discount.Discount;
 import org.springframework.stereotype.Repository;
@@ -11,12 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class DiscountDAO extends MyConnection {
+public class DiscountDAO extends MyConnection implements BasicDAO<Discount, String> {
 
+    @Override
     public List<Discount> getAll() {
         String sql = "SELECT id_disc, id_emp, name_disc, description, percentage, " +
                 "TO_CHAR(start_date, 'DD/MM/YYYY') AS start_date, " +
-                "TO_CHAR(end_date,  'DD/MM/YYYY') AS end_date, status_disc FROM discount ORDER DESC BY id_disc;";
+                "TO_CHAR(end_date,  'DD/MM/YYYY') AS end_date, status_disc FROM discount ORDER BY id_disc DESC;";
         List<Discount> discountList = new ArrayList<>();
         try {
             this.connect();
@@ -47,6 +49,7 @@ public class DiscountDAO extends MyConnection {
         return discountList;
     }
 
+    @Override
     public Discount getOne(String id) {
         String sql = "SELECT id_disc, id_emp, name_disc, description, percentage, " +
                 "TO_CHAR(start_date, 'YYYY-MM-DD') AS start_date, " +
@@ -82,6 +85,7 @@ public class DiscountDAO extends MyConnection {
         return discount;
     }
 
+    @Override
     public void save(Discount discount) {
         String sql = "INSERT INTO discount(id_disc, id_emp, name_disc, description, percentage, start_date, end_date, status_disc) " +
                 "VALUES (nextval('sec_disc') || ?,?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'),TO_DATE(?, 'YYYY-MM-DD'),?);";
@@ -106,6 +110,7 @@ public class DiscountDAO extends MyConnection {
         }
     }
 
+    @Override
     public void update(Discount discount) {
         String sql = "UPDATE discount SET name_disc = ?, description = ?, " +
                 "percentage = ?, start_date = TO_DATE(?, 'YYYY-MM-DD'), end_date = TO_DATE(?, 'YYYY-MM-DD') " +
@@ -126,6 +131,16 @@ public class DiscountDAO extends MyConnection {
         } catch (Exception e) {
             System.out.println("#UPDATE# something error : " + e.toString());
         }
+    }
+
+    @Override
+    public void delete(String id) {
+
+    }
+
+    @Override
+    public void softDelete(String id) {
+
     }
 
     public int count() {

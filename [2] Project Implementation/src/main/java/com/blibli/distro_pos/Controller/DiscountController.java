@@ -54,7 +54,7 @@ public class DiscountController {
     public ModelAndView store(@ModelAttribute("discount") Discount discount) {
         ModelAndView modelAndView = new ModelAndView("redirect:/discount");
         discount.setId_disc("TEST");
-        discount.setId_emp("EMP-1001");
+        discount.setId_emp("EMP-1002");
         try {
             discountDAO.save(discount);
         } catch (Exception e) {
@@ -93,6 +93,11 @@ public class DiscountController {
     @RequestMapping(value = "/{id}/delete", method = GET)
     public ModelAndView delete(@PathVariable("id_disc") String id_disc) {
         ModelAndView modelAndView = new ModelAndView("discount/form");
+        try {
+
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
         return modelAndView;
     }
 

@@ -1,7 +1,6 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.UserDao;
-import com.blibli.distro_pos.Model.Role;
+import com.blibli.distro_pos.DAO.UserDAO;
 import com.blibli.distro_pos.Model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +48,7 @@ public class WebController {
     public ModelAndView addUser(@ModelAttribute("user") User user,
                                 @ModelAttribute("role")Role role) {
 
-        user.setEnabled(true);
+        int status = UserDAO.insertUser(user);
 
         System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
                 ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
@@ -70,7 +69,7 @@ public class WebController {
     @RequestMapping("/view_user")
     public ModelAndView viewAllUser() {
 
-        List<User> userList = UserDao.getAllUser();
+        List<User> userList = UserDAO.getAllUser();
 
         return new ModelAndView("view_user", "userList", userList);
     }
@@ -78,7 +77,7 @@ public class WebController {
     @GetMapping(value = "delete_user/{username}")
 //    public ModelAndView deleteUser(@ModelAttribute("user") User user) {
 
-    public ModelAndView deleteUser(@PathVariable("username") String username) {
+        int status = UserDAO.deleteUser(user);
 
         int status = UserDao.deleteUser(username);
 //

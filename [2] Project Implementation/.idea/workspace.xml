@@ -49,10 +49,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WebController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java">
+      <file leaf-file-name="DiscountDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/discount/DiscountDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
+            <state relative-caret-position="884">
               <caret line="152" column="44" lean-forward="false" selection-start-line="152" selection-start-column="44" selection-end-line="152" selection-end-column="44" />
               <folding>
                 <element signature="method#getAll#0;class#DiscountDAO#0" expanded="false" />
@@ -61,15 +61,15 @@
                 <element signature="method#delete#0;class#DiscountDAO#0" expanded="false" />
                 <element signature="method#count#0;class#DiscountDAO#0" expanded="false" />
                 <element signature="method#paginate#0;class#DiscountDAO#0" expanded="false" />
-                <marker date="1509646498473" expanded="false" signature="553:797" ph="SELECT id_di... discount" />
-                <marker date="1509646498473" expanded="false" signature="2071:2376" ph="SELECT id_di... discount" />
-                <marker date="1509646498473" expanded="false" signature="3576:3799" ph="INSERT INTO discount... " />
-                <marker date="1509646498473" expanded="false" signature="4902:5104" ph="UPDATE disco... " />
-                <marker date="1509646498473" expanded="true" signature="6056:6089" ph="UPDATE disco... " />
-                <marker date="1509646498473" expanded="true" signature="6056:6103" ph="UPDATE disco... " />
-                <marker date="1509646498473" expanded="true" signature="6056:6141" ph="UPDATE disco... " />
-                <marker date="1509646498473" expanded="false" signature="6606:6641" ph="SELECT COUNT... discount" />
-                <marker date="1509646498473" expanded="false" signature="7294:7538" ph="SELECT id_di... discount" />
+                <marker date="1509702479030" expanded="false" signature="553:797" ph="SELECT id_di... discount" />
+                <marker date="1509702479030" expanded="false" signature="2071:2376" ph="SELECT id_di... discount" />
+                <marker date="1509702479030" expanded="false" signature="3576:3799" ph="INSERT INTO discount... " />
+                <marker date="1509702479030" expanded="false" signature="4902:5104" ph="UPDATE disco... " />
+                <marker date="1509702479030" expanded="true" signature="6056:6089" ph="UPDATE disco... " />
+                <marker date="1509702479030" expanded="true" signature="6056:6103" ph="UPDATE disco... " />
+                <marker date="1509702479030" expanded="true" signature="6056:6141" ph="UPDATE disco... " />
+                <marker date="1509702479030" expanded="false" signature="6606:6641" ph="SELECT COUNT... discount" />
+                <marker date="1509702479030" expanded="false" signature="7294:7538" ph="SELECT id_di... discount" />
               </folding>
             </state>
           </provider>
@@ -78,13 +78,18 @@
       <file leaf-file-name="DiscountController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="96" column="34" lean-forward="false" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+            <state relative-caret-position="100">
+              <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
               <folding>
+                <element signature="e#700#711#0" expanded="false" />
+                <element signature="e#883#884#0" expanded="true" />
+                <element signature="e#929#930#0" expanded="true" />
                 <element signature="method#index#0;class#DiscountController#0" expanded="false" />
                 <element signature="method#create#0;class#DiscountController#0" expanded="false" />
+                <element signature="method#store#0;class#DiscountController#0" expanded="false" />
                 <element signature="method#edit#0;class#DiscountController#0" expanded="false" />
                 <element signature="method#update#0;class#DiscountController#0" expanded="false" />
+                <element signature="method#delete#0;class#DiscountController#0" expanded="false" />
                 <element signature="method#paginate#0;class#DiscountController#0" expanded="false" />
               </folding>
             </state>
@@ -102,9 +107,9 @@
         </entry>
       </file>
       <file leaf-file-name="ItemMerkDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemMerkDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemMerkDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
+            <state relative-caret-position="680">
               <caret line="124" column="13" lean-forward="false" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
               <folding>
                 <element signature="method#getAll#0;class#ItemMerkDAO#0" expanded="false" />
@@ -114,32 +119,32 @@
                 <element signature="method#softDelete#0;class#ItemMerkDAO#0" expanded="false" />
                 <element signature="method#count#0;class#ItemMerkDAO#0" expanded="false" />
                 <element signature="method#paginate#0;class#ItemMerkDAO#0" expanded="false" />
-                <marker date="1509646383935" expanded="false" signature="525:572" ph="SELECT * FRO... item_merk" />
-                <marker date="1509646383935" expanded="true" signature="1503:1549" ph="SELECT * FRO... item_merk" />
-                <marker date="1509646383935" expanded="false" signature="2338:2403" ph="INSERT INTO item_merk... " />
-                <marker date="1509646383935" expanded="true" signature="2929:2991" ph="UPDATE item_... " />
-                <marker date="1509646383935" expanded="false" signature="3620:3661" ph="SELECT COUNT... item_merk" />
-                <marker date="1509646383935" expanded="false" signature="4269:4334" ph="SELECT * FRO... item_merk" />
+                <marker date="1509702488370" expanded="false" signature="525:572" ph="SELECT * FRO... item_merk" />
+                <marker date="1509702488370" expanded="true" signature="1503:1549" ph="SELECT * FRO... item_merk" />
+                <marker date="1509702488370" expanded="false" signature="2338:2403" ph="INSERT INTO item_merk... " />
+                <marker date="1509702488370" expanded="true" signature="2929:2991" ph="UPDATE item_... " />
+                <marker date="1509702488370" expanded="false" signature="3620:3661" ph="SELECT COUNT... item_merk" />
+                <marker date="1509702488370" expanded="false" signature="4269:4334" ph="SELECT * FRO... item_merk" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ItemColorDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemColorDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemColorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="2193">
               <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
               <folding>
                 <element signature="method#delete#0;class#ItemColorDAO#0" expanded="false" />
                 <element signature="method#softDelete#0;class#ItemColorDAO#0" expanded="false" />
-                <marker date="1509646383933" expanded="true" signature="529:578" ph="SELECT * FRO... item_color" />
-                <marker date="1509646383933" expanded="true" signature="1522:1570" ph="SELECT * FRO... item_color" />
-                <marker date="1509646383933" expanded="true" signature="2368:2436" ph="INSERT INTO item_color... " />
-                <marker date="1509646383933" expanded="true" signature="2966:3029" ph="UPDATE item_... " />
-                <marker date="1509646383933" expanded="true" signature="3662:3695" ph="SELECT COUNT... item_merk" />
-                <marker date="1509646383933" expanded="true" signature="3662:3705" ph="SELECT COUNT... item_color" />
-                <marker date="1509646383933" expanded="true" signature="4315:4382" ph="SELECT * FRO... item_color" />
+                <marker date="1509702481860" expanded="true" signature="529:578" ph="SELECT * FRO... item_color" />
+                <marker date="1509702481860" expanded="true" signature="1522:1570" ph="SELECT * FRO... item_color" />
+                <marker date="1509702481860" expanded="true" signature="2368:2436" ph="INSERT INTO item_color... " />
+                <marker date="1509702481860" expanded="true" signature="2966:3029" ph="UPDATE item_... " />
+                <marker date="1509702481860" expanded="true" signature="3662:3695" ph="SELECT COUNT... item_merk" />
+                <marker date="1509702481860" expanded="true" signature="3662:3705" ph="SELECT COUNT... item_color" />
+                <marker date="1509702481860" expanded="true" signature="4315:4382" ph="SELECT * FRO... item_color" />
               </folding>
             </state>
           </provider>
@@ -285,9 +290,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,59 +331,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
-              <item name="Config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
-              <item name="discount" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="discount" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
@@ -403,8 +354,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="discount" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
@@ -416,10 +374,22 @@
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
               <item name="item" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="item" type="462c0819:PsiDirectoryNode" />
+              <item name="sub" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -604,7 +574,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76382000" />
+    <option name="totallyTimeSpent" value="76394000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -617,31 +587,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28478965" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28393134" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43837753" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43837753" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761312" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26061493" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2408492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29648608" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937598" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -657,6 +625,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937598" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -712,18 +681,9 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.3.RELEASE/spring-security-config-4.2.3.RELEASE.jar!/org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.3.RELEASE/spring-security-config-4.2.3.RELEASE.jar!/org/springframework/security/config/annotation/authentication/builders/AuthenticationManagerBuilder.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.3.RELEASE/spring-security-config-4.2.3.RELEASE.jar!/org/springframework/security/config/annotation/authentication/configurers/provisioning/JdbcUserDetailsManagerConfigurer.class" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/css/creation.css" />
     <entry file="file://$PROJECT_DIR$/resources/css/creation.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/bootstrap.css" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/bootstrap.css" />
     <entry file="das://table:/f16000df/a33e222a-9e49-41a8-b1bb-5267e79d97ee/satyadara.public.item" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -734,22 +694,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/UserRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/UserRole.java" />
     <entry file="das://table:/f16000df/a33e222a-9e49-41a8-b1bb-5267e79d97ee/satyadara.public.discount" />
     <entry file="file://$USER_HOME$/Downloads/Web Service 2/Web Service 2/GetOneViewController.swift" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/discount/form.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/discount/form.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_user.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -846,7 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="380" column="23" lean-forward="true" selection-start-line="380" selection-start-column="23" selection-end-line="380" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -870,11 +817,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="263" column="44" lean-forward="false" selection-start-line="263" selection-start-column="44" selection-end-line="263" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemTypeDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemTypeDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
@@ -887,31 +833,19 @@
             <element signature="method#softDelete#0;class#ItemTypeDAO#0" expanded="false" />
             <element signature="method#count#0;class#ItemTypeDAO#0" expanded="false" />
             <element signature="method#paginate#0;class#ItemTypeDAO#0" expanded="false" />
-            <marker date="1509642136784" expanded="true" signature="475:522" ph="SELECT * FRO... item_type" />
-            <marker date="1509642136784" expanded="true" signature="1453:1499" ph="SELECT * FRO... item_type" />
-            <marker date="1509642136784" expanded="true" signature="2287:2352" ph="INSERT INTO ITEM_TYPE... " />
-            <marker date="1509642136784" expanded="true" signature="2878:2940" ph="UPDATE item_... " />
-            <marker date="1509642136784" expanded="true" signature="3569:3610" ph="SELECT COUNT... item_type" />
-            <marker date="1509642136784" expanded="true" signature="4219:4284" ph="SELECT * FRO... item_type" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2374">
           <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <marker date="1509642136777" expanded="true" signature="926:1197" ph="CREATE TABLE... IF" />
-            <marker date="1509642136777" expanded="true" signature="1665:2002" ph="create table... IF" />
-            <marker date="1509642136777" expanded="true" signature="2525:2584" ph="INSERT INTO users... " />
-            <marker date="1509642136777" expanded="true" signature="3602:3638" ph="SELECT usern... users" />
-            <marker date="1509642136777" expanded="true" signature="4233:4281" ph="DELETE FROM " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
           <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
@@ -926,31 +860,14 @@
             <element signature="method#softDelete#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#paginate#0;class#ItemDAO#0" expanded="false" />
-            <marker date="1509642136749" expanded="false" signature="458:931" ph="SELECT id_it... item" />
-            <marker date="1509642136749" expanded="false" signature="527:609" ph="SELECT name_... item_merk" />
-            <marker date="1509642136749" expanded="false" signature="659:746" ph="SELECT name_... item_color" />
-            <marker date="1509642136749" expanded="false" signature="795:877" ph="SELECT name_... item_type" />
-            <marker date="1509642136749" expanded="false" signature="2817:2864" ph="SELECT * FRO... item" />
-            <marker date="1509642136749" expanded="false" signature="4642:4855" ph="INSERT INTO item... " />
-            <marker date="1509642136749" expanded="false" signature="6069:6231" ph="UPDATE item " />
-            <marker date="1509642136749" expanded="false" signature="7334:7406" ph="UPDATE item " />
-            <marker date="1509642136749" expanded="false" signature="7868:7899" ph="SELECT COUNT... item" />
-            <marker date="1509642136749" expanded="false" signature="8579:9102" ph="SELECT id_it... item" />
-            <marker date="1509642136749" expanded="false" signature="8659:8741" ph="SELECT name_... item_merk" />
-            <marker date="1509642136749" expanded="false" signature="8791:8878" ph="SELECT name_... item_color" />
-            <marker date="1509642136749" expanded="false" signature="8927:9009" ph="SELECT name_... item_type" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/ItemType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item/ItemType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding>
-            <element signature="method#ItemType#0;class#ItemType#0" expanded="false" />
-            <element signature="method#ItemType#1;class#ItemType#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -962,45 +879,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/Item.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/ItemMerk.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item/ItemMerk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#314#315#0" expanded="false" />
-            <element signature="e#339#340#0" expanded="false" />
-            <element signature="e#375#376#0" expanded="false" />
-            <element signature="e#403#404#0" expanded="false" />
-            <element signature="e#434#435#0" expanded="false" />
-            <element signature="e#461#462#0" expanded="false" />
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#533#534#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/ItemColor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/Item/ItemColor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding>
-            <element signature="e#312#313#0" expanded="false" />
-            <element signature="e#337#338#0" expanded="false" />
-            <element signature="e#373#374#0" expanded="false" />
-            <element signature="e#401#402#0" expanded="false" />
-            <element signature="e#432#433#0" expanded="false" />
-            <element signature="e#459#460#0" expanded="false" />
-            <element signature="e#499#500#0" expanded="false" />
-            <element signature="e#531#532#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,12 +904,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="88" column="5" lean-forward="false" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-          <folding>
-            <element signature="method#addUser#0;class#WebController#0" expanded="false" />
-            <element signature="method#addUser#1;class#WebController#0" expanded="false" />
-            <element signature="method#viewAllUser#0;class#WebController#0" expanded="false" />
-            <element signature="method#deleteUser#0;class#WebController#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,15 +913,14 @@
         <state relative-caret-position="68">
           <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           <folding>
-            <element signature="e#314#315#0" expanded="false" />
-            <element signature="e#376#377#0" expanded="false" />
+            <element signature="e#382#383#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemMerkDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemMerkDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
+        <state relative-caret-position="680">
           <caret line="124" column="13" lean-forward="false" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
           <folding>
             <element signature="method#getAll#0;class#ItemMerkDAO#0" expanded="false" />
@@ -1040,41 +930,35 @@
             <element signature="method#softDelete#0;class#ItemMerkDAO#0" expanded="false" />
             <element signature="method#count#0;class#ItemMerkDAO#0" expanded="false" />
             <element signature="method#paginate#0;class#ItemMerkDAO#0" expanded="false" />
-            <marker date="1509646383935" expanded="false" signature="525:572" ph="SELECT * FRO... item_merk" />
-            <marker date="1509646383935" expanded="true" signature="1503:1549" ph="SELECT * FRO... item_merk" />
-            <marker date="1509646383935" expanded="false" signature="2338:2403" ph="INSERT INTO item_merk... " />
-            <marker date="1509646383935" expanded="true" signature="2929:2991" ph="UPDATE item_... " />
-            <marker date="1509646383935" expanded="false" signature="3620:3661" ph="SELECT COUNT... item_merk" />
-            <marker date="1509646383935" expanded="false" signature="4269:4334" ph="SELECT * FRO... item_merk" />
+            <marker date="1509702488370" expanded="false" signature="525:572" ph="SELECT * FRO... item_merk" />
+            <marker date="1509702488370" expanded="true" signature="1503:1549" ph="SELECT * FRO... item_merk" />
+            <marker date="1509702488370" expanded="false" signature="2338:2403" ph="INSERT INTO item_merk... " />
+            <marker date="1509702488370" expanded="true" signature="2929:2991" ph="UPDATE item_... " />
+            <marker date="1509702488370" expanded="false" signature="3620:3661" ph="SELECT COUNT... item_merk" />
+            <marker date="1509702488370" expanded="false" signature="4269:4334" ph="SELECT * FRO... item_merk" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemColorDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemColorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="2193">
           <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
           <folding>
             <element signature="method#delete#0;class#ItemColorDAO#0" expanded="false" />
             <element signature="method#softDelete#0;class#ItemColorDAO#0" expanded="false" />
-            <marker date="1509646383933" expanded="true" signature="529:578" ph="SELECT * FRO... item_color" />
-            <marker date="1509646383933" expanded="true" signature="1522:1570" ph="SELECT * FRO... item_color" />
-            <marker date="1509646383933" expanded="true" signature="2368:2436" ph="INSERT INTO item_color... " />
-            <marker date="1509646383933" expanded="true" signature="2966:3029" ph="UPDATE item_... " />
-            <marker date="1509646383933" expanded="true" signature="3662:3695" ph="SELECT COUNT... item_merk" />
-            <marker date="1509646383933" expanded="true" signature="3662:3705" ph="SELECT COUNT... item_color" />
-            <marker date="1509646383933" expanded="true" signature="4315:4382" ph="SELECT * FRO... item_color" />
+            <marker date="1509702481860" expanded="true" signature="529:578" ph="SELECT * FRO... item_color" />
+            <marker date="1509702481860" expanded="true" signature="1522:1570" ph="SELECT * FRO... item_color" />
+            <marker date="1509702481860" expanded="true" signature="2368:2436" ph="INSERT INTO item_color... " />
+            <marker date="1509702481860" expanded="true" signature="2966:3029" ph="UPDATE item_... " />
+            <marker date="1509702481860" expanded="true" signature="3662:3695" ph="SELECT COUNT... item_merk" />
+            <marker date="1509702481860" expanded="true" signature="3662:3705" ph="SELECT COUNT... item_color" />
+            <marker date="1509702481860" expanded="true" signature="4315:4382" ph="SELECT * FRO... item_color" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/791f75a3/a33e222a-9e49-41a8-b1bb-5267e79d97ee/satyadara.public.discount">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/791f75a3/a33e222a-9e49-41a8-b1bb-5267e79d97ee/satyadara.public.discount" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/sub/form.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1087,18 +971,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="62" column="32" lean-forward="false" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/discount/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/discount/index.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/discount/Discount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1117,7 +993,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/discount/DiscountDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
+        <state relative-caret-position="884">
           <caret line="152" column="44" lean-forward="false" selection-start-line="152" selection-start-column="44" selection-end-line="152" selection-end-column="44" />
           <folding>
             <element signature="method#getAll#0;class#DiscountDAO#0" expanded="false" />
@@ -1126,28 +1002,33 @@
             <element signature="method#delete#0;class#DiscountDAO#0" expanded="false" />
             <element signature="method#count#0;class#DiscountDAO#0" expanded="false" />
             <element signature="method#paginate#0;class#DiscountDAO#0" expanded="false" />
-            <marker date="1509646498473" expanded="false" signature="553:797" ph="SELECT id_di... discount" />
-            <marker date="1509646498473" expanded="false" signature="2071:2376" ph="SELECT id_di... discount" />
-            <marker date="1509646498473" expanded="false" signature="3576:3799" ph="INSERT INTO discount... " />
-            <marker date="1509646498473" expanded="false" signature="4902:5104" ph="UPDATE disco... " />
-            <marker date="1509646498473" expanded="true" signature="6056:6089" ph="UPDATE disco... " />
-            <marker date="1509646498473" expanded="true" signature="6056:6103" ph="UPDATE disco... " />
-            <marker date="1509646498473" expanded="true" signature="6056:6141" ph="UPDATE disco... " />
-            <marker date="1509646498473" expanded="false" signature="6606:6641" ph="SELECT COUNT... discount" />
-            <marker date="1509646498473" expanded="false" signature="7294:7538" ph="SELECT id_di... discount" />
+            <marker date="1509702479030" expanded="false" signature="553:797" ph="SELECT id_di... discount" />
+            <marker date="1509702479030" expanded="false" signature="2071:2376" ph="SELECT id_di... discount" />
+            <marker date="1509702479030" expanded="false" signature="3576:3799" ph="INSERT INTO discount... " />
+            <marker date="1509702479030" expanded="false" signature="4902:5104" ph="UPDATE disco... " />
+            <marker date="1509702479030" expanded="true" signature="6056:6089" ph="UPDATE disco... " />
+            <marker date="1509702479030" expanded="true" signature="6056:6103" ph="UPDATE disco... " />
+            <marker date="1509702479030" expanded="true" signature="6056:6141" ph="UPDATE disco... " />
+            <marker date="1509702479030" expanded="false" signature="6606:6641" ph="SELECT COUNT... discount" />
+            <marker date="1509702479030" expanded="false" signature="7294:7538" ph="SELECT id_di... discount" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="96" column="34" lean-forward="false" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+        <state relative-caret-position="100">
+          <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
           <folding>
+            <element signature="e#700#711#0" expanded="false" />
+            <element signature="e#883#884#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
             <element signature="method#index#0;class#DiscountController#0" expanded="false" />
             <element signature="method#create#0;class#DiscountController#0" expanded="false" />
+            <element signature="method#store#0;class#DiscountController#0" expanded="false" />
             <element signature="method#edit#0;class#DiscountController#0" expanded="false" />
             <element signature="method#update#0;class#DiscountController#0" expanded="false" />
+            <element signature="method#delete#0;class#DiscountController#0" expanded="false" />
             <element signature="method#paginate#0;class#DiscountController#0" expanded="false" />
           </folding>
         </state>
@@ -1157,9 +1038,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding>
-            <element signature="e#868#869#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>

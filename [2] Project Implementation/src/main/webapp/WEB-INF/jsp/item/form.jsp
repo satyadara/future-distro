@@ -40,12 +40,12 @@
                                 <%--</c:choose>--%>
                                 <c:forEach items="${types}" var="type">
                                     <c:choose>
-                                        <c:when test="${item.getType() == type.getIdItem_Type()}">
-                                            <option value="${type.getIdItem_Type()}" selected>${type.getNameItem_Type()}
+                                        <c:when test="${item.getType() == type.getId()}">
+                                            <option value="${type.getIdItem_Type()}" selected>${type.getName()}
                                             </option>
                                         </c:when>
                                         <c:otherwise>
-                                            <option value="${type.getIdItem_Type()}">${type.getNameItem_Type()}</option>
+                                            <option value="${type.getId()}">${type.getName()}</option>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
@@ -56,12 +56,12 @@
                             <select class="form-control" name="merk">
                                 <c:forEach items="${merks}" var="merk">
                                     <c:choose>
-                                        <c:when test="${item.getMerk() == merk.getIdItem_Merk()}">
-                                            <option value="${merk.getIdItem_Merk()}"
-                                                    selected>${merk.getNameItem_Merk()}</option>
+                                        <c:when test="${item.getMerk() == merk.getId()}">
+                                            <option value="${merk.getId()}"
+                                                    selected>${merk.getName()}</option>
                                         </c:when>
                                         <c:otherwise>
-                                            <option value="${merk.getIdItem_Merk()}">${merk.getNameItem_Merk()}</option>
+                                            <option value="${merk.getId()}">${merk.getName()}</option>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
@@ -114,12 +114,12 @@
                             <select class="form-control" name="color">
                                 <c:forEach items="${colors}" var="color">
                                     <c:choose>
-                                        <c:when test="${item.getColor() == color.getIdItem_Color()}">
-                                            <option value="${color.getIdItem_Color()}"
-                                                    selected>${color.getNameItem_Color()}</option>
+                                        <c:when test="${item.getColor() == color.getId()}">
+                                            <option value="${color.getId()}"
+                                                    selected>${color.getName()}</option>
                                         </c:when>
                                         <c:otherwise>
-                                            <option value="${color.getIdItem_Color()}">${color.getNameItem_Color()}</option>
+                                            <option value="${color.getId()}">${color.getName()}</option>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>

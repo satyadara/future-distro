@@ -156,14 +156,78 @@ public class UserDao {
         return status;
     }
 
+    //Mengedit user
+    public static  int editUser(User user, Role role) {
+
+        int status = 0;
+        String sql = "UPDATE users set namalengkap=?, username=?, password=?, alamat=?, ktp=?, telp=?, " +
+                "jeniskelamin=? WHERE username=?";
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getNamaLengkap());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, hashedPassword);
+            preparedStatement.setString(4, user.getAlamat());
+            preparedStatement.setString(5, user.getKtp());
+            preparedStatement.setString(6, user.getTelp());
+            preparedStatement.setString(7, user.getJenisKelamin());
+            preparedStatement.setString(8, user.getUsername());
+
+            status = preparedStatement.executeUpdate();
+            editUserRole(user.getUsername(), role.getRole());
+
+            System.out.println("Finished edit user");
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
+
+    //Mengedit user_roles
+    public static int editUserRole(String username, String role) {
+
+        int status = 0;
+
+        String sql = "UPDATE user_roles set username=?, role=? WHERE username=?";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, role);
+            preparedStatement.setString(3, username);
+
+            status = preparedStatement.executeUpdate();
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
+
     //Menampilkan semua user
     public static List<User> getAllUser() {
 
         List<User> userList = new ArrayList<User>();
 
-        String sql = "select users.namalengkap, users.username, users.alamat, users.ktp, users.telp, users.jeniskelamin, " +
+        String sql = "select users.namalengkap, users.username, users.alamat, users.ktp, users.telp, " +
+                "users.jeniskelamin, " +
                 "user_roles.role from users, user_roles where users.enabled = ? " +
-                "AND users.username=user_roles.username ORDER BY role;";
+                "AND users.username = user_roles.username ORDER BY role;";
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -193,11 +257,39 @@ public class UserDao {
         return userList;
     }
 
-    // TODO: Mengedit user
-    public static  int editUser(User user) {
+    //Menampilkan user berdasarkan username
+    public User getUserByUsername(String username) {
 
-        return 0;
+        User user = new User();
 
+        String sql = "select * from users where username=?";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                user.setNamaLengkap(resultSet.getString("namalengkap"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setAlamat(resultSet.getString("alamat"));
+                user.setKtp(resultSet.getString("ktp"));
+                user.setTelp(resultSet.getString("telp"));
+                user.setJenisKelamin(resultSet.getString("jeniskelamin"));
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return user;
     }
 
     //Menghapus user

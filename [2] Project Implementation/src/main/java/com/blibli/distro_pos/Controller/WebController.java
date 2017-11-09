@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 public class WebController {
 
-    @RequestMapping(value={"/","home"})
+    @RequestMapping(value={"/"})
     public String home(){
         return "home";
     }

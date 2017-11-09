@@ -75,6 +75,31 @@ public class WebController {
         return new ModelAndView("view_user", "userList", userList);
     }
 
+    @RequestMapping("/edit_user/{username}")
+    public ModelAndView editUser(@PathVariable("username") String username) {
+
+        User user = UserDao.getUserByUsername(username);
+
+        return new ModelAndView("edit_user", "user", user);
+    }
+
+    @RequestMapping(value = "/update")
+    public ModelAndView saveUpdate(@ModelAttribute("user") User user,
+                                   @ModelAttribute("role") Role role) {
+
+        int status = UserDao.editUser(user, role);
+
+        if (status == 1) {
+            System.out.println("Berhasil edit user");
+            return new ModelAndView("redirect:/view_user");
+        }
+        else {
+            System.out.println("Gagal edit user");
+            return new ModelAndView("redirect:/view_user");
+        }
+
+    }
+
     @GetMapping(value = "delete_user/{username}")
 //    public ModelAndView deleteUser(@ModelAttribute("user") User user) {
 

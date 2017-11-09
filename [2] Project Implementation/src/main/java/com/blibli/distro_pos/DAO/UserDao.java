@@ -258,7 +258,7 @@ public class UserDao {
     }
 
     //Menampilkan user berdasarkan username
-    public User getUserByUsername(String username) {
+    public static User getUserByUsername(String username) {
 
         User user = new User();
 

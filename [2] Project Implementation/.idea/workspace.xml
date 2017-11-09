@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4873c770-bcf0-4d4e-86ca-61b04789ebcd" name="Default" comment="" />
+    <list default="true" id="4873c770-bcf0-4d4e-86ca-61b04789ebcd" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/edit_user.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/edit_user.jsp" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,36 +17,89 @@
       <file leaf-file-name="WebController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            <state relative-caret-position="174">
+              <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
               <folding>
-                <element signature="e#444#445#0" expanded="true" />
-                <element signature="e#473#474#0" expanded="true" />
+                <element signature="e#835#836#0" expanded="true" />
+                <element signature="e#863#864#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2078">
-              <caret line="259" column="43" lean-forward="false" selection-start-line="259" selection-start-column="43" selection-end-line="259" selection-end-column="43" />
+            <state relative-caret-position="332">
+              <caret line="180" column="41" lean-forward="false" selection-start-line="180" selection-start-column="41" selection-end-line="180" selection-end-column="41" />
               <folding>
-                <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-                <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-                <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-                <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-                <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-                <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-                <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-                <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-                <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-                <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-                <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-                <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-                <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+                <element signature="e#7037#7043#0" expanded="true" />
+                <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+                <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+                <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+                <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+                <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+                <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+                <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+                <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+                <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+                <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+                <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+                <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+                <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="42" column="32" lean-forward="false" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="70" column="34" lean-forward="false" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="403.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/403.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_user.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/edit_user.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="920">
+              <caret line="76" column="68" lean-forward="false" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_user.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view_user.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="78" column="38" lean-forward="false" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,11 +109,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSP File" />
         <option value="Class" />
         <option value="Class" />
-        <option value="JSP File" />
         <option value="JUnit4 Test Class" />
+        <option value="JSP File" />
+        <option value="JSP File" />
       </list>
     </option>
   </component>
@@ -83,7 +138,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/css/creation.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/UserRole.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/WebMvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -95,9 +149,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_user.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/edit_user.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/403.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp" />
       </list>
     </option>
   </component>
@@ -435,12 +492,12 @@
       <workItem from="1509444763159" duration="1915000" />
       <workItem from="1509780356732" duration="286000" />
       <workItem from="1510051366994" duration="4797000" />
-      <workItem from="1510207866042" duration="73000" />
+      <workItem from="1510207866042" duration="5122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64195000" />
+    <option name="totallyTimeSpent" value="69244000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -457,6 +514,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32738096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -481,7 +539,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32738096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -556,20 +613,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -579,19 +629,20 @@
         <state relative-caret-position="2175">
           <caret line="153" column="47" lean-forward="true" selection-start-line="153" selection-start-column="47" selection-end-line="153" selection-end-column="47" />
           <folding>
-            <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-            <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-            <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-            <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-            <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+            <element signature="e#7037#7043#0" expanded="true" />
+            <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+            <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+            <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+            <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+            <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
           </folding>
         </state>
       </provider>
@@ -636,19 +687,20 @@
         <state relative-caret-position="2145">
           <caret line="150" column="51" lean-forward="false" selection-start-line="150" selection-start-column="51" selection-end-line="150" selection-end-column="51" />
           <folding>
-            <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-            <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-            <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-            <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-            <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+            <element signature="e#7037#7043#0" expanded="true" />
+            <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+            <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+            <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+            <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+            <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
           </folding>
         </state>
       </provider>
@@ -672,8 +724,8 @@
         <state relative-caret-position="1020">
           <caret line="87" column="59" lean-forward="false" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
           <folding>
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,8 +743,8 @@
         <state relative-caret-position="750">
           <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
           <folding>
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -716,19 +768,20 @@
         <state relative-caret-position="1650">
           <caret line="117" column="44" lean-forward="false" selection-start-line="117" selection-start-column="44" selection-end-line="117" selection-end-column="44" />
           <folding>
-            <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-            <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-            <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-            <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-            <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+            <element signature="e#7037#7043#0" expanded="true" />
+            <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+            <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+            <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+            <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+            <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
           </folding>
         </state>
       </provider>
@@ -738,7 +791,7 @@
         <state relative-caret-position="120">
           <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
           <folding>
-            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -756,19 +809,20 @@
         <state relative-caret-position="1590">
           <caret line="113" column="5" lean-forward="false" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
           <folding>
-            <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-            <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-            <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-            <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-            <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+            <element signature="e#7037#7043#0" expanded="true" />
+            <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+            <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+            <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+            <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+            <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
           </folding>
         </state>
       </provider>
@@ -793,19 +847,20 @@
         <state relative-caret-position="1290">
           <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
-            <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-            <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-            <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-            <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-            <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+            <element signature="e#7037#7043#0" expanded="true" />
+            <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+            <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+            <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+            <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+            <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
           </folding>
         </state>
       </provider>
@@ -838,13 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/403.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/WebMvcConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
@@ -852,13 +900,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="24" column="11" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="31" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -899,6 +940,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -906,14 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view_user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="78" column="38" lean-forward="true" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,62 +982,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        <state relative-caret-position="450">
+          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
           <folding>
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="62" lean-forward="false" selection-start-line="80" selection-start-column="62" selection-end-line="80" selection-end-column="62" />
+        <state relative-caret-position="150">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="108" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/WebController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        <state relative-caret-position="174">
+          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
           <folding>
-            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2078">
-          <caret line="259" column="43" lean-forward="false" selection-start-line="259" selection-start-column="43" selection-end-line="259" selection-end-column="43" />
+        <state relative-caret-position="332">
+          <caret line="180" column="41" lean-forward="false" selection-start-line="180" selection-start-column="41" selection-end-line="180" selection-end-column="41" />
           <folding>
-            <marker date="1510103445250" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
-            <marker date="1510103445250" expanded="true" signature="1995:2351" ph="create table... IF" />
-            <marker date="1510103445250" expanded="true" signature="2862:2999" ph="insert into users... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5037" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5088" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="4972:5105" ph="UPDATE users... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
-            <marker date="1510103445250" expanded="true" signature="7070:7349" ph="select users... users" />
-            <marker date="1510103445250" expanded="true" signature="8492:8528" ph="select * fro... users" />
-            <marker date="1510103445250" expanded="true" signature="10098:10145" ph="UPDATE users... " />
+            <element signature="e#7037#7043#0" expanded="true" />
+            <marker date="1510212469180" expanded="true" signature="1047:1519" ph="CREATE TABLE... IF" />
+            <marker date="1510212469180" expanded="true" signature="1995:2351" ph="create table... IF" />
+            <marker date="1510212469180" expanded="true" signature="2862:2999" ph="insert into users... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4337" ph="insert into user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4287:4338" ph="INSERT INTO user_roles... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5037" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5088" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="4972:5105" ph="UPDATE users... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6403" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="6363:6420" ph="UPDATE user_... " />
+            <marker date="1510212469180" expanded="true" signature="7070:7349" ph="select users... users" />
+            <marker date="1510212469180" expanded="true" signature="8499:8535" ph="select * fro... users" />
+            <marker date="1510212469180" expanded="true" signature="10105:10152" ph="UPDATE users... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/edit_user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="76" column="68" lean-forward="false" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/403.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view_user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="78" column="38" lean-forward="false" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="70" column="34" lean-forward="false" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="42" column="32" lean-forward="false" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

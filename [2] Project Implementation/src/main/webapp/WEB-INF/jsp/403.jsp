@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1 style="color: blue">Access is Denied!</h1>
+
 <a href="/">Go to homepage</a>
 </body>
 </html>

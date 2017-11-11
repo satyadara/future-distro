@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers().permitAll()
-                .antMatchers("/admin", "/add_user","/view_user").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/admin", "/add_user","/view_user" ).access("hasRole('ROLE_ADMIN')")
                 .and()
                 .formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password")

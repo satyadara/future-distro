@@ -43,7 +43,7 @@ public class UserDao {
                 "username varchar(20) NOT NULL," +
                 "password TEXT NOT NULL," +
                 "alamat TEXT NOT NULL," +
-                "ktp NUMERIC NOT NULL," +
+                "ktp VARCHAR(16) NOT NULL," +
                 "telp varchar(12) NOT NULL," +
                 "jeniskelamin CHAR(1)," +
                 "enabled boolean NOT NULL DEFAULT FALSE," +
@@ -73,7 +73,7 @@ public class UserDao {
                 "  username varchar(20) NOT NULL," +
                 "  role varchar(20) NOT NULL," +
                 "  UNIQUE (username,role)," +
-                "  FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE " +
+                "  FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE ON UPDATE CASCADE " +
                 ");";
 
         try {
@@ -157,7 +157,8 @@ public class UserDao {
     }
 
     //Mengedit user
-    public static  int editUser(User user, Role role) {
+    //Gagal ketika mengedit username
+    public static int editUser(User user, Role role) {
 
         int status = 0;
         String sql = "UPDATE users set namalengkap=?, username=?, password=?, alamat=?, ktp=?, telp=?, " +

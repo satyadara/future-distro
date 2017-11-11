@@ -87,6 +87,10 @@ public class WebController {
     public ModelAndView saveUpdate(@ModelAttribute("user") User user,
                                    @ModelAttribute("role") Role role) {
 
+        System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
+                ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
+                ", HP: " + user.getTelp() + ", Jenis Kelamin: " + user.getJenisKelamin());
+
         int status = UserDao.editUser(user, role);
 
         if (status == 1) {

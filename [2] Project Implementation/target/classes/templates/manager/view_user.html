@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Stok</a></li>
+            <li><a href="#">Diskon</a></li>
+            <li><a href="/view_user">Kasir</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Data Pengguna</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/add_user">
+                <button type="button" class="btn btn-default" style="float: right">Tambah Kasir</button>
+            </a>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="table-responsive col-md-12">
+
+            <table id="usertable" class="table table-bordered table-striped">
+
+                <thead>
+
+                <!--<th><input type="checkbox" id="checkall" /></th>-->
+                <th>Nama Lengkap</th>
+                <th>Username</th>
+                <th>Alamat</th>
+                <th>No KTP</th>
+                <th>No Telp</th>
+                <th>Jenis Kelamin</th>
+                <th>Role</th>
+                <th>Edit</th>
+
+                <th>Delete</th>
+                </thead>
+
+                <tbody>
+
+                <div>
+                    <th:block th:each="user : ${userList}">
+                        <tr>
+                            <td th:text="${user.namaLengkap}"></td>
+                            <td th:text="${user.username}"></td>
+                            <td th:text="${user.alamat}"></td>
+                            <td th:text="${user.ktp}"></td>
+                            <td th:text="${user.telp}"></td>
+                            <td th:text="${user.jenisKelamin}"></td>
+                            <td th:text="${user.role}"></td>
+                            <td><a th:href="@{/edit_user/{username}(username = ${user.username})}">edit</a></td>
+                            <td><a th:href="@{/delete_user/{username}(username = ${user.username})}">delete</a></td>
+                        </tr>
+                    </th:block>
+                </div>
+                <!--<th:forEach items="${userList}" var="user">-->
+                    <!---->
+                <!--</th:forEach>-->
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

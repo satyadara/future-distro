@@ -58,13 +58,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers().permitAll()
+//                .antMatchers().permitAll()
                 .antMatchers("/admin", "/add_user","/view_user" ).access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
                 .and()
-                .formLogin().loginPage("/login")
+                .formLogin().loginPage("/")
                 .usernameParameter("username").passwordParameter("password")
+                .defaultSuccessUrl("/success")
                 .and()
-                .logout().logoutSuccessUrl("/login?logout")
+                .logout().logoutSuccessUrl("/logout")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()

@@ -3,6 +3,7 @@ package com.blibli.distro_pos.Controller;
 import com.blibli.distro_pos.DAO.UserDao;
 import com.blibli.distro_pos.Model.Role;
 import com.blibli.distro_pos.Model.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,7 +15,7 @@ public class WebController {
 
     @RequestMapping(value={"/"})
     public String home(){
-        return "home";
+        return "login";
     }
 
     @RequestMapping(value={"/dashboard"})
@@ -23,14 +24,17 @@ public class WebController {
     }
 
     @RequestMapping(value="/admin")
-    public String admin(){
-        return "admin";
+    public ModelAndView admin(Authentication authentication){
+
+        String username = authentication.getName();
+
+        return new ModelAndView("manager/admin", "username", username);
     }
 
-    @RequestMapping(value={"/login"})
-    public String login(){
-        return "login";
-    }
+//    @RequestMapping(value={"/login"})
+//    public String login(){
+//        return "login";
+//    }
 
 
     @RequestMapping(value="/403")
@@ -72,15 +76,21 @@ public class WebController {
 
         List<User> userList = UserDao.getAllUser();
 
-        return new ModelAndView("view_user", "userList", userList);
+        return new ModelAndView("manager/view_user", "userList", userList);
     }
 
     @RequestMapping("/edit_user/{username}")
     public ModelAndView editUser(@PathVariable("username") String username) {
 
         User user = UserDao.getUserByUsername(username);
+        String role = UserDao.getUserRoleByUsername(user.getUsername());
 
-        return new ModelAndView("edit_user", "user", user);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("edit_user");
+        mav.addObject("user", user);
+        mav.addObject("role", role);
+
+        return mav;
     }
 
     @RequestMapping(value = "/update")

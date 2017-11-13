@@ -293,6 +293,32 @@ public class UserDao {
         return user;
     }
 
+    public static String getUserRoleByUsername(String username) {
+
+        String role = "";
+        String sql = "SELECT role FROM user_roles WHERE  username=?";
+
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                role = resultSet.getString("role");
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return role;
+    }
+
     //Menghapus user
     public static int deleteUser(String username) {
 

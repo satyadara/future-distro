@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>HALO INI HOMEPAGE</h1>
-    <a href="/welcome">Go to User Welcome Page</a>
+    <a href="/dashboard">Go to User Welcome Page</a>
     <br>
     <a href="/admin">Go to Admin Page</a>
 

@@ -30,11 +30,16 @@ public class DiscountController {
         ModelAndView modelAndView = new ModelAndView("discount/index");
         List<Discount> discountList;
         int count;
+        int pageCount;
+        int currentPage = 1;
         try {
-            discountList = discountDAO.getAll();
+            discountList = discountDAO.paginate(currentPage);
             count = discountDAO.count();
+            pageCount = (count / 10) + 1;
             modelAndView.addObject("discounts", discountList);
             modelAndView.addObject("count", count);
+            modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("pages", pageCount);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -46,7 +51,7 @@ public class DiscountController {
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("discount/form");
         Discount discount = new Discount();
-        modelAndView.addObject("dicsount", discount);
+        modelAndView.addObject("discount", discount);
         return modelAndView;
     }
 
@@ -92,7 +97,7 @@ public class DiscountController {
 
     @RequestMapping(value = "/{id}/delete", method = GET)
     public ModelAndView delete(@PathVariable("id") String id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        ModelAndView modelAndView = new ModelAndView("redirect:/discount");
         try {
             discountDAO.softDelete(id);
         } catch (Exception e) {
@@ -101,9 +106,35 @@ public class DiscountController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/{id}/active", method = GET)
+    public ModelAndView active(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/discount");
+        try {
+            discountDAO.setActive(id);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/page/{page}", method = GET)
     public ModelAndView paginate(@PathVariable("page") int page) {
-        ModelAndView modelAndView = new ModelAndView("discount/form");
+        ModelAndView modelAndView = new ModelAndView("discount/index");
+        List<Discount> discountList;
+        int count;
+        int pageCount;
+        int currentPage = page;
+        try {
+            discountList = discountDAO.paginate(currentPage);
+            count = discountDAO.count();
+            pageCount = (count / 10) + 1;
+            modelAndView.addObject("discounts", discountList);
+            modelAndView.addObject("count", count);
+            modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("pages", pageCount);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
         return modelAndView;
     }
 }

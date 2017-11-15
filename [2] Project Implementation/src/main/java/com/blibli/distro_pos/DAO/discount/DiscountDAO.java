@@ -103,7 +103,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
             preparedStatement.setString(6, discount.getStart_date());
             preparedStatement.setString(7, discount.getEnd_date());
             preparedStatement.setString(8, discount.getStatus());
-            preparedStatement.executeQuery();
+            preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#INSERT# something error : " + e.toString());
@@ -126,7 +126,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
             preparedStatement.setString(4, discount.getStart_date());
             preparedStatement.setString(5, discount.getEnd_date());
             preparedStatement.setString(6, discount.getId_disc());
-            preparedStatement.executeQuery();
+            preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#UPDATE# something error : " + e.toString());
@@ -135,14 +135,36 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
 
     @Override
     public void delete(String id) {
-
+        String sql = "DELETE FROM discount " +
+                "WHERE id_disc = ?;";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#DELETE# something error : " + e.toString());
+        }
     }
 
     @Override
     public void softDelete(String id) {
-
+        String sql = "UPDATE discount SET status_disc = 'Tidak Aktif'" +
+                "WHERE id_disc = ?;";
+        System.out.println(sql);
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#SOFT DELETE# something error : " + e.toString());
+        }
     }
 
+    @Override
     public int count() {
         String sql = "SELECT COUNT(id_disc) FROM discount;";
         int count = 0;
@@ -155,7 +177,6 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
                     count = rs.getInt("count");
                 }
             }
-            preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());
@@ -164,15 +185,17 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         return count;
     }
 
+    @Override
     public List<Discount> paginate(int page) {
         String sql = "SELECT id_disc, id_emp, name_disc, description, percentage, " +
                 "TO_CHAR(start_date, 'DD/MM/YYYY') AS start_date, " +
-                "TO_CHAR(end_date,  'DD/MM/YYYY') AS end_date, status_disc FROM discount ORDER DESC BY id_disc;";
+                "TO_CHAR(end_date,  'DD/MM/YYYY') AS end_date, status_disc FROM discount ORDER BY id_disc DESC LIMIT 10 OFFSET ?;";
         List<Discount> discountList = new ArrayList<>();
         try {
             this.connect();
-            Statement statement = this.con.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setInt(1, page - 1);
+            ResultSet rs = preparedStatement.executeQuery();
             if (rs != null) {
                 System.out.println("get discount page " + page + "\t:");
                 while (rs.next()) {
@@ -196,5 +219,20 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         }
 
         return discountList;
+    }
+
+    public void setActive(String id) {
+        String sql = "UPDATE discount SET status_disc = 'Aktif' " +
+                "WHERE id_disc = ?;";
+        System.out.println(sql);
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#SET ACTIVE# something error : " + e.toString());
+        }
     }
 }

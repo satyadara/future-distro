@@ -30,10 +30,16 @@ public class OutcomeController {
         ModelAndView modelAndView = new ModelAndView("outcome/index");
         List<Outcome> outcomeList;
         int currentPage = 1;
+        int pageCount;
+        int outcomeCount;
         try {
             outcomeList = outcomeDAO.paginate(currentPage);
+            outcomeCount = outcomeDAO.count();
+            pageCount = (outcomeCount / 10) + 1;
             modelAndView.addObject("outcomes", outcomeList);
             modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("count", outcomeCount);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -53,6 +59,7 @@ public class OutcomeController {
     public ModelAndView store(@ModelAttribute("outcome") Outcome outcome) {
         ModelAndView modelAndView = new ModelAndView("redirect:/outcome");
         try {
+            outcome.setId_emp("EMP-1002");
             outcomeDAO.save(outcome);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
@@ -66,6 +73,7 @@ public class OutcomeController {
         Outcome outcome;
         try {
             outcome = outcomeDAO.getOne(id);
+            System.out.println(outcome.getDate());
             modelAndView.addObject("outcome", outcome);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
@@ -78,6 +86,7 @@ public class OutcomeController {
         ModelAndView modelAndView = new ModelAndView("redirect:/outcome");
         try {
             outcomeDAO.update(outcome);
+            System.out.println(outcome.getDate());
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -88,7 +97,18 @@ public class OutcomeController {
     public ModelAndView delete(@PathVariable("id") String id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/outcome");
         try {
-            outcomeDAO.delete(id);
+            outcomeDAO.softDelete(id);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/{id}/active", method = GET)
+    public ModelAndView active(@PathVariable("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/outcome");
+        try {
+            outcomeDAO.setActive(id);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -100,10 +120,16 @@ public class OutcomeController {
         ModelAndView modelAndView = new ModelAndView("outcome/index");
         List<Outcome> outcomeList;
         int currentPage = page;
+        int pageCount;
+        int outcomeCount;
         try {
             outcomeList = outcomeDAO.paginate(currentPage);
+            outcomeCount = outcomeDAO.count();
+            pageCount = (outcomeCount / 10) + 1;
             modelAndView.addObject("outcomes", outcomeList);
+            modelAndView.addObject("count", outcomeCount);
             modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("pages", pageCount);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }

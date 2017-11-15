@@ -13,13 +13,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Pengeluaran( ${count} )</h1>
+            <h1>Diskon( ${count} )</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href="${pageContext.request.contextPath}/outcome/create">
-                <button class="btn btn-default" style="float: right;">+Tambah Pengeluaran</button>
+            <a href="${pageContext.request.contextPath}/discount/create">
+                <button class="btn btn-default" style="float: right;">+Tambah Diskon</button>
             </a>
         </div>
     </div>
@@ -29,28 +29,28 @@
             <table class="table table-striped table-bordered table-responsive" id="mTable">
                 <tr>
                     <th>ID</th>
-                    <th>Judul</th>
-                    <th>Pengeluaran</th>
-                    <th>Kuantitas</th>
-                    <th>Tanggal</th>
-                    <th>Deskripsi</th>
-                    <th>Aksi</th>
+                    <th>Nama</th>
+                    <th>Persentasi</th>
+                    <th>Mulai</th>
+                    <th>Berakhir</th>
+                    <th>Status</th>
+                    <th>Pilhan</th>
                 </tr>
 
-                <c:forEach items="${doutcomes}" var="outcome">
+                <c:forEach items="${discounts}" var="discount">
                     <tr>
-                        <td>${outcome.getId_outcome()}</td>
-                        <td>${outcome.getTitle()}</td>
-                        <td>${outcome.getAmount()}</td>
-                        <td>${outcome.getQuantity()}</td>
-                        <td>${outcome.getDate()}</td>
-                        <td>${outcome.getDesc()}</td>
+                        <td>${discount.getId_disc()}</td>
+                        <td>${discount.getName()}</td>
+                        <td>${discount.getPercentage()}</td>
+                        <td>${discount.getStart_date()}</td>
+                        <td>${discount.getEnd_date()}</td>
+                        <td>${discount.getStatus()}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/outcome/${outcome.getId_outcome()}/edit">
+                            <a href="${pageContext.request.contextPath}/discount/${discount.getId_disc()}/edit">
                                 Edit
                             </a>
                             |
-                            <a href="${pageContext.request.contextPath}/outcome/${outcome.getId_outcome()}/delete">
+                            <a href="${pageContext.request.contextPath}/discount/${discount.getId_disc()}/delete">
                                 Delete
                             </a>
                         </td>

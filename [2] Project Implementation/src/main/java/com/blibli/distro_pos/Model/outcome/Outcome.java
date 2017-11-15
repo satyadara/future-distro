@@ -8,11 +8,13 @@ public class Outcome {
     private int quantity;
     private String date;
     private String desc;
+    private String status;
 
     public Outcome() {
     }
 
-    public Outcome(String id_outcome, String id_emp, String title, double amount, int quantity, String date, String desc) {
+    public Outcome(String id_outcome, String id_emp, String title, double amount,
+                   int quantity, String date, String desc, String status) {
         this.setId_outcome(id_outcome);
         this.setId_emp(id_emp);
         this.setTitle(title);
@@ -20,6 +22,7 @@ public class Outcome {
         this.setQuantity(quantity);
         this.setDate(date);
         this.setDesc(desc);
+        this.setStatus(status);
     }
 
     public String getId_outcome() {
@@ -42,7 +45,7 @@ public class Outcome {
         return title;
     }
 
-    public void setTitle(String id_emp) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -76,5 +79,13 @@ public class Outcome {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

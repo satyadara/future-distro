@@ -17,7 +17,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
     @Override
     public List<Outcome> getAll() {
         String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
-                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out FROM outcome ORDER BY id_outcome;";
+                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome;";
         List<Outcome> outcomeList = new ArrayList<>();
         try {
             this.connect();
@@ -32,7 +32,8 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
                             rs.getDouble("amount_out"),
                             rs.getInt("quantity_out"),
                             rs.getString("date_out"),
-                            rs.getString("desc_out")
+                            rs.getString("desc_out"),
+                            rs.getString("status")
                     );
                     outcomeList.add(outcome);
                 }
@@ -48,8 +49,8 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
     @Override
     public Outcome getOne(String id) {
         String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
-                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out FROM outcome " +
-                "WHERE id_outcome = ? ORDER BY id_outcome;";
+                "TO_CHAR(date_out, 'YYYY-MM-DD') AS date_out, desc_out, status FROM outcome " +
+                "WHERE id_outcome = ?;";
         Outcome outcome = new Outcome();
         try {
             this.connect();
@@ -65,13 +66,14 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
                             rs.getDouble("amount_out"),
                             rs.getInt("quantity_out"),
                             rs.getString("date_out"),
-                            rs.getString("desc_out")
+                            rs.getString("desc_out"),
+                            rs.getString("status")
                     );
                 }
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+            System.out.println("#GET# something error : " + e.toString());
         }
 
         return outcome;
@@ -99,8 +101,8 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
 
     @Override
     public void update(Outcome outcome) {
-        String sql = "UPDATE outcome SET title_out = ?, amount_out = ?, quantity_out = ?, date_out = ?, desc_out = ? " +
-                "WHERE id_outcome = ?;";
+        String sql = "UPDATE outcome SET title_out = ?, amount_out = ?, quantity_out = ?, date_out = TO_DATE(?, 'YYYY-MM-DD')   , desc_out = ? " +
+                " WHERE id_outcome = ?;";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
@@ -119,11 +121,32 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
 
     @Override
     public void delete(String id) {
-
+        String sql = "DELETE FROM outcome " +
+                "WHERE id_outcome = ?;";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#DELETE# something error : " + e.toString());
+        }
     }
 
     @Override
     public void softDelete(String id) {
+        String sql = "UPDATE outcome SET status = 'Tidak Aktif' " +
+                "WHERE id_outcome = ?;";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#SOFT.DELETE# something error : " + e.toString());
+        }
     }
 
     @Override
@@ -133,7 +156,12 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         try {
             this.connect();
             Statement statement = this.con.createStatement();
-            statement.execute(sql);
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    count = rs.getInt("count");
+                }
+            }
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());
@@ -144,13 +172,13 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
     @Override
     public List<Outcome> paginate(int page) {
         String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
-                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out FROM outcome ORDER BY id_outcome " +
+                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome " +
                 "LIMIT 10 OFFSET ?;";
         List<Outcome> outcomeList = new ArrayList<>();
         try {
             this.connect();
             int offset = (page - 1) * 10;
-            PreparedStatement preparedStatement= this.con.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs != null) {
@@ -162,7 +190,8 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
                             rs.getDouble("amount_out"),
                             rs.getInt("quantity_out"),
                             rs.getString("date_out"),
-                            rs.getString("desc_out")
+                            rs.getString("desc_out"),
+                            rs.getString("status")
                     );
                     outcomeList.add(outcome);
                 }
@@ -173,5 +202,19 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         this.disconnect();
 
         return outcomeList;
+    }
+
+    public void setActive(String id) {
+        String sql = "UPDATE outcome SET status = 'Aktif' " +
+                "WHERE id_outcome = ?;";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#SET ACTIVE# something error : " + e.toString());
+        }
     }
 }

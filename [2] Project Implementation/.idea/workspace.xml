@@ -71,21 +71,21 @@
             <state relative-caret-position="136">
               <caret line="177" column="124" lean-forward="false" selection-start-line="177" selection-start-column="124" selection-end-line="177" selection-end-column="124" />
               <folding>
-                <marker date="1510763036324" expanded="true" signature="458:548" ph="SELECT id_it... " />
-                <marker date="1510763036324" expanded="true" signature="458:614" ph="SELECT id_it... " />
-                <marker date="1510763036324" expanded="true" signature="458:671" ph="SELECT id_it... item" />
-                <marker date="1510763036324" expanded="true" signature="458:800" ph="SELECT id_it... item" />
-                <marker date="1510763036324" expanded="true" signature="458:891" ph="SELECT id_it... item" />
-                <marker date="1510763036324" expanded="true" signature="507:522" ph="SELECT name_... item_merk" />
-                <marker date="1510763036324" expanded="true" signature="618:633" ph="SELECT name_... item_type" />
-                <marker date="1510763036324" expanded="true" signature="2195:2242" ph="SELECT * FRO... item" />
-                <marker date="1510763036324" expanded="true" signature="3539:3752" ph="INSERT INTO item... " />
-                <marker date="1510763036324" expanded="true" signature="4820:4982" ph="UPDATE item " />
-                <marker date="1510763036324" expanded="true" signature="5872:5917" ph="DELETE FROM " />
-                <marker date="1510763036324" expanded="true" signature="6367:6439" ph="UPDATE item " />
-                <marker date="1510763036324" expanded="true" signature="6842:6873" ph="SELECT COUNT... item" />
-                <marker date="1510763036324" expanded="true" signature="7412:7873" ph="SELECT id_it... item" />
-                <marker date="1510763036324" expanded="true" signature="9442:9508" ph="UPDATE item " />
+                <marker date="1510765579156" expanded="true" signature="458:548" ph="SELECT id_it... " />
+                <marker date="1510765579156" expanded="true" signature="458:614" ph="SELECT id_it... " />
+                <marker date="1510765579156" expanded="true" signature="458:671" ph="SELECT id_it... item" />
+                <marker date="1510765579156" expanded="true" signature="458:800" ph="SELECT id_it... item" />
+                <marker date="1510765579156" expanded="true" signature="458:891" ph="SELECT id_it... item" />
+                <marker date="1510765579156" expanded="true" signature="507:522" ph="SELECT name_... item_merk" />
+                <marker date="1510765579156" expanded="true" signature="618:633" ph="SELECT name_... item_type" />
+                <marker date="1510765579156" expanded="true" signature="2195:2242" ph="SELECT * FRO... item" />
+                <marker date="1510765579156" expanded="true" signature="3539:3752" ph="INSERT INTO item... " />
+                <marker date="1510765579156" expanded="true" signature="4820:4982" ph="UPDATE item " />
+                <marker date="1510765579156" expanded="true" signature="5872:5917" ph="DELETE FROM " />
+                <marker date="1510765579156" expanded="true" signature="6367:6439" ph="UPDATE item " />
+                <marker date="1510765579156" expanded="true" signature="6842:6873" ph="SELECT COUNT... item" />
+                <marker date="1510765579156" expanded="true" signature="7412:7873" ph="SELECT id_it... item" />
+                <marker date="1510765579156" expanded="true" signature="9442:9508" ph="UPDATE item " />
               </folding>
             </state>
           </provider>
@@ -94,8 +94,8 @@
       <file leaf-file-name="form.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="104" column="51" lean-forward="true" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+            <state relative-caret-position="1751">
+              <caret line="103" column="53" lean-forward="true" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -115,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="856">
-              <caret line="54" column="28" lean-forward="true" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+              <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -125,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+              <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
               <folding>
                 <element signature="e#754#765#0" expanded="false" />
                 <element signature="method#ItemController#0;class#ItemController#0" expanded="false" />
@@ -166,7 +166,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/discount/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="261">
-              <caret line="77" column="18" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="77" selection-end-column="18" />
+              <caret line="77" column="18" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="77" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -448,6 +448,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="item" type="462c0819:PsiDirectoryNode" />
+              <item name="sub" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="outcome" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -676,7 +686,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115411000" />
+    <option name="totallyTimeSpent" value="115654000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -689,7 +699,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -706,7 +715,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32605305" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2408492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2408492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29648608" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -830,6 +839,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2374">
           <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -932,6 +942,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -939,6 +950,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="40" lean-forward="false" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -990,15 +1002,15 @@
             <element signature="method#count#0;class#OutcomeDAO#0" expanded="false" />
             <element signature="method#paginate#0;class#OutcomeDAO#0" expanded="false" />
             <element signature="method#setActive#0;class#OutcomeDAO#0" expanded="false" />
-            <marker date="1510748306678" expanded="false" signature="547:725" ph="SELECT id_ou... outcome" />
-            <marker date="1510748306678" expanded="false" signature="1852:2052" ph="SELECT id_ou... outcome" />
-            <marker date="1510748306678" expanded="false" signature="3183:3337" ph="INSERT INTO outcome... " />
-            <marker date="1510748306678" expanded="false" signature="4124:4287" ph="UPDATE outco... " />
-            <marker date="1510748306678" expanded="false" signature="5074:5135" ph="DELETE FROM " />
-            <marker date="1510748306678" expanded="false" signature="5586:5669" ph="UPDATE outco... " />
-            <marker date="1510748306678" expanded="false" signature="6110:6147" ph="SELECT COUNT... outcome" />
-            <marker date="1510748306678" expanded="false" signature="6741:6958" ph="SELECT id_ou... outcome" />
-            <marker date="1510748306678" expanded="false" signature="8187:8264" ph="UPDATE outco... " />
+            <marker date="1510765579180" expanded="false" signature="547:725" ph="SELECT id_ou... outcome" />
+            <marker date="1510765579180" expanded="false" signature="1852:2052" ph="SELECT id_ou... outcome" />
+            <marker date="1510765579180" expanded="false" signature="3183:3337" ph="INSERT INTO outcome... " />
+            <marker date="1510765579180" expanded="false" signature="4124:4287" ph="UPDATE outco... " />
+            <marker date="1510765579180" expanded="false" signature="5074:5135" ph="DELETE FROM " />
+            <marker date="1510765579180" expanded="false" signature="5586:5669" ph="UPDATE outco... " />
+            <marker date="1510765579180" expanded="false" signature="6110:6147" ph="SELECT COUNT... outcome" />
+            <marker date="1510765579180" expanded="false" signature="6741:6958" ph="SELECT id_ou... outcome" />
+            <marker date="1510765579180" expanded="false" signature="8187:8264" ph="UPDATE outco... " />
           </folding>
         </state>
       </provider>
@@ -1027,17 +1039,17 @@
         <state relative-caret-position="74">
           <caret line="190" column="69" lean-forward="true" selection-start-line="190" selection-start-column="69" selection-end-line="190" selection-end-column="69" />
           <folding>
-            <marker date="1510759430611" expanded="true" signature="553:792" ph="SELECT id_di... discount" />
-            <marker date="1510759430611" expanded="true" signature="553:797" ph="SELECT id_di... discount" />
-            <marker date="1510759430611" expanded="true" signature="2071:2376" ph="SELECT id_di... discount" />
-            <marker date="1510759430611" expanded="true" signature="3576:3799" ph="INSERT INTO discount... " />
-            <marker date="1510759430611" expanded="true" signature="4897:5099" ph="UPDATE disco... " />
-            <marker date="1510759430611" expanded="true" signature="5984:6043" ph="DELETE FROM " />
-            <marker date="1510759430611" expanded="true" signature="6494:6579" ph="UPDATE disco... " />
-            <marker date="1510759430611" expanded="true" signature="7053:7088" ph="SELECT COUNT... discount" />
-            <marker date="1510759430611" expanded="true" signature="7709:7948" ph="SELECT id_di... discount" />
-            <marker date="1510759430611" expanded="true" signature="7709:7971" ph="SELECT id_di... discount" />
-            <marker date="1510759430611" expanded="true" signature="9321:9401" ph="UPDATE disco... " />
+            <marker date="1510765579165" expanded="true" signature="553:792" ph="SELECT id_di... discount" />
+            <marker date="1510765579165" expanded="true" signature="553:797" ph="SELECT id_di... discount" />
+            <marker date="1510765579165" expanded="true" signature="2071:2376" ph="SELECT id_di... discount" />
+            <marker date="1510765579165" expanded="true" signature="3576:3799" ph="INSERT INTO discount... " />
+            <marker date="1510765579165" expanded="true" signature="4897:5099" ph="UPDATE disco... " />
+            <marker date="1510765579165" expanded="true" signature="5984:6043" ph="DELETE FROM " />
+            <marker date="1510765579165" expanded="true" signature="6494:6579" ph="UPDATE disco... " />
+            <marker date="1510765579165" expanded="true" signature="7053:7088" ph="SELECT COUNT... discount" />
+            <marker date="1510765579165" expanded="true" signature="7709:7948" ph="SELECT id_di... discount" />
+            <marker date="1510765579165" expanded="true" signature="7709:7971" ph="SELECT id_di... discount" />
+            <marker date="1510765579165" expanded="true" signature="9321:9401" ph="UPDATE disco... " />
           </folding>
         </state>
       </provider>
@@ -1094,7 +1106,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
             <element signature="e#754#765#0" expanded="false" />
             <element signature="method#ItemController#0;class#ItemController#0" expanded="false" />
@@ -1135,21 +1147,21 @@
         <state relative-caret-position="136">
           <caret line="177" column="124" lean-forward="false" selection-start-line="177" selection-start-column="124" selection-end-line="177" selection-end-column="124" />
           <folding>
-            <marker date="1510763036324" expanded="true" signature="458:548" ph="SELECT id_it... " />
-            <marker date="1510763036324" expanded="true" signature="458:614" ph="SELECT id_it... " />
-            <marker date="1510763036324" expanded="true" signature="458:671" ph="SELECT id_it... item" />
-            <marker date="1510763036324" expanded="true" signature="458:800" ph="SELECT id_it... item" />
-            <marker date="1510763036324" expanded="true" signature="458:891" ph="SELECT id_it... item" />
-            <marker date="1510763036324" expanded="true" signature="507:522" ph="SELECT name_... item_merk" />
-            <marker date="1510763036324" expanded="true" signature="618:633" ph="SELECT name_... item_type" />
-            <marker date="1510763036324" expanded="true" signature="2195:2242" ph="SELECT * FRO... item" />
-            <marker date="1510763036324" expanded="true" signature="3539:3752" ph="INSERT INTO item... " />
-            <marker date="1510763036324" expanded="true" signature="4820:4982" ph="UPDATE item " />
-            <marker date="1510763036324" expanded="true" signature="5872:5917" ph="DELETE FROM " />
-            <marker date="1510763036324" expanded="true" signature="6367:6439" ph="UPDATE item " />
-            <marker date="1510763036324" expanded="true" signature="6842:6873" ph="SELECT COUNT... item" />
-            <marker date="1510763036324" expanded="true" signature="7412:7873" ph="SELECT id_it... item" />
-            <marker date="1510763036324" expanded="true" signature="9442:9508" ph="UPDATE item " />
+            <marker date="1510765579156" expanded="true" signature="458:548" ph="SELECT id_it... " />
+            <marker date="1510765579156" expanded="true" signature="458:614" ph="SELECT id_it... " />
+            <marker date="1510765579156" expanded="true" signature="458:671" ph="SELECT id_it... item" />
+            <marker date="1510765579156" expanded="true" signature="458:800" ph="SELECT id_it... item" />
+            <marker date="1510765579156" expanded="true" signature="458:891" ph="SELECT id_it... item" />
+            <marker date="1510765579156" expanded="true" signature="507:522" ph="SELECT name_... item_merk" />
+            <marker date="1510765579156" expanded="true" signature="618:633" ph="SELECT name_... item_type" />
+            <marker date="1510765579156" expanded="true" signature="2195:2242" ph="SELECT * FRO... item" />
+            <marker date="1510765579156" expanded="true" signature="3539:3752" ph="INSERT INTO item... " />
+            <marker date="1510765579156" expanded="true" signature="4820:4982" ph="UPDATE item " />
+            <marker date="1510765579156" expanded="true" signature="5872:5917" ph="DELETE FROM " />
+            <marker date="1510765579156" expanded="true" signature="6367:6439" ph="UPDATE item " />
+            <marker date="1510765579156" expanded="true" signature="6842:6873" ph="SELECT COUNT... item" />
+            <marker date="1510765579156" expanded="true" signature="7412:7873" ph="SELECT id_it... item" />
+            <marker date="1510765579156" expanded="true" signature="9442:9508" ph="UPDATE item " />
           </folding>
         </state>
       </provider>
@@ -1157,7 +1169,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/discount/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
-          <caret line="77" column="18" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="77" selection-end-column="18" />
+          <caret line="77" column="18" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="77" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1165,7 +1177,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="856">
-          <caret line="54" column="28" lean-forward="true" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1214,8 +1226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="104" column="51" lean-forward="true" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+        <state relative-caret-position="1751">
+          <caret line="103" column="53" lean-forward="true" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
           <folding />
         </state>
       </provider>

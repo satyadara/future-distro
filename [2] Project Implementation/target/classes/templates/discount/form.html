@@ -1,73 +1,69 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Manager - Tambah Diskon</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/creation.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/creation.css"/>
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <h1>Stok Barang</h1>
+        <h1>Tambah Diskon</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form class="form" method="post">
-                        <input type="text" name="id_disc" value="${discount.getId_disc()}" hidden>
-                        <input type="text" name="id_emp" value="${discount.getId_emp()}" hidden>
+                    <form class="form" th:method="post" th:object="${discount}">
+                        <input type="text" name="id_disc" th:field="*{id_disc}" hidden="hidden"/>
+                        <input type="text" name="id_emp" th:field="*{id_emp}" hidden="hidden"/>
                         <div class="form-group col-md-12">
                             <label>Nama Diskon</label>
-                            <input type="text" name="name" class="form-control" value="${discount.getName()}">
+                            <input type="text" name="name" class="form-control" th:field="*{name}"/>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Presentase</label>
-                            <input type="number" name="percentage" class="form-control"
-                                   value="${ discount.getPercentage()}">
+                            <input type="number" name="percentage" step="0.01" class="form-control"
+                                   th:field="*{percentage}"/>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Tanggal Mulai</label>
                             <input type="date" name="start_date" class="form-control"
-                                   value="${discount.getStart_date()}">
+                                   th:field="*{start_date}"/>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Tanggal Selesai</label>
-                            <input type="date" name="end_date" class="form-control" value="${discount.getEnd_date()}">
+                            <input type="date" name="end_date" class="form-control" th:field="*{end_date}"/>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Deskripsi</label>
-                            <input type="text" name="desc" class="form-control" value="${discount.getDesc()}">
+                            <input type="text" name="desc" class="form-control" th:field="*{desc}"/>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Status</label>
                             <select class="form-control" name="status">
-                                <c:choose>
-                                    <c:when test="${discount.getStatus() == 'Aktif'}">
-                                        <option selected>Aktif</option>
+                                <th:block th:switch="*{status}">
+                                    <th:block th:case="'Aktif'">
+                                        <option selected="selected">Aktif</option>
                                         <option>Tidak Aktif</option>
                                         <option>Menunggu</option>
-                                    </c:when>
-                                    <c:when test="${discount.getStatus() == 'Tidak Aktif'}">
+                                    </th:block>
+                                    <th:block th:case="'Tidak Aktif'">
                                         <option>Aktif</option>
-                                        <option selected>Tidak Aktif</option>
+                                        <option selected="selected">Tidak Aktif</option>
                                         <option>Menunggu</option>
-                                    </c:when>
-                                    <c:when test="${discount.getStatus() == 'Menunggu'}">
+                                    </th:block>
+                                    <th:block th:case="'Menunggu'">
                                         <option>Aktif</option>
                                         <option>Tidak Aktif</option>
-                                        <option selected>Menunggu</option>
-                                    </c:when>
-                                    <c:otherwise>
+                                        <option selected="selected">Menunggu</option>
+                                    </th:block>
+                                    <th:block th:case="*">
                                         <option>Aktif</option>
                                         <option>Tidak Aktif</option>
                                         <option>Menunggu</option>
-                                    </c:otherwise>
-                                </c:choose>
+                                    </th:block>
+                                </th:block>
                             </select>
                         </div>
                         <div class="col-md-12">

@@ -13,11 +13,10 @@ import java.util.List;
 public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
     @Override
     public List<Item> getAll() {
-        String sql = "SELECT id_item, id_emp, name_item, price_item, "
-                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
-                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
-                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item ORDER BY id_item;";
-//        String sql = "SELECT * FROM item ORDER BY id_item;";
+        String sql = "SELECT id_item, id_emp, name_item, price_item, im.name_item_merk AS merk_item, stock_item,  " +
+                "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
+                "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
+                "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item;";
         List<Item> itemList = new ArrayList<>();
         try {
             Statement statement = this.con.createStatement();
@@ -50,10 +49,6 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
 
     @Override
     public Item getOne(String id) {
-//        String sql = "SELECT id_item, id_emp, name_item, price_item, "
-//                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
-//                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
-//                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item FROM item WHERE id_item = '" + id + "';";
         String sql = "SELECT * FROM item WHERE id_item = '" + id + "';";
         Item item = new Item();
         try {
@@ -86,12 +81,6 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
 
     @Override
     public void save(Item item) {
-
-//        String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, merk_item, color_item, size_item, type_item, status_item, stock_item) "
-//                + "VALUES (nextval('sec_item') || ?,?,?,?,"
-//                + "(SELECT id_item_merk FROM item_merk WHERE name_item_merk = ?),"
-//                + "(SELECT id_item_color FROM item_color WHERE name_item_color = ?),?,"
-//                + "(SELECT id_item_type FROM item_type WHERE name_item_type= ?),?,?);";
         String sql = "INSERT INTO item(id_item, id_emp, name_item, price_item, image_item, merk_item, color_item, size_item, type_item, status_item, stock_item) " +
                 "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?,?,?)";
         try {
@@ -101,7 +90,6 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             preparedStatement.setString(2, item.getId_emp());
             preparedStatement.setString(3, item.getName_item());
             preparedStatement.setFloat(4, item.getPrice());
-//            preparedStatement.setString(5, item.getImage());
             preparedStatement.setString(5, item.getImage());
             preparedStatement.setString(6, item.getMerk());
             preparedStatement.setString(7, item.getColor());
@@ -110,7 +98,6 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             preparedStatement.setString(10, "Aktif");
             preparedStatement.setInt(11, item.getStock());
             preparedStatement.execute();
-            System.out.println("Success insert item : " + item.getId_item());
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#INSERT# something error :" + e.toString());
@@ -133,7 +120,6 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             preparedStatement.setString(7, item.getType());
             preparedStatement.setString(8, item.getId_item());
             preparedStatement.executeQuery();
-            System.out.println("Success update item : " + item.getId_item());
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#UPDATE# something error :" + e.toString());
@@ -142,7 +128,15 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
 
     @Override
     public void delete(String id) {
-
+        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.execute(sql);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#DELETE# something error :" + e.toString());
+        }
     }
 
     @Override
@@ -154,11 +148,9 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             this.connect();
             Statement statement = this.con.createStatement();
             statement.executeQuery(sql);
-
-            System.out.println("Success delete item : " + id);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#DELETE# something error :" + e.toString());
+            System.out.println("#SOFT.DELETE# something error :" + e.toString());
         }
     }
 
@@ -173,7 +165,6 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             while (rs.next()) {
                 result = rs.getInt("count");
             }
-            System.out.println("type counted : " + result);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#COUNT# something error : " + e.toString());
@@ -184,12 +175,10 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
 
     @Override
     public List<Item> paginate(int page) {
-//        String sql = "SELECT * FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
-        String sql = "SELECT id_item, id_emp, name_item, price_item, image_item,"
-                + "(SELECT name_item_merk FROM item_merk WHERE item_merk.id_item_merk = item.merk_item) AS merk_item, stock_item, "
-                + "(SELECT name_item_color FROM item_color WHERE item_color.id_item_color = item.color_item) AS color_item,size_item, "
-                + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item "
-                + "FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
+        String sql = "SELECT id_item, id_emp, name_item, price_item, im.name_item_merk AS merk_item, stock_item, image_item," +
+                "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
+                "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
+                "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item LIMIT 10 OFFSET ?;";
         List<Item> itemList = new ArrayList<>();
         this.disconnect();
         try {
@@ -223,5 +212,18 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         }
 
         return itemList;
+    }
+
+    public void setActive(String id) {
+//        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
+        String sql = "UPDATE item SET status_item = 'Aktif' WHERE id_item = '" + id + "'";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.execute(sql);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#SET ACTIVE# something error :" + e.toString());
+        }
     }
 }

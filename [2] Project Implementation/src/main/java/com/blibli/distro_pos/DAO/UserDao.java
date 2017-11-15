@@ -2,7 +2,6 @@ package com.blibli.distro_pos.DAO;
 
 import com.blibli.distro_pos.Model.Role;
 import com.blibli.distro_pos.Model.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -99,8 +98,6 @@ public class UserDao {
         String sql = "insert into users(namalengkap, username, password, alamat, ktp, telp, jeniskelamin, enabled) " +
                 "values(?,?,?,?,?,?,?,?);";
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(user.getPassword());
 
         try {
 
@@ -109,7 +106,7 @@ public class UserDao {
 
             preparedStatement.setString(1, user.getNamaLengkap());
             preparedStatement.setString(2, user.getUsername());
-            preparedStatement.setString(3, hashedPassword);
+            preparedStatement.setString(3, "");
             preparedStatement.setString(4, user.getAlamat());
             preparedStatement.setString(5, user.getKtp());
             preparedStatement.setString(6, user.getTelp());

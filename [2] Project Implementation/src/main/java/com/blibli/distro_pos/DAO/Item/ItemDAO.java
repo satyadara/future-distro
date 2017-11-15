@@ -109,7 +109,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             preparedStatement.setString(9, item.getType());
             preparedStatement.setString(10, "Aktif");
             preparedStatement.setInt(11, item.getStock());
-            preparedStatement.executeQuery();
+            preparedStatement.execute();
             System.out.println("Success insert item : " + item.getId_item());
             this.disconnect();
         } catch (Exception e) {
@@ -191,6 +191,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
                 + "(SELECT name_item_type FROM item_type WHERE item_type.id_item_type = item.type_item) AS type_item, status_item "
                 + "FROM item ORDER BY id_item LIMIT 10 OFFSET ?;";
         List<Item> itemList = new ArrayList<>();
+        this.disconnect();
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);

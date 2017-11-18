@@ -13,10 +13,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <a href="/discount/create">
-                <button class="btn btn-default" style="float: right;">+Tambah Diskon</button>
-            </a>
+        <div class="col-md-3">
+            <form action="get" th:action="'/discount/search/page/1'">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="key" placeholder="cari diskon..."/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info">Cari</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="text-right">
+                <a href="/discount/create">
+                    <button class="btn btn-default">+Tambah Diskon</button>
+                </a>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -43,10 +55,12 @@
                             Edit
                         </a>
                         |
-                        <a th:href="'/discount/'+${discount.getId_disc()}+'/delete'" th:if="${discount.getStatus() == 'Aktif'}">
+                        <a th:href="'/discount/'+${discount.getId_disc()}+'/delete'"
+                           th:if="${discount.getStatus() == 'Aktif'}">
                             Tidak Aktif
                         </a>
-                        <a th:href="'/discount/'+${discount.getId_disc()}+'/active'" th:if="${discount.getStatus() == 'Tidak Aktif'}">
+                        <a th:href="'/discount/'+${discount.getId_disc()}+'/active'"
+                           th:if="${discount.getStatus() == 'Tidak Aktif'}">
                             Aktif
                         </a>
                     </td>

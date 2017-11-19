@@ -4,6 +4,7 @@ import com.blibli.distro_pos.DAO.item.ItemColorDAO;
 import com.blibli.distro_pos.DAO.item.ItemDAO;
 import com.blibli.distro_pos.DAO.item.ItemMerkDAO;
 import com.blibli.distro_pos.DAO.item.ItemTypeDAO;
+import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.item.Item;
 import com.blibli.distro_pos.Model.item.ItemColor;
 import com.blibli.distro_pos.Model.item.ItemMerk;
@@ -13,18 +14,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-
     private ItemDAO itemDAO;
     private ItemTypeDAO itemTypeDAO;
     private ItemColorDAO itemColorDAO;
     private ItemMerkDAO itemMerkDAO;
+    private static final String STORE = "store";
+    private static final String UPDATE = "update";
 
     @Autowired
     public ItemController(ItemDAO itemDAO, ItemTypeDAO itemTypeDAO, ItemColorDAO itemColorDAO, ItemMerkDAO itemMerkDAO) {
@@ -39,22 +42,7 @@ public class ItemController {
 
     @RequestMapping(value = "", method = GET)
     public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("item/index");
-        List<Item> itemList;
-        int itemCount;
-        int pageCount;
-        int currentpage = 1;
-        try {
-            itemList = itemDAO.paginate(currentpage);
-            itemCount = itemDAO.count();
-            pageCount = (itemCount / 10) + 1;
-            modelAndView.addObject("items", itemList);
-            modelAndView.addObject("count", itemCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentpage);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
+        ModelAndView modelAndView = fetch(1);
         return modelAndView;
     }
 
@@ -123,14 +111,7 @@ public class ItemController {
 
     @RequestMapping(value = "/{id}/edit", method = POST)
     public ModelAndView update(@ModelAttribute(name = "item") Item item) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item");
-        try {
-            itemDAO.update(item);
-            modelAndView.addObject("message", "success");
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
+        ModelAndView modelAndView = validateAndExecution(item, UPDATE);
         return modelAndView;
     }
 
@@ -149,22 +130,7 @@ public class ItemController {
 
     @RequestMapping(value = "/page/{page}", method = GET)
     public ModelAndView paginate(@PathVariable(name = "page") int page) {
-        ModelAndView modelAndView = new ModelAndView("item/index");
-        List<Item> itemList;
-        int itemCount;
-        int pageCount;
-        try {
-            itemList = itemDAO.paginate(page);
-            itemCount = itemDAO.count();
-            pageCount = (itemCount / 10) + 1;
-            modelAndView.addObject("items", itemList);
-            modelAndView.addObject("count", itemCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
+        ModelAndView modelAndView = fetch(page);
         return modelAndView;
     }
 
@@ -177,6 +143,58 @@ public class ItemController {
             System.out.println("something error : " + e.toString());
         }
 
+        return modelAndView;
+    }
+
+    private ModelAndView fetch(int page)    {
+        ModelAndView modelAndView = new ModelAndView("item/index");
+        List<Item> itemList;
+        int itemCount;
+        int pageCount;
+        int currentpage = page;
+        try {
+            itemList = itemDAO.paginate(currentpage);
+            itemCount = itemDAO.count();
+            pageCount = (itemCount / 10) + 1;
+            modelAndView.addObject("items", itemList);
+            modelAndView.addObject("count", itemCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", currentpage);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    private ModelAndView validateAndExecution(Item item, String action) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/discount");
+        List<String> errors = new ArrayList<>();
+        Map<String, String> errors2 = new HashMap<>();
+        try {
+            if (!(item.getStock() < 0 || item.getPrice() < 0)) {
+                if (action.equals(STORE)) {
+                    itemDAO.save(item);
+                } else if (action.equals(UPDATE))   {
+                    itemDAO.update(item);
+                }
+            } else {
+                modelAndView.setViewName("item/form");
+                modelAndView.addObject("item", item);
+                if (item.getPrice() < 0) {
+                    errors.add("Stok barang tidak boleh negatif !");
+                    errors2.put("price", "Stok barang tidak boleh negatif !");
+                }
+                if (item.getStock() < 0) {
+                    errors.add("Stok barang tidak boleh negatif !");
+                    errors2.put("stock", "Stok barang tidak boleh negatif !");
+                }
+                modelAndView.addObject("errors", errors);
+                modelAndView.addObject("errors2", errors2);
+            }
+
+        } catch (Exception e) {
+            System.out.println("something error : ");
+        }
         return modelAndView;
     }
 

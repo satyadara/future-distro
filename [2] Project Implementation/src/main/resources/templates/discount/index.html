@@ -67,7 +67,7 @@
                 </tr>
             </table>
             <!--PAGINATE-->
-            <nav aria-label="Page navigation">
+            <nav aria-label="Page navigation" th:if="${search == false}">
                 <ul class="pagination">
                     <li>
                         <a th:href="'/discount/page/' + ${currentPage - 1}" aria-label="Previous">
@@ -86,6 +86,34 @@
                     </th:block>
                     <li>
                         <a th:href="'/discount/page/' + ${currentPage + 1}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav aria-label="Page navigation" th:if="${search == true}">
+                <ul class="pagination">
+                    <li>
+                        <a th:href="'/discount/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <th:block th:each="i: ${#numbers.sequence(1, pages)}">
+                        <th:block th:switch="${i}">
+                            <li class="active" th:case="${currentPage}">
+                                <a th:href="'/discount/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li th:case="*">
+                                <a th:href="'/discount/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                   th:text="${i}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+                    <li>
+                        <a th:href="'/discount/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                           aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

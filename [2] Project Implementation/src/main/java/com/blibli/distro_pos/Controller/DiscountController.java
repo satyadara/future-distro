@@ -113,6 +113,7 @@ public class DiscountController {
             modelAndView.addObject("count", count);
             modelAndView.addObject("currentPage", currentPage);
             modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("search", true);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -133,6 +134,7 @@ public class DiscountController {
             modelAndView.addObject("count", count);
             modelAndView.addObject("currentPage", currentPage);
             modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("search", false);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }

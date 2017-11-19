@@ -3,17 +3,17 @@ package com.blibli.distro_pos.DAO.discount;
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
 import com.blibli.distro_pos.Model.discount.Discount;
+import org.omg.CORBA.Any;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class DiscountDAO extends MyConnection implements BasicDAO<Discount, String> {
-
+    public static final String LIST = "discountList";
     @Override
     public List<Discount> getAll() {
         String sql = "SELECT id_disc, id_emp, name_disc, description, percentage, " +
@@ -24,23 +24,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
             this.connect();
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            if (rs != null) {
-                System.out.println("getAll discount\t:");
-                while (rs.next()) {
-                    System.out.println("\t" + rs.getString("id_disc"));
-                    Discount discount = new Discount(
-                            rs.getString("id_disc"),
-                            rs.getString("id_emp"),
-                            rs.getString("name_disc"),
-                            rs.getString("description"),
-                            rs.getFloat("percentage"),
-                            rs.getString("start_date"),
-                            rs.getString("end_date"),
-                            rs.getString("status_disc")
-                    );
-                    discountList.add(discount);
-                }
-            }
+            discountList = getDiscountList(rs);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#FETCH# something error :" + e.toString());
@@ -151,7 +135,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
     @Override
     public void softDelete(String id) {
         String sql = "UPDATE discount SET status_disc = 'Tidak Aktif'" +
-                "WHERE id_disc = ?;";
+                " WHERE id_disc = ?;";
         System.out.println(sql);
         try {
             this.connect();
@@ -194,25 +178,10 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setInt(1, page - 1);
+            int offset = (page - 1) * 10;
+            preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs != null) {
-                System.out.println("get discount page " + page + "\t:");
-                while (rs.next()) {
-                    System.out.println("\t" + rs.getString("id_disc"));
-                    Discount discount = new Discount(
-                            rs.getString("id_disc"),
-                            rs.getString("id_emp"),
-                            rs.getString("name_disc"),
-                            rs.getString("description"),
-                            rs.getFloat("percentage"),
-                            rs.getString("start_date"),
-                            rs.getString("end_date"),
-                            rs.getString("status_disc")
-                    );
-                    discountList.add(discount);
-                }
-            }
+            discountList = getDiscountList(rs);
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#FETCH# something error :" + e.toString());
@@ -234,5 +203,68 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         } catch (Exception e) {
             System.out.println("#SET ACTIVE# something error : " + e.toString());
         }
+    }
+
+    public Map<String, Object> search(String key, int page) {
+        String sql = "SELECT id_disc, id_emp, name_disc, description, percentage, " +
+                "TO_CHAR(start_date, 'DD/MM/YYYY') AS start_date, " +
+                "TO_CHAR(end_date,  'DD/MM/YYYY') AS end_date, status_disc FROM discount " +
+                "WHERE name_disc LIKE '%'||?||'%' ORDER BY id_disc DESC LIMIT 10 OFFSET ?;";
+        String sql_counter = "SELECT COUNT(id_disc) FROM discount WHERE name_disc LIKE '%'||?||'%';";
+        Map<String, Object> map = new HashMap<>();
+        List<Discount> discountList;
+        int count = 0;
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setString(1, key);
+            preparedStatement.setInt(2, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            discountList = getDiscountList(rs);
+
+            preparedStatement = this.con.prepareStatement(sql_counter);
+            preparedStatement.setString(1, key);
+            rs = preparedStatement.executeQuery();
+            if (rs != null) {
+                while (rs.next())   {
+                    count = rs.getInt("count");
+                }
+            }
+
+            map.put(LIST, discountList);
+            map.put("count", count);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error :" + e.toString());
+        }
+
+        return map;
+    }
+
+    private List<Discount> getDiscountList(ResultSet rs) {
+        List<Discount> discountList = new ArrayList<>();
+        try {
+            if (rs != null) {
+                System.out.println("getAll discount\t:");
+                while (rs.next()) {
+                    System.out.println("\t" + rs.getString("id_disc"));
+                    Discount discount = new Discount(
+                            rs.getString("id_disc"),
+                            rs.getString("id_emp"),
+                            rs.getString("name_disc"),
+                            rs.getString("description"),
+                            rs.getFloat("percentage"),
+                            rs.getString("start_date"),
+                            rs.getString("end_date"),
+                            rs.getString("status_disc")
+                    );
+                    discountList.add(discount);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Get Discount List Problem : " + e.toString());
+        }
+        return discountList;
     }
 }

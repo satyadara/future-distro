@@ -2,18 +2,22 @@ package com.blibli.distro_pos.DAO.outcome;
 
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.outcome.Outcome;
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String> {
-
+    public static final String LIST = "outcomeList";
     @Override
     public List<Outcome> getAll() {
         String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
@@ -23,21 +27,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
             this.connect();
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            if (rs != null) {
-                while (rs.next()) {
-                    Outcome outcome = new Outcome(
-                            rs.getString("id_outcome"),
-                            rs.getString("id_emp"),
-                            rs.getString("title_out"),
-                            rs.getDouble("amount_out"),
-                            rs.getInt("quantity_out"),
-                            rs.getString("date_out"),
-                            rs.getString("desc_out"),
-                            rs.getString("status")
-                    );
-                    outcomeList.add(outcome);
-                }
-            }
+            outcomeList = getOutcomeList(rs);
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
@@ -181,25 +171,11 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs != null) {
-                while (rs.next()) {
-                    Outcome outcome = new Outcome(
-                            rs.getString("id_outcome"),
-                            rs.getString("id_emp"),
-                            rs.getString("title_out"),
-                            rs.getDouble("amount_out"),
-                            rs.getInt("quantity_out"),
-                            rs.getString("date_out"),
-                            rs.getString("desc_out"),
-                            rs.getString("status")
-                    );
-                    outcomeList.add(outcome);
-                }
-            }
+            outcomeList = getOutcomeList(rs);
+            this.disconnect();
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
-        this.disconnect();
 
         return outcomeList;
     }
@@ -216,5 +192,64 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         } catch (Exception e) {
             System.out.println("#SET ACTIVE# something error : " + e.toString());
         }
+    }
+
+    public List<Outcome> getOutcomeList(ResultSet rs) {
+        List<Outcome> outcomeList = new ArrayList<>();
+        try {
+            if (rs != null) {
+                while (rs.next()) {
+                    Outcome outcome = new Outcome(
+                            rs.getString("id_outcome"),
+                            rs.getString("id_emp"),
+                            rs.getString("title_out"),
+                            rs.getDouble("amount_out"),
+                            rs.getInt("quantity_out"),
+                            rs.getString("date_out"),
+                            rs.getString("desc_out"),
+                            rs.getString("status")
+                    );
+                    outcomeList.add(outcome);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Get Outcome List Problem : " + e.toString());
+        }
+        return outcomeList;
+    }
+
+    public Map<String, Object> search(String key, int page) {
+        String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
+                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome " +
+                "WHERE LOWER(title_out) LIKE '%'||?||'%'  ORDER BY id_outcome LIMIT 10 OFFSET ?;";
+        String sql_counter = "SELECT COUNT(id_outcome) FROM outcome WHERE LOWER(title_out) LIKE '%'||?||'%';";
+        Map<String, Object> map = new HashMap<>();
+        List<Outcome> outcomeList;
+        int count = 0;
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setString(1, key);
+            preparedStatement.setInt(2, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            outcomeList = getOutcomeList(rs);
+
+            preparedStatement = this.con.prepareStatement(sql_counter);
+            preparedStatement.setString(1, key);
+            rs = preparedStatement.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    count = rs.getInt("count");
+                }
+            }
+            map.put(LIST, outcomeList);
+            map.put("count", count);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error :" + e.toString());
+        }
+
+        return map;
     }
 }

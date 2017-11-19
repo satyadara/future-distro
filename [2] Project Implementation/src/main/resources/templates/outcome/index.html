@@ -14,13 +14,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+            <form action="get" th:action="'/outcome/search/page/1'">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="key" placeholder="cari pengeluaran..."/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info">Cari</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
             <a href="/outcome/create">
                 <button class="btn btn-default" style="float: right;">+Tambah Pengeluaran</button>
             </a>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped table-bordered table-responsive" id="mTable">
@@ -56,7 +65,8 @@
                     </td>
                 </tr>
             </table>
-            <nav aria-label="Page navigation">
+            <!--PAGINATE-->
+            <nav aria-label="Page navigation" th:if="${search == false}">
                 <ul class="pagination">
                     <li>
                         <a th:href="'/outcome/page/' + ${currentPage - 1}" aria-label="Previous">
@@ -75,6 +85,34 @@
                     </th:block>
                     <li>
                         <a th:href="'/outcome/page/' + ${currentPage + 1}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav aria-label="Page navigation" th:if="${search == true}">
+                <ul class="pagination">
+                    <li>
+                        <a th:href="'/outcome/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <th:block th:each="i: ${#numbers.sequence(1, pages)}">
+                        <th:block th:switch="${i}">
+                            <li class="active" th:case="${currentPage}">
+                                <a th:href="'/outcome/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li th:case="*">
+                                <a th:href="'/outcome/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                   th:text="${i}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+                    <li>
+                        <a th:href="'/outcome/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                           aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

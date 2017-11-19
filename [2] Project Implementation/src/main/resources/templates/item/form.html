@@ -15,6 +15,11 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form" method="POST" th:object="${item}">
+                        <th:block th:if="${errors != null}">
+                            <ul>
+                                <li th:each="err: ${errors}" th:text="${err}" style="color: red;"></li>
+                            </ul>
+                        </th:block>
                         <div class="form-group col-md-4">
                             <input type="hidden" name="id_item" th:field="*{id_item}"/>
                             <input type="hidden" name="id_emp" th:field="*{id_emp}"/>
@@ -113,10 +118,18 @@
                         <div class="form-group col-md-4">
                             <label>Harga</label>
                             <input type="number" name="price" step="0.001" class="form-control" th:field="*{price}"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["price"] != null}' th:text='${errors2["price"]}'
+                                   style="color: red;"></p>
+                            </th:block>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Kuantitas</label>
                             <input type="number" name="stock" class="form-control" th:field="*{stock}"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["stock"] != null}' th:text='${errors2["stock"]}'
+                                   style="color: red;"></p>
+                            </th:block>
                         </div>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-default" style="float: right;">Simpan</button>

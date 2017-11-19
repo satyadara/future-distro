@@ -80,19 +80,19 @@
                 <element signature="method#paginate#0;class#DiscountDAO#0" expanded="false" />
                 <element signature="method#setActive#0;class#DiscountDAO#0" expanded="false" />
                 <element signature="method#getDiscountList#0;class#DiscountDAO#0" expanded="false" />
-                <marker date="1511096868405" expanded="false" signature="601:845" ph="SELECT id_di... discount" />
-                <marker date="1511096868405" expanded="false" signature="1376:1681" ph="SELECT id_di... discount" />
-                <marker date="1511096868405" expanded="false" signature="2881:3104" ph="INSERT INTO discount... " />
-                <marker date="1511096868405" expanded="false" signature="4202:4404" ph="UPDATE disco... " />
-                <marker date="1511096868405" expanded="false" signature="5289:5348" ph="DELETE FROM " />
-                <marker date="1511096868405" expanded="false" signature="5799:5885" ph="UPDATE disco... " />
-                <marker date="1511096868405" expanded="false" signature="6359:6394" ph="SELECT COUNT... discount" />
-                <marker date="1511096868405" expanded="false" signature="7015:7277" ph="SELECT id_di... discount" />
-                <marker date="1511096868405" expanded="false" signature="7909:7989" ph="UPDATE disco... " />
-                <marker date="1511096868405" expanded="false" signature="8485:8756" ph="SELECT id_di... discount" />
-                <marker date="1511096868405" expanded="false" signature="8485:8783" ph="SELECT id_di... discount" />
-                <marker date="1511096868405" expanded="false" signature="8485:8801" ph="SELECT id_di... discount" />
-                <marker date="1511096868405" expanded="true" signature="8835:8903" ph="SELECT COUNT... discount" />
+                <marker date="1511103512262" expanded="false" signature="601:845" ph="SELECT id_di... discount" />
+                <marker date="1511103512262" expanded="false" signature="1376:1681" ph="SELECT id_di... discount" />
+                <marker date="1511103512262" expanded="false" signature="2881:3104" ph="INSERT INTO discount... " />
+                <marker date="1511103512262" expanded="false" signature="4202:4404" ph="UPDATE disco... " />
+                <marker date="1511103512262" expanded="false" signature="5289:5348" ph="DELETE FROM " />
+                <marker date="1511103512262" expanded="false" signature="5799:5885" ph="UPDATE disco... " />
+                <marker date="1511103512262" expanded="false" signature="6359:6394" ph="SELECT COUNT... discount" />
+                <marker date="1511103512262" expanded="false" signature="7015:7277" ph="SELECT id_di... discount" />
+                <marker date="1511103512262" expanded="false" signature="7909:7989" ph="UPDATE disco... " />
+                <marker date="1511103512262" expanded="false" signature="8485:8756" ph="SELECT id_di... discount" />
+                <marker date="1511103512262" expanded="false" signature="8485:8783" ph="SELECT id_di... discount" />
+                <marker date="1511103512262" expanded="false" signature="8485:8801" ph="SELECT id_di... discount" />
+                <marker date="1511103512262" expanded="true" signature="8835:8903" ph="SELECT COUNT... discount" />
               </folding>
             </state>
           </provider>
@@ -121,11 +121,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/discount/form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="129" column="96" lean-forward="false" selection-start-line="129" selection-start-column="96" selection-end-line="129" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ItemController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="113" column="71" lean-forward="false" selection-start-line="113" selection-start-column="71" selection-end-line="113" selection-end-column="71" />
+            <state relative-caret-position="234">
+              <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
               <folding>
                 <element signature="e#840#851#0" expanded="false" />
                 <element signature="method#ItemController#0;class#ItemController#0" expanded="false" />
@@ -134,10 +154,12 @@
                 <element signature="method#create#0;class#ItemController#0" expanded="false" />
                 <element signature="method#store#0;class#ItemController#0" expanded="false" />
                 <element signature="method#edit#0;class#ItemController#0" expanded="false" />
+                <element signature="method#update#0;class#ItemController#0" expanded="false" />
                 <element signature="method#delete#0;class#ItemController#0" expanded="false" />
                 <element signature="method#paginate#0;class#ItemController#0" expanded="false" />
                 <element signature="method#active#0;class#ItemController#0" expanded="false" />
                 <element signature="method#fetch#0;class#ItemController#0" expanded="false" />
+                <element signature="method#validateAndExecution#0;class#ItemController#0" expanded="false" />
                 <element signature="docComment;method#indexType#0;class#ItemController#0" expanded="false" />
                 <element signature="method#indexType#0;class#ItemController#0" expanded="false" />
                 <element signature="method#createType#0;class#ItemController#0" expanded="false" />
@@ -265,7 +287,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/item/index.jsp" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/752fc558-7882-48d6-95ba-b31a7d3c69ef/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/item/form.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/discount/form.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/discount/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/discount/Discount.java" />
@@ -276,6 +297,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/outcome/form.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/OutcomeController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/item/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/item/form.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java" />
       </list>
     </option>
@@ -626,12 +648,12 @@
       <workItem from="1510715433953" duration="10854000" />
       <workItem from="1510927946009" duration="3727000" />
       <workItem from="1511013172327" duration="10709000" />
-      <workItem from="1511081167773" duration="9818000" />
+      <workItem from="1511081167773" duration="10284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139908000" />
+    <option name="totallyTimeSpent" value="140374000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -644,7 +666,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -654,7 +675,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28393134" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4274571" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4274571" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761312" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -910,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="120" column="47" lean-forward="true" selection-start-line="120" selection-start-column="47" selection-end-line="120" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -997,26 +1011,18 @@
             <element signature="method#count#0;class#OutcomeDAO#0" expanded="false" />
             <element signature="method#paginate#0;class#OutcomeDAO#0" expanded="false" />
             <element signature="method#setActive#0;class#OutcomeDAO#0" expanded="false" />
-            <marker date="1511097331871" expanded="false" signature="752:930" ph="SELECT id_ou... outcome" />
-            <marker date="1511097331871" expanded="false" signature="1452:1652" ph="SELECT id_ou... outcome" />
-            <marker date="1511097331871" expanded="false" signature="2783:2937" ph="INSERT INTO outcome... " />
-            <marker date="1511097331871" expanded="false" signature="3724:3887" ph="UPDATE outco... " />
-            <marker date="1511097331871" expanded="false" signature="4674:4735" ph="DELETE FROM " />
-            <marker date="1511097331871" expanded="false" signature="5186:5269" ph="UPDATE outco... " />
-            <marker date="1511097331871" expanded="false" signature="5710:5747" ph="SELECT COUNT... outcome" />
-            <marker date="1511097331871" expanded="false" signature="6341:6558" ph="SELECT id_ou... outcome" />
-            <marker date="1511097331871" expanded="false" signature="7186:7263" ph="UPDATE outco... " />
-            <marker date="1511097331871" expanded="true" signature="8657:8915" ph="SELECT id_ou... outcome" />
-            <marker date="1511097331871" expanded="true" signature="8949:9026" ph="SELECT COUNT... outcome" />
+            <marker date="1511103512266" expanded="false" signature="752:930" ph="SELECT id_ou... outcome" />
+            <marker date="1511103512266" expanded="false" signature="1452:1652" ph="SELECT id_ou... outcome" />
+            <marker date="1511103512266" expanded="false" signature="2783:2937" ph="INSERT INTO outcome... " />
+            <marker date="1511103512266" expanded="false" signature="3724:3887" ph="UPDATE outco... " />
+            <marker date="1511103512266" expanded="false" signature="4674:4735" ph="DELETE FROM " />
+            <marker date="1511103512266" expanded="false" signature="5186:5269" ph="UPDATE outco... " />
+            <marker date="1511103512266" expanded="false" signature="5710:5747" ph="SELECT COUNT... outcome" />
+            <marker date="1511103512266" expanded="false" signature="6341:6558" ph="SELECT id_ou... outcome" />
+            <marker date="1511103512266" expanded="false" signature="7186:7263" ph="UPDATE outco... " />
+            <marker date="1511103512266" expanded="true" signature="8657:8915" ph="SELECT id_ou... outcome" />
+            <marker date="1511103512266" expanded="true" signature="8949:9026" ph="SELECT COUNT... outcome" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/discount/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="21" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1042,19 +1048,19 @@
             <element signature="method#paginate#0;class#DiscountDAO#0" expanded="false" />
             <element signature="method#setActive#0;class#DiscountDAO#0" expanded="false" />
             <element signature="method#getDiscountList#0;class#DiscountDAO#0" expanded="false" />
-            <marker date="1511096868405" expanded="false" signature="601:845" ph="SELECT id_di... discount" />
-            <marker date="1511096868405" expanded="false" signature="1376:1681" ph="SELECT id_di... discount" />
-            <marker date="1511096868405" expanded="false" signature="2881:3104" ph="INSERT INTO discount... " />
-            <marker date="1511096868405" expanded="false" signature="4202:4404" ph="UPDATE disco... " />
-            <marker date="1511096868405" expanded="false" signature="5289:5348" ph="DELETE FROM " />
-            <marker date="1511096868405" expanded="false" signature="5799:5885" ph="UPDATE disco... " />
-            <marker date="1511096868405" expanded="false" signature="6359:6394" ph="SELECT COUNT... discount" />
-            <marker date="1511096868405" expanded="false" signature="7015:7277" ph="SELECT id_di... discount" />
-            <marker date="1511096868405" expanded="false" signature="7909:7989" ph="UPDATE disco... " />
-            <marker date="1511096868405" expanded="false" signature="8485:8756" ph="SELECT id_di... discount" />
-            <marker date="1511096868405" expanded="false" signature="8485:8783" ph="SELECT id_di... discount" />
-            <marker date="1511096868405" expanded="false" signature="8485:8801" ph="SELECT id_di... discount" />
-            <marker date="1511096868405" expanded="true" signature="8835:8903" ph="SELECT COUNT... discount" />
+            <marker date="1511103512262" expanded="false" signature="601:845" ph="SELECT id_di... discount" />
+            <marker date="1511103512262" expanded="false" signature="1376:1681" ph="SELECT id_di... discount" />
+            <marker date="1511103512262" expanded="false" signature="2881:3104" ph="INSERT INTO discount... " />
+            <marker date="1511103512262" expanded="false" signature="4202:4404" ph="UPDATE disco... " />
+            <marker date="1511103512262" expanded="false" signature="5289:5348" ph="DELETE FROM " />
+            <marker date="1511103512262" expanded="false" signature="5799:5885" ph="UPDATE disco... " />
+            <marker date="1511103512262" expanded="false" signature="6359:6394" ph="SELECT COUNT... discount" />
+            <marker date="1511103512262" expanded="false" signature="7015:7277" ph="SELECT id_di... discount" />
+            <marker date="1511103512262" expanded="false" signature="7909:7989" ph="UPDATE disco... " />
+            <marker date="1511103512262" expanded="false" signature="8485:8756" ph="SELECT id_di... discount" />
+            <marker date="1511103512262" expanded="false" signature="8485:8783" ph="SELECT id_di... discount" />
+            <marker date="1511103512262" expanded="false" signature="8485:8801" ph="SELECT id_di... discount" />
+            <marker date="1511103512262" expanded="true" signature="8835:8903" ph="SELECT COUNT... discount" />
           </folding>
         </state>
       </provider>
@@ -1080,24 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <marker date="1511095246940" expanded="true" signature="458:891" ph="SELECT id_it... item" />
-            <marker date="1511095246940" expanded="true" signature="2195:2242" ph="SELECT * FRO... item" />
-            <marker date="1511095246940" expanded="true" signature="3539:3752" ph="INSERT INTO item... " />
-            <marker date="1511095246940" expanded="true" signature="4820:4982" ph="UPDATE item " />
-            <marker date="1511095246940" expanded="true" signature="5872:5917" ph="DELETE FROM " />
-            <marker date="1511095246940" expanded="true" signature="6367:6439" ph="UPDATE item " />
-            <marker date="1511095246940" expanded="true" signature="6842:6873" ph="SELECT COUNT... item" />
-            <marker date="1511095246940" expanded="true" signature="7412:7873" ph="SELECT id_it... item" />
-            <marker date="1511095246940" expanded="true" signature="9442:9508" ph="UPDATE item " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-310">
@@ -1119,10 +1107,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="129" column="96" lean-forward="false" selection-start-line="129" selection-start-column="96" selection-end-line="129" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/discount/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <marker date="1511095246940" expanded="true" signature="458:891" ph="SELECT id_it... item" />
+            <marker date="1511095246940" expanded="true" signature="2195:2242" ph="SELECT * FRO... item" />
+            <marker date="1511095246940" expanded="true" signature="3539:3752" ph="INSERT INTO item... " />
+            <marker date="1511095246940" expanded="true" signature="4820:4982" ph="UPDATE item " />
+            <marker date="1511095246940" expanded="true" signature="5872:5917" ph="DELETE FROM " />
+            <marker date="1511095246940" expanded="true" signature="6367:6439" ph="UPDATE item " />
+            <marker date="1511095246940" expanded="true" signature="6842:6873" ph="SELECT COUNT... item" />
+            <marker date="1511095246940" expanded="true" signature="7412:7873" ph="SELECT id_it... item" />
+            <marker date="1511095246940" expanded="true" signature="9442:9508" ph="UPDATE item " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="113" column="71" lean-forward="false" selection-start-line="113" selection-start-column="71" selection-end-line="113" selection-end-column="71" />
+        <state relative-caret-position="234">
+          <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
           <folding>
             <element signature="e#840#851#0" expanded="false" />
             <element signature="method#ItemController#0;class#ItemController#0" expanded="false" />
@@ -1131,10 +1153,12 @@
             <element signature="method#create#0;class#ItemController#0" expanded="false" />
             <element signature="method#store#0;class#ItemController#0" expanded="false" />
             <element signature="method#edit#0;class#ItemController#0" expanded="false" />
+            <element signature="method#update#0;class#ItemController#0" expanded="false" />
             <element signature="method#delete#0;class#ItemController#0" expanded="false" />
             <element signature="method#paginate#0;class#ItemController#0" expanded="false" />
             <element signature="method#active#0;class#ItemController#0" expanded="false" />
             <element signature="method#fetch#0;class#ItemController#0" expanded="false" />
+            <element signature="method#validateAndExecution#0;class#ItemController#0" expanded="false" />
             <element signature="docComment;method#indexType#0;class#ItemController#0" expanded="false" />
             <element signature="method#indexType#0;class#ItemController#0" expanded="false" />
             <element signature="method#createType#0;class#ItemController#0" expanded="false" />

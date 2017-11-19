@@ -146,7 +146,7 @@ public class ItemController {
         return modelAndView;
     }
 
-    private ModelAndView fetch(int page)    {
+    private ModelAndView fetch(int page) {
         ModelAndView modelAndView = new ModelAndView("item/index");
         List<Item> itemList;
         int itemCount;
@@ -170,19 +170,22 @@ public class ItemController {
         ModelAndView modelAndView = new ModelAndView("redirect:/discount");
         List<String> errors = new ArrayList<>();
         Map<String, String> errors2 = new HashMap<>();
+        List<ItemType> itemTypeList;
+        List<ItemColor> itemColorList;
+        List<ItemMerk> itemMerkList;
         try {
             if (!(item.getStock() < 0 || item.getPrice() < 0)) {
                 if (action.equals(STORE)) {
                     itemDAO.save(item);
-                } else if (action.equals(UPDATE))   {
+                } else if (action.equals(UPDATE)) {
                     itemDAO.update(item);
                 }
             } else {
                 modelAndView.setViewName("item/form");
                 modelAndView.addObject("item", item);
                 if (item.getPrice() < 0) {
-                    errors.add("Stok barang tidak boleh negatif !");
-                    errors2.put("price", "Stok barang tidak boleh negatif !");
+                    errors.add("Harga barang tidak boleh negatif !");
+                    errors2.put("price", "Harga barang tidak boleh negatif !");
                 }
                 if (item.getStock() < 0) {
                     errors.add("Stok barang tidak boleh negatif !");
@@ -192,11 +195,19 @@ public class ItemController {
                 modelAndView.addObject("errors2", errors2);
             }
 
+            itemTypeList = itemTypeDAO.getAll();
+            itemColorList = itemColorDAO.getAll();
+            itemMerkList = itemMerkDAO.getAll();
+            modelAndView.addObject("types", itemTypeList);
+            modelAndView.addObject("colors", itemColorList);
+            modelAndView.addObject("merks", itemMerkList);
+
         } catch (Exception e) {
             System.out.println("something error : ");
         }
         return modelAndView;
     }
+
 
     /**
      * ITEM TYPE

@@ -168,6 +168,18 @@ public class ItemController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/{id}/active", method = GET)
+    public ModelAndView active(@PathVariable(name = "id") String id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+        try {
+            itemDAO.setActive(id);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        return modelAndView;
+    }
+
     /**
      * ITEM TYPE
      **/

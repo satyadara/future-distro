@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager - Stok Barang</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/creation.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Tambah Stok Barang</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form" method="POST" th:object="${item}">
+                        <div class="form-group col-md-4">
+                            <input type="hidden" name="id_item" th:field="*{id_item}"/>
+                            <input type="hidden" name="id_emp" th:field="*{id_emp}"/>
+                            <input type="hidden" name="image" th:field="*{image}"/>
+                            <label>Tipe Barang</label>
+                            <select class="form-control" name="type" th:field="*{type}">
+                                <th:block th:each="typex: ${types}">
+                                    <th:block th:switch="*{type}">
+                                        <th:block th:case="${typex.getId()}">
+                                            <option th:value="${typex.getId()}" selected="selected"
+                                                    th:text="${typex.getName()}"></option>
+                                        </th:block>
+                                        <th:block th:case="*">
+                                            <option th:value="${typex.getId()}"
+                                                    th:text="${typex.getName()}"></option>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Merek</label>
+                            <select class="form-control" name="merk">
+                                <th:block th:each="merkx: ${merks}">
+                                    <th:block th:switch="*{merk}">
+                                        <th:block th:case="${merkx.getId()}">
+                                            <option th:value="${merkx.getId()}" th:text="${merkx.getName()}"
+                                                    selected="selected"></option>
+                                        </th:block>
+                                        <th:block th:case="*">
+                                            <option th:value="${merkx.getId()}" th:text="${merkx.getName()}"></option>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Ukuran</label>
+                            <select class="form-control" name="size">
+                                <th:block th:switch="*{size}">
+                                    <th:block th:case="'S'">
+                                        <option selected="selected">S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </th:block>
+                                    <th:block th:case="'M'">
+                                        <option>S</option>
+                                        <option selected="selected">M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </th:block>
+                                    <th:block th:case="'L'">
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option selected="selected">L</option>
+                                        <option>XL</option>
+                                    </th:block>
+                                    <th:block th:case="'XL'">
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option selected="selected">XL</option>
+                                    </th:block>
+                                    <th:block th:case="*">
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class=" form-group col-md-12">
+                            <label>Nama Barang</label>
+                            <input required="required" type="text" name="name_item" class="form-control"
+                                   th:field="*{name_item}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Warna</label>
+                            <select class="form-control" name="color">
+                                <th:block th:each="colorx: ${colors}">
+                                    <th:block th:switch="*{color}">
+                                        <th:block th:case="${colorx.getId()}">
+                                            <option th:value="${colorx.getId()}" th:text="${colorx.getName()}"
+                                                    selected="selected">
+                                            </option>
+                                        </th:block>
+                                        <th:block>
+                                            <option th:value="${colorx.getId()}" th:text="${colorx.getName()}"></option>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Harga</label>
+                            <input type="number" name="price" step="0.001" class="form-control" th:field="*{price}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Kuantitas</label>
+                            <input type="number" name="stock" class="form-control" th:field="*{stock}"/>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-default" style="float: right;">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager - Diskon</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/creation.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 th:text="'Diskon( ' + ${count} + ' )'"></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <form action="get" th:action="'/discount/search/page/1'">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="key" placeholder="cari diskon..."/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info">Cari</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="text-right">
+                <a href="/discount/create">
+                    <button class="btn btn-default">+Tambah Diskon</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-responsive" id="mTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Persentase</th>
+                    <th>Mulai</th>
+                    <th>Berakhir</th>
+                    <th>Status</th>
+                    <th>Pilhan</th>
+                </tr>
+                <tr th:each="discount: ${discounts}">
+                    <td th:text="${discount.getId_disc()}"></td>
+                    <td th:text="${discount.getName()}"></td>
+                    <td th:text="${discount.getPercentage()}"></td>
+                    <td th:text="${discount.getStart_date()}"></td>
+                    <td th:text="${discount.getEnd_date()}"></td>
+                    <td th:text="${discount.getStatus()}"></td>
+                    <td>
+                        <a th:href="'/discount/' + ${discount.getId_disc()} + '/edit'">
+                            Edit
+                        </a>
+                        |
+                        <a th:href="'/discount/'+${discount.getId_disc()}+'/delete'"
+                           th:if="${discount.getStatus() == 'Aktif'}">
+                            Tidak Aktif
+                        </a>
+                        <a th:href="'/discount/'+${discount.getId_disc()}+'/active'"
+                           th:if="${discount.getStatus() == 'Tidak Aktif'}">
+                            Aktif
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!--PAGINATE-->
+            <nav aria-label="Page navigation" th:if="${search == false}">
+                <ul class="pagination">
+                    <li>
+                        <a th:href="'/discount/page/' + ${currentPage - 1}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <th:block th:each="i: ${#numbers.sequence(1, pages)}">
+                        <th:block th:switch="${i}">
+                            <li class="active" th:case="${currentPage}">
+                                <a th:href="'/discount/page/' + ${i}" th:text="${i}"></a>
+                            </li>
+                            <li th:case="*">
+                                <a th:href="'/discount/page/' + ${i}" th:text="${i}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+                    <li>
+                        <a th:href="'/discount/page/' + ${currentPage + 1}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav aria-label="Page navigation" th:if="${search == true}">
+                <ul class="pagination">
+                    <li>
+                        <a th:href="'/discount/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <th:block th:each="i: ${#numbers.sequence(1, pages)}">
+                        <th:block th:switch="${i}">
+                            <li class="active" th:case="${currentPage}">
+                                <a th:href="'/discount/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li th:case="*">
+                                <a th:href="'/discount/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                   th:text="${i}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+                    <li>
+                        <a th:href="'/discount/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

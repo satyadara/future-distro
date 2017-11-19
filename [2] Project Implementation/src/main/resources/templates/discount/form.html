@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager - Tambah Diskon</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/creation.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Tambah Diskon</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form" th:method="post" th:object="${discount}">
+                        <th:block th:if="${errors != null}">
+                            <ul>
+                                <li th:each="err: ${errors}" th:text="${err}" style="color: red;"></li>
+                            </ul>
+                        </th:block>
+                        <input type="text" name="id_disc" th:field="*{id_disc}" hidden="hidden"/>
+                        <input type="text" name="id_emp" th:field="*{id_emp}" hidden="hidden"/>
+                        <div class="form-group col-md-12">
+                            <label>Nama Diskon</label>
+                            <input type="text" name="name" class="form-control" th:field="*{name}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Presentase</label>
+                            <input type="number" name="percentage" step="0.01" class="form-control"
+                                   th:field="*{percentage}"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["percentage"] != null}' th:text='${errors2["percentage"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Tanggal Mulai</label>
+                            <input type="date" name="start_date" class="form-control"
+                                   th:field="*{start_date}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Tanggal Selesai</label>
+                            <input type="date" name="end_date" class="form-control" th:field="*{end_date}"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["date"] != null}' th:text='${errors2["date"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Deskripsi</label>
+                            <input type="text" name="desc" class="form-control" th:field="*{desc}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Status</label>
+                            <select class="form-control" name="status">
+                                <th:block th:switch="*{status}">
+                                    <th:block th:case="'Aktif'">
+                                        <option selected="selected">Aktif</option>
+                                        <option>Tidak Aktif</option>
+                                        <option>Menunggu</option>
+                                    </th:block>
+                                    <th:block th:case="'Tidak Aktif'">
+                                        <option>Aktif</option>
+                                        <option selected="selected">Tidak Aktif</option>
+                                        <option>Menunggu</option>
+                                    </th:block>
+                                    <th:block th:case="'Menunggu'">
+                                        <option>Aktif</option>
+                                        <option>Tidak Aktif</option>
+                                        <option selected="selected">Menunggu</option>
+                                    </th:block>
+                                    <th:block th:case="*">
+                                        <option>Aktif</option>
+                                        <option>Tidak Aktif</option>
+                                        <option>Menunggu</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-default" style="float: right;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

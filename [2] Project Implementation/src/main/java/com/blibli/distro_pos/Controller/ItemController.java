@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -116,8 +117,8 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = GET)
-    public ModelAndView delete(@PathVariable(name = "id") String id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+    public ModelAndView delete(@PathVariable(name = "id") String id, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("redirect:" + request.getHeader("Referer"));
         try {
             itemDAO.softDelete(id);
             modelAndView.addObject("message", "success delete");
@@ -135,14 +136,36 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/{id}/active", method = GET)
-    public ModelAndView active(@PathVariable(name = "id") String id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+    public ModelAndView active(@PathVariable(name = "id") String id, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("redirect:" + request.getHeader("Referer"));
         try {
             itemDAO.setActive(id);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
 
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/search/page/{page}", method = GET)
+    public ModelAndView search(@RequestParam("key") String key,@PathVariable("page") int page) {
+        ModelAndView modelAndView = new ModelAndView("item/index");
+        Map<String, Object> map;
+        int count;
+        int pageCount;
+        int currentPage = page;
+        try {
+            map = itemDAO.search(key, page);
+            count = (int) map.get("count");
+            pageCount = (count / 10) + 1;
+            modelAndView.addObject("items", map.get(itemDAO.LIST));
+            modelAndView.addObject("count", count);
+            modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("search", true);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
         return modelAndView;
     }
 
@@ -160,6 +183,7 @@ public class ItemController {
             modelAndView.addObject("count", itemCount);
             modelAndView.addObject("pages", pageCount);
             modelAndView.addObject("currentPage", currentpage);
+            modelAndView.addObject("search", false);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }

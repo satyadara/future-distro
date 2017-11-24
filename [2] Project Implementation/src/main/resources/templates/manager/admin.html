@@ -19,7 +19,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="/admin">Home <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Stok</a></li>
             <li><a href="#">Diskon</a></li>
             <li><a href="/view_user">Kasir</a></li>
@@ -94,7 +94,7 @@
 
             <div class="col-md-3">
                 <a href="/">Go to home page</a>
-                <form name="logout"  action="/logout" method="POST">
+                <form name="logout"  th:action="@{/logout}" method="POST">
                     <input type="submit" class="btn btn-danger" value="sign out" />
                 </form>
             </div>

@@ -15,8 +15,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         registry.addResourceHandler("/img/**").addResourceLocations("img/");
-        registry.addResourceHandler("/static/css/**").addResourceLocations("static/css/");
-        registry.addResourceHandler("/static/js/**").addResourceLocations("static/js/");
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+//        registry.addResourceHandler("/static/js/**").addResourceLocations("static/js/");
     }
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

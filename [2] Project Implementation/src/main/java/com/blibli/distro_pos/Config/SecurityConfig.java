@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username").passwordParameter("password")
                 .defaultSuccessUrl("/success")
                 .and()
-                .logout().logoutSuccessUrl("/logout")
+                .logout().logoutSuccessUrl("/?logout")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()

@@ -15,12 +15,20 @@ public class WebController {
 
     @RequestMapping(value={"/"})
     public String home(){
+
         return "login";
     }
 
+    @RequestMapping(value = {"/admin2"})
+    public String admin2() {
+
+        return "admin2";
+    }
+
     @RequestMapping(value={"/dashboard"})
-    public String welcome(){
-        return "dashboard";
+    public ModelAndView dashboard(){
+
+        return new ModelAndView("cashier/dashboard");
     }
 
     @RequestMapping(value="/admin")
@@ -31,12 +39,6 @@ public class WebController {
         return new ModelAndView("manager/admin", "username", username);
     }
 
-//    @RequestMapping(value={"/login"})
-//    public String login(){
-//        return "login";
-//    }
-
-
     @RequestMapping(value="/403")
     public String Error403(){
         return "403";
@@ -46,7 +48,7 @@ public class WebController {
     @GetMapping("/add_user")
     public ModelAndView addUser() {
 
-        return new ModelAndView("add_user");
+        return new ModelAndView("manager/add_user");
     }
 
     @PostMapping("/add_user")
@@ -86,7 +88,7 @@ public class WebController {
         String role = UserDao.getUserRoleByUsername(user.getUsername());
 
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("edit_user");
+        mav.setViewName("manager/edit_user");
         mav.addObject("user", user);
         mav.addObject("role", role);
 

@@ -49,13 +49,6 @@
         <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
         <item name="role" type="e3449647:DbNodeDescriptor" />
       </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="satyadara@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="satyadara" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-      </path>
     </expand>
     <select />
   </component>
@@ -64,24 +57,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DiscountController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DiscountController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="72" column="90" lean-forward="false" selection-start-line="72" selection-start-column="90" selection-end-line="72" selection-end-column="90" />
+            <state relative-caret-position="187">
+              <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
               <folding>
                 <element signature="e#656#667#0" expanded="false" />
                 <element signature="method#index#0;class#DiscountController#0" expanded="false" />
                 <element signature="method#create#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#store#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#edit#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#update#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#delete#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#active#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#paginate#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#search#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#fetch#0;class#DiscountController#0" expanded="false" />
-                <element signature="method#validateAndExecution#0;class#DiscountController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -90,7 +74,7 @@
       <file leaf-file-name="ItemController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
+            <state relative-caret-position="2159">
               <caret line="178" column="33" lean-forward="false" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
               <folding>
                 <element signature="e#886#897#0" expanded="false" />
@@ -99,72 +83,53 @@
                 <element signature="method#index#0;class#ItemController#0" expanded="false" />
                 <element signature="method#create#0;class#ItemController#0" expanded="false" />
                 <element signature="method#store#0;class#ItemController#0" expanded="false" />
-                <element signature="method#edit#0;class#ItemController#0" expanded="false" />
-                <element signature="method#update#0;class#ItemController#0" expanded="false" />
-                <element signature="method#delete#0;class#ItemController#0" expanded="false" />
-                <element signature="method#paginate#0;class#ItemController#0" expanded="false" />
-                <element signature="method#active#0;class#ItemController#0" expanded="false" />
                 <element signature="method#validateAndExecution#0;class#ItemController#0" expanded="false" />
-                <element signature="docComment;method#indexType#0;class#ItemController#0" expanded="false" />
-                <element signature="method#indexType#0;class#ItemController#0" expanded="false" />
-                <element signature="method#createType#0;class#ItemController#0" expanded="false" />
-                <element signature="method#storeType#0;class#ItemController#0" expanded="false" />
-                <element signature="method#editType#0;class#ItemController#0" expanded="false" />
-                <element signature="method#updateType#0;class#ItemController#0" expanded="false" />
-                <element signature="method#paginateType#0;class#ItemController#0" expanded="false" />
-                <element signature="docComment;method#indexMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="method#indexMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="method#createMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="method#storeMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="method#editMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="method#updateMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="method#paginateMerk#0;class#ItemController#0" expanded="false" />
-                <element signature="docComment;method#indexColor#0;class#ItemController#0" expanded="false" />
-                <element signature="method#indexColor#0;class#ItemController#0" expanded="false" />
-                <element signature="method#createColor#0;class#ItemController#0" expanded="false" />
-                <element signature="method#storeColor#0;class#ItemController#0" expanded="false" />
-                <element signature="method#editColor#0;class#ItemController#0" expanded="false" />
-                <element signature="method#updateColor#0;class#ItemController#0" expanded="false" />
-                <element signature="method#paginateColor#0;class#ItemController#0" expanded="false" />
+                <marker date="1512060517214" expanded="false" signature="9153:9182" ph="/**...*/" />
+                <marker date="1512060517214" expanded="false" signature="9270:10079" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="10176:10505" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="10639:10913" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="11040:11388" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="11526:11802" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="11946:12709" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="12801:12830" ph="/**...*/" />
+                <marker date="1512060517214" expanded="false" signature="12918:13727" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="13824:14153" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="14287:14561" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="14688:15105" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="15243:15519" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="15663:16426" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="16519:16549" ph="/**...*/" />
+                <marker date="1512060517214" expanded="false" signature="16639:17454" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="17553:17886" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="18024:18301" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="18430:18854" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="18996:19275" ph="{...}" />
+                <marker date="1512060517214" expanded="false" signature="19421:20195" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ItemDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2006">
-              <caret line="247" column="22" lean-forward="false" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
+            <state relative-caret-position="1989">
+              <caret line="246" column="22" lean-forward="false" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="22" />
               <folding>
                 <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
                 <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
                 <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#softDelete#0;class#ItemDAO#0" expanded="false" />
-                <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
                 <element signature="method#setActive#0;class#ItemDAO#0" expanded="false" />
-                <marker date="1511276178170" expanded="true" signature="1242:1675" ph="SELECT id_it... item" />
-                <marker date="1511276178170" expanded="false" signature="2174:2221" ph="SELECT * FRO... item" />
-                <marker date="1511276178170" expanded="false" signature="3518:3731" ph="INSERT INTO item... " />
-                <marker date="1511276178170" expanded="false" signature="4799:4961" ph="UPDATE item " />
-                <marker date="1511276178170" expanded="false" signature="5851:5896" ph="DELETE FROM " />
-                <marker date="1511276178170" expanded="false" signature="6346:6418" ph="UPDATE item " />
-                <marker date="1511276178170" expanded="false" signature="6821:6852" ph="SELECT COUNT... item" />
-                <marker date="1511276178170" expanded="true" signature="7391:7852" ph="SELECT id_it... item" />
-                <marker date="1511276178170" expanded="false" signature="9699:9765" ph="UPDATE item " />
-                <marker date="1511276178170" expanded="true" signature="10153:10647" ph="SELECT id_it... item" />
-                <marker date="1511276178170" expanded="true" signature="10681:10750" ph="SELECT COUNT... item" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/752fc558-7882-48d6-95ba-b31a7d3c69ef/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="85" column="18" lean-forward="false" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
+            <state relative-caret-position="-2080">
+              <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -193,8 +158,8 @@
       <file leaf-file-name="form.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="306">
+              <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -216,8 +181,8 @@
       <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -371,10 +336,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -459,14 +420,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -482,6 +435,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -680,11 +637,12 @@
       <workItem from="1511271186034" duration="5206000" />
       <workItem from="1511365890072" duration="2352000" />
       <workItem from="1511509260078" duration="3941000" />
+      <workItem from="1512060631301" duration="517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153215000" />
+    <option name="totallyTimeSpent" value="153732000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -701,7 +659,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -716,6 +673,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22254759" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29648608" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -726,9 +684,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32605305" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -805,14 +763,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemMerkDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemMerkDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="124" column="13" lean-forward="false" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemColorDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemColorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2193">
           <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
@@ -911,7 +869,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemTypeDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemTypeDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
@@ -995,57 +953,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/Item/ItemDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="72" column="90" lean-forward="false" selection-start-line="72" selection-start-column="90" selection-end-line="72" selection-end-column="90" />
-          <folding>
-            <element signature="e#656#667#0" expanded="false" />
-            <element signature="method#index#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#create#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#store#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#edit#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#update#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#delete#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#active#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#paginate#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#search#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#fetch#0;class#DiscountController#0" expanded="false" />
-            <element signature="method#validateAndExecution#0;class#DiscountController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="247" column="22" lean-forward="false" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
+        <state relative-caret-position="1989">
+          <caret line="246" column="22" lean-forward="false" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="22" />
           <folding>
             <element signature="method#getOne#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#save#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#update#0;class#ItemDAO#0" expanded="false" />
-            <element signature="method#delete#0;class#ItemDAO#0" expanded="false" />
-            <element signature="method#softDelete#0;class#ItemDAO#0" expanded="false" />
-            <element signature="method#count#0;class#ItemDAO#0" expanded="false" />
             <element signature="method#setActive#0;class#ItemDAO#0" expanded="false" />
-            <marker date="1511276178170" expanded="true" signature="1242:1675" ph="SELECT id_it... item" />
-            <marker date="1511276178170" expanded="false" signature="2174:2221" ph="SELECT * FRO... item" />
-            <marker date="1511276178170" expanded="false" signature="3518:3731" ph="INSERT INTO item... " />
-            <marker date="1511276178170" expanded="false" signature="4799:4961" ph="UPDATE item " />
-            <marker date="1511276178170" expanded="false" signature="5851:5896" ph="DELETE FROM " />
-            <marker date="1511276178170" expanded="false" signature="6346:6418" ph="UPDATE item " />
-            <marker date="1511276178170" expanded="false" signature="6821:6852" ph="SELECT COUNT... item" />
-            <marker date="1511276178170" expanded="true" signature="7391:7852" ph="SELECT id_it... item" />
-            <marker date="1511276178170" expanded="false" signature="9699:9765" ph="UPDATE item " />
-            <marker date="1511276178170" expanded="true" signature="10153:10647" ph="SELECT id_it... item" />
-            <marker date="1511276178170" expanded="true" signature="10681:10750" ph="SELECT COUNT... item" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
+        <state relative-caret-position="2159">
           <caret line="178" column="33" lean-forward="false" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
           <folding>
             <element signature="e#886#897#0" expanded="false" />
@@ -1054,33 +977,28 @@
             <element signature="method#index#0;class#ItemController#0" expanded="false" />
             <element signature="method#create#0;class#ItemController#0" expanded="false" />
             <element signature="method#store#0;class#ItemController#0" expanded="false" />
-            <element signature="method#edit#0;class#ItemController#0" expanded="false" />
-            <element signature="method#update#0;class#ItemController#0" expanded="false" />
-            <element signature="method#delete#0;class#ItemController#0" expanded="false" />
-            <element signature="method#paginate#0;class#ItemController#0" expanded="false" />
-            <element signature="method#active#0;class#ItemController#0" expanded="false" />
             <element signature="method#validateAndExecution#0;class#ItemController#0" expanded="false" />
-            <element signature="docComment;method#indexType#0;class#ItemController#0" expanded="false" />
-            <element signature="method#indexType#0;class#ItemController#0" expanded="false" />
-            <element signature="method#createType#0;class#ItemController#0" expanded="false" />
-            <element signature="method#storeType#0;class#ItemController#0" expanded="false" />
-            <element signature="method#editType#0;class#ItemController#0" expanded="false" />
-            <element signature="method#updateType#0;class#ItemController#0" expanded="false" />
-            <element signature="method#paginateType#0;class#ItemController#0" expanded="false" />
-            <element signature="docComment;method#indexMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="method#indexMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="method#createMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="method#storeMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="method#editMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="method#updateMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="method#paginateMerk#0;class#ItemController#0" expanded="false" />
-            <element signature="docComment;method#indexColor#0;class#ItemController#0" expanded="false" />
-            <element signature="method#indexColor#0;class#ItemController#0" expanded="false" />
-            <element signature="method#createColor#0;class#ItemController#0" expanded="false" />
-            <element signature="method#storeColor#0;class#ItemController#0" expanded="false" />
-            <element signature="method#editColor#0;class#ItemController#0" expanded="false" />
-            <element signature="method#updateColor#0;class#ItemController#0" expanded="false" />
-            <element signature="method#paginateColor#0;class#ItemController#0" expanded="false" />
+            <marker date="1512060517214" expanded="false" signature="9153:9182" ph="/**...*/" />
+            <marker date="1512060517214" expanded="false" signature="9270:10079" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="10176:10505" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="10639:10913" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="11040:11388" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="11526:11802" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="11946:12709" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="12801:12830" ph="/**...*/" />
+            <marker date="1512060517214" expanded="false" signature="12918:13727" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="13824:14153" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="14287:14561" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="14688:15105" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="15243:15519" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="15663:16426" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="16519:16549" ph="/**...*/" />
+            <marker date="1512060517214" expanded="false" signature="16639:17454" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="17553:17886" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="18024:18301" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="18430:18854" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="18996:19275" ph="{...}" />
+            <marker date="1512060517214" expanded="false" signature="19421:20195" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1130,8 +1048,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="306">
+          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1149,17 +1067,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/752fc558-7882-48d6-95ba-b31a7d3c69ef/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="85" column="18" lean-forward="false" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
+        <state relative-caret-position="-2080">
+          <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+          <folding>
+            <element signature="e#656#667#0" expanded="false" />
+            <element signature="method#index#0;class#DiscountController#0" expanded="false" />
+            <element signature="method#create#0;class#DiscountController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

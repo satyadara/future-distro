@@ -219,7 +219,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Get List Item ");
+            System.out.println("Get List item ");
         }
         return itemList;
     }

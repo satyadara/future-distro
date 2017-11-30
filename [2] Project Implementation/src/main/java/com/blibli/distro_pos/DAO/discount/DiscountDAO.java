@@ -13,7 +13,7 @@ import java.util.*;
 
 @Repository
 public class DiscountDAO extends MyConnection implements BasicDAO<Discount, String> {
-
+    public static final String LIST = "discountList";
     @Override
     public List<Discount> getAll() {
         String sql = "SELECT id_disc, id_emp, name_disc, description, percentage, " +
@@ -232,7 +232,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
                 }
             }
 
-            map.put("discountList", discountList);
+            map.put(LIST, discountList);
             map.put("count", count);
             this.disconnect();
         } catch (Exception e) {

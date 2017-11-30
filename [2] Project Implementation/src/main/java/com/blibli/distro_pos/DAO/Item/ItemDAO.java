@@ -2,15 +2,31 @@ package com.blibli.distro_pos.DAO.item;
 
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.item.Item;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
+    private static final String COL_ID_ITEM = "id_item";
+    private static final String COL_ID_EMP = "name_item";
+    private static final String COL_NAME = "name_item";
+    private static final String COL_PRICE = "price_item";
+    private static final String COL_MERK = "merk_item";
+    private static final String COL_STOCK = "stock_item";
+    private static final String COL_IMAGE = "image_item";
+    private static final String COL_COLOR = "color_item";
+    private static final String COL_SIZE = "size_item";
+    private static final String COL_TYPE = "type_item";
+    private static final String COL_STATUS = "status_item";
+    public static final String LIST = "itemList";
+
     @Override
     public List<Item> getAll() {
         String sql = "SELECT id_item, id_emp, name_item, price_item, im.name_item_merk AS merk_item, stock_item,  " +
@@ -19,27 +35,11 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
                 "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item;";
         List<Item> itemList = new ArrayList<>();
         try {
+            this.connect();
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            if (rs != null) {
-                System.out.println("getAll\t:");
-                while (rs.next()) {
-                    System.out.println("\t" + rs.getString("id_item"));
-                    Item item = new Item(
-                            rs.getString("id_item"),
-                            rs.getString("id_emp"),
-                            rs.getString("name_item"),
-                            rs.getFloat("price_item"),
-                            rs.getString("merk_item"),
-                            rs.getInt("stock_item"),
-                            rs.getString("image_item"),
-                            rs.getString("color_item"),
-                            rs.getString("size_item"),
-                            rs.getString("type_item"),
-                            rs.getString("status_item"));
-                    itemList.add(item);
-                }
-            }
+            itemList = getItemList(rs);
+            this.disconnect();
         } catch (Exception e) {
             System.out.println("something error :" + e.toString());
         }
@@ -187,6 +187,18 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
             int offset = (page - 1) * 10;
             preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
+            itemList = getItemList(rs);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return itemList;
+    }
+
+    private List<Item> getItemList(ResultSet rs) {
+        List<Item> itemList = new ArrayList<>();
+        try {
             if (rs != null) {
                 System.out.println("getAll\t: ");
                 while (rs.next()) {
@@ -206,11 +218,9 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
                     itemList.add(item);
                 }
             }
-            this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+            System.out.println("Get List item ");
         }
-
         return itemList;
     }
 
@@ -225,5 +235,41 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         } catch (Exception e) {
             System.out.println("#SET ACTIVE# something error :" + e.toString());
         }
+    }
+
+    public Map<String, Object> search(String key, int page) {
+        String sql = "SELECT id_item, id_emp, name_item, price_item, im.name_item_merk AS merk_item, stock_item, image_item," +
+                "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
+                "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
+                "JOIN item_type it ON (i.type_item = it.id_item_type) WHERE name_item LIKE '%'||?||'%' ORDER BY id_item LIMIT 10 OFFSET ?;";
+        String sql_counter = "SELECT COUNT(id_item) FROM item WHERE item.name_item LIKE '%'||?||'%';";
+        Map<String, Object> map = new HashMap<>();
+        List<Item> itemList;
+        int count = 0;
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setString(1, key);
+            preparedStatement.setInt(2, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            itemList = getItemList(rs);
+
+            preparedStatement = this.con.prepareStatement(sql_counter);
+            preparedStatement.setString(1, key);
+            rs = preparedStatement.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    count = rs.getInt("count");
+                }
+            }
+            map.put(LIST, itemList);
+            map.put("count", count);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error :" + e.toString());
+        }
+
+        return map;
     }
 }

@@ -1,7 +1,5 @@
 package com.blibli.distro_pos.Model.discount;
 
-import java.sql.Date;
-
 public class Discount {
     private String id_disc;
     private String id_emp;

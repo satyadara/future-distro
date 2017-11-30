@@ -19,8 +19,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("/discount")
 public class DiscountController {
     private DiscountDAO discountDAO;
-    private final String STORE = "store";
-    private final String UPDATE = "update";
+    private static final String STORE = "store";
+    private static final String UPDATE = "update";
 
     @Autowired
     public DiscountController(DiscountDAO discountDAO) {
@@ -32,7 +32,6 @@ public class DiscountController {
         ModelAndView modelAndView = fetch(1);
         return modelAndView;
     }
-
 
     @RequestMapping(value = "/create", method = GET)
     public ModelAndView create() {
@@ -109,10 +108,11 @@ public class DiscountController {
             map = discountDAO.search(key, page);
             count = (int) map.get("count");
             pageCount = (count / 10) + 1;
-            modelAndView.addObject("discounts", map.get("discountList"));
+            modelAndView.addObject("discounts", map.get(discountDAO.LIST));
             modelAndView.addObject("count", count);
             modelAndView.addObject("currentPage", currentPage);
             modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("search", true);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -133,6 +133,7 @@ public class DiscountController {
             modelAndView.addObject("count", count);
             modelAndView.addObject("currentPage", currentPage);
             modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("search", false);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }

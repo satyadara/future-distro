@@ -103,7 +103,7 @@
                             <th>Mulai</th>
                             <th>Berakhir</th>
                             <th>Status</th>
-                            <th>Pilhan</th>
+                            <th>Pilihan</th>
                         </tr>
                         <tr th:each="discount: ${discounts}">
                             <td th:text="${discount.getId_disc()}"></td>
@@ -114,16 +114,16 @@
                             <td th:text="${discount.getStatus()}"></td>
                             <td>
                                 <a th:href="'/discount/' + ${discount.getId_disc()} + '/edit'">
-                                    Edit
+                                    <i class="fa fa-edit"></i> Edit
                                 </a>
                                 |
                                 <a th:href="'/discount/'+${discount.getId_disc()}+'/delete'"
                                    th:if="${discount.getStatus() == 'Aktif'}">
-                                    Tidak Aktif
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i> Tidak Aktif
                                 </a>
                                 <a th:href="'/discount/'+${discount.getId_disc()}+'/active'"
                                    th:if="${discount.getStatus() == 'Tidak Aktif'}">
-                                    Aktif
+                                    <i class="fa fa-check" aria-hidden="true"></i> Aktif
                                 </a>
                             </td>
                         </tr>

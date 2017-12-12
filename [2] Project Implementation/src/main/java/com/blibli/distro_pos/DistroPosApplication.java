@@ -1,5 +1,6 @@
 package com.blibli.distro_pos;
 
+import com.blibli.distro_pos.DAO.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -19,8 +19,8 @@ import javax.xml.crypto.Data;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-   @Autowired
-   DataSource dataSource;
+    @Autowired
+    DataSource dataSource;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -35,36 +35,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//            http.authorizeRequests()
-//                    .antMatchers("/", "/home").permitAll()
-//                    .antMatchers("/admin", "/view_user","/add_user").access("hasAuthority('ROLE_ADMIN')")
-//                    .anyRequest().authenticated()
-//                    .and()
-//                        .formLogin().loginPage("/login").permitAll()
-//                    .and()
-//                        .logout().permitAll()
-//                    .and()
-//                        .exceptionHandling().accessDeniedPage("/403")
-//                    .and()
-//                        .csrf();
-//
-//
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/add_user","/view_user").permitAll()
-                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/add_user", "/view_user").permitAll()
+                .antMatchers("/admin", "/admin2", "/add_user2", "/item",
+                        "/discount")
+                .access("hasAnyAuthority('MANAGER')")
+                .antMatchers("/dashboard").access("hasAnyAuthority('CASHIER', 'MANAGER')")
                 .and()
-                .formLogin().loginPage("/login")
+                .formLogin().loginPage("/")
                 .usernameParameter("username").passwordParameter("password")
+                .defaultSuccessUrl("/success")
                 .and()
-                .logout().logoutSuccessUrl("/login?logout")
+                .logout().logoutSuccessUrl("/?logout")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()

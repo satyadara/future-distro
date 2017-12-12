@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager - Stok Barang</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/creation.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Tambah --- Barang</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form" method="POST" th:object="${data}">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>ID </label>
+                                <input class="form-control" name="id" th:field="*{id}" required="required"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Nama </label>
+                                <input class="form-control" name="name" th:field="*{name}" required="required"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

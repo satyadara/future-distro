@@ -1,0 +1,22 @@
+body	{
+	overflow-x: hidden;
+	background-color: #ecf0f5;
+}
+
+.navbar {
+	background-color: #3c8dbc;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: white;
+}
+
+li > a {
+	color: #FFFFFF;
+}
+
+.panel-primary>.panel-heading {
+	background-color: #3c8dbc;
+	border-color: #3c8dbc;
+}
+

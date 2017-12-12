@@ -2,7 +2,7 @@ package com.blibli.distro_pos.Model.item;
 
 public class Item {
     private String id_item;
-    private String id_emp;
+    private String username;
     private String name_item;
     private float price;
     private String image;
@@ -16,9 +16,9 @@ public class Item {
     public Item() {
     }
 
-    public Item(String id_item, String id_emp, String name_item, float price, String merk, int stock, String image, String color, String size, String type, String status) {
+    public Item(String id_item, String username, String name_item, float price, String merk, int stock, String image, String color, String size, String type, String status) {
         this.id_item = id_item;
-        this.id_emp = id_emp;
+        this.username = username;
         this.name_item = name_item;
         this.price = price;
         this.image = image;
@@ -38,12 +38,12 @@ public class Item {
         this.id_item = id_item;
     }
 
-    public String getId_emp() {
-        return id_emp;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId_emp(String id_emp) {
-        this.id_emp = id_emp;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName_item() {

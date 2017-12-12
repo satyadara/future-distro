@@ -21,9 +21,9 @@ public class UserDao {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5433/sandbox_db",
+                    "jdbc:postgresql://localhost:5432/distro_pos",
                     "postgres",
-                    "password"
+                    "postgres"
             );
         }
         catch (Exception e) {
@@ -43,7 +43,7 @@ public class UserDao {
                 "username varchar(20) NOT NULL," +
                 "password TEXT NOT NULL," +
                 "alamat TEXT NOT NULL," +
-                "ktp NUMERIC NOT NULL," +
+                "ktp VARCHAR(16) NOT NULL," +
                 "telp varchar(12) NOT NULL," +
                 "jeniskelamin CHAR(1)," +
                 "enabled boolean NOT NULL DEFAULT FALSE," +
@@ -73,7 +73,7 @@ public class UserDao {
                 "  username varchar(20) NOT NULL," +
                 "  role varchar(20) NOT NULL," +
                 "  UNIQUE (username,role)," +
-                "  FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE " +
+                "  FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE ON UPDATE CASCADE " +
                 ");";
 
         try {
@@ -156,14 +156,111 @@ public class UserDao {
         return status;
     }
 
+    //Mengedit user
+    //Gagal ketika mengedit username
+    public static int editUser(User user, Role role) {
+
+        int status = 0;
+        String sql = "UPDATE users set namalengkap=?, username=?, password=?, alamat=?, ktp=?, telp=?, " +
+                "jeniskelamin=? WHERE username=?";
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getNamaLengkap());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, hashedPassword);
+            preparedStatement.setString(4, user.getAlamat());
+            preparedStatement.setString(5, user.getKtp());
+            preparedStatement.setString(6, user.getTelp());
+            preparedStatement.setString(7, user.getJenisKelamin());
+            preparedStatement.setString(8, user.getUsername());
+
+            status = preparedStatement.executeUpdate();
+            editUserRole(user.getUsername(), role.getRole());
+
+            System.out.println("Finished edit user");
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
+
+    public static int editUserWithoutPassword(User user, Role role) {
+
+        int status = 0;
+        String sql = "UPDATE users set namalengkap=?, username=?, alamat=?, ktp=?, telp=?, " +
+                "jeniskelamin=? WHERE username=?";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getNamaLengkap());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, user.getAlamat());
+            preparedStatement.setString(4, user.getKtp());
+            preparedStatement.setString(5, user.getTelp());
+            preparedStatement.setString(6, user.getJenisKelamin());
+            preparedStatement.setString(7, user.getUsername());
+
+            status = preparedStatement.executeUpdate();
+            editUserRole(user.getUsername(), role.getRole());
+
+            System.out.println("Finished edit user");
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
+
+    //Mengedit user_roles
+    public static int editUserRole(String username, String role) {
+
+        int status = 0;
+
+        String sql = "UPDATE user_roles set username=?, role=? WHERE username=?";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, role);
+            preparedStatement.setString(3, username);
+
+            status = preparedStatement.executeUpdate();
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
+
     //Menampilkan semua user
     public static List<User> getAllUser() {
 
         List<User> userList = new ArrayList<User>();
 
-        String sql = "select users.namalengkap, users.username, users.alamat, users.ktp, users.telp, users.jeniskelamin, " +
+        String sql = "select users.namalengkap, users.username, users.alamat, users.ktp, users.telp, " +
+                "users.jeniskelamin, " +
                 "user_roles.role from users, user_roles where users.enabled = ? " +
-                "AND users.username=user_roles.username ORDER BY role;";
+                "AND users.username = user_roles.username ORDER BY role;";
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -193,11 +290,65 @@ public class UserDao {
         return userList;
     }
 
-    // TODO: Mengedit user
-    public static  int editUser(User user) {
+    //Menampilkan user berdasarkan username
+    public static User getUserByUsername(String username) {
 
-        return 0;
+        User user = new User();
 
+        String sql = "select * from users where username=?";
+
+        try {
+
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                user.setNamaLengkap(resultSet.getString("namalengkap"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setAlamat(resultSet.getString("alamat"));
+                user.setKtp(resultSet.getString("ktp"));
+                user.setTelp(resultSet.getString("telp"));
+                user.setJenisKelamin(resultSet.getString("jeniskelamin"));
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return user;
+    }
+
+    public static String getUserRoleByUsername(String username) {
+
+        String role = "";
+        String sql = "SELECT role FROM user_roles WHERE  username=?";
+
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                role = resultSet.getString("role");
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return role;
     }
 
     //Menghapus user

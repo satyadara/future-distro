@@ -9,12 +9,13 @@
 CREATE SEQUENCE sec_disc START 101;
 CREATE TABLE DISCOUNT (
   ID_DISC     VARCHAR(10) DEFAULT 'DISC-' || nextval('sec_disc'),
-  ID_EMP      VARCHAR(10)  NOT NULL,
+  USERNAME    VARCHAR(20)  NOT NULL,
   NAME_DISC   VARCHAR(254) NOT NULL,
   PERCENTAGE  FLOAT8       NOT NULL,
   START_DATE  DATE         NOT NULL,
+  DESCRIPTION TEXT         NOT NULL,
   END_DATE    DATE         NOT NULL,
-  STATUS_DISC VARCHAR(15)  DEFAULT 'Aktif',
+  STATUS_DISC VARCHAR(15) DEFAULT 'Aktif',
   CONSTRAINT PK_DISCOUNT PRIMARY KEY (ID_DISC)
 );
 
@@ -31,44 +32,55 @@ CREATE UNIQUE INDEX DISCOUNT_PK
 /*==============================================================*/
 CREATE INDEX ADD_DISCOUNT_FK
   ON DISCOUNT (
-    ID_EMP
+    USERNAME
   );
 
 /*==============================================================*/
 /* Table: EMPLOYEE                                              */
 /*==============================================================*/
-CREATE SEQUENCE sec_emp START 1001;
-
-CREATE TABLE EMPLOYEE (
-  ID_EMP    VARCHAR(10) DEFAULT 'EMP-' || nextval('sec_emp'),
-  ID_ROLE   INT          NOT NULL,
-  USERNAME  VARCHAR(15)  NOT NULL,
-  PASSWORD  VARCHAR(64)  NOT NULL,
-  NOKTP     VARCHAR(35)  NOT NULL,
-  PHOTO     TEXT         NOT NULL,
-  FULL_NAME VARCHAR(60)  NOT NULL,
-  ADDRESS   VARCHAR(256) NOT NULL,
-  GENDER    CHAR(1)      NOT NULL,
-  TELEPHONE VARCHAR(15)  NOT NULL,
-  STATUS    VARCHAR(15)  NOT NULL,
-  CONSTRAINT PK_EMPLOYEE PRIMARY KEY (ID_EMP)
+CREATE TABLE USERS
+(
+  namalengkap  TEXT                  NOT NULL,
+  username     VARCHAR(20)           NOT NULL
+    CONSTRAINT PK_USERS
+    PRIMARY KEY,
+  password     TEXT                  NOT NULL,
+  alamat       TEXT                  NOT NULL,
+  ktp          VARCHAR(16)           NOT NULL,
+  telp         VARCHAR(12)           NOT NULL,
+  jeniskelamin CHAR,
+  enabled      BOOLEAN DEFAULT FALSE NOT NULL
 );
+-- CREATE TABLE EMPLOYEE (
+--   ID_EMP    VARCHAR(10) DEFAULT 'EMP-' || nextval('sec_emp'),
+--   ID_ROLE   INT          NOT NULL,
+--   USERNAME  VARCHAR(15)  NOT NULL,
+--   PASSWORD  VARCHAR(64)  NOT NULL,
+--   NOKTP     VARCHAR(35)  NOT NULL,
+--   PHOTO     TEXT         NOT NULL,
+--   FULL_NAME VARCHAR(60)  NOT NULL,
+--   ADDRESS   VARCHAR(256) NOT NULL,
+--   GENDER    CHAR(1)      NOT NULL,
+--   TELEPHONE VARCHAR(15)  NOT NULL,
+--   STATUS    VARCHAR(15)  NOT NULL,
+--   CONSTRAINT PK_EMPLOYEE PRIMARY KEY (ID_EMP)
+-- );
 
 /*==============================================================*/
 /* Index: EMPLOYEE_PK                                           */
 /*==============================================================*/
 CREATE UNIQUE INDEX EMPLOYEE_PK
-  ON EMPLOYEE (
-    ID_EMP
+  ON USERS (
+    USERNAME
   );
-
-/*==============================================================*/
-/* Index: EMPHASROLE_FK                                         */
-/*==============================================================*/
-CREATE INDEX EMPHASROLE_FK
-  ON EMPLOYEE (
-    ID_ROLE
-  );
+--
+-- /*==============================================================*/
+-- /* Index: EMPHASROLE_FK                                         */
+-- /*==============================================================*/
+-- CREATE INDEX EMPHASROLE_FK
+--   ON EMPLOYEE (
+--     ID_ROLE
+--   );
 
 /*==============================================================*/
 /* Table: ITEM                                                  */
@@ -77,7 +89,7 @@ CREATE SEQUENCE sec_item START 101;
 
 CREATE TABLE ITEM (
   ID_ITEM     VARCHAR(30)  NOT NULL,
-  ID_EMP      VARCHAR(10)  NOT NULL,
+  USERNAME    VARCHAR(20)  NOT NULL,
   NAME_ITEM   VARCHAR(255) NOT NULL,
   PRICE_ITEM  FLOAT8       NOT NULL,
   STOCK_ITEM  INT4         NOT NULL,
@@ -86,7 +98,7 @@ CREATE TABLE ITEM (
   COLOR_ITEM  VARCHAR(3)   NOT NULL,
   SIZE_ITEM   VARCHAR(5)   NOT NULL,
   TYPE_ITEM   VARCHAR(3)   NOT NULL,
-  STATUS_ITEM VARCHAR(15)  DEFAULT 'Aktif',
+  STATUS_ITEM VARCHAR(15) DEFAULT 'Aktif',
   CONSTRAINT PK_ITEM PRIMARY KEY (ID_ITEM)
 );
 
@@ -103,7 +115,7 @@ CREATE UNIQUE INDEX ITEM_PK
 /*==============================================================*/
 CREATE INDEX ADD_ITEM_FK
   ON ITEM (
-    ID_EMP
+    USERNAME
   );
 
 /*==============================================================*/
@@ -152,7 +164,7 @@ CREATE SEQUENCE sec_outcome START 101;
 
 CREATE TABLE OUTCOME (
   ID_OUTCOME   VARCHAR(10) DEFAULT 'OUT-' || nextval('sec_outcome'),
-  ID_EMP       VARCHAR(10) NOT NULL,
+  USERNAME     VARCHAR(10) NOT NULL,
   AMOUNT_OUT   FLOAT8      NOT NULL,
   QUANTITY_OUT INT4        NOT NULL,
   TITLE_OUT    DATE        NOT NULL,
@@ -173,25 +185,38 @@ CREATE UNIQUE INDEX OUTCOME_PK
 /*==============================================================*/
 CREATE INDEX EMPHASOUTCOME_FK
   ON OUTCOME (
-    ID_EMP
+    USERNAME
   );
 
 /*==============================================================*/
 /* Table: ROLE                                                  */
 /*==============================================================*/
-CREATE TABLE ROLE (
-  ID_ROLE   SERIAL,
-  ROLE_NAME VARCHAR(20) NOT NULL,
-  CONSTRAINT PK_ROLE PRIMARY KEY (ID_ROLE)
+CREATE TABLE user_roles
+(
+  user_role_id SERIAL      NOT NULL
+    CONSTRAINT user_roles_pkey
+    PRIMARY KEY,
+  username     VARCHAR(20) NOT NULL
+    CONSTRAINT user_roles_username_fkey
+    REFERENCES users
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  role         VARCHAR(20) NOT NULL,
+  CONSTRAINT user_roles_username_role_key
+  UNIQUE (username, role)
 );
+-- CREATE TABLE ROLE (
+--   ID_ROLE   SERIAL,
+--   ROLE_NAME VARCHAR(20) NOT NULL,
+--   CONSTRAINT PK_ROLE PRIMARY KEY (ID_ROLE)
+-- );
 
 /*==============================================================*/
 /* Index: ROLE_PK                                               */
 /*==============================================================*/
-CREATE UNIQUE INDEX ROLE_PK
-  ON ROLE (
-    ID_ROLE
-  );
+-- CREATE UNIQUE INDEX ROLE_PK
+--   ON ROLE (
+--     ID_ROLE
+--   );
 
 /*==============================================================*/
 /* Table: TRANSACTION                                           */
@@ -201,7 +226,7 @@ CREATE SEQUENCE sec_trans START 100000000001;
 CREATE TABLE TRANSACTION (
   ID_TRANS       VARCHAR(12) DEFAULT nextval('sec_trans'),
   ID_DISC        VARCHAR(10) NOT NULL,
-  ID_EMP         VARCHAR(10) NOT NULL,
+  USERNAME       VARCHAR(20) NOT NULL,
   CUSTOMER_TRANS VARCHAR(50) NOT NULL,
   TOTAL_TRANS    FLOAT8      NOT NULL,
   DATE_TRANS     DATE        NOT NULL,
@@ -283,7 +308,7 @@ CREATE INDEX HAS_FK
 /*==============================================================*/
 CREATE INDEX ADD_ORDER_FK
   ON TRANSACTION (
-    ID_EMP
+    USERNAME
   );
 
 /*==============================================================*/
@@ -311,18 +336,18 @@ CREATE INDEX ITEM_MERK_FK
   );
 
 ALTER TABLE DISCOUNT
-  ADD CONSTRAINT FK_DISCOUNT_ADD_DISCO_EMPLOYEE FOREIGN KEY (ID_EMP)
-REFERENCES EMPLOYEE (ID_EMP)
+  ADD CONSTRAINT FK_DISCOUNT_ADD_DISCO_EMPLOYEE FOREIGN KEY (USERNAME)
+REFERENCES USERS (USERNAME)
 ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE EMPLOYEE
-  ADD CONSTRAINT FK_EMPLOYEE_EMPHASROL_ROLE FOREIGN KEY (ID_ROLE)
-REFERENCES ROLE (ID_ROLE)
-ON DELETE RESTRICT ON UPDATE RESTRICT;
+--
+-- ALTER TABLE EMPLOYEE
+--   ADD CONSTRAINT FK_EMPLOYEE_EMPHASROL_ROLE FOREIGN KEY (ID_ROLE)
+-- REFERENCES ROLE (ID_ROLE)
+-- ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE ITEM
-  ADD CONSTRAINT FK_ITEM_ADD_ITEM_EMPLOYEE FOREIGN KEY (ID_EMP)
-REFERENCES EMPLOYEE (ID_EMP)
+  ADD CONSTRAINT FK_ITEM_ADD_ITEM_EMPLOYEE FOREIGN KEY (USERNAME)
+REFERENCES USERS (USERNAME)
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE ITEM
@@ -351,13 +376,13 @@ REFERENCES TRANSACTION (ID_TRANS)
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE OUTCOME
-  ADD CONSTRAINT FK_OUTCOME_EMPHASOUT_EMPLOYEE FOREIGN KEY (ID_EMP)
-REFERENCES EMPLOYEE (ID_EMP)
+  ADD CONSTRAINT FK_OUTCOME_EMPHASOUT_EMPLOYEE FOREIGN KEY (USERNAME)
+REFERENCES USERS (USERNAME)
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE TRANSACTION
-  ADD CONSTRAINT FK_TRANSACT_ADD_ORDER_EMPLOYEE FOREIGN KEY (ID_EMP)
-REFERENCES EMPLOYEE (ID_EMP)
+  ADD CONSTRAINT FK_TRANSACT_ADD_ORDER_EMPLOYEE FOREIGN KEY (USERNAME)
+REFERENCES USERS (USERNAME)
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE TRANSACTION
@@ -371,5 +396,5 @@ INSERT INTO ITEM_TYPE (ID_ITEM_TYPE, NAME_ITEM_TYPE) VALUES ('KMJ', 'Kemeja');
 INSERT INTO ITEM_MERK (ID_ITEM_MERK, NAME_ITEM_MERK) VALUES ('NKE', 'Nike');
 INSERT INTO ITEM_MERK (ID_ITEM_MERK, NAME_ITEM_MERK) VALUES ('ADS', 'Adidas');
 
-INSERT INTO ITEM_COLOR(ID_ITEM_COLOR, NAME_ITEM_COLOR) VALUES ('MRH', 'Merah');
-INSERT INTO ITEM_COLOR(ID_ITEM_COLOR, NAME_ITEM_COLOR) VALUES ('BRU', 'Biru');
+INSERT INTO ITEM_COLOR (ID_ITEM_COLOR, NAME_ITEM_COLOR) VALUES ('MRH', 'Merah');
+INSERT INTO ITEM_COLOR (ID_ITEM_COLOR, NAME_ITEM_COLOR) VALUES ('BRU', 'Biru');

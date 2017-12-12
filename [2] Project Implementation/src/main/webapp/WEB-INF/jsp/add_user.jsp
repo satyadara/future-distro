@@ -101,9 +101,10 @@
                         <button id="submit" name="submit" class="btn btn-default">Tambah</button>
                     </div>
                 </div>
-    </div>
+
     </fieldset>
     </form>
+    </div>
 </div>
 </body>
 </html>

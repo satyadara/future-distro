@@ -6,25 +6,30 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="/resources/css/creation.css">-->
+    <link href="<c:url value="/resources/css/creation.css"/>" rel="stylesheet">
     <title>LOGIN</title>
 
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="form-wrap">
-                    <h2>WELCOME</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-wrap">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h2>WELCOME</h2>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form:form id="login-form" action="${login}" method="post" role="form" style="display: block;">
+                                <form:form id="login-form" action="${login}" method="post" role="form"
+                                           style="display: block;">
                                     <div class="form-group">
                                         <input type="text" name="username" class="form-control" placeholder="Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                        <input type="password" name="password" class="form-control"
+                                               placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -41,5 +46,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

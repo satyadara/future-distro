@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager - Tambah Pengeluaran</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/creation.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Tambah Pengeluaran</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form" th:method="post" th:object="${outcome}">
+                        <th:block th:if="${errors != null}">
+                            <ul>
+                                <li th:each="err: ${errors}" th:text="${err}" style="color: red;"></li>
+                            </ul>
+                        </th:block>
+                        <input type="text" name="id_outcome" th:field="*{id_outcome}" hidden="hidden"/>
+                        <input type="text" name="id_emp" th:field="*{id_emp}" hidden="hidden"/>
+                        <div class="form-group col-md-12">
+                            <label>Nama Pengeluaran</label>
+                            <input type="text" name="title" class="form-control" th:field="*{title}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Amount</label>
+                            <input type="number" name="amount" class="form-control"
+                                   th:field="*{amount}" step="0.001"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["amount"] != null}' th:text='${errors2["amount"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Quantity</label>
+                            <input type="number" name="quantity" class="form-control"
+                                   th:field="*{quantity}"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["quantity"] != null}' th:text='${errors2["quantity"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Tanggal</label>
+                            <input type="date" name="date" class="form-control"
+                                   th:field="*{date}"/>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Deskripsi</label>
+                            <input type="text" name="desc" class="form-control" th:field="*{desc}"/>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-default" style="float: right;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

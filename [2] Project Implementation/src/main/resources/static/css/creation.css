@@ -4,11 +4,16 @@ body	{
 }
 
 .navbar {
-	background-color: #3c8dbc;
+	/*background: #3c8dbc;*/
+	/*background: linear-gradient(to right, aqua 50%, blue);*/
+	background: white;
+	-webkit-box-shadow: 0 8px 6px -6px #999;
+	-moz-box-shadow: 0 8px 6px -6px #999;
+	box-shadow: 0 8px 6px -6px #999;
 }
 
 .navbar-default .navbar-nav>li>a {
-	color: white;
+	/*color: white;*/
 }
 
 .navbar-brand { position: relative; z-index: 2; }
@@ -19,7 +24,9 @@ body	{
 .navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 22px; }
 
 .navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 120px; padding-left: 80px; width: 100%; }
-.navbar.navbar-default .nav-collapse { background-color: #f8f8f8; }
+.navbar.navbar-default .nav-collapse {
+	/*background-color: #f8f8f8; */
+}
 .navbar.navbar-inverse .nav-collapse { background-color: #222; }
 .navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
 .nav-collapse>li { float: right; }

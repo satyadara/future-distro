@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 //                .antMatchers().permitAll()
                 .antMatchers("/admin", "/add_user", "/view_user","/admin2", "/add_user2", "/item",
-                        "/discount")
+                        "/discount", "/outcome")
                 .access("hasAnyAuthority('MANAGER')")
                 .antMatchers("/dashboard").access("hasAnyAuthority('CASHIER', 'MANAGER')")
                 .and()

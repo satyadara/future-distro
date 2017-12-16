@@ -75,162 +75,24 @@
                         <input type="text" name="search" placeholder="search" class="form-control"/>
                         <br/>
                         <div class="text-center">
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #1</p>
-                                            <p>Rpxxxxxx</p>
+                            <th:block th:each="item : ${items}">
+                                <a th:href="${'/cashier/cart/' + item.getId_item()}">
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <img src="images/logoss.png" width="200" height="200"
+                                                     class="img img-responsive center-block"/>
+                                                <p>Item #1</p>
+                                                <p>Rpxxxxxx</p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #2</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #3</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #4</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #5</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #6</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #7</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #8</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #9</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #10</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #11</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #12</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
+                                </a>
+                                <form >
+                                    <input hidden="hidden" name="item_name" th:value="${item.getName_item()}"/>
+                                    <input type="number" name="item_name" th:value="${item.getName_item()}"/>
+                                </form>
+                            </th:block>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="bawahan">Bawahan</div>
@@ -425,6 +287,23 @@
                 </div>
                 <h5>Kam, 24 Agt 2017 | 21:00:21</h5>
                 <hr/>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nama Item</th>
+                        <th>Kuantitas</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cart: ${cart}">
+                        <td th:text="${cart.getId_item()}"></td>
+                        <td th:text="${cart.getQuantity()}"></td>
+                        <td>-</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button><a href="/cashier/checkout">Cekot</a></button>
             </div>
         </div>
     </div>

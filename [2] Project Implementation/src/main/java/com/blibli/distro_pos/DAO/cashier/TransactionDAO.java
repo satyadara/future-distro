@@ -4,12 +4,15 @@ import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
 import com.blibli.distro_pos.Model.cashier.Transaction;
 import com.blibli.distro_pos.Model.discount.Discount;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+@Repository
 
 public class TransactionDAO extends MyConnection implements BasicDAO<Transaction, String> {
     private static final String LIST = "transactionList";
@@ -134,8 +137,8 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet != null)  {
-                while (resultSet.next())    {
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     count = resultSet.getInt("count");
                 }
             }
@@ -150,7 +153,6 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
     public List<Transaction> paginate(int page) {
         return null;
     }
-
 
     private List<Transaction> getTransactionList(ResultSet rs) {
         List<Transaction> transactionList = new ArrayList<>();
@@ -176,4 +178,24 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
         }
         return transactionList;
     }
+
+    public String getTransID() {
+        String sql = "SELECT nextval('sec_trans');";
+        String id = "";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet != null)  {
+                while (resultSet.next())    {
+                    id = resultSet.getString("nextval");
+                }
+            }
+                this.disconnect();
+        } catch (Exception e) {
+
+        }
+        return id;
+    }
+
 }

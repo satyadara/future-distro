@@ -3,15 +3,17 @@ package com.blibli.distro_pos.Model.cashier;
 public class ShoppingCart {
     private String id_item, username, item_name;
     private int quantity;
+    private double subtotal;
 
     public ShoppingCart() {
     }
 
-    public ShoppingCart(String id_item, String username, int quantity, String item_name) {
+    public ShoppingCart(String id_item, String username, int quantity, String item_name, double subtotal) {
         this.id_item = id_item;
         this.username = username;
         this.quantity = quantity;
         this.item_name = item_name;
+        this.subtotal = subtotal;
     }
 
     public String getId_item() {
@@ -44,6 +46,14 @@ public class ShoppingCart {
 
     public void setItem_name(String item_name) {
         this.item_name = item_name;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 
     @Override

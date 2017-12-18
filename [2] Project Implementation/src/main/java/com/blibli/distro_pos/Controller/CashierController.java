@@ -43,27 +43,38 @@ public class CashierController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("cashier/dashboard");
         List<ShoppingCart> list = shoppingCartDAO.getAll();
-        List<Item> itemList = itemDAO.getAll();
+        List<Item> itemList = itemDAO.paginate(1);
+
         for (ShoppingCart cart : list) {
-            System.out.println(cart.toString());
+
         }
+
         modelAndView.addObject("cart", list);
         modelAndView.addObject("items", itemList);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/cart/{id}")
+    @RequestMapping(value = "/cart/{id}", method = GET)
     public ModelAndView addCart(@PathVariable("id") String id,
                                 @RequestParam("quantity") int qty,
                                 @RequestParam("item_name") String item_name,
+                                @RequestParam("price_item") double price_item,
                                 Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setId_item(id);
-        shoppingCart.setUsername(authentication.getName());
-        shoppingCart.setQuantity(qty);
-        shoppingCart.setItem_name(item_name);
-        shoppingCartDAO.save(shoppingCart);
+        ShoppingCart shoppingCart = shoppingCartDAO.getOne(id);
+
+        if (shoppingCart != null) {
+            System.out.println("update");
+
+            qty += shoppingCart.getQuantity();
+
+            shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
+            shoppingCartDAO.update(shoppingCart);
+        } else {
+            System.out.println("save");
+            shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
+            shoppingCartDAO.save(shoppingCart);
+        }
         return modelAndView;
     }
 
@@ -94,5 +105,18 @@ public class CashierController {
         transactionDAO.update(transaction);
 
         return modelAndView;
+    }
+
+    private ShoppingCart setShoppingCart(String id, String username, int qty, String item_name, double price_item) {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        double subtotal;
+        shoppingCart.setId_item(id);
+        shoppingCart.setUsername(username);
+        shoppingCart.setQuantity(qty);
+        shoppingCart.setItem_name(item_name);
+        subtotal = qty * price_item;
+        shoppingCart.setSubtotal(subtotal);
+
+        return shoppingCart;
     }
 }

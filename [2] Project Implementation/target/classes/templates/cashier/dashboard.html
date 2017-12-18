@@ -76,22 +76,22 @@
                         <br/>
                         <div class="text-center">
                             <th:block th:each="item : ${items}">
-                                <a th:href="${'/cashier/cart/' + item.getId_item()}">
-                                    <div class="col-md-3">
-                                        <div class="panel panel-default">
-                                            <div class="panel-body">
-                                                <img src="images/logoss.png" width="200" height="200"
-                                                     class="img img-responsive center-block"/>
-                                                <p>Item #1</p>
-                                                <p>Rpxxxxxx</p>
-                                            </div>
-                                        </div>
+                                <div class="col-md-3 panel panel-default">
+                                    <div class="panel-body">
+                                        <img src="images/logoss.png" width="200" height="200"
+                                             class="img img-responsive center-block"/>
+                                        <p th:text="${item.getName_item()}"></p>
+                                        <p th:text="${'Rp'+item.getPrice()}"></p>
                                     </div>
-                                </a>
-                                <form >
-                                    <input hidden="hidden" name="item_name" th:value="${item.getName_item()}"/>
-                                    <input type="number" name="item_name" th:value="${item.getName_item()}"/>
-                                </form>
+                                    <form th:action="${'/cashier/cart/' + item.getId_item()}">
+                                        <input type="text" hidden="hidden" name="item_name"
+                                               th:value="${item.getName_item()}"/>
+                                        <input type="text" hidden="hidden" name="price_item"
+                                               th:value="${item.getPrice()}"/>
+                                        <input class="form-control col-md-12" type="number" name="quantity" value=""/>
+                                        <button class="btn btn-primary col-md-12" type="submit">Tambah</button>
+                                    </form>
+                                </div>
                             </th:block>
                         </div>
                     </div>
@@ -297,9 +297,9 @@
                     </thead>
                     <tbody>
                     <tr th:each="cart: ${cart}">
-                        <td th:text="${cart.getId_item()}"></td>
+                        <td th:text="${cart.getItem_name()}"></td>
                         <td th:text="${cart.getQuantity()}"></td>
-                        <td>-</td>
+                        <td th:text="${cart.getSubtotal()}"></td>
                     </tr>
                     </tbody>
                 </table>

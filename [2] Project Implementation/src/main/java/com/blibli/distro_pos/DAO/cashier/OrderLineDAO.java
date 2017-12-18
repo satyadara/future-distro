@@ -70,17 +70,16 @@ public class OrderLineDAO extends MyConnection implements BasicDAO<OrderLine, St
 
     @Override
     public void save(OrderLine orderLine) {
-        String sql = "INSERT INTO orderline(id_orderline, id_trans, id_item, item_price, quantity, subtotal) " +
-                "VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO orderline( id_trans, id_item, item_price, quantity, subtotal) " +
+                "VALUES(?,?,?,?,?)";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setString(1, orderLine.getId_orderline());
-            preparedStatement.setString(2, orderLine.getId_trans());
-            preparedStatement.setString(3, orderLine.getId_item());
-            preparedStatement.setDouble(4, orderLine.getItem_price());
-            preparedStatement.setInt(5, orderLine.getQuantity());
-            preparedStatement.setDouble(6, orderLine.getSubtotal());
+            preparedStatement.setString(1, orderLine.getId_trans());
+            preparedStatement.setString(2, orderLine.getId_item());
+            preparedStatement.setDouble(3, orderLine.getItem_price());
+            preparedStatement.setInt(4, orderLine.getQuantity());
+            preparedStatement.setDouble(5, orderLine.getSubtotal());
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {

@@ -1,7 +1,7 @@
-package com.blibli.distro_pos.DAO;
+package com.blibli.distro_pos.DAO.user;
 
-import com.blibli.distro_pos.Model.Role;
-import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.Model.user.Role;
+import com.blibli.distro_pos.Model.user.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Connection;

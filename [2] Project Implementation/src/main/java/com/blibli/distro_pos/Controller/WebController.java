@@ -1,8 +1,8 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.UserDao;
-import com.blibli.distro_pos.Model.Role;
-import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.DAO.user.UserDao;
+import com.blibli.distro_pos.Model.user.Role;
+import com.blibli.distro_pos.Model.user.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

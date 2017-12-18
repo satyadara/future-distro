@@ -262,4 +262,16 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
 
         return map;
     }
+
+    public void addOrMinStock(String id_item, int quantity) {
+        String sql = "UPDATE item SET stock_item = stock_item+" + quantity + " WHERE id_item = '" + id_item + "';";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.execute(sql);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#ADD OR MINUS STOCK#  : " + e.toString());
+        }
+    }
 }

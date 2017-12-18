@@ -74,12 +74,13 @@ public class ShoppingCartDAO extends MyConnection {
         }
     }
 
-    public void delete(String id) {
-        String sql = "DELETE FROM cart WHERE id_item = ?;";
+    public void cancel(String id, String username) {
+        String sql = "DELETE FROM cart WHERE id_item = ? AND username = ?;";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setString(1, id);
+            preparedStatement.setString(2, username);
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
@@ -87,11 +88,13 @@ public class ShoppingCartDAO extends MyConnection {
         }
     }
 
-    public void clear() {
-        String sql = "DELETE FROM cart;";
+    public void clear(String username) {
+        String sql = "DELETE FROM cart WHERE username = '" + username + "';";
         try {
+            this.connect();
             Statement statement = this.con.createStatement();
             statement.execute(sql);
+            this.disconnect();
         } catch (Exception e) {
             System.out.println("#CLEAR# something error : " + e.toString());
         }
@@ -104,8 +107,8 @@ public class ShoppingCartDAO extends MyConnection {
             this.connect();
             Statement statement = this.con.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            if (resultSet != null)  {
-                while (resultSet.next())    {
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     shoppingCart = new ShoppingCart(
                             resultSet.getString("id_item"),
                             resultSet.getString("username"),

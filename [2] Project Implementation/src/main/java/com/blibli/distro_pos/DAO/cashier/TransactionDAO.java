@@ -71,17 +71,18 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
 
     @Override
     public void save(Transaction transaction) {
-        String sql = "INSERT INTO transaction(id_disc, username, customer_trans, total_trans, date_trans, status_trans) " +
-                "VALUES (?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?);";
+        String sql = "INSERT INTO transaction(id_trans, id_disc, username, customer_trans, total_trans, date_trans, status_trans) " +
+                "VALUES (?,?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?);";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setString(1, transaction.getId_disc());
-            preparedStatement.setString(2, transaction.getUsername());
-            preparedStatement.setString(3, transaction.getCustomer_name());
-            preparedStatement.setDouble(4, transaction.getTotal_trans());
-            preparedStatement.setString(5, transaction.getDate());
-            preparedStatement.setString(6, transaction.getStatus());
+            preparedStatement.setString(1, transaction.getId_trans());
+            preparedStatement.setString(2, transaction.getId_disc());
+            preparedStatement.setString(3, transaction.getUsername());
+            preparedStatement.setString(4, transaction.getCustomer_name());
+            preparedStatement.setDouble(5, transaction.getTotal_trans());
+            preparedStatement.setString(6, transaction.getDate());
+            preparedStatement.setString(7, transaction.getStatus());
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {

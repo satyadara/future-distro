@@ -32,7 +32,8 @@ public class CashierController {
     private final ItemDAO itemDAO;
 
     @Autowired
-    public CashierController(TransactionDAO transactionDAO, ShoppingCartDAO shoppingCartDAO, OrderLineDAO orderLineDAO, ItemDAO itemDAO) {
+    public CashierController(TransactionDAO transactionDAO, ShoppingCartDAO shoppingCartDAO,
+                             OrderLineDAO orderLineDAO, ItemDAO itemDAO) {
         this.transactionDAO = transactionDAO;
         this.shoppingCartDAO = shoppingCartDAO;
         this.orderLineDAO = orderLineDAO;
@@ -59,22 +60,32 @@ public class CashierController {
                                 @RequestParam("quantity") int qty,
                                 @RequestParam("item_name") String item_name,
                                 @RequestParam("price_item") double price_item,
+                                @RequestParam("stock_item") int stock_item,
                                 Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
         ShoppingCart shoppingCart = shoppingCartDAO.getOne(id);
-
-        if (shoppingCart != null) {
+        if (stock_item < qty) {
+            return modelAndView;
+        }
+        if (shoppingCart.getId_item() != null) {
             System.out.println("update");
 
             qty += shoppingCart.getQuantity();
-
+            if (qty < 1) {
+                return modelAndView;
+            }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
             shoppingCartDAO.update(shoppingCart);
         } else {
             System.out.println("save");
+            if (qty < 1) {
+                return modelAndView;
+            }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
             shoppingCartDAO.save(shoppingCart);
         }
+        itemDAO.addOrMinStock(id, qty * -1);
+
         return modelAndView;
     }
 
@@ -90,7 +101,7 @@ public class CashierController {
         if (id_trans.equals("")) {
             return modelAndView;
         }
-        Transaction transaction = new Transaction(id_trans, "-", authentication.getName(), "-", 0.0, simpleDateFormat.format(today), "Aktif");
+        Transaction transaction = new Transaction(id_trans, null, authentication.getName(), "-", 0.0, simpleDateFormat.format(today), "Aktif");
         transactionDAO.save(transaction);
 
         for (ShoppingCart cart : list) {
@@ -103,7 +114,18 @@ public class CashierController {
         }
         transaction.setTotal_trans(total_trans);
         transactionDAO.update(transaction);
+        shoppingCartDAO.clear(authentication.getName());
+        return modelAndView;
+    }
 
+    @RequestMapping(value = "/cart/{id}/cancel", method = GET)
+    public ModelAndView cancelCartItem(@PathVariable("id") String id,
+                                       @RequestParam("quantity") int qty,
+                                       Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
+        System.out.println(qty);
+        itemDAO.addOrMinStock(id, qty);
+        shoppingCartDAO.cancel(id, authentication.getName());
         return modelAndView;
     }
 

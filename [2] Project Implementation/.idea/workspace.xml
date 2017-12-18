@@ -73,17 +73,47 @@
         <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
         <item name="transaction" type="e3449647:DbNodeDescriptor" />
       </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="distro_pos@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="distro_pos" type="e3449647:DbNodeDescriptor" />
+        <item name="public" type="e3449647:DbNodeDescriptor" />
+        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/cashier/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="300" column="65" lean-forward="false" selection-start-line="300" selection-start-column="65" selection-end-line="300" selection-end-column="65" />
+            <state relative-caret-position="236">
+              <caret line="305" column="95" lean-forward="true" selection-start-line="305" selection-start-column="95" selection-end-line="305" selection-end-column="95" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/Item.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-544">
+              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShoppingCart.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/ShoppingCart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="e#1141#1142#0" expanded="true" />
+                <element signature="e#1172#1173#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,21 +121,15 @@
       <file leaf-file-name="CashierController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="102" column="9" lean-forward="false" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+            <state relative-caret-position="253">
+              <caret line="86" column="25" lean-forward="false" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1038#1049#0" expanded="false" />
+                <element signature="method#CashierController#0;class#CashierController#0" expanded="false" />
+                <element signature="method#index#0;class#CashierController#0" expanded="false" />
+                <element signature="method#checkout#0;class#CashierController#0" expanded="false" />
+                <element signature="method#setShoppingCart#0;class#CashierController#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -113,8 +137,8 @@
       <file leaf-file-name="OrderLineDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/OrderLineDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="80" column="37" lean-forward="false" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+            <state relative-caret-position="221">
+              <caret line="121" column="5" lean-forward="true" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
               <folding>
                 <marker date="1513577310737" expanded="true" signature="554:577" ph="SELECT * FRO... orderline" />
                 <marker date="1513577310737" expanded="true" signature="1653:1699" ph="SELECT * FRO... orderline" />
@@ -127,21 +151,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="417" column="19" lean-forward="true" selection-start-line="417" selection-start-column="19" selection-end-line="417" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderLine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/OrderLine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="248">
+              <caret line="421" column="44" lean-forward="false" selection-start-line="421" selection-start-column="44" selection-end-line="421" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -150,66 +164,29 @@
       <file leaf-file-name="ShoppingCartDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/ShoppingCartDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="100" column="69" lean-forward="false" selection-start-line="100" selection-start-column="69" selection-end-line="100" selection-end-column="69" />
+            <state relative-caret-position="253">
+              <caret line="82" column="48" lean-forward="false" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1513569340061" expanded="true" signature="469:487" ph="SELECT * FRO... CART" />
-                <marker date="1513569340061" expanded="true" signature="1488:1554" ph="INSERT INTO cart... " />
-                <marker date="1513569340061" expanded="true" signature="1488:1594" ph="INSERT INTO cart... " />
-                <marker date="1513569340061" expanded="true" signature="2352:2363" ph="UPDATE cart(... " />
-                <marker date="1513569340061" expanded="true" signature="2352:2367" ph="UPDATE cartS... " />
-                <marker date="1513569340061" expanded="true" signature="2352:2380" ph="UPDATE cart " />
-                <marker date="1513569340061" expanded="true" signature="2352:2411" ph="UPDATE cart " />
-                <marker date="1513569340061" expanded="true" signature="2352:2412" ph="UPDATE cart " />
-                <marker date="1513569340061" expanded="true" signature="3009:3043" ph="DELETE FROM " />
-                <marker date="1513569340061" expanded="true" signature="3466:3482" ph="DELETE FROM " />
-                <marker date="1513569340061" expanded="true" signature="3790:3824" ph="SELECT * FRO... CART" />
-                <marker date="1513569340061" expanded="true" signature="3790:3825" ph="SELECT * FRO... CART" />
-                <marker date="1513569340061" expanded="true" signature="3790:3837" ph="SELECT * FRO... CART" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransactionDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="100" column="43" lean-forward="true" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
-              <folding>
-                <marker date="1513577822979" expanded="true" signature="676:898" ph="SELECT id_tr... transaction" />
-                <marker date="1513577822979" expanded="true" signature="1447:1676" ph="SELECT id_tr... transaction" />
-                <marker date="1513577822979" expanded="true" signature="2856:3018" ph="INSERT INTO transaction... " />
-                <marker date="1513577822979" expanded="true" signature="3858:4021" ph="UPDATE trans... " />
-                <marker date="1513577822979" expanded="true" signature="4804:4905" ph="UPDATE trans... " />
-                <marker date="1513577822979" expanded="true" signature="5330:5369" ph="SELECT COUNT... transaction" />
-                <marker date="1513577822979" expanded="true" signature="7182:7209" ph="SELECT nextv... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShoppingCart.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/ShoppingCart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-              <folding>
-                <element signature="e#1141#1142#0" expanded="true" />
-                <element signature="e#1172#1173#0" expanded="true" />
-                <element signature="e#1220#1221#0" expanded="true" />
-                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="method#getAll#0;class#ShoppingCartDAO#0" expanded="false" />
+                <element signature="method#save#0;class#ShoppingCartDAO#0" expanded="false" />
+                <element signature="method#update#0;class#ShoppingCartDAO#0" expanded="false" />
+                <marker date="1513584065134" expanded="false" signature="469:487" ph="SELECT * FRO... CART" />
+                <marker date="1513584065134" expanded="false" signature="1488:1554" ph="INSERT INTO cart... " />
+                <marker date="1513584065134" expanded="false" signature="1488:1594" ph="INSERT INTO cart... " />
+                <marker date="1513584065134" expanded="false" signature="2352:2363" ph="UPDATE cart(... " />
+                <marker date="1513584065134" expanded="false" signature="2352:2367" ph="UPDATE cartS... " />
+                <marker date="1513584065134" expanded="false" signature="2352:2380" ph="UPDATE cart " />
+                <marker date="1513584065134" expanded="false" signature="2352:2411" ph="UPDATE cart " />
+                <marker date="1513584065134" expanded="false" signature="2352:2412" ph="UPDATE cart " />
+                <marker date="1513584065134" expanded="true" signature="3026:3060" ph="DELETE FROM " />
+                <marker date="1513584065134" expanded="true" signature="3026:3077" ph="DELETE FROM " />
+                <marker date="1513584065134" expanded="true" signature="3569:3585" ph="DELETE FROM " />
+                <marker date="1513584065134" expanded="true" signature="3569:3602" ph="DELETE FROM " />
+                <marker date="1513584065134" expanded="true" signature="3569:3604" ph="DELETE FROM " />
+                <marker date="1513584065134" expanded="true" signature="3569:3621" ph="DELETE FROM " />
+                <marker date="1513584065134" expanded="true" signature="3988:4022" ph="SELECT * FRO... CART" />
+                <marker date="1513584065134" expanded="true" signature="3988:4023" ph="SELECT * FRO... CART" />
+                <marker date="1513584065134" expanded="true" signature="3988:4035" ph="SELECT * FRO... CART" />
               </folding>
             </state>
           </provider>
@@ -315,16 +292,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/outcome/OutcomeDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/OutcomeController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/cashier/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/ShoppingCart.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/ShoppingCartDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/cashier/dashboard.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/OrderLine.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/OrderLineDAO.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/ShoppingCartDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/cashier/dashboard.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql" />
       </list>
     </option>
   </component>
@@ -874,12 +851,12 @@
       <workItem from="1513264426179" duration="299000" />
       <workItem from="1513302058589" duration="6647000" />
       <workItem from="1513420648075" duration="1650000" />
-      <workItem from="1513564696445" duration="7820000" />
+      <workItem from="1513564696445" duration="16816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195941000" />
+    <option name="totallyTimeSpent" value="204937000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -910,12 +887,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43213728" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43213728" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36817473" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36817473" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -938,7 +915,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32869694" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869694" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1159,14 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2686">
@@ -1207,85 +1176,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="202" column="55" lean-forward="false" selection-start-line="202" selection-start-column="55" selection-end-line="202" selection-end-column="55" />
-          <folding>
-            <marker date="1513307542674" expanded="true" signature="611:1046" ph="SELECT id_it... item" />
-            <marker date="1513307542674" expanded="true" signature="1545:1592" ph="SELECT * FRO... item" />
-            <marker date="1513307542674" expanded="true" signature="2893:3108" ph="INSERT INTO item... " />
-            <marker date="1513307542674" expanded="true" signature="4178:4355" ph="UPDATE item " />
-            <marker date="1513307542674" expanded="true" signature="5305:5350" ph="DELETE FROM " />
-            <marker date="1513307542674" expanded="true" signature="5800:5872" ph="UPDATE item " />
-            <marker date="1513307542674" expanded="true" signature="6275:6306" ph="SELECT COUNT... item" />
-            <marker date="1513307542674" expanded="true" signature="6845:7308" ph="SELECT id_it... item" />
-            <marker date="1513307542674" expanded="true" signature="9180:9246" ph="UPDATE item " />
-            <marker date="1513307542674" expanded="true" signature="9634:10130" ph="SELECT id_it... item" />
-            <marker date="1513307542674" expanded="true" signature="10164:10233" ph="SELECT COUNT... item" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/ShoppingCart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-          <folding>
-            <element signature="e#1141#1142#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-            <element signature="e#1260#1261#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/cashier/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="300" column="65" lean-forward="false" selection-start-line="300" selection-start-column="65" selection-end-line="300" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="102" column="9" lean-forward="false" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/OrderLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/OrderLineDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="80" column="37" lean-forward="false" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
-          <folding>
-            <marker date="1513577310737" expanded="true" signature="554:577" ph="SELECT * FRO... orderline" />
-            <marker date="1513577310737" expanded="true" signature="1653:1699" ph="SELECT * FRO... orderline" />
-            <marker date="1513577310737" expanded="true" signature="1653:1710" ph="SELECT * FRO... orderline" />
-            <marker date="1513577310737" expanded="true" signature="2738:2812" ph="INSERT INTO orderline... " />
-            <marker date="1513577310737" expanded="true" signature="2738:2850" ph="INSERT INTO orderline... " />
-            <marker date="1513577310737" expanded="true" signature="3599:3655" ph="UPDATE order... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1297,49 +1192,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/ShoppingCartDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="100" column="69" lean-forward="false" selection-start-line="100" selection-start-column="69" selection-end-line="100" selection-end-column="69" />
+        <state relative-caret-position="209">
+          <caret line="79" column="67" lean-forward="false" selection-start-line="79" selection-start-column="67" selection-end-line="79" selection-end-column="67" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1513569340061" expanded="true" signature="469:487" ph="SELECT * FRO... CART" />
-            <marker date="1513569340061" expanded="true" signature="1488:1554" ph="INSERT INTO cart... " />
-            <marker date="1513569340061" expanded="true" signature="1488:1594" ph="INSERT INTO cart... " />
-            <marker date="1513569340061" expanded="true" signature="2352:2363" ph="UPDATE cart(... " />
-            <marker date="1513569340061" expanded="true" signature="2352:2367" ph="UPDATE cartS... " />
-            <marker date="1513569340061" expanded="true" signature="2352:2380" ph="UPDATE cart " />
-            <marker date="1513569340061" expanded="true" signature="2352:2411" ph="UPDATE cart " />
-            <marker date="1513569340061" expanded="true" signature="2352:2412" ph="UPDATE cart " />
-            <marker date="1513569340061" expanded="true" signature="3009:3043" ph="DELETE FROM " />
-            <marker date="1513569340061" expanded="true" signature="3466:3482" ph="DELETE FROM " />
-            <marker date="1513569340061" expanded="true" signature="3790:3824" ph="SELECT * FRO... CART" />
-            <marker date="1513569340061" expanded="true" signature="3790:3825" ph="SELECT * FRO... CART" />
-            <marker date="1513569340061" expanded="true" signature="3790:3837" ph="SELECT * FRO... CART" />
+            <marker date="1513579751976" expanded="true" signature="676:898" ph="SELECT id_tr... transaction" />
+            <marker date="1513579751976" expanded="true" signature="1447:1676" ph="SELECT id_tr... transaction" />
+            <marker date="1513579751976" expanded="true" signature="2856:3030" ph="INSERT INTO transaction... " />
+            <marker date="1513579751976" expanded="true" signature="3941:4104" ph="UPDATE trans... " />
+            <marker date="1513579751976" expanded="true" signature="4887:4988" ph="UPDATE trans... " />
+            <marker date="1513579751976" expanded="true" signature="5413:5452" ph="SELECT COUNT... transaction" />
+            <marker date="1513579751976" expanded="true" signature="7265:7292" ph="SELECT nextv... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/OrderLine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="100" column="43" lean-forward="true" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
+        <state relative-caret-position="203">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/item/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/ShoppingCart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1513577822979" expanded="true" signature="676:898" ph="SELECT id_tr... transaction" />
-            <marker date="1513577822979" expanded="true" signature="1447:1676" ph="SELECT id_tr... transaction" />
-            <marker date="1513577822979" expanded="true" signature="2856:3018" ph="INSERT INTO transaction... " />
-            <marker date="1513577822979" expanded="true" signature="3858:4021" ph="UPDATE trans... " />
-            <marker date="1513577822979" expanded="true" signature="4804:4905" ph="UPDATE trans... " />
-            <marker date="1513577822979" expanded="true" signature="5330:5369" ph="SELECT COUNT... transaction" />
-            <marker date="1513577822979" expanded="true" signature="7182:7209" ph="SELECT nextv... " />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/ShoppingCartDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="82" column="48" lean-forward="false" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+          <folding>
+            <element signature="method#getAll#0;class#ShoppingCartDAO#0" expanded="false" />
+            <element signature="method#save#0;class#ShoppingCartDAO#0" expanded="false" />
+            <element signature="method#update#0;class#ShoppingCartDAO#0" expanded="false" />
+            <marker date="1513584065134" expanded="false" signature="469:487" ph="SELECT * FRO... CART" />
+            <marker date="1513584065134" expanded="false" signature="1488:1554" ph="INSERT INTO cart... " />
+            <marker date="1513584065134" expanded="false" signature="1488:1594" ph="INSERT INTO cart... " />
+            <marker date="1513584065134" expanded="false" signature="2352:2363" ph="UPDATE cart(... " />
+            <marker date="1513584065134" expanded="false" signature="2352:2367" ph="UPDATE cartS... " />
+            <marker date="1513584065134" expanded="false" signature="2352:2380" ph="UPDATE cart " />
+            <marker date="1513584065134" expanded="false" signature="2352:2411" ph="UPDATE cart " />
+            <marker date="1513584065134" expanded="false" signature="2352:2412" ph="UPDATE cart " />
+            <marker date="1513584065134" expanded="true" signature="3026:3060" ph="DELETE FROM " />
+            <marker date="1513584065134" expanded="true" signature="3026:3077" ph="DELETE FROM " />
+            <marker date="1513584065134" expanded="true" signature="3569:3585" ph="DELETE FROM " />
+            <marker date="1513584065134" expanded="true" signature="3569:3602" ph="DELETE FROM " />
+            <marker date="1513584065134" expanded="true" signature="3569:3604" ph="DELETE FROM " />
+            <marker date="1513584065134" expanded="true" signature="3569:3621" ph="DELETE FROM " />
+            <marker date="1513584065134" expanded="true" signature="3988:4022" ph="SELECT * FRO... CART" />
+            <marker date="1513584065134" expanded="true" signature="3988:4023" ph="SELECT * FRO... CART" />
+            <marker date="1513584065134" expanded="true" signature="3988:4035" ph="SELECT * FRO... CART" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/OrderLineDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="121" column="5" lean-forward="true" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
+          <folding>
+            <marker date="1513577310737" expanded="true" signature="554:577" ph="SELECT * FRO... orderline" />
+            <marker date="1513577310737" expanded="true" signature="1653:1699" ph="SELECT * FRO... orderline" />
+            <marker date="1513577310737" expanded="true" signature="1653:1710" ph="SELECT * FRO... orderline" />
+            <marker date="1513577310737" expanded="true" signature="2738:2812" ph="INSERT INTO orderline... " />
+            <marker date="1513577310737" expanded="true" signature="2738:2850" ph="INSERT INTO orderline... " />
+            <marker date="1513577310737" expanded="true" signature="3599:3655" ph="UPDATE order... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="86" column="25" lean-forward="false" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
+          <folding>
+            <element signature="e#1038#1049#0" expanded="false" />
+            <element signature="method#CashierController#0;class#CashierController#0" expanded="false" />
+            <element signature="method#index#0;class#CashierController#0" expanded="false" />
+            <element signature="method#checkout#0;class#CashierController#0" expanded="false" />
+            <element signature="method#setShoppingCart#0;class#CashierController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="265" column="16" lean-forward="false" selection-start-line="265" selection-start-column="16" selection-end-line="265" selection-end-column="16" />
+          <folding>
+            <marker date="1513585782020" expanded="true" signature="611:1046" ph="SELECT id_it... item" />
+            <marker date="1513585782020" expanded="true" signature="1545:1592" ph="SELECT * FRO... item" />
+            <marker date="1513585782020" expanded="true" signature="2893:3108" ph="INSERT INTO item... " />
+            <marker date="1513585782020" expanded="true" signature="4178:4355" ph="UPDATE item " />
+            <marker date="1513585782020" expanded="true" signature="5305:5350" ph="DELETE FROM " />
+            <marker date="1513585782020" expanded="true" signature="5800:5872" ph="UPDATE item " />
+            <marker date="1513585782020" expanded="true" signature="6275:6306" ph="SELECT COUNT... item" />
+            <marker date="1513585782020" expanded="true" signature="6845:7308" ph="SELECT id_it... item" />
+            <marker date="1513585782020" expanded="true" signature="9180:9246" ph="UPDATE item " />
+            <marker date="1513585782020" expanded="true" signature="9634:10130" ph="SELECT id_it... item" />
+            <marker date="1513585782020" expanded="true" signature="10164:10233" ph="SELECT COUNT... item" />
+            <marker date="1513585782020" expanded="true" signature="11359:11399" ph="UPDATE item " />
+            <marker date="1513585782020" expanded="true" signature="11359:11415" ph="UPDATE item " />
+            <marker date="1513585782020" expanded="true" signature="11359:11449" ph="UPDATE item " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="417" column="19" lean-forward="true" selection-start-line="417" selection-start-column="19" selection-end-line="417" selection-end-column="19" />
+        <state relative-caret-position="248">
+          <caret line="421" column="44" lean-forward="false" selection-start-line="421" selection-start-column="44" selection-end-line="421" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/cashier/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="305" column="95" lean-forward="true" selection-start-line="305" selection-start-column="95" selection-end-line="305" selection-end-column="95" />
           <folding />
         </state>
       </provider>

@@ -21,8 +21,8 @@
     </database>
     <schema id="7" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-12-18.13:26:56.626</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1712</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-18.13:50:28.128</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1722</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -476,9 +476,9 @@
     </key>
     <column id="89" parent="25" name="id_orderline">
       <Position>1</Position>
-      <DataType>varchar(15)|0</DataType>
+      <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1631</StateNumber>
+      <StateNumber>1722</StateNumber>
       <DefaultExpression>(&apos;ORL-&apos;::text || nextval(&apos;sec_orl&apos;::regclass))</DefaultExpression>
     </column>
     <column id="90" parent="25" name="id_trans">
@@ -512,12 +512,12 @@
       <StateNumber>1631</StateNumber>
     </column>
     <index id="95" parent="25" name="orderline_pk">
-      <ObjectId>18302</ObjectId>
+      <ObjectId>26445</ObjectId>
       <ColNames>id_orderline</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="96" parent="25" name="pk_orderline">
-      <ObjectId>18300</ObjectId>
+      <ObjectId>26443</ObjectId>
       <ColNames>id_orderline</ColNames>
       <Unique>1</Unique>
     </index>
@@ -530,7 +530,7 @@
       <ColNames>id_item</ColNames>
     </index>
     <key id="99" parent="25" name="pk_orderline">
-      <ObjectId>18301</ObjectId>
+      <ObjectId>26444</ObjectId>
       <ColNames>id_orderline</ColNames>
       <UnderlyingIndexName>pk_orderline</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -635,8 +635,7 @@
     <column id="114" parent="27" name="id_disc">
       <Position>2</Position>
       <DataType>varchar(10)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1641</StateNumber>
+      <StateNumber>1716</StateNumber>
     </column>
     <column id="115" parent="27" name="username">
       <Position>3</Position>

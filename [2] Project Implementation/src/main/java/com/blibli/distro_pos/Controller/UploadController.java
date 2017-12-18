@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 public class UploadController {
 
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "/Users/raditia/Pictures/temp/";
+    private static String UPLOADED_FOLDER = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
     @GetMapping("/upload")
     public ModelAndView upload() {
@@ -44,7 +44,7 @@ public class UploadController {
         }
         catch (Exception e) {
 
-            e.toString();
+            e.printStackTrace();
         }
 
         return "redirect:/uploadStatus";

@@ -4,6 +4,7 @@ import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
 import com.blibli.distro_pos.Model.cashier.Transaction;
 import com.blibli.distro_pos.Model.discount.Discount;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,12 +12,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
+
 public class TransactionDAO extends MyConnection implements BasicDAO<Transaction, String> {
     private static final String LIST = "transactionList";
 
     @Override
     public List<Transaction> getAll() {
-        String sql = "SELECT id_trans, id_disc, id_emp, total_trans, customer_trans, status_trans, " +
+        String sql = "SELECT id_trans, id_disc, username, total_trans, customer_trans, status_trans, " +
                 "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans, " +
                 " status_disc FROM transaction ORDER BY id_trans DESC;";
         List<Transaction> transactionList = new ArrayList<>();
@@ -35,7 +38,7 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
 
     @Override
     public Transaction getOne(String id) {
-        String sql = "SELECT id_trans, id_disc, id_emp, total_trans, customer_trans, status_trans, " +
+        String sql = "SELECT id_trans, id_disc, username, total_trans, customer_trans, status_trans, " +
                 "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans, " +
                 " status_disc FROM transaction WHERE id_trans = '" + id + "';";
         Transaction transaction = new Transaction();
@@ -50,7 +53,7 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
                     transaction = new Transaction(
                             rs.getString("id_trans"),
                             rs.getString("id_disc"),
-                            rs.getString("id_emp"),
+                            rs.getString("username"),
                             rs.getString("customer_trans"),
                             rs.getDouble("total_trans"),
                             rs.getString("date_trans"),
@@ -68,17 +71,18 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
 
     @Override
     public void save(Transaction transaction) {
-        String sql = "INSERT INTO transaction(id_disc, id_emp, customer_trans, total_trans, date_trans, status_trans) " +
-                "VALUES (?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?);";
+        String sql = "INSERT INTO transaction(id_trans, id_disc, username, customer_trans, total_trans, date_trans, status_trans) " +
+                "VALUES (?,?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?);";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setString(1, transaction.getId_disc());
-            preparedStatement.setString(2, transaction.getId_emp());
-            preparedStatement.setString(3, transaction.getCustomer_name());
-            preparedStatement.setDouble(4, transaction.getTotal_trans());
-            preparedStatement.setString(5, transaction.getDate());
-            preparedStatement.setString(6, transaction.getStatus());
+            preparedStatement.setString(1, transaction.getId_trans());
+            preparedStatement.setString(2, transaction.getId_disc());
+            preparedStatement.setString(3, transaction.getUsername());
+            preparedStatement.setString(4, transaction.getCustomer_name());
+            preparedStatement.setDouble(5, transaction.getTotal_trans());
+            preparedStatement.setString(6, transaction.getDate());
+            preparedStatement.setString(7, transaction.getStatus());
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
@@ -134,8 +138,8 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet != null)  {
-                while (resultSet.next())    {
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     count = resultSet.getInt("count");
                 }
             }
@@ -151,7 +155,6 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
         return null;
     }
 
-
     private List<Transaction> getTransactionList(ResultSet rs) {
         List<Transaction> transactionList = new ArrayList<>();
         try {
@@ -162,7 +165,7 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
                     Transaction transaction = new Transaction(
                             rs.getString("id_trans"),
                             rs.getString("id_disc"),
-                            rs.getString("id_emp"),
+                            rs.getString("username"),
                             rs.getString("customer_trans"),
                             rs.getDouble("total_trans"),
                             rs.getString("date_trans"),
@@ -176,4 +179,24 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
         }
         return transactionList;
     }
+
+    public String getTransID() {
+        String sql = "SELECT nextval('sec_trans');";
+        String id = "";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet != null)  {
+                while (resultSet.next())    {
+                    id = resultSet.getString("nextval");
+                }
+            }
+                this.disconnect();
+        } catch (Exception e) {
+
+        }
+        return id;
+    }
+
 }

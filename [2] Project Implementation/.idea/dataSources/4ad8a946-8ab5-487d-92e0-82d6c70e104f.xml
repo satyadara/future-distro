@@ -21,8 +21,8 @@
     </database>
     <schema id="7" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-12-18.13:50:28.128</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1722</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-19.13:42:13.137</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1790</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -686,13 +686,17 @@
       <ObjectId>18361</ObjectId>
       <ColNames>username</ColNames>
     </index>
-    <key id="124" parent="27" name="pk_transaction">
+    <index id="124" parent="27" name="datetrans_index">
+      <ObjectId>26446</ObjectId>
+      <ColNames>date_trans</ColNames>
+    </index>
+    <key id="125" parent="27" name="pk_transaction">
       <ObjectId>18337</ObjectId>
       <ColNames>id_trans</ColNames>
       <UnderlyingIndexName>pk_transaction</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="125" parent="27" name="fk_transact_has_discount">
+    <foreign-key id="126" parent="27" name="fk_transact_has_discount">
       <ObjectId>18410</ObjectId>
       <ColNames>id_disc</ColNames>
       <RefTableId>18262</RefTableId>
@@ -703,7 +707,7 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <foreign-key id="126" parent="27" name="fk_transact_add_order_employee">
+    <foreign-key id="127" parent="27" name="fk_transact_add_order_employee">
       <ObjectId>18405</ObjectId>
       <ColNames>username</ColNames>
       <RefTableId>18271</RefTableId>
@@ -714,7 +718,7 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <column id="127" parent="28" name="user_role_id">
+    <column id="128" parent="28" name="user_role_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -722,42 +726,42 @@
       <SequenceName>user_roles_user_role_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;user_roles_user_role_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="128" parent="28" name="username">
+    <column id="129" parent="28" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1639</StateNumber>
     </column>
-    <column id="129" parent="28" name="role">
+    <column id="130" parent="28" name="role">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1639</StateNumber>
     </column>
-    <index id="130" parent="28" name="user_roles_pkey">
+    <index id="131" parent="28" name="user_roles_pkey">
       <ObjectId>18321</ObjectId>
       <ColNames>user_role_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="131" parent="28" name="user_roles_username_role_key">
+    <index id="132" parent="28" name="user_roles_username_role_key">
       <ObjectId>18323</ObjectId>
       <ColNames>username
 role</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="132" parent="28" name="user_roles_pkey">
+    <key id="133" parent="28" name="user_roles_pkey">
       <ObjectId>18322</ObjectId>
       <ColNames>user_role_id</ColNames>
       <UnderlyingIndexName>user_roles_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="133" parent="28" name="user_roles_username_role_key">
+    <key id="134" parent="28" name="user_roles_username_role_key">
       <ObjectId>18324</ObjectId>
       <ColNames>username
 role</ColNames>
       <UnderlyingIndexName>user_roles_username_role_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="134" parent="28" name="user_roles_username_fkey">
+    <foreign-key id="135" parent="28" name="user_roles_username_fkey">
       <ObjectId>18325</ObjectId>
       <ColNames>username</ColNames>
       <RefTableId>18271</RefTableId>
@@ -768,65 +772,65 @@ role</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="135" parent="29" name="namalengkap">
+    <column id="136" parent="29" name="namalengkap">
       <Position>1</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="136" parent="29" name="username">
+    <column id="137" parent="29" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="137" parent="29" name="password">
+    <column id="138" parent="29" name="password">
       <Position>3</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="138" parent="29" name="alamat">
+    <column id="139" parent="29" name="alamat">
       <Position>4</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="139" parent="29" name="ktp">
+    <column id="140" parent="29" name="ktp">
       <Position>5</Position>
       <DataType>varchar(16)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="140" parent="29" name="telp">
+    <column id="141" parent="29" name="telp">
       <Position>6</Position>
       <DataType>varchar(12)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="141" parent="29" name="jeniskelamin">
+    <column id="142" parent="29" name="jeniskelamin">
       <Position>7</Position>
       <DataType>char|0</DataType>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="142" parent="29" name="enabled">
+    <column id="143" parent="29" name="enabled">
       <Position>8</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
       <DefaultExpression>false</DefaultExpression>
     </column>
-    <index id="143" parent="29" name="employee_pk">
+    <index id="144" parent="29" name="employee_pk">
       <ObjectId>18280</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="144" parent="29" name="pk_users">
+    <index id="145" parent="29" name="pk_users">
       <ObjectId>18278</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="145" parent="29" name="pk_users">
+    <key id="146" parent="29" name="pk_users">
       <ObjectId>18279</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>pk_users</UnderlyingIndexName>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Manager - Pengeluaran</title>
+    <title>Manager - Buku Besar</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
@@ -54,7 +54,7 @@
                 <li><a href="/outcome"><i class="fa fa-money"></i> <span>Pengeluaran</span></a></li>
                 <li>
                     <!--<a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse"-->
-                       <!--th:href="@{/logout}" aria-expanded="false" aria-controls="nav-collapse2">Sign out</a>-->
+                    <!--th:href="@{/logout}" aria-expanded="false" aria-controls="nav-collapse2">Sign out</a>-->
                     <form name="logout" th:action="@{/logout}" method="POST">
                         <input type="submit" class="btn btn-default btn-outline btn-circle" value="Sign Out"/>
                     </form>
@@ -67,18 +67,21 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 th:text="'Pengeluaran ( ' +  ${count} + ' )'"></h1>
+            <h1 th:text="'Buku Besar ( ' +  ${count} + ' )'"></h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <form action="get" th:action="'/outcome/search/page/1'">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="key" placeholder="cari pengeluaran..."/>
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-info">Cari</button>
-                    </span>
+        <div class="col-md-12">
+            <form action="get" th:action="'/ledger/filter/page/1'">
+                <div class="form-group col-md-3">
+                    <label>Dari : </label>
+                    <input type="date" class="form-control" name="date_from"/>
                 </div>
+                <div class="form-group col-md-3">
+                    <label>Sampai : </label>
+                    <input type="date" class="form-control" name="date_to"/>
+                </div>
+                <button type="submit" class="btn btn-info">Cari</button>
             </form>
         </div>
     </div>
@@ -87,70 +90,50 @@
 
     <div class="box box primary">
         <div class="box-body">
-            <div class="col-md-3 col-md-offset-9">
-                <a href="/outcome/create">
-                    <button class="btn btn-block btn-primary" style="float: right;">+Tambah Pengeluaran</button>
-                </a>
-            </div>
-
-            <br/>
-            <br/>
-
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered table-responsive" id="mTable">
                         <tr>
-                            <th>ID</th>
-                            <th>Judul</th>
-                            <th>Pengeluaran</th>
-                            <th>Kuantitas</th>
                             <th>Tanggal</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th>Judul</th>
+                            <th>Pemasukan</th>
+                            <th>Pengeluaran</th>
+                            <th>Detil</th>
                         </tr>
-                        <tr th:each="outcome: ${outcomes}">
-                            <td th:text="${outcome.getId_outcome()}"></td>
-                            <td th:text="${outcome.getTitle()}"></td>
-                            <td th:text="${outcome.getAmount()}"></td>
-                            <td th:text="${outcome.getQuantity()}"></td>
-                            <td th:text="${outcome.getDate()}"></td>
-                            <td th:text="${outcome.getStatus()}"></td>
-                            <td>
-                                <a th:href="'/outcome/' + ${outcome.getId_outcome()} + '/edit'">
-                                    Edit
-                                </a>
-                                |
-                                <a th:href="'/outcome/' + ${outcome.getId_outcome()} + '/delete'"
-                                   th:if="${outcome.getStatus() == 'Aktif'}">
-                                    Tidak Aktif
-                                </a>
-                                <a th:href="'/outcome/' + ${outcome.getId_outcome()} + '/active'"
-                                   th:if="${outcome.getStatus() == 'Tidak Aktif'}">
-                                    Aktif
-                                </a>
-                            </td>
+                        <tr th:each="ledger : ${ledgers}">
+                            <td th:text="${ledger.getDate()}"></td>
+                            <td th:text="${ledger.getTitle()}"></td>
+                            <th:block th:switch="${ledger.getIn()}">
+                                <td th:case="${0.0}"></td>
+                                <td th:case="*" th:text="${ledger.getIn()}"></td>
+                            </th:block>
+                            <th:block th:switch="${ledger.getOut()}">
+                                <td th:case="${0.0}"></td>
+                                <td th:case="*" th:text="${ledger.getOut()}"></td>
+                            </th:block>
+                            <td></td>
                         </tr>
                     </table>
                     <!--PAGINATE-->
                     <nav aria-label="Page navigation" th:if="${search == false}">
                         <ul class="pagination">
                             <li>
-                                <a th:href="'/outcome/page/' + ${currentPage - 1}" aria-label="Previous">
+                                <a th:href="'/ledger/page/' + ${currentPage - 1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                             <th:block th:each="i: ${#numbers.sequence(1, pages)}">
                                 <th:block th:switch="${i}">
                                     <li class="active" th:case="${currentPage}">
-                                        <a th:href="'/outcome/page/' + ${i}" th:text="${i}"></a>
+                                        <a th:href="'/ledger/page/' + ${i}" th:text="${i}"></a>
                                     </li>
                                     <li th:case="*">
-                                        <a th:href="'/outcome/page/' + ${i}" th:text="${i}"></a>
+                                        <a th:href="'/ledger/page/' + ${i}" th:text="${i}"></a>
                                     </li>
                                 </th:block>
                             </th:block>
                             <li>
-                                <a th:href="'/outcome/page/' + ${currentPage + 1}" aria-label="Next">
+                                <a th:href="'/ledger/page/' + ${currentPage + 1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -159,7 +142,7 @@
                     <nav aria-label="Page navigation" th:if="${search == true}">
                         <ul class="pagination">
                             <li>
-                                <a th:href="'/outcome/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                <a th:href="'/ledger/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
                                    aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
@@ -167,17 +150,17 @@
                             <th:block th:each="i: ${#numbers.sequence(1, pages)}">
                                 <th:block th:switch="${i}">
                                     <li class="active" th:case="${currentPage}">
-                                        <a th:href="'/outcome/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                        <a th:href="'/ledger/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
                                            th:text="${i}"></a>
                                     </li>
                                     <li th:case="*">
-                                        <a th:href="'/outcome/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                        <a th:href="'/ledger/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
                                            th:text="${i}"></a>
                                     </li>
                                 </th:block>
                             </th:block>
                             <li>
-                                <a th:href="'/outcome/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                <a th:href="'/ledger/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
                                    aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>

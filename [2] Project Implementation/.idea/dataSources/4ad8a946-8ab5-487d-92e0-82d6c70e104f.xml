@@ -21,8 +21,8 @@
     </database>
     <schema id="7" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-12-19.13:42:13.137</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1790</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-12-20.10:01:34.264</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1805</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -102,7 +102,7 @@
     </table>
     <table id="26" parent="7" name="outcome">
       <ObjectId>18307</ObjectId>
-      <StateNumber>1661</StateNumber>
+      <StateNumber>1805</StateNumber>
     </table>
     <table id="27" parent="7" name="transaction">
       <ObjectId>18332</ObjectId>
@@ -584,37 +584,50 @@
     </column>
     <column id="106" parent="26" name="title_out">
       <Position>5</Position>
-      <DataType>date|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1636</StateNumber>
+      <StateNumber>1803</StateNumber>
     </column>
     <column id="107" parent="26" name="desc_out">
       <Position>6</Position>
-      <DataType>varchar(1)|0</DataType>
+      <DataType>text|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1636</StateNumber>
+      <StateNumber>1804</StateNumber>
     </column>
-    <index id="108" parent="26" name="outcome_pk">
+    <column id="108" parent="26" name="date_out">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>1802</StateNumber>
+      <DefaultExpression>now()</DefaultExpression>
+    </column>
+    <column id="109" parent="26" name="status">
+      <Position>8</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1805</StateNumber>
+      <DefaultExpression>&apos;Aktif&apos;::character varying</DefaultExpression>
+    </column>
+    <index id="110" parent="26" name="outcome_pk">
       <ObjectId>18313</ObjectId>
       <ColNames>id_outcome</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="109" parent="26" name="pk_outcome">
+    <index id="111" parent="26" name="pk_outcome">
       <ObjectId>18311</ObjectId>
       <ColNames>id_outcome</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="110" parent="26" name="emphasoutcome_fk">
+    <index id="112" parent="26" name="emphasoutcome_fk">
       <ObjectId>18314</ObjectId>
       <ColNames>username</ColNames>
     </index>
-    <key id="111" parent="26" name="pk_outcome">
+    <key id="113" parent="26" name="pk_outcome">
       <ObjectId>18312</ObjectId>
       <ColNames>id_outcome</ColNames>
       <UnderlyingIndexName>pk_outcome</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="112" parent="26" name="fk_outcome_emphasout_employee">
+    <foreign-key id="114" parent="26" name="fk_outcome_emphasout_employee">
       <ObjectId>18400</ObjectId>
       <ColNames>username</ColNames>
       <RefTableId>18271</RefTableId>
@@ -625,78 +638,78 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <column id="113" parent="27" name="id_trans">
+    <column id="115" parent="27" name="id_trans">
       <Position>1</Position>
       <DataType>varchar(12)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1641</StateNumber>
       <DefaultExpression>nextval(&apos;sec_trans&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="114" parent="27" name="id_disc">
+    <column id="116" parent="27" name="id_disc">
       <Position>2</Position>
       <DataType>varchar(10)|0</DataType>
       <StateNumber>1716</StateNumber>
     </column>
-    <column id="115" parent="27" name="username">
+    <column id="117" parent="27" name="username">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1641</StateNumber>
     </column>
-    <column id="116" parent="27" name="customer_trans">
+    <column id="118" parent="27" name="customer_trans">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1641</StateNumber>
     </column>
-    <column id="117" parent="27" name="total_trans">
+    <column id="119" parent="27" name="total_trans">
       <Position>5</Position>
       <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1641</StateNumber>
     </column>
-    <column id="118" parent="27" name="date_trans">
+    <column id="120" parent="27" name="date_trans">
       <Position>6</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1641</StateNumber>
     </column>
-    <column id="119" parent="27" name="status_trans">
+    <column id="121" parent="27" name="status_trans">
       <Position>7</Position>
       <DataType>varchar(15)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1712</StateNumber>
       <DefaultExpression>&apos;Aktif&apos;::character varying</DefaultExpression>
     </column>
-    <index id="120" parent="27" name="pk_transaction">
+    <index id="122" parent="27" name="pk_transaction">
       <ObjectId>18336</ObjectId>
       <ColNames>id_trans</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="121" parent="27" name="transaction_pk">
+    <index id="123" parent="27" name="transaction_pk">
       <ObjectId>18338</ObjectId>
       <ColNames>id_trans</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="122" parent="27" name="has_fk">
+    <index id="124" parent="27" name="has_fk">
       <ObjectId>18360</ObjectId>
       <ColNames>id_disc</ColNames>
     </index>
-    <index id="123" parent="27" name="add_order_fk">
+    <index id="125" parent="27" name="add_order_fk">
       <ObjectId>18361</ObjectId>
       <ColNames>username</ColNames>
     </index>
-    <index id="124" parent="27" name="datetrans_index">
+    <index id="126" parent="27" name="datetrans_index">
       <ObjectId>26446</ObjectId>
       <ColNames>date_trans</ColNames>
     </index>
-    <key id="125" parent="27" name="pk_transaction">
+    <key id="127" parent="27" name="pk_transaction">
       <ObjectId>18337</ObjectId>
       <ColNames>id_trans</ColNames>
       <UnderlyingIndexName>pk_transaction</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="126" parent="27" name="fk_transact_has_discount">
+    <foreign-key id="128" parent="27" name="fk_transact_has_discount">
       <ObjectId>18410</ObjectId>
       <ColNames>id_disc</ColNames>
       <RefTableId>18262</RefTableId>
@@ -707,7 +720,7 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <foreign-key id="127" parent="27" name="fk_transact_add_order_employee">
+    <foreign-key id="129" parent="27" name="fk_transact_add_order_employee">
       <ObjectId>18405</ObjectId>
       <ColNames>username</ColNames>
       <RefTableId>18271</RefTableId>
@@ -718,7 +731,7 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <column id="128" parent="28" name="user_role_id">
+    <column id="130" parent="28" name="user_role_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -726,42 +739,42 @@
       <SequenceName>user_roles_user_role_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;user_roles_user_role_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="129" parent="28" name="username">
+    <column id="131" parent="28" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1639</StateNumber>
     </column>
-    <column id="130" parent="28" name="role">
+    <column id="132" parent="28" name="role">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1639</StateNumber>
     </column>
-    <index id="131" parent="28" name="user_roles_pkey">
+    <index id="133" parent="28" name="user_roles_pkey">
       <ObjectId>18321</ObjectId>
       <ColNames>user_role_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="132" parent="28" name="user_roles_username_role_key">
+    <index id="134" parent="28" name="user_roles_username_role_key">
       <ObjectId>18323</ObjectId>
       <ColNames>username
 role</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="133" parent="28" name="user_roles_pkey">
+    <key id="135" parent="28" name="user_roles_pkey">
       <ObjectId>18322</ObjectId>
       <ColNames>user_role_id</ColNames>
       <UnderlyingIndexName>user_roles_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="134" parent="28" name="user_roles_username_role_key">
+    <key id="136" parent="28" name="user_roles_username_role_key">
       <ObjectId>18324</ObjectId>
       <ColNames>username
 role</ColNames>
       <UnderlyingIndexName>user_roles_username_role_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="135" parent="28" name="user_roles_username_fkey">
+    <foreign-key id="137" parent="28" name="user_roles_username_fkey">
       <ObjectId>18325</ObjectId>
       <ColNames>username</ColNames>
       <RefTableId>18271</RefTableId>
@@ -772,65 +785,65 @@ role</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="136" parent="29" name="namalengkap">
+    <column id="138" parent="29" name="namalengkap">
       <Position>1</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="137" parent="29" name="username">
+    <column id="139" parent="29" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="138" parent="29" name="password">
+    <column id="140" parent="29" name="password">
       <Position>3</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="139" parent="29" name="alamat">
+    <column id="141" parent="29" name="alamat">
       <Position>4</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="140" parent="29" name="ktp">
+    <column id="142" parent="29" name="ktp">
       <Position>5</Position>
       <DataType>varchar(16)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="141" parent="29" name="telp">
+    <column id="143" parent="29" name="telp">
       <Position>6</Position>
       <DataType>varchar(12)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="142" parent="29" name="jeniskelamin">
+    <column id="144" parent="29" name="jeniskelamin">
       <Position>7</Position>
       <DataType>char|0</DataType>
       <StateNumber>1624</StateNumber>
     </column>
-    <column id="143" parent="29" name="enabled">
+    <column id="145" parent="29" name="enabled">
       <Position>8</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1624</StateNumber>
       <DefaultExpression>false</DefaultExpression>
     </column>
-    <index id="144" parent="29" name="employee_pk">
+    <index id="146" parent="29" name="employee_pk">
       <ObjectId>18280</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="145" parent="29" name="pk_users">
+    <index id="147" parent="29" name="pk_users">
       <ObjectId>18278</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="146" parent="29" name="pk_users">
+    <key id="148" parent="29" name="pk_users">
       <ObjectId>18279</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>pk_users</UnderlyingIndexName>

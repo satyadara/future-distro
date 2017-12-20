@@ -34,59 +34,73 @@
         <item name="distro_pos" type="e3449647:DbNodeDescriptor" />
         <item name="public" type="e3449647:DbNodeDescriptor" />
       </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="distro_pos@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="distro_pos" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="distro_pos@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="distro_pos" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-        <item name="cart" type="e3449647:DbNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="OrderLineDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/OrderLineDAO.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LedgerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/LedgerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="72" column="68" lean-forward="false" selection-start-line="72" selection-start-column="68" selection-end-line="72" selection-end-column="68" />
+            <state relative-caret-position="-347">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="e#4323#4324#0" expanded="true" />
-                <element signature="e#4350#4351#0" expanded="true" />
-                <marker date="1513577310737" expanded="true" signature="554:577" ph="SELECT * FRO... orderline" />
-                <marker date="1513577310737" expanded="true" signature="1653:1699" ph="SELECT * FRO... orderline" />
-                <marker date="1513577310737" expanded="true" signature="1653:1710" ph="SELECT * FRO... orderline" />
-                <marker date="1513577310737" expanded="true" signature="2738:2812" ph="INSERT INTO orderline... " />
-                <marker date="1513577310737" expanded="true" signature="2738:2850" ph="INSERT INTO orderline... " />
-                <marker date="1513577310737" expanded="true" signature="3599:3655" ph="UPDATE order... " />
+                <element signature="e#788#789#0" expanded="true" />
+                <element signature="e#844#845#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransactionDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java">
+      <file leaf-file-name="GeneralLedgerDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ledger/GeneralLedgerDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="74" column="59" lean-forward="false" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="59" />
+            <state relative-caret-position="119">
+              <caret line="24" column="69" lean-forward="true" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
               <folding>
-                <marker date="1513579751976" expanded="true" signature="676:898" ph="SELECT id_tr... transaction" />
-                <marker date="1513579751976" expanded="true" signature="1447:1676" ph="SELECT id_tr... transaction" />
-                <marker date="1513579751976" expanded="true" signature="2856:3030" ph="INSERT INTO transaction... " />
-                <marker date="1513579751976" expanded="true" signature="3941:4104" ph="UPDATE trans... " />
-                <marker date="1513579751976" expanded="true" signature="4887:4988" ph="UPDATE trans... " />
-                <marker date="1513579751976" expanded="true" signature="5413:5452" ph="SELECT COUNT... transaction" />
-                <marker date="1513579751976" expanded="true" signature="7265:7292" ph="SELECT nextv... " />
+                <element signature="imports" expanded="true" />
+                <marker date="1513765545543" expanded="true" signature="465:508" ph="SELECT t.DAT... " />
+                <marker date="1513765545543" expanded="true" signature="465:780" ph="SELECT TO_CH... " />
+                <marker date="1513765545543" expanded="true" signature="465:828" ph="SELECT TO_CH... " />
+                <marker date="1513765545543" expanded="true" signature="465:1315" ph="SELECT TO_CH... " />
+                <marker date="1513765545543" expanded="true" signature="465:1382" ph="SELECT TO_CH... " />
+                <marker date="1513765545543" expanded="true" signature="465:1383" ph="SELECT TO_CH... " />
+                <marker date="1513765545543" expanded="true" signature="465:1384" ph="SELECT TO_CH... " />
+                <marker date="1513765545543" expanded="true" signature="1558:2578" ph="SELECT TO_CH... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DiscountController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="124" column="46" lean-forward="false" selection-start-line="124" selection-start-column="46" selection-end-line="124" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ledger.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/ledger/Ledger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="43" lean-forward="true" selection-start-line="0" selection-start-column="43" selection-end-line="0" selection-end-column="43" />
+              <folding>
+                <element signature="method#Ledger#0;class#Ledger#0" expanded="false" />
+                <element signature="method#Ledger#1;class#Ledger#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/ledger/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,25 +108,9 @@
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="436" selection-end-column="23" />
+            <state relative-caret-position="184">
+              <caret line="438" column="10" lean-forward="false" selection-start-line="438" selection-start-column="10" selection-end-line="438" selection-end-column="10" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CashierController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="86" column="25" lean-forward="false" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
-              <folding>
-                <element signature="e#1038#1049#0" expanded="false" />
-                <element signature="method#CashierController#0;class#CashierController#0" expanded="false" />
-                <element signature="method#index#0;class#CashierController#0" expanded="false" />
-                <element signature="method#checkout#0;class#CashierController#0" expanded="false" />
-                <element signature="method#setShoppingCart#0;class#CashierController#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -176,12 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/edit_user.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/dashboard.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_user.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/add_user.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/WebMvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/tes.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin2.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/view_user2.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/v2/view_user2.html" />
@@ -192,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/403.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/creation.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/dist/css/AdminLTE.min.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manager/admin.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/manager/view_user.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/manager/add_user.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/LoginController.java" />
@@ -214,19 +205,26 @@
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/MyConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/outcome/Outcome.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/outcome/OutcomeDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/OutcomeController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/cashier/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/ShoppingCart.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/OrderLine.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/OrderLineDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/cashier/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/ShoppingCartDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/item/ItemDAO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/cashier/dashboard.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/CashierController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/manager/admin.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/outcome/OutcomeDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/outcome/form.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/ledger/Ledger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ledger/GeneralLedger.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/ledger/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/LedgerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ledger/GeneralLedgerDAO.java" />
       </list>
     </option>
   </component>
@@ -310,9 +308,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,10 +360,94 @@
               <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
               <item name="DAO" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+              <item name="cashier" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+              <item name="discount" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+              <item name="outcome" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="distro_pos" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="outcome" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="ledger" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distro_pos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="[2] Project Implementation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="outcome" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -390,22 +470,22 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.blibli.distro_pos.Config" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Guerzoniansus\Documents\Project\BliBlidotcom\future-distro\[2] Project Implementation\src\main\resources\templates\ledger" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates/v2" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/cashier" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/manager" />
       <recent name="$PROJECT_DIR$/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/static" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -578,11 +658,13 @@
       <workItem from="1513420648075" duration="1650000" />
       <workItem from="1513564696445" duration="17765000" />
       <workItem from="1513650672473" duration="8675000" />
+      <workItem from="1513679199657" duration="674000" />
+      <workItem from="1513736385682" duration="15647000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214561000" />
+    <option name="totallyTimeSpent" value="234258000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -595,13 +677,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2840909" sideWeight="0.503231" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22913617" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22913617" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -612,12 +695,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43213728" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43213728" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36817473" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36817473" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -652,13 +735,13 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43213728" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36817473" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36817473" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -707,25 +790,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Config/WebMvcConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/dist/css/AdminLTE.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/403.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/creation.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/dist/css/AdminLTE.min.css" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/BasicDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -751,7 +815,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/item/sub/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manager/add_user.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manager/admin.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -791,13 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/discount/DiscountDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="216" column="34" lean-forward="true" selection-start-line="216" selection-start-column="34" selection-end-line="216" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/discount/Discount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -826,13 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/outcome/Outcome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/discount/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -840,31 +889,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/OutcomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://src:table:/791f75a3/4ad8a946-8ab5-487d-92e0-82d6c70e104f/distro_pos.public.cart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/outcome/OutcomeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="54" column="50" lean-forward="false" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2686">
-          <caret line="177" column="21" lean-forward="false" selection-start-line="177" selection-start-column="21" selection-end-line="177" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -886,14 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="115" column="47" lean-forward="false" selection-start-line="115" selection-start-column="47" selection-end-line="115" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -901,7 +921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -909,7 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,10 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#1141#1142#0" expanded="false" />
-            <element signature="e#1172#1173#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -957,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="301" column="66" lean-forward="true" selection-start-line="301" selection-start-column="66" selection-end-line="301" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,39 +991,188 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="72" column="68" lean-forward="false" selection-start-line="72" selection-start-column="68" selection-end-line="72" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/outcome/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="116" column="70" lean-forward="true" selection-start-line="116" selection-start-column="70" selection-end-line="116" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/outcome/Outcome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
           <folding>
-            <element signature="e#4323#4324#0" expanded="true" />
-            <element signature="e#4350#4351#0" expanded="true" />
-            <marker date="1513577310737" expanded="true" signature="554:577" ph="SELECT * FRO... orderline" />
-            <marker date="1513577310737" expanded="true" signature="1653:1699" ph="SELECT * FRO... orderline" />
-            <marker date="1513577310737" expanded="true" signature="1653:1710" ph="SELECT * FRO... orderline" />
-            <marker date="1513577310737" expanded="true" signature="2738:2812" ph="INSERT INTO orderline... " />
-            <marker date="1513577310737" expanded="true" signature="2738:2850" ph="INSERT INTO orderline... " />
-            <marker date="1513577310737" expanded="true" signature="3599:3655" ph="UPDATE order... " />
+            <element signature="e#943#944#0" expanded="false" />
+            <element signature="e#974#975#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/OutcomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1548">
+          <caret line="51" column="46" lean-forward="false" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manager/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="223" column="43" lean-forward="false" selection-start-line="223" selection-start-column="43" selection-end-line="223" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#4;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/ledger/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/cashier/TransactionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="74" column="59" lean-forward="false" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="59" />
+        <state relative-caret-position="-82">
+          <caret line="153" column="47" lean-forward="true" selection-start-line="153" selection-start-column="47" selection-end-line="153" selection-end-column="47" />
           <folding>
-            <marker date="1513579751976" expanded="true" signature="676:898" ph="SELECT id_tr... transaction" />
-            <marker date="1513579751976" expanded="true" signature="1447:1676" ph="SELECT id_tr... transaction" />
-            <marker date="1513579751976" expanded="true" signature="2856:3030" ph="INSERT INTO transaction... " />
-            <marker date="1513579751976" expanded="true" signature="3941:4104" ph="UPDATE trans... " />
-            <marker date="1513579751976" expanded="true" signature="4887:4988" ph="UPDATE trans... " />
-            <marker date="1513579751976" expanded="true" signature="5413:5452" ph="SELECT COUNT... transaction" />
-            <marker date="1513579751976" expanded="true" signature="7265:7292" ph="SELECT nextv... " />
+            <element signature="e#6112#6113#0" expanded="true" />
+            <element signature="e#6139#6140#0" expanded="true" />
+            <marker date="1513738021640" expanded="true" signature="676:898" ph="SELECT id_tr... transaction" />
+            <marker date="1513738021640" expanded="true" signature="1447:1676" ph="SELECT id_tr... transaction" />
+            <marker date="1513738021640" expanded="true" signature="2856:3030" ph="INSERT INTO transaction... " />
+            <marker date="1513738021640" expanded="true" signature="3941:4104" ph="UPDATE trans... " />
+            <marker date="1513738021640" expanded="true" signature="4887:4988" ph="UPDATE trans... " />
+            <marker date="1513738021640" expanded="true" signature="5413:5452" ph="SELECT COUNT... transaction" />
+            <marker date="1513738021640" expanded="true" signature="7265:7292" ph="SELECT nextv... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/ItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="177" column="21" lean-forward="false" selection-start-line="177" selection-start-column="21" selection-end-line="177" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/outcome/OutcomeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1972">
+          <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+          <folding>
+            <marker date="1513738998448" expanded="true" signature="648:828" ph="SELECT id_ou... outcome" />
+            <marker date="1513738998448" expanded="true" signature="1350:1552" ph="SELECT id_ou... outcome" />
+            <marker date="1513738998448" expanded="true" signature="2685:2841" ph="INSERT INTO outcome... " />
+            <marker date="1513738998448" expanded="true" signature="3630:3793" ph="UPDATE outco... " />
+            <marker date="1513738998448" expanded="true" signature="4580:4641" ph="DELETE FROM " />
+            <marker date="1513738998448" expanded="true" signature="5092:5175" ph="UPDATE outco... " />
+            <marker date="1513738998448" expanded="true" signature="5616:5653" ph="SELECT COUNT... outcome" />
+            <marker date="1513738998448" expanded="true" signature="6247:6466" ph="SELECT id_ou... outcome" />
+            <marker date="1513738998448" expanded="true" signature="7094:7171" ph="UPDATE outco... " />
+            <marker date="1513738998448" expanded="true" signature="8567:8827" ph="SELECT id_ou... outcome" />
+            <marker date="1513738998448" expanded="true" signature="8861:8938" ph="SELECT COUNT... outcome" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/discount/DiscountDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="209" column="89" lean-forward="false" selection-start-line="209" selection-start-column="72" selection-end-line="209" selection-end-column="89" />
+          <folding>
+            <marker date="1513094196793" expanded="true" signature="602:848" ph="SELECT id_di... discount" />
+            <marker date="1513094196793" expanded="true" signature="1379:1686" ph="SELECT id_di... discount" />
+            <marker date="1513094196793" expanded="true" signature="2888:3079" ph="INSERT INTO discount... " />
+            <marker date="1513094196793" expanded="true" signature="4112:4314" ph="UPDATE disco... " />
+            <marker date="1513094196793" expanded="true" signature="5115:5174" ph="DELETE FROM " />
+            <marker date="1513094196793" expanded="true" signature="5625:5711" ph="UPDATE disco... " />
+            <marker date="1513094196793" expanded="true" signature="6185:6220" ph="SELECT COUNT... discount" />
+            <marker date="1513094196793" expanded="true" signature="6841:7105" ph="SELECT id_di... discount" />
+            <marker date="1513094196793" expanded="true" signature="7737:7817" ph="UPDATE disco... " />
+            <marker date="1513094196793" expanded="true" signature="8313:8631" ph="SELECT id_di... discount" />
+            <marker date="1513094196793" expanded="true" signature="8665:8733" ph="SELECT COUNT... discount" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="124" column="46" lean-forward="false" selection-start-line="124" selection-start-column="46" selection-end-line="124" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Model/ledger/Ledger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="43" lean-forward="true" selection-start-line="0" selection-start-column="43" selection-end-line="0" selection-end-column="43" />
+          <folding>
+            <element signature="method#Ledger#0;class#Ledger#0" expanded="false" />
+            <element signature="method#Ledger#1;class#Ledger#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/ledger/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/Controller/LedgerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-347">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blibli/distro_pos/DAO/ledger/GeneralLedgerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="24" column="69" lean-forward="true" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1513765545543" expanded="true" signature="465:508" ph="SELECT t.DAT... " />
+            <marker date="1513765545543" expanded="true" signature="465:780" ph="SELECT TO_CH... " />
+            <marker date="1513765545543" expanded="true" signature="465:828" ph="SELECT TO_CH... " />
+            <marker date="1513765545543" expanded="true" signature="465:1315" ph="SELECT TO_CH... " />
+            <marker date="1513765545543" expanded="true" signature="465:1382" ph="SELECT TO_CH... " />
+            <marker date="1513765545543" expanded="true" signature="465:1383" ph="SELECT TO_CH... " />
+            <marker date="1513765545543" expanded="true" signature="465:1384" ph="SELECT TO_CH... " />
+            <marker date="1513765545543" expanded="true" signature="1558:2578" ph="SELECT TO_CH... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/outcome/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="81" column="57" lean-forward="false" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4ad8a946-8ab5-487d-92e0-82d6c70e104f/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="436" selection-end-column="23" />
+        <state relative-caret-position="184">
+          <caret line="438" column="10" lean-forward="false" selection-start-line="438" selection-start-column="10" selection-end-line="438" selection-end-column="10" />
           <folding />
         </state>
       </provider>

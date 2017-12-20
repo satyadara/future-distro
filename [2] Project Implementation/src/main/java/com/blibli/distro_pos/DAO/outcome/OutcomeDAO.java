@@ -16,6 +16,7 @@ import java.util.Map;
 @Repository
 public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String> {
     public static final String LIST = "outcomeList";
+
     @Override
     public List<Outcome> getAll() {
         String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +

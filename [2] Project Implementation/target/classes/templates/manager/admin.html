@@ -162,6 +162,84 @@
                 </div>
             </div>
 
+            <!-- LINE CHART -->
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Line Chart</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body chart-responsive">
+                        <div class="chart" id="line-chart" style="height: 300px;"></div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- POPULAR ITEM -->
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tiga Item Paling Banyak Terjual</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body chart-responsive">
+                        <h2>Bulan ini</h2>
+                        <table class="table table-striped table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Barang</th>
+                                <th>Kuantitas Terjual</th>
+                                <th>Total Penjualan</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="item,number : ${items_month}">
+                                <td th:text="${number.index + 1}"></td>
+                                <td th:text="${item.getName_item()}"></td>
+                                <td th:text="${item.getQuantity()}"></td>
+                                <td th:text="${'Rp' + item.getTotal()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2>Tahun ini</h2>
+                        <table class="table table-striped table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Barang</th>
+                                <th>Kuantitas Terjual</th>
+                                <th>Total Penjualan</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="item,number : ${items_year}">
+                                <td th:text="${number.index + 1}"></td>
+                                <td th:text="${item.getName_item()}"></td>
+                                <td th:text="${item.getQuantity()}"></td>
+                                <td th:text="${'Rp' + item.getTotal()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- LOYAL CUSTOMER -->
             <div class="col-md-12">
                 <!-- LINE CHART -->
                 <div class="box box-info">
@@ -177,7 +255,40 @@
                         </div>
                     </div>
                     <div class="box-body chart-responsive">
-                        <div class="chart" id="line-chart" style="height: 300px;"></div>
+                        <h2>Bulan ini</h2>
+                        <table class="table table-striped table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Pelanggan</th>
+                                <th>Total Pembelian</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="customer,number1 : ${customers_month}">
+                                <td th:text="${number1.index + 1}"></td>
+                                <td th:text="${customer.getName_cust()}"></td>
+                                <td th:text="${customer.getTotal()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2>Tahun ini</h2>
+                        <table class="table table-striped table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Pelanggan</th>
+                                <th>Total Pembelian</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="customer,number1 : ${customers_year}">
+                                <td th:text="${number1.index + 1}"></td>
+                                <td th:text="${customer.getName_cust()}"></td>
+                                <td th:text="${customer.getTotal()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.box-body -->
                 </div>

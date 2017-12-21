@@ -1,8 +1,12 @@
 package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.DAO.UserDao;
+import com.blibli.distro_pos.DAO.summary.SummaryDAO;
 import com.blibli.distro_pos.Model.Role;
 import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.Model.summary.LoyalCustomer;
+import com.blibli.distro_pos.Model.summary.MostSoldItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,31 +16,48 @@ import java.util.List;
 
 @Controller
 public class WebController {
+    private final SummaryDAO summaryDAO;
 
-    @RequestMapping(value={"/"})
-    public String home(){
+    @Autowired
+    public WebController(SummaryDAO summaryDAO) {
+        this.summaryDAO = summaryDAO;
+    }
+
+    @RequestMapping(value = {"/"})
+    public String home() {
 
         return "login";
     }
 
-    @RequestMapping(value={"/dashboard"})
-    public ModelAndView dashboard(Authentication authentication){
+    @RequestMapping(value = {"/dashboard"})
+    public ModelAndView dashboard(Authentication authentication) {
 
         String username = authentication.getName();
 
         return new ModelAndView("cashier/dashboard", "username", username);
     }
 
-    @RequestMapping(value="/admin")
-    public ModelAndView admin(Authentication authentication){
+    @RequestMapping(value = "/admin")
+    public ModelAndView admin(Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView("manager/admin");
 
         String username = authentication.getName();
+        List<MostSoldItem> mostSoldItemsMonth = summaryDAO.getMostSoldItemThisMonth();
+        List<MostSoldItem> mostSoldItemsYear = summaryDAO.getMostSoldItemThisYear();
+        List<LoyalCustomer> loyalCustomersMonth = summaryDAO.getLoyalCustomerThisMonth();
+        List<LoyalCustomer> loyalCustomersYear = summaryDAO.getLoyalCustomerThisYear();
 
-        return new ModelAndView("manager/admin", "username", username);
+        modelAndView.addObject("username", username);
+        modelAndView.addObject("items_month", mostSoldItemsMonth);
+        modelAndView.addObject("items_year", mostSoldItemsYear);
+        modelAndView.addObject("customers_month", loyalCustomersMonth);
+        modelAndView.addObject("customers_year", loyalCustomersYear);
+
+        return modelAndView;
     }
 
-    @RequestMapping(value="/403")
-    public String Error403(){
+    @RequestMapping(value = "/403")
+    public String Error403() {
         return "403";
     }
 
@@ -49,7 +70,7 @@ public class WebController {
 
     @PostMapping("/add_user")
     public ModelAndView addUser(@ModelAttribute("user") User user,
-                                @ModelAttribute("role")Role role) {
+                                @ModelAttribute("role") Role role) {
 
         user.setEnabled(true);
 
@@ -61,8 +82,7 @@ public class WebController {
         if (status == 1) {
             System.out.println("BERHASIL");
             return new ModelAndView("redirect:/view_user");
-        }
-        else {
+        } else {
             System.out.println("GAGAL!");
             return new ModelAndView("redirect:/view_user");
         }
@@ -119,8 +139,7 @@ public class WebController {
                 System.out.println("Gagal edit user" + status);
                 return new ModelAndView("redirect:/view_user");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             System.out.println(e.toString());
             throw e;
@@ -140,8 +159,7 @@ public class WebController {
             System.out.println("User with username: " + username + " is deleted");
 
             return new ModelAndView("redirect:/view_user");
-        }
-        else {
+        } else {
 
             System.out.println("Failed to delete " + username);
 
@@ -174,7 +192,7 @@ public class WebController {
 
     @PostMapping("/add_user2")
     public ModelAndView addUser2(@ModelAttribute("user") User user,
-                                @ModelAttribute("role")Role role) {
+                                 @ModelAttribute("role") Role role) {
 
         user.setEnabled(true);
 
@@ -186,8 +204,7 @@ public class WebController {
         if (status == 1) {
             System.out.println("BERHASIL");
             return new ModelAndView("redirect:/view_user2");
-        }
-        else {
+        } else {
             System.out.println("GAGAL!");
             return new ModelAndView("redirect:/view_user2");
         }

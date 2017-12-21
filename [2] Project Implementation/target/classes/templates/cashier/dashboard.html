@@ -58,8 +58,8 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="col-md-8">
+<div class="container-fluid">
+    <div class="col-md-6">
         <div class="panel with-nav-tabs panel-primary">
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
@@ -75,162 +75,26 @@
                         <input type="text" name="search" placeholder="search" class="form-control"/>
                         <br/>
                         <div class="text-center">
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #1</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
+                            <th:block th:each="item : ${items}">
+                                <div class="col-md-3 panel panel-default">
+                                    <div class="panel-body">
+                                        <img src="images/logoss.png" width="200" height="200"
+                                             class="img img-responsive center-block"/>
+                                        <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
+                                        <p th:text="${'Rp'+item.getPrice()}"></p>
                                     </div>
-
+                                    <form th:action="${'/cashier/cart/' + item.getId_item()}">
+                                        <input type="text" hidden="hidden" name="item_name"
+                                               th:value="${item.getName_item()}"/>
+                                        <input type="text" hidden="hidden" name="price_item"
+                                               th:value="${item.getPrice()}"/>
+                                        <input type="text" hidden="hidden" name="stock_item"
+                                               th:value="${item.getStock()}"/>
+                                        <input class="form-control col-md-12" type="number" name="quantity" value=""/>
+                                        <button class="btn btn-primary col-md-12" type="submit">Tambah</button>
+                                    </form>
                                 </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #2</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #3</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #4</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #5</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #6</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #7</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #8</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #9</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #10</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #11</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a href="#item">
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <img src="images/logoss.png" width="200" height="200"
-                                                 class="img img-responsive center-block"/>
-                                            <p>Item #12</p>
-                                            <p>Rpxxxxxx</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
+                            </th:block>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="bawahan">Bawahan</div>
@@ -411,7 +275,7 @@
     </div>
 
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="box box primary">
             <div class="box-body">
                 <div class="row">
@@ -425,6 +289,26 @@
                 </div>
                 <h5>Kam, 24 Agt 2017 | 21:00:21</h5>
                 <hr/>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nama Item</th>
+                        <th>Kuantitas</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cart: ${cart}">
+                        <td th:text="${cart.getItem_name()}"></td>
+                        <td th:text="${cart.getQuantity()}"></td>
+                        <td th:text="${cart.getSubtotal()}"></td>
+                        <td>
+                            <a th:href="${'/cashier/cart/'+cart.getId_item()+'/cancel?quantity=' + cart.getQuantity()}">X</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button><a href="/cashier/checkout">Cekot</a></button>
             </div>
         </div>
     </div>

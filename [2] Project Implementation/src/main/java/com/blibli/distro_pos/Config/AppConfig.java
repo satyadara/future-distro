@@ -19,9 +19,9 @@ public class AppConfig {
 
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5433/distro_pos");
+        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/distro_pos");
         driverManagerDataSource.setUsername("postgres");
-        driverManagerDataSource.setPassword("password");
+        driverManagerDataSource.setPassword("postgres");
 
         return driverManagerDataSource;
     }

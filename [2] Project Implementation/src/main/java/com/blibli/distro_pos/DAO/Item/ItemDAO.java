@@ -14,17 +14,6 @@ import java.util.Map;
 
 @Repository
 public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
-    private static final String COL_ID_ITEM = "id_item";
-    private static final String COL_ID_EMP = "name_item";
-    private static final String COL_NAME = "name_item";
-    private static final String COL_PRICE = "price_item";
-    private static final String COL_MERK = "merk_item";
-    private static final String COL_STOCK = "stock_item";
-    private static final String COL_IMAGE = "image_item";
-    private static final String COL_COLOR = "color_item";
-    private static final String COL_SIZE = "size_item";
-    private static final String COL_TYPE = "type_item";
-    private static final String COL_STATUS = "status_item";
     public static final String LIST = "itemList";
 
     @Override
@@ -220,7 +209,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Get List item ");
+            System.out.println("Get List item error : " + e.toString());
         }
         return itemList;
     }
@@ -272,5 +261,17 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         }
 
         return map;
+    }
+
+    public void addOrMinStock(String id_item, int quantity) {
+        String sql = "UPDATE item SET stock_item = stock_item+" + quantity + " WHERE id_item = '" + id_item + "';";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            statement.execute(sql);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#ADD OR MINUS STOCK#  : " + e.toString());
+        }
     }
 }

@@ -4,6 +4,7 @@ import com.blibli.distro_pos.DAO.outcome.OutcomeDAO;
 import com.blibli.distro_pos.Model.outcome.Outcome;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,8 +48,8 @@ public class OutcomeController {
     }
 
     @RequestMapping(value = "/create", method = POST)
-    public ModelAndView store(@ModelAttribute("outcome") Outcome outcome) {
-        outcome.setId_emp("EMP-1002");
+    public ModelAndView store(@ModelAttribute("outcome") Outcome outcome, Authentication authentication) {
+        outcome.setUsername(authentication.getName());
         ModelAndView modelAndView = validateAndExecute(outcome, STORE);
         return modelAndView;
     }

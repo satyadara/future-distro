@@ -2,7 +2,7 @@ package com.blibli.distro_pos.Model.outcome;
 
 public class Outcome {
     private String id_outcome;
-    private String id_emp;
+    private String username;
     private String title;
     private double amount;
     private int quantity;
@@ -13,10 +13,10 @@ public class Outcome {
     public Outcome() {
     }
 
-    public Outcome(String id_outcome, String id_emp, String title, double amount,
+    public Outcome(String id_outcome, String username, String title, double amount,
                    int quantity, String date, String desc, String status) {
         this.setId_outcome(id_outcome);
-        this.setId_emp(id_emp);
+        this.setUsername(username);
         this.setTitle(title);
         this.setAmount(amount);
         this.setQuantity(quantity);
@@ -33,12 +33,12 @@ public class Outcome {
         this.id_outcome = id_outcome;
     }
 
-    public String getId_emp() {
-        return id_emp;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId_emp(String id_emp) {
-        this.id_emp = id_emp;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getTitle() {

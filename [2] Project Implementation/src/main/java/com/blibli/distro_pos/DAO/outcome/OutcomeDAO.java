@@ -2,9 +2,7 @@ package com.blibli.distro_pos.DAO.outcome;
 
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
-import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.outcome.Outcome;
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -18,9 +16,10 @@ import java.util.Map;
 @Repository
 public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String> {
     public static final String LIST = "outcomeList";
+
     @Override
     public List<Outcome> getAll() {
-        String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
+        String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
                 "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome;";
         List<Outcome> outcomeList = new ArrayList<>();
         try {
@@ -38,7 +37,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
 
     @Override
     public Outcome getOne(String id) {
-        String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
+        String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
                 "TO_CHAR(date_out, 'YYYY-MM-DD') AS date_out, desc_out, status FROM outcome " +
                 "WHERE id_outcome = ?;";
         Outcome outcome = new Outcome();
@@ -51,7 +50,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
                 while (rs.next()) {
                     outcome = new Outcome(
                             rs.getString("id_outcome"),
-                            rs.getString("id_emp"),
+                            rs.getString("username"),
                             rs.getString("title_out"),
                             rs.getDouble("amount_out"),
                             rs.getInt("quantity_out"),
@@ -71,12 +70,12 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
 
     @Override
     public void save(Outcome outcome) {
-        String sql = "INSERT INTO outcome(id_emp, amount_out, quantity_out, date_out, desc_out, title_out) " +
+        String sql = "INSERT INTO outcome(username, amount_out, quantity_out, date_out, desc_out, title_out) " +
                 "VALUES (?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?);";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setString(1, outcome.getId_emp());
+            preparedStatement.setString(1, outcome.getUsername());
             preparedStatement.setDouble(2, outcome.getAmount());
             preparedStatement.setInt(3, outcome.getQuantity());
             preparedStatement.setString(4, outcome.getDate());
@@ -161,7 +160,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
 
     @Override
     public List<Outcome> paginate(int page) {
-        String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
+        String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
                 "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome " +
                 "LIMIT 10 OFFSET ?;";
         List<Outcome> outcomeList = new ArrayList<>();
@@ -201,7 +200,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
                 while (rs.next()) {
                     Outcome outcome = new Outcome(
                             rs.getString("id_outcome"),
-                            rs.getString("id_emp"),
+                            rs.getString("username"),
                             rs.getString("title_out"),
                             rs.getDouble("amount_out"),
                             rs.getInt("quantity_out"),
@@ -219,7 +218,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
     }
 
     public Map<String, Object> search(String key, int page) {
-        String sql = "SELECT id_outcome, id_emp, title_out, amount_out, quantity_out," +
+        String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
                 "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome " +
                 "WHERE LOWER(title_out) LIKE '%'||?||'%'  ORDER BY id_outcome LIMIT 10 OFFSET ?;";
         String sql_counter = "SELECT COUNT(id_outcome) FROM outcome WHERE LOWER(title_out) LIKE '%'||?||'%';";

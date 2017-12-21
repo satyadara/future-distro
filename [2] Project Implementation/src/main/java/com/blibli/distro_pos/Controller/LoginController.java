@@ -9,14 +9,10 @@ public class LoginController {
 
     @GetMapping("/success")
     public String success(Authentication authentication) {
-
         if (authentication.getAuthorities().toString().equals("[MANAGER]")) {
-
             return "redirect:/admin";
-        }
-        else {
-
-            return "redirect:/dashboard";
+        } else {
+            return "redirect:/cashier";
         }
     }
 }

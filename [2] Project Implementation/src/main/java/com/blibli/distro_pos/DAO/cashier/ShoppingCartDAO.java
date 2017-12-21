@@ -1,6 +1,7 @@
 package com.blibli.distro_pos.DAO.cashier;
 
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.cashier.Interface.ShoppingCartInterface;
 import com.blibli.distro_pos.Model.cashier.ShoppingCart;
 import org.springframework.stereotype.Repository;
 
@@ -11,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ShoppingCartDAO extends MyConnection {
-
-
+public class ShoppingCartDAO extends MyConnection implements ShoppingCartInterface {
+    @Override
     public List<ShoppingCart> getAll() {
         String sql = "SELECT * FROM CART;";
         List<ShoppingCart> list = new ArrayList<>();
@@ -40,7 +40,7 @@ public class ShoppingCartDAO extends MyConnection {
         return list;
     }
 
-
+    @Override
     public void save(ShoppingCart shoppingCart) {
         String sql = "INSERT INTO cart(id_item, username, quantity, item_name, subtotal) " +
                 "VALUES (?,?,?,?,?);";
@@ -59,6 +59,7 @@ public class ShoppingCartDAO extends MyConnection {
         }
     }
 
+    @Override
     public void update(ShoppingCart shoppingCart) {
         String sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE id_item = ?;";
         try {
@@ -74,6 +75,7 @@ public class ShoppingCartDAO extends MyConnection {
         }
     }
 
+    @Override
     public void cancel(String id, String username) {
         String sql = "DELETE FROM cart WHERE id_item = ? AND username = ?;";
         try {
@@ -88,6 +90,7 @@ public class ShoppingCartDAO extends MyConnection {
         }
     }
 
+    @Override
     public void clear(String username) {
         String sql = "DELETE FROM cart WHERE username = '" + username + "';";
         try {
@@ -100,6 +103,7 @@ public class ShoppingCartDAO extends MyConnection {
         }
     }
 
+    @Override
     public ShoppingCart getOne(String id) {
         String sql = "SELECT * FROM CART WHERE id_item = '" + id + "';";
         ShoppingCart shoppingCart = new ShoppingCart();

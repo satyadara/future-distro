@@ -1,7 +1,7 @@
 package com.blibli.distro_pos.DAO.ledger;
 
-import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.ledger.Interface.LedgerInterface;
 import com.blibli.distro_pos.Model.ledger.Ledger;
 import org.springframework.stereotype.Repository;
 
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class GeneralLedgerDAO extends MyConnection {
-
+public class LedgerImpl extends MyConnection implements LedgerInterface {
+    @Override
     public List<Ledger> getIndex() {
         String sql = "SELECT TO_CHAR(t.DATE_TRANS, 'YYYY-MM-DD')     AS DATE, " +
                 "'Transaksi pembelian ' || t.ID_TRANS       AS TITLE, " +
@@ -32,6 +32,7 @@ public class GeneralLedgerDAO extends MyConnection {
         return list;
     }
 
+    @Override
     public List<Ledger> getFilter(String date_from, String date_to, int offset) {
         String sql = "SELECT TO_CHAR(t.DATE_TRANS, 'YYYY-MM-DD')     AS DATE, " +
                 "'Transaksi pembelian ' || t.ID_TRANS       AS TITLE, " +

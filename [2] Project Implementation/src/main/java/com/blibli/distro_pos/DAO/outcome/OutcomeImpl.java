@@ -2,6 +2,7 @@ package com.blibli.distro_pos.DAO.outcome;
 
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.outcome.Interface.OutcomeInterface;
 import com.blibli.distro_pos.Model.outcome.Outcome;
 import org.springframework.stereotype.Repository;
 
@@ -14,13 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String> {
+public class OutcomeImpl extends MyConnection implements OutcomeInterface {
     public static final String LIST = "outcomeList";
 
     @Override
     public List<Outcome> getAll() {
         String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
-                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome;";
+                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome DESC ;";
         List<Outcome> outcomeList = new ArrayList<>();
         try {
             this.connect();
@@ -161,7 +162,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
     @Override
     public List<Outcome> paginate(int page) {
         String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
-                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome " +
+                "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome ORDER BY id_outcome DESC " +
                 "LIMIT 10 OFFSET ?;";
         List<Outcome> outcomeList = new ArrayList<>();
         try {
@@ -179,6 +180,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         return outcomeList;
     }
 
+    @Override
     public void setActive(String id) {
         String sql = "UPDATE outcome SET status = 'Aktif' " +
                 "WHERE id_outcome = ?;";
@@ -193,6 +195,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         }
     }
 
+    @Override
     public List<Outcome> getOutcomeList(ResultSet rs) {
         List<Outcome> outcomeList = new ArrayList<>();
         try {
@@ -217,6 +220,7 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         return outcomeList;
     }
 
+    @Override
     public Map<String, Object> search(String key, int page) {
         String sql = "SELECT id_outcome, username, title_out, amount_out, quantity_out," +
                 "TO_CHAR(date_out, 'DD/MM/YYYY') AS date_out, desc_out, status FROM outcome " +
@@ -250,5 +254,10 @@ public class OutcomeDAO extends MyConnection implements BasicDAO<Outcome, String
         }
 
         return map;
+    }
+
+    @Override
+    public String getStringList() {
+        return LIST;
     }
 }

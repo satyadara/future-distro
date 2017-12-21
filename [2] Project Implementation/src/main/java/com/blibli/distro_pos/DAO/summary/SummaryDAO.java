@@ -1,6 +1,7 @@
 package com.blibli.distro_pos.DAO.summary;
 
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.summary.Interface.SummaryInterface;
 import com.blibli.distro_pos.Model.summary.LoyalCustomer;
 import com.blibli.distro_pos.Model.summary.MostSoldItem;
 import org.springframework.stereotype.Repository;
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class SummaryDAO extends MyConnection {
-
+public class SummaryDAO extends MyConnection implements SummaryInterface {
+    @Override
     public List<MostSoldItem> getMostSoldItemThisMonth() {
         String sql = "SELECT ord.ID_ITEM, i.NAME_ITEM , SUM(ord.QUANTITY) AS quantity, SUM(ord.SUBTOTAL) AS subtotal " +
                 "FROM ORDERLINE ord JOIN ITEM i ON (ord.ID_ITEM = i.ID_ITEM) " +
@@ -22,6 +23,7 @@ public class SummaryDAO extends MyConnection {
         return getMostSoldItem(sql);
     }
 
+    @Override
     public List<MostSoldItem> getMostSoldItemThisYear() {
         String sql = "SELECT ord.ID_ITEM, i.NAME_ITEM , SUM(ord.QUANTITY) AS quantity, SUM(ord.SUBTOTAL) AS subtotal " +
                 "FROM ORDERLINE ord JOIN ITEM i ON (ord.ID_ITEM = i.ID_ITEM) " +
@@ -31,18 +33,22 @@ public class SummaryDAO extends MyConnection {
         return getMostSoldItem(sql);
     }
 
-    public List<LoyalCustomer> getLoyalCustomerThisMonth()  {
+    @Override
+    public List<LoyalCustomer> getLoyalCustomerThisMonth() {
         String sql = "SELECT CUSTOMER_TRANS, SUM(TOTAL_TRANS) AS TOTAL FROM TRANSACTION " +
                 "WHERE DATE_TRANS > DATE_TRUNC('month', now()) GROUP BY 1 ORDER BY 2 DESC LIMIT 3;";
         return getLoyalCustomer(sql);
     }
-    public List<LoyalCustomer> getLoyalCustomerThisYear()  {
+
+    @Override
+    public List<LoyalCustomer> getLoyalCustomerThisYear() {
         String sql = "SELECT CUSTOMER_TRANS, SUM(TOTAL_TRANS) AS TOTAL FROM TRANSACTION " +
                 "WHERE DATE_TRANS > DATE_TRUNC('year', now()) GROUP BY 1 ORDER BY 2 DESC LIMIT 3;";
         return getLoyalCustomer(sql);
     }
 
-    private List<MostSoldItem> getMostSoldItem(String sql)  {
+    @Override
+    public List<MostSoldItem> getMostSoldItem(String sql) {
         List<MostSoldItem> list = new ArrayList<>();
         try {
             this.connect();
@@ -67,14 +73,15 @@ public class SummaryDAO extends MyConnection {
         return list;
     }
 
-    private List<LoyalCustomer> getLoyalCustomer(String sql)    {
+    @Override
+    public List<LoyalCustomer> getLoyalCustomer(String sql) {
         List<LoyalCustomer> list = new ArrayList<>();
         try {
             this.connect();
             Statement statement = this.con.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            if (resultSet != null)  {
-                while (resultSet.next())    {
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     LoyalCustomer loyalCustomer = new LoyalCustomer(
                             resultSet.getString("CUSTOMER_TRANS"),
                             resultSet.getDouble("TOTAL")
@@ -83,7 +90,7 @@ public class SummaryDAO extends MyConnection {
                 }
             }
             this.disconnect();
-        } catch (Exception e)   {
+        } catch (Exception e) {
 
         }
         return list;

@@ -1,9 +1,8 @@
 package com.blibli.distro_pos.DAO.cashier;
 
-import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.cashier.Interface.TransactionInterface;
 import com.blibli.distro_pos.Model.cashier.Transaction;
-import com.blibli.distro_pos.Model.discount.Discount;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -13,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-
-public class TransactionDAO extends MyConnection implements BasicDAO<Transaction, String> {
+public class TransactionDAO extends MyConnection implements TransactionInterface {
     private static final String LIST = "transactionList";
 
     @Override
@@ -110,52 +108,7 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
     }
 
     @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void softDelete(String id) {
-        String sql = "UPDATE transaction SET status_trans = 'Tidak Aktif'" +
-                "WHERE id_trans = '" + id + "';";
-        System.out.println(sql);
-        try {
-            this.connect();
-            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.execute();
-            this.disconnect();
-        } catch (Exception e) {
-            System.out.println("#SOFTDELETE# something error : " + e.toString());
-        }
-    }
-
-    @Override
-    public int count() {
-        String sql = "SELECT COUNT(id_trans) FROM transaction;";
-        System.out.println(sql);
-        int count = 0;
-        try {
-            this.connect();
-            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet != null) {
-                while (resultSet.next()) {
-                    count = resultSet.getInt("count");
-                }
-            }
-            this.disconnect();
-        } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
-        }
-        return count;
-    }
-
-    @Override
-    public List<Transaction> paginate(int page) {
-        return null;
-    }
-
-    private List<Transaction> getTransactionList(ResultSet rs) {
+    public List<Transaction> getTransactionList(ResultSet rs) {
         List<Transaction> transactionList = new ArrayList<>();
         try {
             if (rs != null) {
@@ -180,6 +133,7 @@ public class TransactionDAO extends MyConnection implements BasicDAO<Transaction
         return transactionList;
     }
 
+    @Override
     public String getTransID() {
         String sql = "SELECT nextval('sec_trans');";
         String id = "";

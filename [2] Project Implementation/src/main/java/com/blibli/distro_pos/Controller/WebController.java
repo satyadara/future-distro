@@ -1,11 +1,9 @@
 package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.DAO.UserDao;
-import com.blibli.distro_pos.DAO.summary.SummaryDAO;
 import com.blibli.distro_pos.Model.Role;
 import com.blibli.distro_pos.Model.User;
-import com.blibli.distro_pos.Model.summary.LoyalCustomer;
-import com.blibli.distro_pos.Model.summary.MostSoldItem;
+import com.blibli.distro_pos.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -16,55 +14,42 @@ import java.util.List;
 
 @Controller
 public class WebController {
-    private final SummaryDAO summaryDAO;
+    private final UserService userService;
 
     @Autowired
-    public WebController(SummaryDAO summaryDAO) {
-        this.summaryDAO = summaryDAO;
+    public WebController(UserService userService) {
+        this.userService = userService;
     }
 
-    @RequestMapping(value = {"/"})
-    public String home() {
+    @RequestMapping(value = "")
+    public ModelAndView index(Authentication authentication) {
+        System.out.println("weeee");
+        return userService.index(authentication);
+    }
 
+    @RequestMapping(value = {"/login"})
+    public String login() {
         return "login";
     }
 
-    @RequestMapping(value = {"/dashboard"})
+    @RequestMapping(value = {"/cashier"})
     public ModelAndView dashboard(Authentication authentication) {
-
-        String username = authentication.getName();
-
-        return new ModelAndView("cashier/dashboard", "username", username);
+        return userService.cashierDashboard(authentication);
     }
 
     @RequestMapping(value = "/admin")
     public ModelAndView admin(Authentication authentication) {
-        ModelAndView modelAndView = new ModelAndView("manager/admin");
-
-        String username = authentication.getName();
-        List<MostSoldItem> mostSoldItemsMonth = summaryDAO.getMostSoldItemThisMonth();
-        List<MostSoldItem> mostSoldItemsYear = summaryDAO.getMostSoldItemThisYear();
-        List<LoyalCustomer> loyalCustomersMonth = summaryDAO.getLoyalCustomerThisMonth();
-        List<LoyalCustomer> loyalCustomersYear = summaryDAO.getLoyalCustomerThisYear();
-
-        modelAndView.addObject("username", username);
-        modelAndView.addObject("items_month", mostSoldItemsMonth);
-        modelAndView.addObject("items_year", mostSoldItemsYear);
-        modelAndView.addObject("customers_month", loyalCustomersMonth);
-        modelAndView.addObject("customers_year", loyalCustomersYear);
-
-        return modelAndView;
+        return userService.managerDashboard(authentication);
     }
 
     @RequestMapping(value = "/403")
-    public String Error403() {
+    public String error403() {
         return "403";
     }
 
 
     @GetMapping("/add_user")
     public ModelAndView addUser() {
-
         return new ModelAndView("manager/add_user");
     }
 

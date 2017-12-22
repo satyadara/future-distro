@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ShoppingCartDAO extends MyConnection implements ShoppingCartInterface {
+public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterface {
     @Override
     public List<ShoppingCart> getAll() {
         String sql = "SELECT * FROM CART;";

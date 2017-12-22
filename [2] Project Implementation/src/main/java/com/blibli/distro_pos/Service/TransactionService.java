@@ -1,8 +1,8 @@
 package com.blibli.distro_pos.Service;
 
 import com.blibli.distro_pos.DAO.cashier.OrderLineImpl;
-import com.blibli.distro_pos.DAO.cashier.ShoppingCartDAO;
-import com.blibli.distro_pos.DAO.cashier.TransactionDAO;
+import com.blibli.distro_pos.DAO.cashier.ShoppingCartImpl;
+import com.blibli.distro_pos.DAO.cashier.TransactionImpl;
 import com.blibli.distro_pos.DAO.item.ItemImpl;
 import com.blibli.distro_pos.Model.cashier.OrderLine;
 import com.blibli.distro_pos.Model.cashier.ShoppingCart;
@@ -21,23 +21,23 @@ import java.util.List;
 @Service
 public class TransactionService {
 
-    private final TransactionDAO transactionDAO;
-    private final ShoppingCartDAO shoppingCartDAO;
+    private final TransactionImpl transactionImpl;
+    private final ShoppingCartImpl shoppingCartImpl;
     private final OrderLineImpl orderLineImpl;
     private final ItemImpl itemImpl;
 
     @Autowired
-    public TransactionService(TransactionDAO transactionDAO, ShoppingCartDAO shoppingCartDAO,
+    public TransactionService(TransactionImpl transactionImpl, ShoppingCartImpl shoppingCartImpl,
                               OrderLineImpl orderLineImpl, ItemImpl itemImpl) {
-        this.transactionDAO = transactionDAO;
-        this.shoppingCartDAO = shoppingCartDAO;
+        this.transactionImpl = transactionImpl;
+        this.shoppingCartImpl = shoppingCartImpl;
         this.orderLineImpl = orderLineImpl;
         this.itemImpl = itemImpl;
     }
 
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("cashier/dashboard");
-        List<ShoppingCart> list = shoppingCartDAO.getAll();
+        List<ShoppingCart> list = shoppingCartImpl.getAll();
         List<Item> itemList = itemImpl.paginate(1);
 
         for (ShoppingCart cart : list) {
@@ -52,7 +52,7 @@ public class TransactionService {
     public ModelAndView addCart(String id, String quantity, String item_name, double price_item, int stock_item,
                                 Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        ShoppingCart shoppingCart = shoppingCartDAO.getOne(id);
+        ShoppingCart shoppingCart = shoppingCartImpl.getOne(id);
         if (quantity.isEmpty()) {
             return modelAndView;
         }
@@ -68,14 +68,14 @@ public class TransactionService {
                 return modelAndView;
             }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
-            shoppingCartDAO.update(shoppingCart);
+            shoppingCartImpl.update(shoppingCart);
         } else {
             System.out.println("save");
             if (qty < 1) {
                 return modelAndView;
             }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
-            shoppingCartDAO.save(shoppingCart);
+            shoppingCartImpl.save(shoppingCart);
         }
         itemImpl.addOrMinStock(id, qty * -1);
 
@@ -84,8 +84,8 @@ public class TransactionService {
 
     public ModelAndView checkout(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        List<ShoppingCart> list = shoppingCartDAO.getAll();
-        String id_trans = transactionDAO.getTransID();
+        List<ShoppingCart> list = shoppingCartImpl.getAll();
+        String id_trans = transactionImpl.getTransID();
         Double total_trans = 0.0;
         Date today = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -94,7 +94,7 @@ public class TransactionService {
             return modelAndView;
         }
         Transaction transaction = new Transaction(id_trans, null, authentication.getName(), "-", 0.0, simpleDateFormat.format(today), "Aktif");
-        transactionDAO.save(transaction);
+        transactionImpl.save(transaction);
 
         for (ShoppingCart cart : list) {
             Item item = itemImpl.getOne(cart.getId_item());
@@ -105,8 +105,8 @@ public class TransactionService {
             total_trans += subtotal;
         }
         transaction.setTotal_trans(total_trans);
-        transactionDAO.update(transaction);
-        shoppingCartDAO.clear(authentication.getName());
+        transactionImpl.update(transaction);
+        shoppingCartImpl.clear(authentication.getName());
         return modelAndView;
     }
 
@@ -114,7 +114,7 @@ public class TransactionService {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
         System.out.println(qty);
         itemImpl.addOrMinStock(id, qty);
-        shoppingCartDAO.cancel(id, authentication.getName());
+        shoppingCartImpl.cancel(id, authentication.getName());
         return modelAndView;
     }
 

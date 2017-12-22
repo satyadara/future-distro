@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class SummaryDAO extends MyConnection implements SummaryInterface {
+public class SummaryImpl extends MyConnection implements SummaryInterface {
     @Override
     public List<MostSoldItem> getMostSoldItemThisMonth() {
         String sql = "SELECT ord.ID_ITEM, i.NAME_ITEM , SUM(ord.QUANTITY) AS quantity, SUM(ord.SUBTOTAL) AS subtotal " +

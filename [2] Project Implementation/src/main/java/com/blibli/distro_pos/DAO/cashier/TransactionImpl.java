@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class TransactionDAO extends MyConnection implements TransactionInterface {
+public class TransactionImpl extends MyConnection implements TransactionInterface {
     private static final String LIST = "transactionList";
 
     @Override

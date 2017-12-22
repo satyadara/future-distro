@@ -1,8 +1,9 @@
 package com.blibli.distro_pos.DAO.item;
 
-import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
-import com.blibli.distro_pos.Model.item.ItemType;
+import com.blibli.distro_pos.DAO.item.Interface.ItemTypeInterface;
+import com.blibli.distro_pos.DAO.item.Interface.SubItemInterface;
+import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -10,12 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, String> {
-
+public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
     @Override
-    public List<ItemType> getAll() {
+    public List<SubItem> getAll() {
         String sql = "SELECT * FROM item_type ORDER BY name_item_type;";
-        List<ItemType> itemTypeList = new ArrayList<>();
+        List<SubItem> SubItemList = new ArrayList<>();
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
@@ -25,22 +25,22 @@ public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, Stri
                 System.out.println("getAll Types : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_type"));
-                    ItemType itemType = new ItemType(rs.getString("id_item_type"),
+                    SubItem SubItem = new SubItem(rs.getString("id_item_type"),
                             rs.getString("name_item_type"));
-                    itemTypeList.add(itemType);
+                    SubItemList.add(SubItem);
                 }
             }
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
-        return itemTypeList;
+        return SubItemList;
     }
 
     @Override
-    public ItemType getOne(String id) {
+    public SubItem getOne(String id) {
         String sql = "SELECT * FROM item_type WHERE id_item_type = ?";
-        ItemType type = new ItemType();
+        SubItem type = new SubItem();
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, Stri
             ResultSet rs = preparedStatement.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
-                    type = new ItemType(
+                    type = new SubItem(
                             rs.getString("id_item_type"),
                             rs.getString("name_item_type"));
                 }
@@ -62,7 +62,7 @@ public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, Stri
     }
 
     @Override
-    public void save(ItemType type) {
+    public void save(SubItem type) {
         String sql = "INSERT INTO ITEM_TYPE (ID_ITEM_TYPE, NAME_ITEM_TYPE) VALUES (?,?);";
         try {
             this.connect();
@@ -77,7 +77,7 @@ public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, Stri
     }
 
     @Override
-    public void update(ItemType type) {
+    public void update(SubItem type) {
         String sql = "UPDATE item_type SET name_item_type = ? WHERE id_item_type = ?;";
         try {
             this.connect();
@@ -122,9 +122,9 @@ public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, Stri
     }
 
     @Override
-    public List<ItemType> paginate(int page)  {
+    public List<SubItem> paginate(int page) {
         String sql = "SELECT * FROM item_type ORDER BY name_item_type LIMIT 10 OFFSET ?;";
-        List<ItemType> itemTypeList = new ArrayList<>();
+        List<SubItem> SubItemList = new ArrayList<>();
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
@@ -135,15 +135,15 @@ public class ItemTypeDAO extends MyConnection implements BasicDAO<ItemType, Stri
                 System.out.println("getAll Types : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_type"));
-                    ItemType itemType = new ItemType(rs.getString("id_item_type"),
+                    SubItem SubItem = new SubItem(rs.getString("id_item_type"),
                             rs.getString("name_item_type"));
-                    itemTypeList.add(itemType);
+                    SubItemList.add(SubItem);
                 }
             }
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#FETCH# something error : " + e.toString());
         }
-        return itemTypeList;
+        return SubItemList;
     }
 }

@@ -1,15 +1,15 @@
 package com.blibli.distro_pos.Model.item;
 
-public class ItemMerk {
+public class SubItem {
     private String id;
     private String name;
 
-    public ItemMerk() {
+    public SubItem() {
     }
 
-    public ItemMerk(String idItem_Merk, String nameItem_Merk) {
-        this.setId(idItem_Merk);
-        this.setName(nameItem_Merk);
+    public SubItem(String idItem_Color, String nameItem_Color) {
+        setId(idItem_Color);
+        setName(nameItem_Color);
     }
 
     public String getId() {

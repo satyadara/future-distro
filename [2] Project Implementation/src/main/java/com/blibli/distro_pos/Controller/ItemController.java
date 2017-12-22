@@ -1,9 +1,7 @@
 package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.Model.item.Item;
-import com.blibli.distro_pos.Model.item.ItemColor;
-import com.blibli.distro_pos.Model.item.ItemMerk;
-import com.blibli.distro_pos.Model.item.ItemType;
+import com.blibli.distro_pos.Model.item.SubItem;
 import com.blibli.distro_pos.Service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -87,7 +83,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/type/create", method = POST)
-    public ModelAndView storeType(@ModelAttribute("type") ItemType type) {
+    public ModelAndView storeType(@ModelAttribute("type") SubItem type) {
         return itemService.storeType(type);
     }
 
@@ -97,7 +93,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/type/{id}/edit", method = POST)
-    public ModelAndView updateType(@ModelAttribute("type") ItemType type) {
+    public ModelAndView updateType(@ModelAttribute("type") SubItem type) {
         return itemService.updateType(type);
     }
 
@@ -121,7 +117,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/create", method = POST)
-    public ModelAndView storeMerk(@ModelAttribute("merk") ItemMerk merk) {
+    public ModelAndView storeMerk(@ModelAttribute("merk") SubItem merk) {
         return itemService.storeMerk(merk);
     }
 
@@ -131,7 +127,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/{id}/edit", method = POST)
-    public ModelAndView updateMerk(@ModelAttribute("merk") ItemMerk merk) {
+    public ModelAndView updateMerk(@ModelAttribute("merk") SubItem merk) {
         return itemService.updateMerk(merk);
     }
 
@@ -152,13 +148,13 @@ public class ItemController {
     public ModelAndView createColor() {return itemService.createColor();}
 
     @RequestMapping(value = "/color/create", method = POST)
-    public ModelAndView storeColor(@ModelAttribute("merk") ItemColor color) {return itemService.storeColor(color);}
+    public ModelAndView storeColor(@ModelAttribute("merk") SubItem color) {return itemService.storeColor(color);}
 
     @RequestMapping(value = "/color/{id}/edit", method = GET)
     public ModelAndView editColor(@PathVariable("id") String id) {return itemService.editColor(id);}
 
     @RequestMapping(value = "/color/{id}/edit", method = POST)
-    public ModelAndView updateColor(@ModelAttribute("merk") ItemColor color) {return itemService.updateColor(color);}
+    public ModelAndView updateColor(@ModelAttribute("merk") SubItem color) {return itemService.updateColor(color);}
 
     @RequestMapping(value = "/color/page/{page}", method = GET)
     public ModelAndView paginateColor(@PathVariable(name = "page") String page) {return itemService.paginateColor(page);}

@@ -1,14 +1,10 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.item.ItemColorDAO;
-import com.blibli.distro_pos.DAO.item.ItemDAO;
-import com.blibli.distro_pos.DAO.item.ItemMerkDAO;
-import com.blibli.distro_pos.DAO.item.ItemTypeDAO;
-import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.item.Item;
 import com.blibli.distro_pos.Model.item.ItemColor;
 import com.blibli.distro_pos.Model.item.ItemMerk;
 import com.blibli.distro_pos.Model.item.ItemType;
+import com.blibli.distro_pos.Service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -16,319 +12,98 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-    private ItemDAO itemDAO;
-    private ItemTypeDAO itemTypeDAO;
-    private ItemColorDAO itemColorDAO;
-    private ItemMerkDAO itemMerkDAO;
-    private static final String STORE = "store";
-    private static final String UPDATE = "update";
+    private final ItemService itemService;
 
     @Autowired
-    public ItemController(ItemDAO itemDAO, ItemTypeDAO itemTypeDAO, ItemColorDAO itemColorDAO, ItemMerkDAO itemMerkDAO) {
-        this.itemDAO = itemDAO;
-        this.itemTypeDAO = itemTypeDAO;
-        this.itemColorDAO = itemColorDAO;
-        this.itemMerkDAO = itemMerkDAO;
-    }
 
-    public ItemController() {
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
     @RequestMapping(value = "", method = GET)
     public ModelAndView index() {
-        ModelAndView modelAndView = fetch(1);
-        return modelAndView;
+        return itemService.fetch(1);
     }
 
     @RequestMapping(value = "/create", method = GET)
     public ModelAndView create() {
-        ModelAndView modelAndView = new ModelAndView("item/form");
-        Item item = new Item();
-        List<ItemType> itemTypeList;
-        List<ItemColor> itemColorList;
-        List<ItemMerk> itemMerkList;
-        try {
-            itemTypeList = itemTypeDAO.getAll();
-            itemColorList = itemColorDAO.getAll();
-            itemMerkList = itemMerkDAO.getAll();
-            modelAndView.addObject("item", item);
-            modelAndView.addObject("types", itemTypeList);
-            modelAndView.addObject("colors", itemColorList);
-            modelAndView.addObject("merks", itemMerkList);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.create();
     }
 
     @RequestMapping(value = "/create", method = POST)
     public ModelAndView store(@ModelAttribute(name = "item") Item item, Authentication authentication) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item");
-        try {
-            String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
-            item.setId_item(id_item);
-            item.setUsername(authentication.getName());
-            item.setImage("default");
-            itemDAO.save(item);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        modelAndView.addObject("message", "success");
-        return modelAndView;
+        return itemService.store(item, authentication);
     }
 
     @RequestMapping(value = "/{id}/edit", method = GET)
     public ModelAndView edit(@PathVariable(name = "id") String id) {
-        ModelAndView modelAndView = new ModelAndView("item/form");
-        Item item;
-        List<ItemType> itemTypeList;
-        List<ItemColor> itemColorList;
-        List<ItemMerk> itemMerkList;
-        try {
-            item = itemDAO.getOne(id);
-            itemTypeList = itemTypeDAO.getAll();
-            itemColorList = itemColorDAO.getAll();
-            itemMerkList = itemMerkDAO.getAll();
-            System.out.println(id + " " + item.getId_item());
-            modelAndView.addObject("message", "success");
-            modelAndView.addObject("item", item);
-            modelAndView.addObject("types", itemTypeList);
-            modelAndView.addObject("colors", itemColorList);
-            modelAndView.addObject("merks", itemMerkList);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-
-        return modelAndView;
+        return itemService.edit(id);
     }
 
     @RequestMapping(value = "/{id}/edit", method = POST)
     public ModelAndView update(@ModelAttribute(name = "item") Item item) {
-        ModelAndView modelAndView = validateAndExecution(item, UPDATE);
-        return modelAndView;
+        return itemService.update(item);
     }
 
     @RequestMapping(value = "/{id}/delete", method = GET)
     public ModelAndView delete(@PathVariable(name = "id") String id, HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("redirect:" + request.getHeader("Referer"));
-        try {
-            itemDAO.softDelete(id);
-            modelAndView.addObject("message", "success delete");
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
+        return itemService.delete(id, request);
     }
 
     @RequestMapping(value = "/page/{page}", method = GET)
     public ModelAndView paginate(@PathVariable(name = "page") int page) {
-        ModelAndView modelAndView = fetch(page);
-        return modelAndView;
+        return itemService.fetch(page);
     }
 
     @RequestMapping(value = "/{id}/active", method = GET)
     public ModelAndView active(@PathVariable(name = "id") String id, HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("redirect:" + request.getHeader("Referer"));
-        try {
-            itemDAO.setActive(id);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
+        return itemService.active(id, request);
     }
 
     @RequestMapping(value = "/search/page/{page}", method = GET)
-    public ModelAndView search(@RequestParam("key") String key,@PathVariable("page") int page) {
-        ModelAndView modelAndView = new ModelAndView("item/index");
-        Map<String, Object> map;
-        int count;
-        int pageCount;
-        int currentPage = page;
-        try {
-            map = itemDAO.search(key, page);
-            count = (int) map.get("count");
-            pageCount = (count / 10) + 1;
-            modelAndView.addObject("items", map.get(itemDAO.LIST));
-            modelAndView.addObject("count", count);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("search", true);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+    public ModelAndView search(@RequestParam("key") String key, @PathVariable("page") int page) {
+        return itemService.search(key, page);
     }
-
-    private ModelAndView fetch(int page) {
-        ModelAndView modelAndView = new ModelAndView("item/index");
-        List<Item> itemList;
-        int itemCount;
-        int pageCount;
-        int currentpage = page;
-        try {
-            itemList = itemDAO.paginate(currentpage);
-            itemCount = itemDAO.count();
-            pageCount = (itemCount / 10) + 1;
-            modelAndView.addObject("items", itemList);
-            modelAndView.addObject("count", itemCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentpage);
-            modelAndView.addObject("search", false);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    private ModelAndView validateAndExecution(Item item, String action) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item");
-        List<String> errors = new ArrayList<>();
-        Map<String, String> errors2 = new HashMap<>();
-        List<ItemType> itemTypeList;
-        List<ItemColor> itemColorList;
-        List<ItemMerk> itemMerkList;
-        try {
-            if (!(item.getStock() < 0 || item.getPrice() < 0)) {
-                if (action.equals(STORE)) {
-                    itemDAO.save(item);
-                } else if (action.equals(UPDATE)) {
-                    itemDAO.update(item);
-                }
-            } else {
-                modelAndView.setViewName("item/form");
-                modelAndView.addObject("item", item);
-                if (item.getPrice() < 0) {
-                    errors.add("Harga barang tidak boleh negatif !");
-                    errors2.put("price", "Harga barang tidak boleh negatif !");
-                }
-                if (item.getStock() < 0) {
-                    errors.add("Stok barang tidak boleh negatif !");
-                    errors2.put("stock", "Stok barang tidak boleh negatif !");
-                }
-                modelAndView.addObject("errors", errors);
-                modelAndView.addObject("errors2", errors2);
-            }
-
-            itemTypeList = itemTypeDAO.getAll();
-            itemColorList = itemColorDAO.getAll();
-            itemMerkList = itemMerkDAO.getAll();
-            modelAndView.addObject("types", itemTypeList);
-            modelAndView.addObject("colors", itemColorList);
-            modelAndView.addObject("merks", itemMerkList);
-
-        } catch (Exception e) {
-            System.out.println("something error : ");
-        }
-        return modelAndView;
-    }
-
 
     /**
      * ITEM TYPE
      **/
     @RequestMapping(value = "/type", method = GET)
     public ModelAndView indexType() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemType> types;
-        int typeCount;
-        int pageCount;
-        int currentPage = 1;
-        String content = "type";
-        try {
-            types = itemTypeDAO.paginate(currentPage);
-            typeCount = itemTypeDAO.count();
-            pageCount = (typeCount / 10) + 1;
-            modelAndView.addObject("datas", types);
-            modelAndView.addObject("count", typeCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.indexType();
     }
 
     @RequestMapping(value = "/type/create", method = GET)
     public ModelAndView createType() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            ItemType type = new ItemType();
-            modelAndView.addObject("datas", type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
+        return itemService.createType();
     }
 
     @RequestMapping(value = "/type/create", method = POST)
     public ModelAndView storeType(@ModelAttribute("type") ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
-        try {
-            itemTypeDAO.save(type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.storeType(type);
     }
 
     @RequestMapping(value = "/type/{id}/edit", method = GET)
     public ModelAndView editType(@PathVariable("id") String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemType type;
-        try {
-            type = itemTypeDAO.getOne(id);
-            modelAndView.addObject("data", type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.editType(id);
     }
 
     @RequestMapping(value = "/type/{id}/edit", method = POST)
     public ModelAndView updateType(@ModelAttribute("type") ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
-        try {
-            itemTypeDAO.update(type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.updateType(type);
     }
 
     @RequestMapping(value = "/type/page/{page}", method = GET)
     public ModelAndView paginateType(@PathVariable(name = "page") String page) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemType> types;
-        int typeCount;
-        int pageCount;
-        String content = "type";
-        try {
-            types = itemTypeDAO.paginate(1);
-            typeCount = itemTypeDAO.count();
-            pageCount = (typeCount / 10) + 1;
-            modelAndView.addObject("datas", types);
-            modelAndView.addObject("count", typeCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.paginateType(page);
     }
     /*******************************************************************************/
 
@@ -337,97 +112,32 @@ public class ItemController {
      **/
     @RequestMapping(value = "/merk", method = GET)
     public ModelAndView indexMerk() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemMerk> merks;
-        int merkCount;
-        int pageCount;
-        int currentPage = 1;
-        String content = "merk";
-        try {
-            merks = itemMerkDAO.paginate(currentPage);
-            merkCount = itemMerkDAO.count();
-            pageCount = (merkCount / 10) + 1;
-            modelAndView.addObject("datas", merks);
-            modelAndView.addObject("count", merkCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.indexMerk();
     }
 
     @RequestMapping(value = "/merk/create", method = GET)
     public ModelAndView createMerk() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            ItemMerk merk = new ItemMerk();
-            modelAndView.addObject("datas", merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
+        return itemService.createMerk();
     }
 
     @RequestMapping(value = "/merk/create", method = POST)
     public ModelAndView storeMerk(@ModelAttribute("merk") ItemMerk merk) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
-        try {
-            itemMerkDAO.save(merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.storeMerk(merk);
     }
 
     @RequestMapping(value = "/merk/{id}/edit", method = GET)
     public ModelAndView editMerk(@PathVariable("id") String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemMerk merk;
-        try {
-            merk = itemMerkDAO.getOne(id);
-            System.out.println(merk.getId() + " " + merk.getName());
-            modelAndView.addObject("data", merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.editMerk(id);
     }
 
     @RequestMapping(value = "/merk/{id}/edit", method = POST)
     public ModelAndView updateMerk(@ModelAttribute("merk") ItemMerk merk) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
-        try {
-            itemMerkDAO.update(merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.updateMerk(merk);
     }
 
     @RequestMapping(value = "/merk/page/{page}", method = GET)
     public ModelAndView paginateMerk(@PathVariable(name = "page") String page) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemMerk> merks;
-        int merkCount;
-        int pageCount;
-        String content = "merk";
-        try {
-            merks = itemMerkDAO.paginate(1);
-            merkCount = itemMerkDAO.count();
-            pageCount = (merkCount / 10) + 1;
-            modelAndView.addObject("datas", merks);
-            modelAndView.addObject("count", merkCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
+        return itemService.paginateMerk(page);
     }
     /*******************************************************************************/
 
@@ -436,99 +146,22 @@ public class ItemController {
      * ITEM COLOR
      **/
     @RequestMapping(value = "/color", method = GET)
-    public ModelAndView indexColor() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemColor> colors;
-        int merkCount;
-        int pageCount;
-        int currentPage = 1;
-        String content = "color";
-        try {
-            colors = itemColorDAO.paginate(currentPage);
-            merkCount = itemMerkDAO.count();
-            pageCount = (merkCount / 10) + 1;
-            modelAndView.addObject("datas", colors);
-            modelAndView.addObject("count", merkCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
+    public ModelAndView indexColor() {return itemService.indexColor();}
 
     @RequestMapping(value = "/color/create", method = GET)
-    public ModelAndView createColor() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            ItemColor color = new ItemColor();
-            modelAndView.addObject("datas", color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
+    public ModelAndView createColor() {return itemService.createColor();}
 
     @RequestMapping(value = "/color/create", method = POST)
-    public ModelAndView storeColor(@ModelAttribute("merk") ItemColor color) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
-        try {
-            itemColorDAO.save(color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
+    public ModelAndView storeColor(@ModelAttribute("merk") ItemColor color) {return itemService.storeColor(color);}
 
     @RequestMapping(value = "/color/{id}/edit", method = GET)
-    public ModelAndView editColor(@PathVariable("id") String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemColor color;
-        try {
-            color = itemColorDAO.getOne(id);
-            System.out.println(color.getId() + " " + color.getName());
-            modelAndView.addObject("data", color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
+    public ModelAndView editColor(@PathVariable("id") String id) {return itemService.editColor(id);}
 
     @RequestMapping(value = "/color/{id}/edit", method = POST)
-    public ModelAndView updateColor(@ModelAttribute("merk") ItemColor color) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
-        try {
-            itemColorDAO.update(color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
+    public ModelAndView updateColor(@ModelAttribute("merk") ItemColor color) {return itemService.updateColor(color);}
 
     @RequestMapping(value = "/color/page/{page}", method = GET)
-    public ModelAndView paginateColor(@PathVariable(name = "page") String page) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemColor> colors;
-        int colorCount;
-        int pageCount;
-        String content = "color";
-        try {
-            colors = itemColorDAO.paginate(1);
-            colorCount = itemColorDAO.count();
-            pageCount = (colorCount / 10) + 1;
-            modelAndView.addObject("datas", colors);
-            modelAndView.addObject("count", colorCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
+    public ModelAndView paginateColor(@PathVariable(name = "page") String page) {return itemService.paginateColor(page);}
     /*******************************************************************************/
 
 

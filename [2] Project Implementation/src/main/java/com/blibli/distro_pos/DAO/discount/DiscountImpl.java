@@ -2,7 +2,9 @@ package com.blibli.distro_pos.DAO.discount;
 
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.discount.Interface.DiscountInterface;
 import com.blibli.distro_pos.Model.discount.Discount;
+import com.blibli.distro_pos.Service.DiscountService;
 import org.omg.CORBA.Any;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +14,7 @@ import java.sql.Statement;
 import java.util.*;
 
 @Repository
-public class DiscountDAO extends MyConnection implements BasicDAO<Discount, String> {
+public class DiscountImpl extends MyConnection implements DiscountInterface {
     public static final String LIST = "discountList";
 
     @Override
@@ -188,6 +190,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         return discountList;
     }
 
+    @Override
     public void setActive(String id) {
         String sql = "UPDATE discount SET status_disc = 'Aktif' " +
                 "WHERE id_disc = ?;";
@@ -203,6 +206,7 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         }
     }
 
+    @Override
     public Map<String, Object> search(String key, int page) {
         String sql = "SELECT id_disc, username, name_disc, description, percentage, " +
                 "TO_CHAR(start_date, 'DD/MM/YYYY') AS start_date, " +
@@ -240,7 +244,8 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
         return map;
     }
 
-    private List<Discount> getDiscountList(ResultSet rs) {
+    @Override
+    public List<Discount> getDiscountList(ResultSet rs) {
         List<Discount> discountList = new ArrayList<>();
         try {
             if (rs != null) {
@@ -264,5 +269,10 @@ public class DiscountDAO extends MyConnection implements BasicDAO<Discount, Stri
             System.out.println("Get Discount List Problem : " + e.toString());
         }
         return discountList;
+    }
+
+    @Override
+    public String getListString() {
+        return LIST;
     }
 }

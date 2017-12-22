@@ -1,8 +1,7 @@
 package com.blibli.distro_pos.DAO.item;
 
-import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
-import com.blibli.distro_pos.Model.discount.Discount;
+import com.blibli.distro_pos.DAO.item.Interface.ItemInterface;
 import com.blibli.distro_pos.Model.item.Item;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
+public class ItemImpl extends MyConnection implements ItemInterface {
     public static final String LIST = "itemList";
 
     @Override
@@ -21,7 +20,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         String sql = "SELECT id_item, username, name_item, price_item, im.name_item_merk AS merk_item, stock_item,  " +
                 "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
                 "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
-                "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item;";
+                "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item DESC;";
         List<Item> itemList = new ArrayList<>();
         try {
             this.connect();
@@ -168,7 +167,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         String sql = "SELECT id_item, username, name_item, price_item, im.name_item_merk AS merk_item, stock_item, image_item," +
                 "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
                 "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
-                "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item LIMIT 10 OFFSET ?;";
+                "JOIN item_type it ON (i.type_item = it.id_item_type) ORDER BY id_item DESC LIMIT 10 OFFSET ?;";
         List<Item> itemList = new ArrayList<>();
         this.disconnect();
         try {
@@ -186,7 +185,8 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         return itemList;
     }
 
-    private List<Item> getItemList(ResultSet rs) {
+    @Override
+    public List<Item> getItemList(ResultSet rs) {
         List<Item> itemList = new ArrayList<>();
         try {
             if (rs != null) {
@@ -214,6 +214,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         return itemList;
     }
 
+    @Override
     public void setActive(String id) {
 //        String sql = "DELETE FROM item WHERE id_item = '" + id + "';";
         String sql = "UPDATE item SET status_item = 'Aktif' WHERE id_item = '" + id + "'";
@@ -227,11 +228,12 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         }
     }
 
+    @Override
     public Map<String, Object> search(String key, int page) {
         String sql = "SELECT id_item, username, name_item, price_item, im.name_item_merk AS merk_item, stock_item, image_item," +
                 "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
                 "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
-                "JOIN item_type it ON (i.type_item = it.id_item_type) WHERE name_item LIKE '%'||?||'%' ORDER BY id_item LIMIT 10 OFFSET ?;";
+                "JOIN item_type it ON (i.type_item = it.id_item_type) WHERE name_item LIKE '%'||?||'%' ORDER BY id_item DESC LIMIT 10 OFFSET ?;";
         String sql_counter = "SELECT COUNT(id_item) FROM item WHERE item.name_item LIKE '%'||?||'%';";
         Map<String, Object> map = new HashMap<>();
         List<Item> itemList;
@@ -263,6 +265,7 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         return map;
     }
 
+    @Override
     public void addOrMinStock(String id_item, int quantity) {
         String sql = "UPDATE item SET stock_item = stock_item+" + quantity + " WHERE id_item = '" + id_item + "';";
         try {
@@ -273,5 +276,10 @@ public class ItemDAO extends MyConnection implements BasicDAO<Item, String> {
         } catch (Exception e) {
             System.out.println("#ADD OR MINUS STOCK#  : " + e.toString());
         }
+    }
+
+    @Override
+    public String getListString() {
+        return LIST;
     }
 }

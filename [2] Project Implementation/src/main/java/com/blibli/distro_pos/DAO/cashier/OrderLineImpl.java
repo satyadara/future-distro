@@ -2,6 +2,7 @@ package com.blibli.distro_pos.DAO.cashier;
 
 import com.blibli.distro_pos.DAO.BasicDAO;
 import com.blibli.distro_pos.DAO.MyConnection;
+import com.blibli.distro_pos.DAO.cashier.Interface.OrderLineInterface;
 import com.blibli.distro_pos.Model.cashier.OrderLine;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class OrderLineDAO extends MyConnection implements BasicDAO<OrderLine, String> {
+public class OrderLineImpl extends MyConnection implements OrderLineInterface {
     @Override
     public List<OrderLine> getAll() {
         String sql = "SELECT * FROM orderline;";
@@ -99,25 +100,5 @@ public class OrderLineDAO extends MyConnection implements BasicDAO<OrderLine, St
         } catch (Exception e) {
             System.out.println("#UPDATE# something error : " + e.toString());
         }
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void softDelete(String id) {
-
-    }
-
-    @Override
-    public int count() {
-        return 0;
-    }
-
-    @Override
-    public List<OrderLine> paginate(int page) {
-        return null;
     }
 }

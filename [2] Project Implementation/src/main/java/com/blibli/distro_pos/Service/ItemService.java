@@ -23,9 +23,9 @@ public class ItemService {
     private final ItemColorInterface itemColorInterface;
     private static final String STORE = "store";
     private static final String UPDATE = "update";
-    private static final String COLOR = "color";
-    private static final String TYPE = "type";
-    private static final String MERK = "merk";
+    private static final String COLOR = "Color";
+    private static final String TYPE = "Type";
+    private static final String MERK = "Merk";
 
     @Autowired
     public ItemService(ItemInterface itemInterface, ItemTypeInterface itemTypeInterface,
@@ -176,6 +176,192 @@ public class ItemService {
         return modelAndView;
     }
 
+    /************************SUB-ITEM TYPE************************/
+    public ModelAndView indexType() {
+        return paginateType("1");
+    }
+
+    public ModelAndView createType() {
+        return create(TYPE);
+    }
+
+    public ModelAndView storeType(SubItem type) {
+        return subItemValidate(TYPE, STORE, type);
+    }
+
+    public ModelAndView editType(String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        SubItem type;
+        try {
+            type = itemTypeInterface.getOne(id);
+            modelAndView.addObject("data", type);
+            modelAndView.addObject("content", TYPE);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    public ModelAndView updateType(SubItem type) {
+        return subItemValidate(TYPE, UPDATE, type);
+    }
+
+    public ModelAndView paginateType(String page) {
+        return paginate(Integer.parseInt(page), TYPE);
+    }
+
+    /************************SUB-ITEM MERK************************/
+    public ModelAndView indexMerk() {
+        return paginateMerk("1");
+    }
+
+    public ModelAndView createMerk() {
+        return create(MERK);
+    }
+
+    public ModelAndView storeMerk(SubItem merk) {
+        return subItemValidate(MERK, STORE, merk);
+    }
+
+    public ModelAndView editMerk(String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        SubItem merk;
+        try {
+            merk = itemMerkInterface.getOne(id);
+            modelAndView.addObject("data", merk);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    public ModelAndView updateMerk(SubItem merk) {
+        return subItemValidate(MERK, UPDATE, merk);
+    }
+
+    public ModelAndView paginateMerk(String page) {
+        return paginate(Integer.parseInt(page), MERK);
+    }
+
+    /************************SUB-ITEM COLOR************************/
+    public ModelAndView indexColor() {
+        return paginateColor("1");
+    }
+
+    public ModelAndView createColor() {
+        return create(COLOR);
+    }
+
+    public ModelAndView storeColor(SubItem color) {
+        return subItemValidate(COLOR, STORE, color);
+    }
+
+    public ModelAndView editColor(String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        SubItem color;
+        try {
+            color = itemColorInterface.getOne(id);
+            modelAndView.addObject("data", color);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    public ModelAndView updateColor(SubItem color) {
+        return subItemValidate(COLOR, UPDATE, color);
+    }
+
+    public ModelAndView paginateColor(String page) {
+        return paginate(Integer.parseInt(page), COLOR);
+    }
+
+    /********************* SUPPORT METHOD *********************/
+    public ModelAndView create(String sub)  {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+
+        try {
+            SubItem subItem = new SubItem();
+            modelAndView.addObject("data", subItem);
+            modelAndView.addObject("content", sub);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        return modelAndView;
+    }
+
+    public ModelAndView paginate(int page, String content) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/index");
+        List<SubItem> datas = new ArrayList<>();
+        int dataCount = 0;
+        int pageCount;
+        try {
+            if (content.equals(COLOR)) {
+                datas = itemColorInterface.paginate(page);
+                dataCount = itemColorInterface.count();
+            } else if (content.equals(TYPE)) {
+                datas = itemTypeInterface.paginate(page);
+                dataCount = itemTypeInterface.count();
+            } else if (content.equals(MERK)) {
+                datas = itemMerkInterface.paginate(page);
+                dataCount = itemMerkInterface.count();
+            }
+            pageCount = (dataCount / 10) + 1;
+            modelAndView.addObject("datas", datas);
+            modelAndView.addObject("count", dataCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", page);
+            modelAndView.addObject("content", content);
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    private ModelAndView subItemValidate(String content, String action, SubItem subItem) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/" + content.toLowerCase());
+        Map<String, String> errors = new HashMap<>();
+        try {
+            if (subItem.getId().isEmpty() || subItem.getId().length() != 3 || subItem.getName().isEmpty()) {
+                modelAndView.setViewName("item/sub/form");
+                modelAndView.addObject("data", subItem);
+                if (subItem.getId().isEmpty()) {
+                    errors.put("id", "ID tidak boleh kosong !");
+                    modelAndView.addObject("content", content);
+                } else if (subItem.getId().length() != 3) {
+                    errors.put("id", "ID harus 3 digit !");
+                } else if (subItem.getName().isEmpty()) {
+                    errors.put("name", "Nama tidak boleh kosong !");
+                }
+                modelAndView.addObject("errors", errors);
+            } else {
+                if (content.equals(COLOR)) {
+                    if (action.equals(STORE)) {
+                        itemColorInterface.save(subItem);
+                    } else if (action.equals(UPDATE)) {
+                        itemColorInterface.update(subItem);
+                    }
+                } else if (content.equals(TYPE)) {
+                    if (action.equals(STORE)) {
+                        itemTypeInterface.save(subItem);
+                    } else if (action.equals(UPDATE)) {
+                        itemTypeInterface.update(subItem);
+                    }
+                } else if (content.equals(MERK)) {
+                    if (action.equals(STORE)) {
+                        itemMerkInterface.save(subItem);
+                    } else if (action.equals(UPDATE)) {
+                        itemMerkInterface.update(subItem);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Sub Item Validate error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
     private ModelAndView validateAndExecution(Item item, String action) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         List<String> errors = new ArrayList<>();
@@ -214,196 +400,6 @@ public class ItemService {
 
         } catch (Exception e) {
             System.out.println("something error : ");
-        }
-        return modelAndView;
-    }
-
-    /************************SUB-ITEM TYPE************************/
-    public ModelAndView indexType() {
-        return paginateType("1");
-    }
-
-    public ModelAndView createType() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            SubItem type = new SubItem();
-            modelAndView.addObject("datas", type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
-
-    public ModelAndView storeType(SubItem type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
-        try {
-            itemTypeInterface.save(type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView editType(String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        SubItem type;
-        try {
-            type = itemTypeInterface.getOne(id);
-            modelAndView.addObject("data", type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView updateType(SubItem type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
-        try {
-            itemTypeInterface.update(type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView paginateType(String page) {
-        return paginate(Integer.parseInt(page), TYPE);
-    }
-
-    /************************SUB-ITEM MERK************************/
-    public ModelAndView indexMerk() {
-        return paginateMerk("1");
-    }
-
-    public ModelAndView createMerk() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            SubItem merk = new SubItem();
-            modelAndView.addObject("datas", merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
-
-    public ModelAndView storeMerk(SubItem merk) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
-        try {
-            itemMerkInterface.save(merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView editMerk(String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        SubItem merk;
-        try {
-            merk = itemMerkInterface.getOne(id);
-            modelAndView.addObject("data", merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView updateMerk(SubItem merk) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
-        try {
-            itemMerkInterface.update(merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView paginateMerk(String page) {
-        return paginate(Integer.parseInt(page), MERK);
-    }
-
-    /************************SUB-ITEM COLOR************************/
-    public ModelAndView indexColor() {
-        return paginateColor("1");
-    }
-
-    public ModelAndView createColor() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            SubItem color = new SubItem();
-            modelAndView.addObject("datas", color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
-
-    public ModelAndView storeColor(SubItem color) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
-        try {
-            itemColorInterface.save(color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView editColor(String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        SubItem color;
-        try {
-            color = itemColorInterface.getOne(id);
-            modelAndView.addObject("data", color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView updateColor(SubItem color) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
-        try {
-            itemColorInterface.update(color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView paginateColor(String page) {
-        return paginate(Integer.parseInt(page), COLOR);
-    }
-
-    public ModelAndView paginate(int page, String content) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<SubItem> datas = new ArrayList<>();
-        int dataCount = 0;
-        int pageCount;
-        try {
-            if (content.equals(COLOR)) {
-                datas = itemColorInterface.paginate(page);
-                dataCount = itemColorInterface.count();
-            } else if (content.equals(TYPE)) {
-                datas = itemTypeInterface.paginate(page);
-                dataCount = itemTypeInterface.count();
-            } else if (content.equals(MERK)) {
-                datas = itemMerkInterface.paginate(page);
-                dataCount = itemMerkInterface.count();
-            }
-            pageCount = (dataCount / 10) + 1;
-            modelAndView.addObject("datas", datas);
-            modelAndView.addObject("count", dataCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
         }
         return modelAndView;
     }

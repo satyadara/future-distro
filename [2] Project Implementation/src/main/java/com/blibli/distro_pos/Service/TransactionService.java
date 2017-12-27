@@ -82,6 +82,30 @@ public class TransactionService {
         return modelAndView;
     }
 
+    public ModelAndView editCart(String id, int quantity, Authentication authentication)    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
+        ShoppingCart shoppingCart = shoppingCartImpl.getOne(id);
+        Item item = itemImpl.getOne(id);
+        if (quantity == 0) {
+            return modelAndView;
+        }
+//        int qty = Integer.parseInt(quantity);
+        if (item.getStock() < quantity ) {
+            return modelAndView;
+        }
+
+        quantity += shoppingCart.getQuantity();
+        if (quantity < 1) {
+            return modelAndView;
+        }
+        shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(), item.getPrice());
+        shoppingCartImpl.update(shoppingCart);
+
+        itemImpl.addOrMinStock(id, quantity * -1);
+
+        return modelAndView;
+    }
+
     public ModelAndView checkout(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
         List<ShoppingCart> list = shoppingCartImpl.getAll();

@@ -78,9 +78,9 @@ public class ItemService {
 
             //Get the file and save it somewhere
             byte[] bytes = image.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + id_item + ".jpg");
+            Path path = Paths.get(UPLOADED_FOLDER + "image_" + id_item + ".jpg");
             Files.write(path, bytes);
-            item.setImage(id_item + ".jpg");
+            item.setImage("image_" + id_item + ".jpg");
 
             modelAndView = validateAndExecution(item, STORE);
         } catch (Exception e) {
@@ -123,9 +123,9 @@ public class ItemService {
 
             //Get the file and save it somewhere
             byte[] bytes = image.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + item.getId_item() + ".jpg");
+            Path path = Paths.get(UPLOADED_FOLDER + "image_" + item.getId_item() + ".jpg");
             Files.write(path, bytes);
-            item.setImage(item.getId_item() + ".jpg");
+            item.setImage("image_" + item.getId_item() + ".jpg");
 
             modelAndView = validateAndExecution(item, UPDATE);
         } catch (Exception e) {

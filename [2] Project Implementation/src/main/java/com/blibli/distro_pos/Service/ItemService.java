@@ -75,11 +75,13 @@ public class ItemService {
             String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
             item.setId_item(id_item);
             item.setUsername(authentication.getName());
+
             //Get the file and save it somewhere
             byte[] bytes = image.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + id_item + ".jpg");
             Files.write(path, bytes);
             item.setImage(id_item + ".jpg");
+
             modelAndView = validateAndExecution(item, STORE);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
@@ -113,8 +115,23 @@ public class ItemService {
         return modelAndView;
     }
 
-    public ModelAndView update(Item item) {
-        ModelAndView modelAndView = validateAndExecution(item, UPDATE);
+    public ModelAndView update(Item item, MultipartFile image) {
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+
+        try {
+
+            //Get the file and save it somewhere
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + item.getId_item() + ".jpg");
+            Files.write(path, bytes);
+            item.setImage(item.getId_item() + ".jpg");
+
+            modelAndView = validateAndExecution(item, UPDATE);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
         return modelAndView;
     }
 

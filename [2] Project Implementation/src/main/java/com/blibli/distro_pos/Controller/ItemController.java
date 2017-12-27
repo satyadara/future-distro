@@ -54,8 +54,9 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = POST)
-    public ModelAndView update(@ModelAttribute(name = "item") Item item) {
-        return itemService.update(item);
+    public ModelAndView update(@ModelAttribute(name = "item") Item item,
+                               @RequestParam("file")MultipartFile image) {
+        return itemService.update(item, image);
     }
 
     @RequestMapping(value = "/{id}/delete", method = GET)

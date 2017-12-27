@@ -63,6 +63,7 @@ public class TransactionService {
         if (shoppingCart.getId_item() != null) {
             System.out.println("update");
 
+            itemImpl.addOrMinStock(id, qty * -1);
             qty += shoppingCart.getQuantity();
             if (qty < 1) {
                 return modelAndView;
@@ -76,8 +77,32 @@ public class TransactionService {
             }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
             shoppingCartImpl.save(shoppingCart);
+            itemImpl.addOrMinStock(id, qty * -1);
         }
-        itemImpl.addOrMinStock(id, qty * -1);
+
+        return modelAndView;
+    }
+
+    public ModelAndView editCart(String id, int quantity, Authentication authentication)    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
+        ShoppingCart shoppingCart = shoppingCartImpl.getOne(id);
+        Item item = itemImpl.getOne(id);
+        if (quantity == 0) {
+            return modelAndView;
+        }
+//        int qty = Integer.parseInt(quantity);
+        if (item.getStock() < quantity ) {
+            return modelAndView;
+        }
+
+        itemImpl.addOrMinStock(id, quantity * -1);
+        quantity += shoppingCart.getQuantity();
+        if (quantity < 1) {
+            return modelAndView;
+        }
+        shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(), item.getPrice());
+        shoppingCartImpl.update(shoppingCart);
+
 
         return modelAndView;
     }

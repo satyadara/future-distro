@@ -36,6 +36,13 @@ public class CashierController {
         return transactionService.addCart(id, qty, item_name, price_item, stock_item, authentication);
     }
 
+    @RequestMapping(value = "/cart/{id}/edit", method = GET)
+    public ModelAndView editCart(@PathVariable("id") String id,
+                                 @RequestParam("quantity") int qty,
+                                 Authentication authentication)  {
+        return transactionService.editCart(id,qty, authentication);
+    }
+
     @RequestMapping(value = "/checkout", method = GET)
     public ModelAndView checkout(Authentication authentication) {
         return transactionService.checkout(authentication);

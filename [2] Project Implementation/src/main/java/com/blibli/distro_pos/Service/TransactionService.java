@@ -1,107 +1,117 @@
 package com.blibli.distro_pos.Service;
 
-import com.blibli.distro_pos.DAO.cashier.OrderLineImpl;
-import com.blibli.distro_pos.DAO.cashier.ShoppingCartImpl;
-import com.blibli.distro_pos.DAO.cashier.TransactionImpl;
-import com.blibli.distro_pos.DAO.item.ItemImpl;
+import com.blibli.distro_pos.DAO.cashier.Interface.OrderLineInterface;
+import com.blibli.distro_pos.DAO.cashier.Interface.ShoppingCartInterface;
+import com.blibli.distro_pos.DAO.cashier.Interface.TransactionInterface;
+import com.blibli.distro_pos.DAO.item.Interface.ItemInterface;
+import com.blibli.distro_pos.DAO.item.Interface.ItemTypeInterface;
 import com.blibli.distro_pos.Model.cashier.OrderLine;
 import com.blibli.distro_pos.Model.cashier.ShoppingCart;
 import com.blibli.distro_pos.Model.cashier.Transaction;
 import com.blibli.distro_pos.Model.item.Item;
+import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Service
 public class TransactionService {
-
-    private final TransactionImpl transactionImpl;
-    private final ShoppingCartImpl shoppingCartImpl;
-    private final OrderLineImpl orderLineImpl;
-    private final ItemImpl itemImpl;
+    private final TransactionInterface transactionInterface;
+    private final ShoppingCartInterface shoppingCartInterface;
+    private final OrderLineInterface orderLineInterface;
+    private final ItemInterface itemInterface;
+    private final ItemTypeInterface itemTypeInterface;
 
     @Autowired
-    public TransactionService(TransactionImpl transactionImpl, ShoppingCartImpl shoppingCartImpl,
-                              OrderLineImpl orderLineImpl, ItemImpl itemImpl) {
-        this.transactionImpl = transactionImpl;
-        this.shoppingCartImpl = shoppingCartImpl;
-        this.orderLineImpl = orderLineImpl;
-        this.itemImpl = itemImpl;
+    public TransactionService(TransactionInterface transactionInterface, ShoppingCartInterface shoppingCartInterface, OrderLineInterface orderLineInterface, ItemInterface itemInterface, ItemTypeInterface itemTypeInterface) {
+        this.transactionInterface = transactionInterface;
+        this.shoppingCartInterface = shoppingCartInterface;
+        this.orderLineInterface = orderLineInterface;
+        this.itemInterface = itemInterface;
+        this.itemTypeInterface = itemTypeInterface;
     }
 
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("cashier/dashboard");
-        List<ShoppingCart> list = shoppingCartImpl.getAll();
-        List<Item> itemList = itemImpl.paginate(1);
+        List<ShoppingCart> list = shoppingCartInterface.getAll();
+        List<SubItem> subItemList = itemTypeInterface.getAll();
+        List<List<Item>> itemList = new ArrayList<>();
+        Map<String, List> map = new HashMap<>();
 
-        for (Item item : itemList) {
-            System.out.println("Image for item id " + item.getId_item() + " : " + item.getImage());
+        for (SubItem subItem : subItemList) {
+            List<Item> iList = itemInterface.getByType(subItem.getId());
+            itemList.add(iList);
         }
 
+        for (Item list1: itemList.get(0)) {
+            System.out.println(list1.getId_item());
+        }
+        map.put("types", subItemList);
+        map.put("items", itemList);
+
         modelAndView.addObject("cart", list);
-        modelAndView.addObject("items", itemList);
+        modelAndView.addObject("itemMap", map);
         return modelAndView;
     }
 
     public ModelAndView addCart(String id, String quantity, String item_name, double price_item, int stock_item,
                                 Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        ShoppingCart shoppingCart = shoppingCartImpl.getOne(id);
+        ShoppingCart shoppingCart = shoppingCartInterface.getOne(id);
         if (quantity.isEmpty()) {
             return modelAndView;
         }
         int qty = Integer.parseInt(quantity);
-        if (stock_item < qty ) {
+        if (stock_item < qty) {
             return modelAndView;
         }
         if (shoppingCart.getId_item() != null) {
             System.out.println("update");
 
-            itemImpl.addOrMinStock(id, qty * -1);
+            itemInterface.addOrMinStock(id, qty * -1);
             qty += shoppingCart.getQuantity();
             if (qty < 1) {
                 return modelAndView;
             }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
-            shoppingCartImpl.update(shoppingCart);
+            shoppingCartInterface.update(shoppingCart);
         } else {
             System.out.println("save");
             if (qty < 1) {
                 return modelAndView;
             }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
-            shoppingCartImpl.save(shoppingCart);
-            itemImpl.addOrMinStock(id, qty * -1);
+            shoppingCartInterface.save(shoppingCart);
+            itemInterface.addOrMinStock(id, qty * -1);
         }
 
         return modelAndView;
     }
 
-    public ModelAndView editCart(String id, int quantity, Authentication authentication)    {
+    public ModelAndView editCart(String id, int quantity, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        ShoppingCart shoppingCart = shoppingCartImpl.getOne(id);
-        Item item = itemImpl.getOne(id);
+        ShoppingCart shoppingCart = shoppingCartInterface.getOne(id);
+        Item item = itemInterface.getOne(id);
         if (quantity == 0) {
             return modelAndView;
         }
-//        int qty = Integer.parseInt(quantity);
-        if (item.getStock() < quantity ) {
+
+        if (item.getStock() < quantity) {
             return modelAndView;
         }
 
-        itemImpl.addOrMinStock(id, quantity * -1);
+        itemInterface.addOrMinStock(id, quantity * -1);
         quantity += shoppingCart.getQuantity();
         if (quantity < 1) {
             return modelAndView;
         }
         shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(), item.getPrice());
-        shoppingCartImpl.update(shoppingCart);
+        shoppingCartInterface.update(shoppingCart);
 
 
         return modelAndView;
@@ -109,8 +119,8 @@ public class TransactionService {
 
     public ModelAndView checkout(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        List<ShoppingCart> list = shoppingCartImpl.getAll();
-        String id_trans = transactionImpl.getTransID();
+        List<ShoppingCart> list = shoppingCartInterface.getAll();
+        String id_trans = transactionInterface.getTransID();
         Double total_trans = 0.0;
         Date today = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -119,27 +129,27 @@ public class TransactionService {
             return modelAndView;
         }
         Transaction transaction = new Transaction(id_trans, null, authentication.getName(), "-", 0.0, simpleDateFormat.format(today), "Aktif");
-        transactionImpl.save(transaction);
+        transactionInterface.save(transaction);
 
         for (ShoppingCart cart : list) {
-            Item item = itemImpl.getOne(cart.getId_item());
+            Item item = itemInterface.getOne(cart.getId_item());
             Double subtotal = (double) (item.getPrice() * cart.getQuantity());
             OrderLine orderLine = new OrderLine(null, id_trans, cart.getId_item(), item.getPrice(),
                     subtotal, cart.getQuantity());
-            orderLineImpl.save(orderLine);
+            orderLineInterface.save(orderLine);
             total_trans += subtotal;
         }
         transaction.setTotal_trans(total_trans);
-        transactionImpl.update(transaction);
-        shoppingCartImpl.clear(authentication.getName());
+        transactionInterface.update(transaction);
+        shoppingCartInterface.clear(authentication.getName());
         return modelAndView;
     }
 
     public ModelAndView cancelCartItem(String id, int qty, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
         System.out.println(qty);
-        itemImpl.addOrMinStock(id, qty);
-        shoppingCartImpl.cancel(id, authentication.getName());
+        itemInterface.addOrMinStock(id, qty);
+        shoppingCartInterface.cancel(id, authentication.getName());
         return modelAndView;
     }
 

@@ -279,6 +279,24 @@ public class ItemImpl extends MyConnection implements ItemInterface {
     }
 
     @Override
+    public List<Item> getByType(String id_type) {
+        String sql = "SELECT * FROM item WHERE type_item = ? AND status_item = 'Aktif' ORDER BY id_item DESC;";
+        List<Item> itemList = new ArrayList<>();
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id_type);
+            ResultSet rs = preparedStatement.executeQuery();
+            itemList = getItemList(rs);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return itemList;
+    }
+
+    @Override
     public String getListString() {
         return LIST;
     }

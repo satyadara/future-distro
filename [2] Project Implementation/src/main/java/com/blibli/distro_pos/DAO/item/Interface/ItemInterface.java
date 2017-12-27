@@ -17,4 +17,6 @@ public interface ItemInterface extends BasicDAO<Item, String> {
     Map<String, Object> search(String key, int page);
 
     void addOrMinStock(String id_item, int quantity);
+
+    List<Item> getByType(String id_type);
 }

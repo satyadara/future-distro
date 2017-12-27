@@ -63,6 +63,7 @@ public class TransactionService {
         if (shoppingCart.getId_item() != null) {
             System.out.println("update");
 
+            itemImpl.addOrMinStock(id, qty * -1);
             qty += shoppingCart.getQuantity();
             if (qty < 1) {
                 return modelAndView;
@@ -76,8 +77,8 @@ public class TransactionService {
             }
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
             shoppingCartImpl.save(shoppingCart);
+            itemImpl.addOrMinStock(id, qty * -1);
         }
-        itemImpl.addOrMinStock(id, qty * -1);
 
         return modelAndView;
     }
@@ -94,6 +95,7 @@ public class TransactionService {
             return modelAndView;
         }
 
+        itemImpl.addOrMinStock(id, quantity * -1);
         quantity += shoppingCart.getQuantity();
         if (quantity < 1) {
             return modelAndView;
@@ -101,7 +103,6 @@ public class TransactionService {
         shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(), item.getPrice());
         shoppingCartImpl.update(shoppingCart);
 
-        itemImpl.addOrMinStock(id, quantity * -1);
 
         return modelAndView;
     }

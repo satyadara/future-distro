@@ -2,9 +2,12 @@ package com.blibli.distro_pos.Service;
 
 import com.blibli.distro_pos.DAO.ledger.Interface.LedgerInterface;
 import com.blibli.distro_pos.DAO.summary.Interface.SummaryInterface;
+import com.blibli.distro_pos.DAO.user.UserDao;
 import com.blibli.distro_pos.Model.ledger.Ledger;
 import com.blibli.distro_pos.Model.summary.LoyalCustomer;
 import com.blibli.distro_pos.Model.summary.MostSoldItem;
+import com.blibli.distro_pos.Model.user.Role;
+import com.blibli.distro_pos.Model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -38,6 +41,84 @@ public class UserService {
         }
 
         return modelAndView;
+    }
+
+    public ModelAndView indexUser() {
+        List<User> userList = UserDao.getAllUser();
+        return new ModelAndView("manager/view_user", "userList", userList);
+    }
+
+    public ModelAndView createUser() {
+        return new ModelAndView("manager/add_user");
+    }
+
+    public ModelAndView storeUser(User user, Role role) {
+
+        user.setEnabled(true);
+
+        System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
+                ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
+                ", HP: " + user.getTelp() + ", Jenis Kelamin: " + user.getJenisKelamin());
+        int status = UserDao.insertUser(user, role);
+
+        if (status == 1) {
+            System.out.println("BERHASIL");
+            return new ModelAndView("redirect:/user");
+        } else {
+            System.out.println("GAGAL!");
+            return new ModelAndView("redirect:/user");
+        }
+    }
+
+    public ModelAndView editUser(String username) {
+        User user = UserDao.getUserByUsername(username);
+        String role = UserDao.getUserRoleByUsername(user.getUsername());
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("manager/edit_user");
+        mav.addObject("user", user);
+        mav.addObject("role", role);
+
+        return mav;
+    }
+
+    public ModelAndView updateUser(User user, Role role) {
+        System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
+                ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
+                ", HP: " + user.getTelp() + ", Jenis Kelamin: " + user.getJenisKelamin());
+
+        int status;
+
+        try {
+            if (user.getPassword() == "") {
+                status = UserDao.editUserWithoutPassword(user, role);
+                System.out.println("password:" + user.getPassword());
+            } else {
+                status = UserDao.editUser(user, role);
+            }
+            if (status == 1) {
+                System.out.println("Berhasil edit user");
+                return new ModelAndView("redirect:/user");
+            } else {
+                System.out.println("Gagal edit user" + status);
+                return new ModelAndView("redirect:/user");
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            throw e;
+        }
+
+    }
+
+    public ModelAndView deleteUser(String username) {
+        int status = UserDao.deleteUser(username);
+        if (status == 1) {
+            System.out.println("User with username: " + username + " is deleted");
+            return new ModelAndView("redirect:/user");
+        } else {
+            System.out.println("Failed to delete " + username);
+            return new ModelAndView("redirect:/user");
+        }
     }
 
     public ModelAndView managerDashboard(Authentication authentication) {
@@ -74,7 +155,7 @@ public class UserService {
     public ModelAndView managerLedgerBetween(int page, String date_from, String date_to) {
         ModelAndView modelAndView = new ModelAndView("ledger/index");
         try {
-            List<Ledger> ledgers = ledgerInterface.getFilter(date_from, date_to, (page-1)*10);
+            List<Ledger> ledgers = ledgerInterface.getFilter(date_from, date_to, (page - 1) * 10);
             modelAndView.addObject("ledgers", ledgers);
             modelAndView.addObject("date_from", date_from);
             modelAndView.addObject("date_to", date_to);

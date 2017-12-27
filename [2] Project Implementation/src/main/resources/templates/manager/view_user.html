@@ -74,7 +74,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-3 col-md-offset-9">
-                    <a href="/add_user">
+                    <a href="/user/create">
                         <button type="button" class="btn btn-block btn-primary">
                             <i class="fa fa-user-plus"></i> Tambah Pengguna</button>
                     </a>
@@ -115,9 +115,9 @@
                                     <td th:text="${user.telp}"></td>
                                     <td th:text="${user.jenisKelamin}"></td>
                                     <td th:text="${user.role}"></td>
-                                    <td><a th:href="@{/edit_user/{username}(username = ${user.username})}">
+                                    <td><a th:href="@{/user/{username}/edit (username = ${user.username})}">
                                         <i class="fa fa-edit"></i> edit</a></td>
-                                    <td><a th:href="@{/delete_user/{username}(username = ${user.username})}">
+                                    <td><a th:href="@{/user/{username}/delete (username = ${user.username})}">
                                         <i class="fa fa-trash"></i> delete</a></td>
                                 </tr>
                             </th:block>

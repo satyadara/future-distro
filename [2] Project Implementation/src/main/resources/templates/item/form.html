@@ -73,7 +73,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form class="form" method="POST" th:object="${item}">
+                    <form class="form" method="POST" th:object="${item}" enctype="multipart/form-data">
                         <th:block th:if="${errors != null}">
                             <ul>
                                 <li th:each="err: ${errors}" th:text="${err}" style="color: red;"></li>
@@ -207,7 +207,7 @@
                                     <span class="glyphicon glyphicon-folder-open"></span>
                                     <span class="image-preview-input-title">Browse</span>
                                     <input type="file" accept="image/png, image/jpeg, image/gif"
-                                           name="input-file-preview"/> <!-- rename it -->
+                                           name="file"/> <!-- rename it -->
                                 </div>
                             </span>
                             </div><!-- /input-group image-preview [TO HERE]-->

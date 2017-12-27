@@ -2,7 +2,6 @@ package com.blibli.distro_pos.Service;
 
 import com.blibli.distro_pos.DAO.item.Interface.ItemInterface;
 import com.blibli.distro_pos.DAO.item.ItemColorDAO;
-import com.blibli.distro_pos.DAO.item.ItemImpl;
 import com.blibli.distro_pos.DAO.item.ItemMerkDAO;
 import com.blibli.distro_pos.DAO.item.ItemTypeDAO;
 import com.blibli.distro_pos.Model.item.Item;
@@ -12,19 +11,17 @@ import com.blibli.distro_pos.Model.item.ItemType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Service
 public class ItemService {
@@ -34,6 +31,9 @@ public class ItemService {
     private final ItemMerkDAO itemMerkDAO;
     private static final String STORE = "store";
     private static final String UPDATE = "update";
+
+    //Save the uploaded file to this folder
+    private static String UPLOADED_FOLDER = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
     @Autowired
     public ItemService(ItemInterface itemInterface, ItemTypeDAO itemTypeDAO, ItemColorDAO itemColorDAO, ItemMerkDAO itemMerkDAO) {
@@ -68,13 +68,18 @@ public class ItemService {
         return modelAndView;
     }
 
-    public ModelAndView store(Item item, Authentication authentication) {
+    public ModelAndView store(Item item, MultipartFile image, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
+
             String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
             item.setId_item(id_item);
             item.setUsername(authentication.getName());
-            item.setImage("default");
+            //Get the file and save it somewhere
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + id_item + ".jpg");
+            Files.write(path, bytes);
+            item.setImage(id_item + ".jpg");
             modelAndView = validateAndExecution(item, STORE);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());

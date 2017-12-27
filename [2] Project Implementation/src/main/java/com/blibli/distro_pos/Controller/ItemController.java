@@ -8,14 +8,17 @@ import com.blibli.distro_pos.Service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @RequestMapping("/item")
@@ -25,6 +28,7 @@ public class ItemController {
     @Autowired
 
     public ItemController(ItemService itemService) {
+
         this.itemService = itemService;
     }
 
@@ -39,8 +43,9 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/create", method = POST)
-    public ModelAndView store(@ModelAttribute(name = "item") Item item, Authentication authentication) {
-        return itemService.store(item, authentication);
+    public ModelAndView store(@ModelAttribute(name = "item") Item item,
+                              @RequestParam("file")MultipartFile image, Authentication authentication) {
+        return itemService.store(item, image, authentication);
     }
 
     @RequestMapping(value = "/{id}/edit", method = GET)

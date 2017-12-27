@@ -40,8 +40,8 @@ public class TransactionService {
         List<ShoppingCart> list = shoppingCartImpl.getAll();
         List<Item> itemList = itemImpl.paginate(1);
 
-        for (ShoppingCart cart : list) {
-
+        for (Item item : itemList) {
+            System.out.println("Image for item id " + item.getId_item() + " : " + item.getImage());
         }
 
         modelAndView.addObject("cart", list);

@@ -6,14 +6,20 @@ import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Service
 public class ItemService {
@@ -26,6 +32,9 @@ public class ItemService {
     private static final String COLOR = "Color";
     private static final String TYPE = "Type";
     private static final String MERK = "Merk";
+
+    //Save the uploaded file to this folder
+    private static String UPLOADED_FOLDER = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
     @Autowired
     public ItemService(ItemInterface itemInterface, ItemTypeInterface itemTypeInterface,
@@ -61,13 +70,20 @@ public class ItemService {
         return modelAndView;
     }
 
-    public ModelAndView store(Item item, Authentication authentication) {
+    public ModelAndView store(Item item, MultipartFile image, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         try {
+
             String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
             item.setId_item(id_item);
             item.setUsername(authentication.getName());
-            item.setImage("default");
+
+            //Get the file and save it somewhere
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + "image_" + id_item + ".jpg");
+            Files.write(path, bytes);
+            item.setImage("image_" + id_item + ".jpg");
+
             modelAndView = validateAndExecution(item, STORE);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
@@ -101,8 +117,23 @@ public class ItemService {
         return modelAndView;
     }
 
-    public ModelAndView update(Item item) {
-        ModelAndView modelAndView = validateAndExecution(item, UPDATE);
+    public ModelAndView update(Item item, MultipartFile image) {
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+
+        try {
+
+            //Get the file and save it somewhere
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + "image_" + item.getId_item() + ".jpg");
+            Files.write(path, bytes);
+            item.setImage("image_" + item.getId_item() + ".jpg");
+
+            modelAndView = validateAndExecution(item, UPDATE);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
         return modelAndView;
     }
 

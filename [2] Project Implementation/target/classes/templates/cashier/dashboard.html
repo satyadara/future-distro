@@ -78,7 +78,7 @@
                             <th:block th:each="item : ${items}">
                                 <div class="col-md-3 panel panel-default">
                                     <div class="panel-body">
-                                        <img src="images/logoss.png" width="200" height="200"
+                                        <img th:src="${'/static/img/' + item.getImage()}" width="200" height="200"
                                              class="img img-responsive center-block"/>
                                         <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
                                         <p th:text="${'Rp'+item.getPrice()}"></p>

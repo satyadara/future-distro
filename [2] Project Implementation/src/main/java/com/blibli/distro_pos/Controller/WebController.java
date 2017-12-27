@@ -1,10 +1,8 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.UserDao;
-import com.blibli.distro_pos.Model.Role;
-import com.blibli.distro_pos.Model.User;
-import com.blibli.distro_pos.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.blibli.distro_pos.DAO.user.UserDao;
+import com.blibli.distro_pos.Model.user.Role;
+import com.blibli.distro_pos.Model.user.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,48 +12,50 @@ import java.util.List;
 
 @Controller
 public class WebController {
-    private final UserService userService;
 
-    @Autowired
-    public WebController(UserService userService) {
-        this.userService = userService;
-    }
+    @RequestMapping(value={"/"})
+    public String home(){
 
-    @RequestMapping(value = "")
-    public ModelAndView index(Authentication authentication) {
-        System.out.println("weeee");
-        return userService.index(authentication);
-    }
-
-    @RequestMapping(value = {"/login"})
-    public String login() {
         return "login";
     }
 
-    @RequestMapping(value = {"/cashier"})
-    public ModelAndView dashboard(Authentication authentication) {
-        return userService.cashierDashboard(authentication);
+    @RequestMapping(value={"/login"})
+    public String login(){
+
+        return "login";
     }
 
-    @RequestMapping(value = "/admin")
-    public ModelAndView admin(Authentication authentication) {
-        return userService.managerDashboard(authentication);
+    @RequestMapping(value={"/dashboard"})
+    public ModelAndView dashboard(Authentication authentication){
+
+        String username = authentication.getName();
+
+        return new ModelAndView("cashier/dashboard", "username", username);
     }
 
-    @RequestMapping(value = "/403")
-    public String error403() {
+    @RequestMapping(value="/admin")
+    public ModelAndView admin(Authentication authentication){
+
+        String username = authentication.getName();
+
+        return new ModelAndView("manager/admin", "username", username);
+    }
+
+    @RequestMapping(value="/403")
+    public String Error403(){
         return "403";
     }
 
 
     @GetMapping("/add_user")
     public ModelAndView addUser() {
+
         return new ModelAndView("manager/add_user");
     }
 
     @PostMapping("/add_user")
     public ModelAndView addUser(@ModelAttribute("user") User user,
-                                @ModelAttribute("role") Role role) {
+                                @ModelAttribute("role")Role role) {
 
         user.setEnabled(true);
 
@@ -67,7 +67,8 @@ public class WebController {
         if (status == 1) {
             System.out.println("BERHASIL");
             return new ModelAndView("redirect:/view_user");
-        } else {
+        }
+        else {
             System.out.println("GAGAL!");
             return new ModelAndView("redirect:/view_user");
         }
@@ -124,7 +125,8 @@ public class WebController {
                 System.out.println("Gagal edit user" + status);
                 return new ModelAndView("redirect:/view_user");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
 
             System.out.println(e.toString());
             throw e;
@@ -144,7 +146,8 @@ public class WebController {
             System.out.println("User with username: " + username + " is deleted");
 
             return new ModelAndView("redirect:/view_user");
-        } else {
+        }
+        else {
 
             System.out.println("Failed to delete " + username);
 
@@ -177,7 +180,7 @@ public class WebController {
 
     @PostMapping("/add_user2")
     public ModelAndView addUser2(@ModelAttribute("user") User user,
-                                 @ModelAttribute("role") Role role) {
+                                @ModelAttribute("role")Role role) {
 
         user.setEnabled(true);
 
@@ -189,7 +192,8 @@ public class WebController {
         if (status == 1) {
             System.out.println("BERHASIL");
             return new ModelAndView("redirect:/view_user2");
-        } else {
+        }
+        else {
             System.out.println("GAGAL!");
             return new ModelAndView("redirect:/view_user2");
         }

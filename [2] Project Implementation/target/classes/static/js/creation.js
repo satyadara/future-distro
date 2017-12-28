@@ -56,3 +56,16 @@ $(function() {
         reader.readAsDataURL(file);
     });
 });
+
+function inputDisabled() {
+    var payment = document.getElementById("payment").value;
+    if (payment == "Kartu Kredit/Debit" || payment == "") {
+        document.getElementById("nominal").disabled = true;
+        document.getElementById("nominal").value = "";
+    }
+    else {
+        document.getElementById("nominal").disabled = false;
+    }
+
+    
+}

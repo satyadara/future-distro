@@ -12,6 +12,10 @@ body	{
 	box-shadow: 0 8px 6px -6px #999;
 }
 
+.nav-header {
+	padding-left: 20px;
+}
+
 .navbar-default .navbar-nav>li>a {
 	/*color: white;*/
 }
@@ -40,6 +44,12 @@ body	{
 	.navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
 	.navbar .nav-collapse .navbar-form { margin: 0; }
 	.nav-collapse>li { float: none; }
+}
+
+@media (min-width: 767px) {
+	.navbar-nav .dropdown-menu .caret {
+		transform: rotate(-90deg);
+	}
 }
 
 li > a {

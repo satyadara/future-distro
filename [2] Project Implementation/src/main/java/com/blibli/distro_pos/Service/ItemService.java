@@ -1,6 +1,9 @@
 package com.blibli.distro_pos.Service;
 
-import com.blibli.distro_pos.DAO.item.Interface.*;
+import com.blibli.distro_pos.DAO.item.Interface.ItemColorInterface;
+import com.blibli.distro_pos.DAO.item.Interface.ItemInterface;
+import com.blibli.distro_pos.DAO.item.Interface.ItemMerkInterface;
+import com.blibli.distro_pos.DAO.item.Interface.ItemTypeInterface;
 import com.blibli.distro_pos.Model.item.Item;
 import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Service
 public class ItemService {
@@ -72,6 +72,11 @@ public class ItemService {
 
     public ModelAndView store(Item item, MultipartFile image, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
+
+        if (image.isEmpty()) {
+
+            return modelAndView;
+        }
         try {
 
             String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
@@ -123,11 +128,15 @@ public class ItemService {
 
         try {
 
-            //Get the file and save it somewhere
-            byte[] bytes = image.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + "image_" + item.getId_item() + ".jpg");
-            Files.write(path, bytes);
-            item.setImage("image_" + item.getId_item() + ".jpg");
+            //Kalo gambarnya ga kosong
+            if (!image.isEmpty()) {
+
+                //Get the file and save it somewhere
+                byte[] bytes = image.getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER + "image_" + item.getId_item() + ".jpg");
+                Files.write(path, bytes);
+                item.setImage("image_" + item.getId_item() + ".jpg");
+            }
 
             modelAndView = validateAndExecution(item, UPDATE);
         } catch (Exception e) {

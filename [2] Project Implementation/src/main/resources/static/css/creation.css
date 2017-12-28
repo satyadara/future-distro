@@ -1,8 +1,14 @@
 body	{
 	overflow-x: hidden;
 	background-color: #ecf0f5;
+	padding-top: 60px;
 }
 
+.cashier-body {
+	padding-top: 0px;
+}
+
+/*NAVBAR*/
 .navbar {
 	/*background: #3c8dbc;*/
 	/*background: linear-gradient(to right, aqua 50%, blue);*/
@@ -37,6 +43,8 @@ body	{
 
 .btn.btn-circle { border-radius: 50px; }
 .btn.btn-outline { background-color: transparent; }
+
+
 
 @media screen and (max-width: 767px) {
 	.navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 15px; padding-right: 15px; }
@@ -103,4 +111,9 @@ li > a {
 
 .card-1:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/*CART*/
+.text-quantity {
+	padding-left: 50px;
 }

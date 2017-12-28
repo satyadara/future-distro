@@ -67,7 +67,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 th:text="'Buku Besar ( ' +  ${count} + ' )'"></h1>
+            <h1 th:text="'Buku Besar'"></h1>
         </div>
     </div>
     <div class="row">
@@ -75,11 +75,11 @@
             <form action="get" th:action="'/ledger/filter/page/1'">
                 <div class="form-group col-md-3">
                     <label>Dari : </label>
-                    <input type="date" class="form-control" name="date_from"/>
+                    <input type="date" class="form-control" name="date_from" th:value="${date_from}"/>
                 </div>
                 <div class="form-group col-md-3">
                     <label>Sampai : </label>
-                    <input type="date" class="form-control" name="date_to"/>
+                    <input type="date" class="form-control" name="date_to" th:value="${date_to}"/>
                 </div>
                 <button type="submit" class="btn btn-info">Cari</button>
             </form>
@@ -92,7 +92,14 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-12">
-                    <table  class="table table-striped table-bordered table-responsive" id="mTable">
+                    <table class="table table-striped table-bordered table-responsive" id="mTable">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th><strong th:text="${'Pemasukan : Rp' + #numbers.formatDecimal(totalIn, 3, 2)}"></strong></th>
+                            <th><strong th:text="${'Pengeluaran : Rp' + #numbers.formatDecimal(totalOut, 2, 2)}"></strong></th>
+                            <th><strong th:text="${'Total : Rp' + #numbers.formatDecimal(totalEnd, 1, 2)}"></strong></th>
+                        </tr>
                         <tr>
                             <th>Tanggal</th>
                             <th>Judul</th>
@@ -100,6 +107,8 @@
                             <th>Pengeluaran</th>
                             <th>Detil</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <tr th:each="ledger : ${ledgers}">
                             <td th:text="${ledger.getDate()}"></td>
                             <td th:text="${ledger.getTitle()}"></td>
@@ -113,36 +122,13 @@
                             </th:block>
                             <td></td>
                         </tr>
+                        </tbody>
                     </table>
                     <!--PAGINATE-->
-                    <nav aria-label="Page navigation" th:if="${search == false}">
-                        <ul class="pagination">
-                            <li>
-                                <a th:href="'/ledger/page/' + ${currentPage - 1}" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <th:block th:each="i: ${#numbers.sequence(1, pages)}">
-                                <th:block th:switch="${i}">
-                                    <li class="active" th:case="${currentPage}">
-                                        <a th:href="'/ledger/page/' + ${i}" th:text="${i}"></a>
-                                    </li>
-                                    <li th:case="*">
-                                        <a th:href="'/ledger/page/' + ${i}" th:text="${i}"></a>
-                                    </li>
-                                </th:block>
-                            </th:block>
-                            <li>
-                                <a th:href="'/ledger/page/' + ${currentPage + 1}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                     <nav aria-label="Page navigation" th:if="${search == true}">
                         <ul class="pagination">
                             <li>
-                                <a th:href="'/ledger/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                <a th:href="'/ledger/filter/page/' + ${currentPage - 1}+'?date_from='+${#httpServletRequest.getParameter('date_from')}+'&amp;'+'date_to='+${#httpServletRequest.getParameter('date_to')}"
                                    aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
@@ -150,17 +136,17 @@
                             <th:block th:each="i: ${#numbers.sequence(1, pages)}">
                                 <th:block th:switch="${i}">
                                     <li class="active" th:case="${currentPage}">
-                                        <a th:href="'/ledger/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                        <a th:href="'/ledger/filter/page/' + ${i}+'?date_from='+${#httpServletRequest.getParameter('date_from')}+'&amp;'+'date_to='+${#httpServletRequest.getParameter('date_to')}"
                                            th:text="${i}"></a>
                                     </li>
                                     <li th:case="*">
-                                        <a th:href="'/ledger/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                        <a th:href="'/ledger/filter/page/' + ${i}+'?date_from='+${#httpServletRequest.getParameter('date_from')}+'&amp;'+'date_to='+${#httpServletRequest.getParameter('date_to')}"
                                            th:text="${i}"></a>
                                     </li>
                                 </th:block>
                             </th:block>
                             <li>
-                                <a th:href="'/ledger/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                <a th:href="'/ledger/filter/page/' + ${currentPage + 1}+'?date_from='+${#httpServletRequest.getParameter('date_from')}+'&amp;'+'date_to='+${#httpServletRequest.getParameter('date_to')}"
                                    aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -147,18 +150,32 @@ public class UserService {
 
     public ModelAndView managerLedger() {
         ModelAndView modelAndView = new ModelAndView("ledger/index");
-        List<Ledger> ledgers = ledgerInterface.getIndex();
-        modelAndView.addObject("ledgers", ledgers);
+        modelAndView.addObject("search", false);
+        modelAndView.addObject("totalIn", "-");
+        modelAndView.addObject("totalOut", '-');
+        modelAndView.addObject("totalEnd", "-");
         return modelAndView;
     }
 
     public ModelAndView managerLedgerBetween(int page, String date_from, String date_to) {
         ModelAndView modelAndView = new ModelAndView("ledger/index");
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
         try {
             List<Ledger> ledgers = ledgerInterface.getFilter(date_from, date_to, (page - 1) * 10);
+            int ledgerCount = ledgerInterface.count(date_from, date_to);
+            double totalIn = ledgerInterface.getTotalIn(date_from, date_to);
+            double totalOut = ledgerInterface.getTotalOut(date_from, date_to);
+            int pageCount = (ledgerCount / 10) + 1;
             modelAndView.addObject("ledgers", ledgers);
             modelAndView.addObject("date_from", date_from);
             modelAndView.addObject("date_to", date_to);
+            modelAndView.addObject("count", ledgerCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", page);
+            modelAndView.addObject("search", true);
+            modelAndView.addObject("totalIn", totalIn);
+            modelAndView.addObject("totalOut", totalOut);
+            modelAndView.addObject("totalEnd", totalIn - totalOut);
         } catch (Exception e) {
             System.out.println("#CTRLR PAGINATE# something error : " + e.toString());
         }

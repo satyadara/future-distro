@@ -40,6 +40,7 @@ public class WebController {
     }
 
     @RequestMapping(value = "/chart")
+    @ResponseBody
     public String chartData()   {
         return userService.chartJson();
     }

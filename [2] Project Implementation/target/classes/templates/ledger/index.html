@@ -65,9 +65,9 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th><strong th:text="${'Pemasukan : Rp' + #numbers.formatDecimal(totalIn, 3, 2)}"></strong></th>
-                            <th><strong th:text="${'Pengeluaran : Rp' + #numbers.formatDecimal(totalOut, 2, 2)}"></strong></th>
-                            <th><strong th:text="${'Total : Rp' + #numbers.formatDecimal(totalEnd, 1, 2)}"></strong></th>
+                            <th><strong th:text="${'Pemasukan : Rp' + #numbers.formatDecimal(totalIn, 0, '', 2)}"></strong></th>
+                            <th><strong th:text="${'Pengeluaran : Rp' + #numbers.formatDecimal(totalOut, 0, 2)}"></strong></th>
+                            <th><strong th:text="${'Total : Rp' + #numbers.formatDecimal(totalEnd, 0, 2)}"></strong></th>
                         </tr>
                         <tr>
                             <th>Tanggal</th>

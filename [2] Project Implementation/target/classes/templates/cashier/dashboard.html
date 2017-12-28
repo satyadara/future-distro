@@ -29,7 +29,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body class="cashier-body">
 <nav class="navbar navbar-default">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -162,7 +162,7 @@
                     <tbody>
                     <tr th:each="cart: ${cart}">
                         <td th:text="${cart.getItem_name()}"></td>
-                        <td class="text-center">
+                        <td class="text-quantity">
                             <th:block th:text="${cart.getQuantity()} + '  +  '"></th:block>
                             <form th:action="${'/cashier/cart/' + cart.getId_item() + '/edit'}">
 
@@ -172,7 +172,9 @@
                         </td>
                         <td th:text="${cart.getSubtotal()}"></td>
                         <td>
-                            <a th:href="${'/cashier/cart/'+cart.getId_item()+'/cancel?quantity=' + cart.getQuantity()}">X</a>
+                            <a th:href="${'/cashier/cart/'+cart.getId_item()+'/cancel?quantity=' + cart.getQuantity()}">
+                                <i class="fa fa-times"></i>
+                            </a>
                         </td>
                     </tr>
                     </tbody>
@@ -188,18 +190,36 @@
                             data-toggle="modal" data-target="#cartModal">BAYAR</button>
                 </th:block>
 
+                <!--MODAL-->
                 <div class="modal fade" id="cartModal" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Nama Customer</h4>
+                                <h3 class="modal-title text-center">
+                                    <input class="text-center" type="text" name="namaCustomer" id="namaCustomer"
+                                           placeholder="Nama Customer.."
+                                    style="border: none;
+                                    background-color: transparent;
+                                    outline: 0;"/>
+                                </h3>
                             </div>
-                            <div class="modal-body">
-                                <h3>Total: </h3>
+                            <div class="modal-body col-md-8 col-md-offset-2">
+                                <h1 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">Total: <b>RP 500.000</b></h1>
+                                <select id="payment" name="payment" class="form-control" onchange="inputDisabled()"
+                                style="margin-top: 30px">
+                                    <option value="">Metode Pembayaran</option>
+                                    <option value="Tunai">Tunai</option>
+                                    <option value="Kartu Kredit/Debit">Kartu Kredit/Debit</option>
+                                </select>
+                                <input id="nominal" class="form-control" type="number" name="nominal"
+                                       placeholder="Masukkan nominal pembayaran" style="border-radius: 8px;margin-top: 5px"
+                                disabled="disabled"/>
                             </div>
                             <div class="modal-footer">
+                                <button class="btn btn-default btn-flat col-md-6" data-dismiss="modal"
+                                        style="border-radius: 0px">BATAL</button>
                                 <a href="/cashier/checkout">
-                                    <button class="btn btn-primary col-md-12">BAYAR</button>
+                                    <button class="btn btn-primary btn-flat col-md-6" style="border-radius: 0px">BAYAR</button>
                                 </a>
                             </div>
                         </div>

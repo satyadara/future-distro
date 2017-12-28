@@ -83,7 +83,7 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/' + item.getImage()}" width="100" height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100" height="100"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
@@ -146,7 +146,9 @@
                     </div>
                     <div class="col-md-1">
                         <br/>
-                        <button class="btn btn-default">Batal</button>
+                        <form action="/cashier/cancel-order" method="get">
+                            <button type="submit" class="btn btn-default">Batal</button>
+                        </form>
                     </div>
                 </div>
                 <h5>Kam, 24 Agt 2017 | 21:00:21</h5>

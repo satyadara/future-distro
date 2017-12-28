@@ -12,6 +12,10 @@ body	{
 	box-shadow: 0 8px 6px -6px #999;
 }
 
+.nav-header {
+	padding-left: 20px;
+}
+
 .navbar-default .navbar-nav>li>a {
 	/*color: white;*/
 }

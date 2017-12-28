@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
-    <link rel="stylesheet" th:href="@{/static/plugins/morris/morris.css}"/>
     <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/static/dist/css/AdminLTE.min.css}"/>
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -44,10 +43,22 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse">
+        <div class="navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/admin"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li><a href="/item"><i class="fa fa-archive"></i> <span>Stok</span></a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-archive"></i> <span>Barang <b class="caret"></b></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="/item">Stok Barang</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">Pengaturan</li>
+                        <li><a href="/item/merk">Merk</a></li>
+                        <li><a href="/item/type">Tipe</a></li>
+                        <li><a href="/item/color">Warna</a></li>
+                    </ul>
+                </li>
                 <li><a href="/discount"><i class="fa fa-percent"></i> <span>Diskon</span></a></li>
                 <li><a href="/user"><i class="fa fa-users"></i> <span>Pengguna</span></a></li>
                 <li><a href="/outcome"><i class="fa fa-money"></i> <span>Pengeluaran</span></a></li>
@@ -64,5 +75,6 @@
     </div><!-- /.container -->
 </nav><!-- /.navbar -->
 
+<script th:src="@{/static/js/creation.js}"></script>
 </body>
 </html>

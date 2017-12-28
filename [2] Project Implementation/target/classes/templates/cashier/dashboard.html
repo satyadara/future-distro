@@ -177,7 +177,35 @@
                     </tr>
                     </tbody>
                 </table>
-                <button><a href="/cashier/checkout">Cekot</a></button>
+                <br />
+                <!--<button><a href="/cashier/checkout">Cekot</a></button>-->
+
+                <!--Ngecek ada barang di keranjang apa engga, kalo engga buttonnya disabled-->
+                <th:block th:switch="${cart.size()}">
+                    <button th:case="${0}" type="button" class="btn btn-primary col-md-12"
+                            data-toggle="modal" data-target="#cartModal" disabled="disabled">BAYAR</button>
+                    <button th:case="*" type="button" class="btn btn-primary col-md-12"
+                            data-toggle="modal" data-target="#cartModal">BAYAR</button>
+                </th:block>
+
+                <div class="modal fade" id="cartModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Nama Customer</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Total: </h3>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/cashier/checkout">
+                                    <button class="btn btn-primary col-md-12">BAYAR</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

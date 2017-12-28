@@ -181,4 +181,9 @@ public class UserService {
         }
         return modelAndView;
     }
+
+    public String chartJson()   {
+        String data = summaryInterface.getChartByMonth();
+        return data;
+    }
 }

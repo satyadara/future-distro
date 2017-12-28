@@ -1,7 +1,5 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.Model.user.Role;
-import com.blibli.distro_pos.Model.user.User;
 import com.blibli.distro_pos.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -39,6 +37,11 @@ public class WebController {
     @RequestMapping(value = "/admin")
     public ModelAndView admin(Authentication authentication) {
         return userService.managerDashboard(authentication);
+    }
+
+    @RequestMapping(value = "/chart")
+    public String chartData()   {
+        return userService.chartJson();
     }
 
     @RequestMapping(value = "/403")

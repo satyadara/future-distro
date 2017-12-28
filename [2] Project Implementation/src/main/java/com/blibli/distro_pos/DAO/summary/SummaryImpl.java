@@ -96,4 +96,32 @@ public class SummaryImpl extends MyConnection implements SummaryInterface {
         return list;
     }
 
+    @Override
+    public String getChartByMonth() {
+        String sql = "SELECT array_to_json(ARRAY_AGG(row_to_json(response))) AS JSON FROM (" +
+                "  SELECT " +
+                "    DATE(DATE_TRUNC('month', DATE_TRANS)) AS y, " +
+                "    AVG(TOTAL_TRANS)                      AS item1" +
+                "  FROM TRANSACTION " +
+                "  WHERE DATE_TRANS > now() - INTERVAL '12 month' " +
+                "  GROUP BY 1" +
+                "  ORDER BY 2 DESC, 1 DESC" +
+                ") response;";
+        String result = "";
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    result = resultSet.getString("json");
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+
+        }
+        return result;
+    }
+
 }

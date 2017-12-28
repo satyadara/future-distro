@@ -4,9 +4,11 @@ import com.blibli.distro_pos.Model.user.Role;
 import com.blibli.distro_pos.Model.user.User;
 import com.blibli.distro_pos.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+@Controller
 public class UserController {
     private final UserService userService;
 

@@ -59,13 +59,45 @@ $(function() {
 
 function inputDisabled() {
     var payment = document.getElementById("payment").value;
-    if (payment == "Kartu Kredit/Debit" || payment == "") {
+    var receiptButton = document.getElementById("receiptKartu");
+    var bayarButton = document.getElementById("bayar");
+
+    if (payment == "") {
         document.getElementById("nominal").disabled = true;
         document.getElementById("nominal").value = "";
+        bayarButton.style.display = "block";
+        bayarButton.disabled = true;
+        receiptButton.disabled = true;
+        receiptButton.style.display = "none";
     }
-    else {
+    if (payment == "Kartu Kredit/Debit") {
+        document.getElementById("nominal").disabled = true;
+        document.getElementById("nominal").value = "";
+        receiptButton.disabled = false;
+        receiptButton.style.display = "block";
+        bayarButton.style.display = "none";
+    }
+    if (payment == "Tunai") {
         document.getElementById("nominal").disabled = false;
+        receiptButton.style.display = "none";
+        bayarButton.style.display = "block";
+        bayarButton.disabled = false;
     }
+}
+
+// MULTIPLE MODAL
+//set button id on click to hide first modal
+$("#bayar").on( "click", function() {
+    $('#cartModal').modal('hide');
+});
+//trigger next modal
+$("#bayar").on( "click", function() {
+    $('#changeModal').modal('show');
+});
+
+//HIDE RECEIPT BUTTON
+function hideReceiptButton() {
+
 
     
 }

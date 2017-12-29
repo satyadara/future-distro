@@ -28,7 +28,9 @@ public class TransactionService {
     private final ItemTypeInterface itemTypeInterface;
 
     @Autowired
-    public TransactionService(TransactionInterface transactionInterface, ShoppingCartInterface shoppingCartInterface, OrderLineInterface orderLineInterface, ItemInterface itemInterface, ItemTypeInterface itemTypeInterface) {
+    public TransactionService(TransactionInterface transactionInterface,
+                              ShoppingCartInterface shoppingCartInterface, OrderLineInterface orderLineInterface,
+                              ItemInterface itemInterface, ItemTypeInterface itemTypeInterface) {
         this.transactionInterface = transactionInterface;
         this.shoppingCartInterface = shoppingCartInterface;
         this.orderLineInterface = orderLineInterface;
@@ -110,7 +112,8 @@ public class TransactionService {
         if (quantity < 1) {
             return modelAndView;
         }
-        shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(), item.getPrice());
+        shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(),
+                item.getPrice());
         shoppingCartInterface.update(shoppingCart);
 
 
@@ -128,7 +131,8 @@ public class TransactionService {
         if (id_trans.equals("")) {
             return modelAndView;
         }
-        Transaction transaction = new Transaction(id_trans, null, authentication.getName(), "-", 0.0, simpleDateFormat.format(today), "Aktif");
+        Transaction transaction = new Transaction(id_trans, null, authentication.getName(),
+                "-", 0.0, simpleDateFormat.format(today), "Aktif");
         transactionInterface.save(transaction);
 
         for (ShoppingCart cart : list) {
@@ -150,6 +154,18 @@ public class TransactionService {
         System.out.println(qty);
         itemInterface.addOrMinStock(id, qty);
         shoppingCartInterface.cancel(id, authentication.getName());
+        return modelAndView;
+    }
+
+    public ModelAndView cancelOrder(Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
+
+        //Stok kembali setelah cart dihapus
+        for (ShoppingCart shoppingCart: shoppingCartInterface.getAll()) {
+            itemInterface.addOrMinStock(shoppingCart.getId_item(), shoppingCart.getQuantity());
+        }
+        shoppingCartInterface.clear(authentication.getName());
+
         return modelAndView;
     }
 

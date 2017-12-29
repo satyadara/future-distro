@@ -29,34 +29,8 @@
     <![endif]-->
 </head>
 
-<body class="cashier-body">
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-
-    <div class="col-md-4">
-        <h4 style="color: white; text-align: match-parent"><b>Distro</b>POS</h4>
-    </div>
-    <div class="col-md-4">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <!--<li><h5>Hi, <span th:text="${username}"></span></h5></li>-->
-                <!--<li><a href="/admin"><i class="fa fa-home"></i> <span>Beranda</span></a></li>-->
-                <!--<li><a href="#"><i class="fa fa-archive"></i> <span>Stok</span></a></li>-->
-                <!--<li><a href="#"><i class="fa fa-percent"></i> <span>Diskon</span></a></li>-->
-                <!--<li><a href="/view_user"><i class="fa fa-users"></i> <span>Pengguna</span></a></li>-->
-            </ul>
-
-        </div>
-    </div>
-</nav>
+<body>
+<div th:replace="fragments/header_cashier :: header_cashier">...</div>
 
 <div class="container-fluid">
     <div class="col-md-8">
@@ -83,7 +57,7 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/' + item.getImage()}" width="100" height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100" height="100"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
@@ -110,7 +84,7 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/' + item.getImage()}" width="100" height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100" height="100"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
@@ -146,7 +120,9 @@
                     </div>
                     <div class="col-md-1">
                         <br/>
-                        <button class="btn btn-default">Batal</button>
+                        <form action="/cashier/cancel-order" method="get">
+                            <button type="submit" class="btn btn-default">Batal</button>
+                        </form>
                     </div>
                 </div>
                 <h5>Kam, 24 Agt 2017 | 21:00:21</h5>
@@ -190,21 +166,23 @@
                             data-toggle="modal" data-target="#cartModal">BAYAR</button>
                 </th:block>
 
-                <!--MODAL-->
+                <!--MODAL TOTAL BAYAR-->
                 <div class="modal fade" id="cartModal" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3 class="modal-title text-center">
-                                    <input class="text-center" type="text" name="namaCustomer" id="namaCustomer"
+                                    <input class="text-center" type="text" name="customer" id="customer"
                                            placeholder="Nama Customer.."
                                     style="border: none;
                                     background-color: transparent;
                                     outline: 0;"/>
                                 </h3>
                             </div>
+
                             <div class="modal-body col-md-8 col-md-offset-2">
-                                <h1 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">Total: <b>RP 500.000</b></h1>
+                                <h1 class="text-center" style="border-bottom: 1px solid grey;
+                                padding-bottom: 5px">Total: <b style="color: #1eaae2">RP 500.000</b></h1>
                                 <select id="payment" name="payment" class="form-control" onchange="inputDisabled()"
                                 style="margin-top: 30px">
                                     <option value="">Metode Pembayaran</option>
@@ -214,18 +192,46 @@
                                 <input id="nominal" class="form-control" type="number" name="nominal"
                                        placeholder="Masukkan nominal pembayaran" style="border-radius: 8px;margin-top: 5px"
                                 disabled="disabled"/>
+
+                                <!--TODO : Hidden diskon input-->
+                                <input id="diskon" class="form-control" type="number" name="diskon" value=""
+                                       style="border-radius: 8px;margin-top: 5px;display: none"/>
                             </div>
+
                             <div class="modal-footer">
                                 <button class="btn btn-default btn-flat col-md-6" data-dismiss="modal"
                                         style="border-radius: 0px">BATAL</button>
                                 <a href="/cashier/checkout">
-                                    <button class="btn btn-primary btn-flat col-md-6" style="border-radius: 0px">BAYAR</button>
+                                    <button id="bayar" class="btn btn-primary btn-flat col-md-6" style="border-radius: 0px"
+                                    disabled = "disabled">BAYAR</button>
+                                </a>
+                                <button id="receiptKartu" class="btn btn-primary btn-flat col-md-6"
+                                        style="border-radius: 0px;display: none">CETAK RECEIPT</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--MODAL TOTAL BAYAR-->
+
+                <!--MODAL KEMBALIAN-->
+                <div class="modal fade" id="changeModal" role="dialog" tabindex="-1" aria-hidden="true"
+                     aria-labelledby="namaCustomer">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body col-md-8 col-md-offset-2">
+                                <h2 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">JUMLAH KEMBALIAN</h2>
+                                <h1 class="text-center"><b>RP 500.000</b></h1>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/cashier/checkout">
+                                    <button id="receiptTunai" class="btn btn-primary btn-flat col-md-12" style="border-radius: 0px">
+                                        CETAK RECEIPT
+                                    </button>
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </div> <!--MODAL KEMBALIAN-->
             </div>
         </div>
     </div>

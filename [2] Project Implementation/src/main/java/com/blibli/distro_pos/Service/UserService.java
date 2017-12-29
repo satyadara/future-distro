@@ -151,9 +151,9 @@ public class UserService {
     public ModelAndView managerLedger() {
         ModelAndView modelAndView = new ModelAndView("ledger/index");
         modelAndView.addObject("search", false);
-        modelAndView.addObject("totalIn", "-");
-        modelAndView.addObject("totalOut", '-');
-        modelAndView.addObject("totalEnd", "-");
+        modelAndView.addObject("totalIn", 0.0);
+        modelAndView.addObject("totalOut", 0.0);
+        modelAndView.addObject("totalEnd", 0.0);
         return modelAndView;
     }
 

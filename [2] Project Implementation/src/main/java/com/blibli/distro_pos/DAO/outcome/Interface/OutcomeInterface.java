@@ -16,4 +16,6 @@ public interface OutcomeInterface extends BasicDAO<Outcome, String> {
     Map<String, Object> search(String key, int page);
 
     String getStringList();
+
+    String getDescription(String id);
 }

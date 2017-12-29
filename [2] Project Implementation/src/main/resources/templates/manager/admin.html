@@ -114,7 +114,6 @@
                     </div>
                     <div class="box-body chart-responsive">
                         <div class="chart" id="line-chart" style="height: 300px;">
-
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -136,7 +135,7 @@
                         </div>
                     </div>
                     <div class="box-body chart-responsive">
-                        <h2>Bulan ini</h2>
+                        <h3>Bulan ini</h3>
                         <table class="table table-striped table-bordered table-responsive">
                             <thead>
                             <tr>
@@ -151,11 +150,11 @@
                                 <td th:text="${number.index + 1}"></td>
                                 <td th:text="${item.getName_item()}"></td>
                                 <td th:text="${item.getQuantity()}"></td>
-                                <td th:text="${'Rp' + item.getTotal()}"></td>
+                                <td th:text="${'Rp' + #numbers.formatDecimal(item.getTotal(), 0, 2)}"></td>
                             </tr>
                             </tbody>
                         </table>
-                        <h2>Tahun ini</h2>
+                        <h3>Tahun ini</h3>
                         <table class="table table-striped table-bordered table-responsive">
                             <thead>
                             <tr>
@@ -170,7 +169,7 @@
                                 <td th:text="${number.index + 1}"></td>
                                 <td th:text="${item.getName_item()}"></td>
                                 <td th:text="${item.getQuantity()}"></td>
-                                <td th:text="${'Rp' + item.getTotal()}"></td>
+                                <td th:text="${'Rp' + #numbers.formatDecimal(item.getTotal(), 0, 2)}"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -183,8 +182,7 @@
                 <!-- LINE CHART -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Line Chart</h3>
-
+                        <h3 class="box-title">Tiga Paling Pelanggan Setia</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
@@ -194,7 +192,7 @@
                         </div>
                     </div>
                     <div class="box-body chart-responsive">
-                        <h2>Bulan ini</h2>
+                        <h3>Bulan ini</h3>
                         <table class="table table-striped table-bordered table-responsive">
                             <thead>
                             <tr>
@@ -207,11 +205,11 @@
                             <tr th:each="customer,number1 : ${customers_month}">
                                 <td th:text="${number1.index + 1}"></td>
                                 <td th:text="${customer.getName_cust()}"></td>
-                                <td th:text="${customer.getTotal()}"></td>
+                                <td th:text="${'Rp' + #numbers.formatDecimal(customer.getTotal(), 0, 2)}"></td>
                             </tr>
                             </tbody>
                         </table>
-                        <h2>Tahun ini</h2>
+                        <h3>Tahun ini</h3>
                         <table class="table table-striped table-bordered table-responsive">
                             <thead>
                             <tr>
@@ -224,7 +222,7 @@
                             <tr th:each="customer,number1 : ${customers_year}">
                                 <td th:text="${number1.index + 1}"></td>
                                 <td th:text="${customer.getName_cust()}"></td>
-                                <td th:text="${customer.getTotal()}"></td>
+                                <td th:text="${'Rp'+ #numbers.formatDecimal(customer.getTotal(), 0, 2)}"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -270,8 +268,8 @@
             resize: true,
             data: data,
             xkey: 'y',
-            ykeys: ['item1'],
-            labels: ['Item 1'],
+            ykeys: ['average'],
+            labels: ['Rata-rata'],
             lineColors: ['#3c8dbc'],
             hideHover: 'auto'
         });

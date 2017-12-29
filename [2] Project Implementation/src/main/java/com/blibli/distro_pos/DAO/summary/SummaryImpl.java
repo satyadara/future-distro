@@ -100,8 +100,8 @@ public class SummaryImpl extends MyConnection implements SummaryInterface {
     public String getChartByMonth() {
         String sql = "SELECT array_to_json(ARRAY_AGG(row_to_json(response))) AS JSON FROM (" +
                 "  SELECT " +
-                "    DATE(DATE_TRUNC('month', DATE_TRANS)) AS y, " +
-                "    AVG(TOTAL_TRANS)                      AS item1" +
+                "    TO_CHAR(DATE(DATE_TRUNC('month', DATE_TRANS)), 'YYYY-MM') AS y, " +
+                "    AVG(TOTAL_TRANS)                      AS average" +
                 "  FROM TRANSACTION " +
                 "  WHERE DATE_TRANS > now() - INTERVAL '12 month' " +
                 "  GROUP BY 1" +

@@ -65,16 +65,16 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th><strong th:text="${'Pemasukan : Rp' + #numbers.formatDecimal(totalIn, 0, '', 2)}"></strong></th>
-                            <th><strong th:text="${'Pengeluaran : Rp' + #numbers.formatDecimal(totalOut, 0, 2)}"></strong></th>
-                            <th><strong th:text="${'Total : Rp' + #numbers.formatDecimal(totalEnd, 0, 2)}"></strong></th>
+                            <th th:text="${'Pemasukan : Rp' + #numbers.formatDecimal(totalIn, 0, 2)}"></th>
+                            <th th:text="${'Pengeluaran : Rp' + #numbers.formatDecimal(totalOut, 0, 2)}"></th>
+                            <th th:text="${'Total : Rp' + #numbers.formatDecimal(totalEnd, 0, 2)}"></th>
+                            <th></th>
                         </tr>
                         <tr>
                             <th>Tanggal</th>
                             <th>Judul</th>
                             <th>Pemasukan</th>
                             <th>Pengeluaran</th>
-                            <th>Detil</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -83,13 +83,12 @@
                             <td th:text="${ledger.getTitle()}"></td>
                             <th:block th:switch="${ledger.getIn()}">
                                 <td th:case="${0.0}"></td>
-                                <td th:case="*" th:text="${ledger.getIn()}"></td>
+                                <td th:case="*" th:text="${'Rp'+#numbers.formatDecimal(ledger.getIn(), 0, 2)}"></td>
                             </th:block>
                             <th:block th:switch="${ledger.getOut()}">
                                 <td th:case="${0.0}"></td>
-                                <td th:case="*" th:text="${ledger.getOut()}"></td>
+                                <td th:case="*" th:text="${'Rp'+#numbers.formatDecimal(ledger.getOut(), 0, 2)}"></td>
                             </th:block>
-                            <td></td>
                         </tr>
                         </tbody>
                     </table>

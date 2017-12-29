@@ -216,6 +216,27 @@ public class ItemService {
         return modelAndView;
     }
 
+    public ModelAndView outOfStock(int page) {
+        ModelAndView modelAndView = new ModelAndView("item/outofstock");
+        List<Item> itemList;
+        int itemCount;
+        int pageCount;
+        int currentpage = page;
+        try {
+            itemList = itemInterface.getOutOfStock(currentpage);
+            itemCount = itemInterface.countOutOfStock();
+            pageCount = (itemCount / 10) + 1;
+            modelAndView.addObject("items", itemList);
+            modelAndView.addObject("count", itemCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", currentpage);
+            modelAndView.addObject("search", false);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
     /************************SUB-ITEM TYPE************************/
     public ModelAndView indexType() {
         return paginateType("1");

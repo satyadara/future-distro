@@ -23,7 +23,6 @@ public class ItemController {
     private final ItemService itemService;
 
     @Autowired
-
     public ItemController(ItemService itemService) {
 
         this.itemService = itemService;
@@ -74,6 +73,11 @@ public class ItemController {
     @RequestMapping(value = "/search/page/{page}", method = GET)
     public ModelAndView search(@RequestParam("key") String key, @PathVariable("page") int page) {
         return itemService.search(key, page);
+    }
+
+    @RequestMapping(value = "/outofstock/page/{page}", method = GET)
+    public ModelAndView outOfStock(@PathVariable(name = "page") int page) {
+        return itemService.outOfStock(page);
     }
 
     /**

@@ -3,13 +3,16 @@ package com.blibli.distro_pos.DAO.cashier;
 import com.blibli.distro_pos.DAO.MyConnection;
 import com.blibli.distro_pos.DAO.cashier.Interface.TransactionInterface;
 import com.blibli.distro_pos.Model.cashier.Transaction;
+import com.blibli.distro_pos.Model.item.Item;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class TransactionImpl extends MyConnection implements TransactionInterface {
@@ -18,8 +21,8 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
     @Override
     public List<Transaction> getAll() {
         String sql = "SELECT id_trans, id_disc, username, total_trans, customer_trans, status_trans, " +
-                "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans, " +
-                " status_disc FROM transaction ORDER BY id_trans DESC;";
+                "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans " +
+                " FROM transaction ORDER BY id_trans DESC;";
         List<Transaction> transactionList = new ArrayList<>();
         try {
             this.connect();
@@ -37,8 +40,8 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
     @Override
     public Transaction getOne(String id) {
         String sql = "SELECT id_trans, id_disc, username, total_trans, customer_trans, status_trans, " +
-                "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans, " +
-                " status_disc FROM transaction WHERE id_trans = '" + id + "';";
+                "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans " +
+                " FROM transaction WHERE id_trans = '" + id + "';";
         Transaction transaction = new Transaction();
         try {
             this.connect();
@@ -66,7 +69,6 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
 
         return transaction;
     }
-
     @Override
     public void save(Transaction transaction) {
         String sql = "INSERT INTO transaction(id_trans, id_disc, username, customer_trans, total_trans, date_trans, status_trans) " +
@@ -107,6 +109,81 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
         }
     }
 
+    public List<Transaction> paginate(int page) {
+        String sql = "SELECT id_trans, id_disc, username, total_trans, customer_trans, status_trans, " +
+                "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans " +
+                " FROM transaction ORDER BY id_trans DESC LIMIT 10 OFFSET ?;";
+        List<Transaction> list = new ArrayList<>();
+        this.disconnect();
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setInt(1, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            list = getTransactionList(rs);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return list;
+    }
+
+    public int count()  {
+        String sql = "SELECT COUNT(*) FROM transaction;";
+        int result = 0;
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                result = rs.getInt("count");
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#COUNT# something error : " + e.toString());
+        }
+
+        return result;
+    }
+
+    @Override
+    public Map<String, Object> search(String key, int page) {
+        String sql = "SELECT id_trans, id_disc, username, total_trans, customer_trans, status_trans, " +
+                "TO_CHAR(date_trans, 'DD/MM/YYYY') AS date_trans " +
+                " FROM transaction WHERE id_trans LIKE '%'||?||'%' ORDER BY id_trans DESC LIMIT 10 OFFSET ?;";
+        String sql_counter = "SELECT COUNT(*) FROM transaction WHERE id_trans LIKE '%'||?||'%';";
+        Map<String, Object> map = new HashMap<>();
+        List<Transaction> list;
+        int count = 0;
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setString(1, key);
+            preparedStatement.setInt(2, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            list = getTransactionList(rs);
+
+            preparedStatement = this.con.prepareStatement(sql_counter);
+            preparedStatement.setString(1, key);
+            rs = preparedStatement.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    count = rs.getInt("count");
+                }
+            }
+            map.put(LIST, list);
+            map.put("count", count);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error :" + e.toString());
+        }
+
+        return map;
+    }
+
     @Override
     public List<Transaction> getTransactionList(ResultSet rs) {
         List<Transaction> transactionList = new ArrayList<>();
@@ -141,16 +218,21 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             this.connect();
             Statement statement = this.con.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            if (resultSet != null)  {
-                while (resultSet.next())    {
+            if (resultSet != null) {
+                while (resultSet.next()) {
                     id = resultSet.getString("nextval");
                 }
             }
-                this.disconnect();
+            this.disconnect();
         } catch (Exception e) {
 
         }
         return id;
+    }
+
+    @Override
+    public String getListString()   {
+        return LIST;
     }
 
 }

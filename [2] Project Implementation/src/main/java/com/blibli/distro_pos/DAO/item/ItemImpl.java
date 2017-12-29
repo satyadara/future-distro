@@ -297,6 +297,48 @@ public class ItemImpl extends MyConnection implements ItemInterface {
     }
 
     @Override
+    public List<Item> getOutOfStock(int page) {
+        String sql = "SELECT id_item, username, name_item, price_item, im.name_item_merk AS merk_item, stock_item, image_item," +
+                "ic.name_item_color AS color_item,size_item, it.name_item_type AS type_item, status_item FROM item i " +
+                "JOIN item_merk im ON (i.merk_item = im.id_item_merk) JOIN item_color ic ON (i.color_item = ic.id_item_color) " +
+                "JOIN item_type it ON (i.type_item = it.id_item_type) WHERE i.stock_item < 1 AND status_item = 'Aktif' ORDER BY id_item DESC LIMIT 10 OFFSET ?;";
+        List<Item> itemList = new ArrayList<>();
+        this.disconnect();
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            int offset = (page - 1) * 10;
+            preparedStatement.setInt(1, offset);
+            ResultSet rs = preparedStatement.executeQuery();
+            itemList = getItemList(rs);
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("something error :" + e.toString());
+        }
+
+        return itemList;
+    }
+
+    @Override
+    public int countOutOfStock() {
+        String sql = "SELECT COUNT(*) FROM item  WHERE stock_item < 1 AND status_item = 'Aktif' ;";
+        int result = 0;
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                result = rs.getInt("count");
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#COUNT# something error : " + e.toString());
+        }
+
+        return result;
+    }
+
+    @Override
     public String getListString() {
         return LIST;
     }

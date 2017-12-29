@@ -33,8 +33,8 @@ public class ItemService {
     private static final String TYPE = "Type";
     private static final String MERK = "Merk";
 
-    //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = System.getProperty("user.dir") + "/src/main/resources/static/img/";
+    //Lokasi buat ngesave gambar
+    private static String UPLOADED_FOLDER = System.getProperty("user.dir") + "/src/main/resources/static/img/item/";
 
     @Autowired
     public ItemService(ItemInterface itemInterface, ItemTypeInterface itemTypeInterface,

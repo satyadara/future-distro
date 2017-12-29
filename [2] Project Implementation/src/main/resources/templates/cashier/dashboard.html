@@ -172,7 +172,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3 class="modal-title text-center">
-                                    <input class="text-center" type="text" name="namaCustomer" id="namaCustomer"
+                                    <input class="text-center" type="text" name="customer" id="customer"
                                            placeholder="Nama Customer.."
                                     style="border: none;
                                     background-color: transparent;
@@ -182,7 +182,7 @@
 
                             <div class="modal-body col-md-8 col-md-offset-2">
                                 <h1 class="text-center" style="border-bottom: 1px solid grey;
-                                padding-bottom: 5px">Total: <b>RP 500.000</b></h1>
+                                padding-bottom: 5px">Total: <b style="color: #1eaae2">RP 500.000</b></h1>
                                 <select id="payment" name="payment" class="form-control" onchange="inputDisabled()"
                                 style="margin-top: 30px">
                                     <option value="">Metode Pembayaran</option>
@@ -192,6 +192,10 @@
                                 <input id="nominal" class="form-control" type="number" name="nominal"
                                        placeholder="Masukkan nominal pembayaran" style="border-radius: 8px;margin-top: 5px"
                                 disabled="disabled"/>
+
+                                <!--TODO : Hidden diskon input-->
+                                <input id="diskon" class="form-control" type="number" name="diskon" value=""
+                                       style="border-radius: 8px;margin-top: 5px;display: none"/>
                             </div>
 
                             <div class="modal-footer">

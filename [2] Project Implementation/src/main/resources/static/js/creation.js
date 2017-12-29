@@ -73,6 +73,7 @@ function inputDisabled() {
     if (payment == "Kartu Kredit/Debit") {
         document.getElementById("nominal").disabled = true;
         document.getElementById("nominal").value = "";
+        receiptButton.disabled = false;
         receiptButton.style.display = "block";
         bayarButton.style.display = "none";
     }

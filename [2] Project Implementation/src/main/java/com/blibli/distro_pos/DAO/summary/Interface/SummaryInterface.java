@@ -19,4 +19,12 @@ public interface SummaryInterface {
     List<LoyalCustomer> getLoyalCustomer(String sql);
 
     String getChartByMonth();
+
+    int countTransactionOfThisYear();
+
+    int countItemOutOfStock();
+
+    double getNetSalesOfThisYear();
+
+    double getGrossSalesOfThisYear();
 }

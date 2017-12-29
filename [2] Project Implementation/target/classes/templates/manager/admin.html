@@ -37,13 +37,13 @@
     <div class="row">
 
         <div class="col-md-12">
-            <h1>Hi, <span th:text="${username}"></span></h1>
+            <h1 class="distro-color">Hi, <span th:text="${username}"></span></h1>
             <h4>Welcome to POS dashboard.</h4>
             <br/>
 
             <div class="col-md-3">
                 <!-- small box -->
-                <div class="small-box bg-aqua">
+                <div class="small-box bg-aqua" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="inner">
                         <h3 th:text="'Rp'+${#numbers.formatDecimal(netSales, 0, 2)}"></h3>
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="small-box bg-green">
+                <div class="small-box bg-green" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="inner">
                         <h3 th:text="'Rp'+${#numbers.formatDecimal(grossSales, 0, 2)}"></h3>
 
@@ -71,7 +71,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="small-box bg-yellow">
+                <div class="small-box bg-yellow" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="inner">
                         <h3 th:text="${numOfTrans}"></h3>
 
@@ -85,7 +85,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="small-box bg-red">
+                <div class="small-box bg-red" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="inner">
                         <h3 th:text="${numOfOutStock}"></h3>
 

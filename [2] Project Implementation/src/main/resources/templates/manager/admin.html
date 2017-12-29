@@ -45,7 +45,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>Rp.76.127.009</h3>
+                        <h3 th:text="'Rp'+${#numbers.formatDecimal(netSales, 0, 2)}"></h3>
 
                         <p>Net Sales</p>
                     </div>
@@ -59,7 +59,7 @@
             <div class="col-md-3">
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>Rp.98.886.100</h3>
+                        <h3 th:text="'Rp'+${#numbers.formatDecimal(grossSales, 0, 2)}"></h3>
 
                         <p>Gross Sales</p>
                     </div>
@@ -73,9 +73,9 @@
             <div class="col-md-3">
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>332</h3>
+                        <h3 th:text="${numOfTrans}"></h3>
 
-                        <p>Number of transactions</p>
+                        <p>Banyak Transaksi</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-cart"></i>
@@ -87,9 +87,9 @@
             <div class="col-md-3">
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>3</h3>
+                        <h3 th:text="${numOfOutStock}"></h3>
 
-                        <p>Items running out stock</p>
+                        <p>Stok Habis</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-sad"></i>

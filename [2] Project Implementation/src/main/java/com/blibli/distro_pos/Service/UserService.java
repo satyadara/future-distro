@@ -131,12 +131,20 @@ public class UserService {
         List<MostSoldItem> mostSoldItemsYear = summaryInterface.getMostSoldItemThisYear();
         List<LoyalCustomer> loyalCustomersMonth = summaryInterface.getLoyalCustomerThisMonth();
         List<LoyalCustomer> loyalCustomersYear = summaryInterface.getLoyalCustomerThisYear();
+        int numberOfTransaction = summaryInterface.countTransactionOfThisYear();
+        int numberOfOutStock = summaryInterface.countItemOutOfStock();
+        double netSales = summaryInterface.getNetSalesOfThisYear();
+        double grossSales = summaryInterface.getGrossSalesOfThisYear();
 
         modelAndView.addObject("username", username);
         modelAndView.addObject("items_month", mostSoldItemsMonth);
         modelAndView.addObject("items_year", mostSoldItemsYear);
         modelAndView.addObject("customers_month", loyalCustomersMonth);
         modelAndView.addObject("customers_year", loyalCustomersYear);
+        modelAndView.addObject("numOfTrans", numberOfTransaction);
+        modelAndView.addObject("numOfOutStock", numberOfOutStock);
+        modelAndView.addObject("netSales", netSales);
+        modelAndView.addObject("grossSales", grossSales);
 
         return modelAndView;
     }
@@ -182,7 +190,7 @@ public class UserService {
         return modelAndView;
     }
 
-    public String chartJson()   {
+    public String chartJson() {
         String data = summaryInterface.getChartByMonth();
         return data;
     }

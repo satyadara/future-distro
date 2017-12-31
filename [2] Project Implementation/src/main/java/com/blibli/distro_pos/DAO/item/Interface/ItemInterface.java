@@ -19,4 +19,8 @@ public interface ItemInterface extends BasicDAO<Item, String> {
     void addOrMinStock(String id_item, int quantity);
 
     List<Item> getByType(String id_type);
+
+    List<Item> getOutOfStock(int page);
+
+    int countOutOfStock();
 }

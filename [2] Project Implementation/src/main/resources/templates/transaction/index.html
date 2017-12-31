@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Manager - Stok</title>
+    <title>Manager - Transaksi</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
@@ -36,14 +36,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 th:text="'Stok Barang( '+ ${count} + ' )'"></h1>
+            <h1 th:text="'Transaksi( '+ ${count} + ' )'"></h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <form action="get" th:action="'/item/search/page/1'">
+            <form action="get" th:action="'/transaction/search/1'">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="key" placeholder="cari item..."/>
+                    <input type="text" class="form-control" name="key" placeholder="cari transaksi..."/>
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-info">Cari</button>
                     </span>
@@ -51,7 +51,6 @@
             </form>
         </div>
     </div>
-
     <br/>
 
     <div class="box box primary">
@@ -62,50 +61,44 @@
                         <tr>
                             <th>Transaksi ID</th>
                             <th>Diskon ID</th>
-                            <th>Nama Customer</th>
-                            <th>Total Transaksi</th>
+                            <th>Nama Kasir</th>
                             <th>Nama Customer</th>
                             <th>Total Transaksi</th>
                             <th>Tanggal</th>
                             <th>Detil</th>
                         </tr>
 
-                        <!--<tr th:each="item: ${items}">-->
-                            <!--<td th:text="${item.getId_item()}"></td>-->
-                            <!--<td th:text="${item.getMerk()}"></td>-->
-                            <!--<td th:text="${item.getType()}"></td>-->
-                            <!--<td th:text="${item.getSize()}"></td>-->
-                            <!--<td th:text="${item.getName_item()}"></td>-->
-                            <!--<td th:text="${item.getColor()}"></td>-->
-                            <!--<td th:text="${item.getPrice()}"></td>-->
-                            <!--<td th:text="${item.getStock()}"></td>-->
-                            <!--<td>-->
-                                <!--<a th:href="'/item/' + ${item.getId_item()} + '/edit'">-->
-                                    <!--Edit-->
-                                <!--</a>-->
-                            <!--</td>-->
-                        <!--</tr>-->
+                        <tr th:each="trans: ${transactions}">
+                            <td th:text="${trans.getId_trans()}"></td>
+                            <td th:text="${trans.getId_disc()}"></td>
+                            <td th:text="${trans.getUsername()}"></td>
+                            <td th:text="${trans.getCustomer_name()}"></td>
+                            <td th:text="${trans.getTotal_trans()}"></td>
+                            <td th:text="${trans.getDate()}"></td>
+                            <td>
+                            </td>
+                        </tr>
                     </table>
                     <!--PAGINATE-->
                     <nav aria-label="Page navigation" th:if="${search == false}">
                         <ul class="pagination">
                             <li>
-                                <a th:href="'/item/page/' + ${currentPage - 1}" aria-label="Previous">
+                                <a th:href="'/transaction/page/' + ${currentPage - 1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                             <th:block th:each="i: ${#numbers.sequence(1, pages)}">
                                 <th:block th:switch="${i}">
                                     <li class="active" th:case="${currentPage}">
-                                        <a th:href="'/item/page/' + ${i}" th:text="${i}"></a>
+                                        <a th:href="'/transaction/page/' + ${i}" th:text="${i}"></a>
                                     </li>
                                     <li th:case="*">
-                                        <a th:href="'/item/page/' + ${i}" th:text="${i}"></a>
+                                        <a th:href="'/transaction/page/' + ${i}" th:text="${i}"></a>
                                     </li>
                                 </th:block>
                             </th:block>
                             <li>
-                                <a th:href="'/item/page/' + ${currentPage + 1}" aria-label="Next">
+                                <a th:href="'/transaction/page/' + ${currentPage + 1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -114,7 +107,7 @@
                     <nav aria-label="Page navigation" th:if="${search == true}">
                         <ul class="pagination">
                             <li>
-                                <a th:href="'/item/search/page/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                <a th:href="'/transaction/search/' + ${currentPage - 1}+'?key='+${#httpServletRequest.getParameter('key')}"
                                    aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
@@ -122,17 +115,17 @@
                             <th:block th:each="i: ${#numbers.sequence(1, pages)}">
                                 <th:block th:switch="${i}">
                                     <li class="active" th:case="${currentPage}">
-                                        <a th:href="'/item/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                        <a th:href="'/transaction/search/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
                                            th:text="${i}"></a>
                                     </li>
                                     <li th:case="*">
-                                        <a th:href="'/item/search/page/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                        <a th:href="'/transaction/search/' + ${i}+'?key='+${#httpServletRequest.getParameter('key')}"
                                            th:text="${i}"></a>
                                     </li>
                                 </th:block>
                             </th:block>
                             <li>
-                                <a th:href="'/item/search/page/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
+                                <a th:href="'/transaction/search/' + ${currentPage + 1}+'?key='+${#httpServletRequest.getParameter('key')}"
                                    aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>

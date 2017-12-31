@@ -13,6 +13,7 @@ import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
@@ -50,7 +51,7 @@ public class TransactionService {
             itemList.add(iList);
         }
 
-        for (Item list1: itemList.get(0)) {
+        for (Item list1 : itemList.get(0)) {
             System.out.println(list1.getId_item());
         }
         map.put("types", subItemList);
@@ -58,6 +59,49 @@ public class TransactionService {
 
         modelAndView.addObject("cart", list);
         modelAndView.addObject("itemMap", map);
+        return modelAndView;
+    }
+
+    public ModelAndView indexIransaction(int page) {
+        ModelAndView modelAndView = new ModelAndView("transaction/index");
+        List<Transaction> transactionList;
+        int transactionCount;
+        int pageCount;
+        int currentpage = page;
+        try {
+            transactionList = transactionInterface.paginate(currentpage);
+            transactionCount = transactionInterface.count();
+            pageCount = (transactionCount / 10) + 1;
+            modelAndView.addObject("transactions", transactionList);
+            modelAndView.addObject("count", transactionCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", currentpage);
+            modelAndView.addObject("search", false);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        return modelAndView;
+    }
+
+    public ModelAndView search(String key, int page) {
+        ModelAndView modelAndView = new ModelAndView("transaction/index");
+        Map<String, Object> map;
+        int count;
+        int pageCount;
+        int currentPage = page;
+        try {
+            map = transactionInterface.search(key, page);
+            count = (int) map.get("count");
+            pageCount = (count / 10) + 1;
+            modelAndView.addObject("transactions", map.get(transactionInterface.getListString()));
+            modelAndView.addObject("count", count);
+            modelAndView.addObject("currentPage", currentPage);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("search", true);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
         return modelAndView;
     }
 
@@ -161,7 +205,7 @@ public class TransactionService {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
 
         //Stok kembali setelah cart dihapus
-        for (ShoppingCart shoppingCart: shoppingCartInterface.getAll()) {
+        for (ShoppingCart shoppingCart : shoppingCartInterface.getAll()) {
             itemInterface.addOrMinStock(shoppingCart.getId_item(), shoppingCart.getQuantity());
         }
         shoppingCartInterface.clear(authentication.getName());

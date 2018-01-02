@@ -57,7 +57,8 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100" height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100"
+                                                 height="100"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
@@ -69,8 +70,10 @@
                                                    th:value="${item.getPrice()}"/>
                                             <input type="text" hidden="hidden" name="stock_item"
                                                    th:value="${item.getStock()}"/>
-                                            <input class="form-control col-md-6" type="hidden" name="quantity" value="1"/>
-                                            <button class="btn btn-primary col-md-8 col-md-offset-2" type="submit">Tambah
+                                            <input class="form-control col-md-6" type="hidden" name="quantity"
+                                                   value="1"/>
+                                            <button class="btn btn-primary col-md-8 col-md-offset-2" type="submit">
+                                                Tambah
                                             </button>
                                         </form>
                                     </div>
@@ -84,7 +87,8 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100" height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100"
+                                                 height="100"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
@@ -96,8 +100,10 @@
                                                    th:value="${item.getPrice()}"/>
                                             <input type="text" hidden="hidden" name="stock_item"
                                                    th:value="${item.getStock()}"/>
-                                            <input class="form-control col-md-6" type="hidden" name="quantity" value="1"/>
-                                            <button class="btn btn-primary col-md-8 col-md-offset-2" type="submit">Tambah
+                                            <input class="form-control col-md-6" type="hidden" name="quantity"
+                                                   value="1"/>
+                                            <button class="btn btn-primary col-md-8 col-md-offset-2" type="submit">
+                                                Tambah
                                             </button>
                                         </form>
                                     </div>
@@ -155,15 +161,17 @@
                     </tr>
                     </tbody>
                 </table>
-                <br />
+                <br/>
                 <!--<button><a href="/cashier/checkout">Cekot</a></button>-->
 
                 <!--Ngecek ada barang di keranjang apa engga, kalo engga buttonnya disabled-->
                 <th:block th:switch="${cart.size()}">
                     <button th:case="${0}" type="button" class="btn btn-primary col-md-12"
-                            data-toggle="modal" data-target="#cartModal" disabled="disabled">BAYAR</button>
+                            data-toggle="modal" data-target="#cartModal" disabled="disabled">BAYAR
+                    </button>
                     <button th:case="*" type="button" class="btn btn-primary col-md-12"
-                            data-toggle="modal" data-target="#cartModal">BAYAR</button>
+                            data-toggle="modal" data-target="#cartModal">BAYAR
+                    </button>
                 </th:block>
 
                 <!--MODAL TOTAL BAYAR-->
@@ -174,7 +182,7 @@
                                 <h3 class="modal-title text-center">
                                     <input class="text-center" type="text" name="customer" id="customer"
                                            placeholder="Nama Customer.."
-                                    style="border: none;
+                                           style="border: none;
                                     background-color: transparent;
                                     outline: 0;"/>
                                 </h3>
@@ -184,27 +192,32 @@
                                 <h1 class="text-center" style="border-bottom: 1px solid grey;
                                 padding-bottom: 5px">Total: <b style="color: #1eaae2">RP 500.000</b></h1>
                                 <select id="payment" name="payment" class="form-control" onchange="inputDisabled()"
-                                style="margin-top: 30px">
+                                        style="margin-top: 30px">
                                     <option value="">Metode Pembayaran</option>
                                     <option value="Tunai">Tunai</option>
                                     <option value="Kartu Kredit/Debit">Kartu Kredit/Debit</option>
                                 </select>
                                 <input id="nominal" class="form-control" type="number" name="nominal"
-                                       placeholder="Masukkan nominal pembayaran" style="border-radius: 8px;margin-top: 5px"
-                                disabled="disabled"/>
+                                       placeholder="Masukkan nominal pembayaran"
+                                       style="border-radius: 8px;margin-top: 5px"
+                                       disabled="disabled"/>
                                 <input id="diskon" class="form-control" type="number" name="diskon" value=""
                                        style="border-radius: 8px;margin-top: 5px;display: none"/>
                             </div>
 
                             <div class="modal-footer">
                                 <button class="btn btn-default btn-flat col-md-6" data-dismiss="modal"
-                                        style="border-radius: 0px">BATAL</button>
+                                        style="border-radius: 0px">BATAL
+                                </button>
                                 <a href="/cashier/checkout">
-                                    <button id="bayar" class="btn btn-primary btn-flat col-md-6" style="border-radius: 0px"
-                                    disabled = "disabled">BAYAR</button>
+                                    <button id="bayar" class="btn btn-primary btn-flat col-md-6"
+                                            style="border-radius: 0px"
+                                            disabled="disabled">BAYAR
+                                    </button>
                                 </a>
                                 <button id="receiptKartu" class="btn btn-primary btn-flat col-md-6"
-                                        style="border-radius: 0px;display: none">CETAK RECEIPT</button>
+                                        style="border-radius: 0px;display: none">CETAK RECEIPT
+                                </button>
 
                             </div>
                         </div>
@@ -212,24 +225,29 @@
                 </div> <!--MODAL TOTAL BAYAR-->
 
                 <!--MODAL KEMBALIAN-->
-                <div class="modal fade" id="changeModal" role="dialog" tabindex="-1" aria-hidden="true"
-                     aria-labelledby="namaCustomer">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body col-md-8 col-md-offset-2">
-                                <h2 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">JUMLAH KEMBALIAN</h2>
-                                <h1 class="text-center"><b>RP 500.000</b></h1>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="/cashier/checkout">
-                                    <button id="receiptTunai" class="btn btn-primary btn-flat col-md-12" style="border-radius: 0px">
-                                        CETAK RECEIPT
-                                    </button>
-                                </a>
+                <form>
+                    <div class="modal fade" id="changeModal" role="dialog" tabindex="-1" aria-hidden="true"
+                         aria-labelledby="namaCustomer">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body col-md-8 col-md-offset-2">
+                                    <h2 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">
+                                        JUMLAH
+                                        KEMBALIAN</h2>
+                                    <h1 class="text-center"><b>RP 500.000</b></h1>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="/cashier/checkout">
+                                        <button id="receiptTunai" class="btn btn-primary btn-flat col-md-12"
+                                                style="border-radius: 0px">
+                                            CETAK RECEIPT
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--MODAL KEMBALIAN-->
+                    </div> <!--MODAL KEMBALIAN-->
+                </form>
             </div>
         </div>
     </div>

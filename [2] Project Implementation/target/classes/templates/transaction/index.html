@@ -73,9 +73,10 @@
                             <td th:text="${trans.getId_disc()}"></td>
                             <td th:text="${trans.getUsername()}"></td>
                             <td th:text="${trans.getCustomer_name()}"></td>
-                            <td th:text="${trans.getTotal_trans()}"></td>
+                            <td th:text="'Rp ' + ${trans.getTotal_trans()}"></td>
                             <td th:text="${trans.getDate()}"></td>
                             <td>
+                                <a target="_blank" th:href="'/transaction/' + ${trans.getId_trans()}">Tampil</a>
                             </td>
                         </tr>
                     </table>

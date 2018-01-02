@@ -20,12 +20,17 @@ public class TransactionController {
     }
 
     @RequestMapping("/page/{page}")
-    public ModelAndView index(@PathVariable("page") int page)  {
+    public ModelAndView index(@PathVariable("page") int page) {
         return transactionService.indexIransaction(page);
     }
 
     @RequestMapping("/search/{page}")
     public ModelAndView search(@RequestParam("key") String key, @PathVariable("page") int page) {
         return transactionService.search(key, page);
+    }
+
+    @RequestMapping("/{id_trans}")
+    public ModelAndView invoice(@PathVariable("id_trans") String id_trans) {
+        return transactionService.invoice(id_trans);
     }
 }

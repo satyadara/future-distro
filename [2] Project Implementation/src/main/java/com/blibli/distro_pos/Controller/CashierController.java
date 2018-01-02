@@ -54,4 +54,9 @@ public class CashierController {
                                        Authentication authentication) {
         return transactionService.cancelCartItem(id, qty, authentication);
     }
+
+    @RequestMapping("/invoice/{id_trans}")
+    public ModelAndView invoice(@PathVariable("id_trans") String id_trans) {
+        return transactionService.invoice(id_trans);
+    }
 }

@@ -16,4 +16,6 @@ public interface OrderLineInterface {
     void save(OrderLine orderLine);
 
     void update(OrderLine orderLine);
+
+    List<OrderLine> getByIdTransaction(String id_trans);
 }

@@ -11,6 +11,7 @@ import com.blibli.distro_pos.Model.cashier.Transaction;
 import com.blibli.distro_pos.Model.item.Item;
 import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -210,6 +211,19 @@ public class TransactionService {
             itemInterface.addOrMinStock(shoppingCart.getId_item(), shoppingCart.getQuantity());
         }
         shoppingCartInterface.clear(authentication.getName());
+
+        return modelAndView;
+    }
+
+    public ModelAndView invoice(String id_trans)    {
+        ModelAndView modelAndView = new ModelAndView("transaction/invoice");
+        Transaction transaction = transactionInterface.getOne(id_trans);
+        List<OrderLine> orderLines = orderLineInterface.getByIdTransaction(id_trans);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        modelAndView.addObject("transaction", transaction);
+        modelAndView.addObject("orderLines", orderLines);
+        modelAndView.addObject("date", simpleDateFormat.format(new Date()));
 
         return modelAndView;
     }

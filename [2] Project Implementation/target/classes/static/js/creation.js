@@ -1,3 +1,4 @@
+//Preview gambar yang diupload di item
 $(document).on('click', '#close-preview', function(){
     $('.image-preview').popover('hide');
     // Hover befor close the preview
@@ -95,9 +96,57 @@ $("#bayar").on( "click", function() {
     $('#changeModal').modal('show');
 });
 
-//HIDE RECEIPT BUTTON
-function hideReceiptButton() {
+function hitungKembalian() {
 
+    var total = document.getElementById("totalModal").innerHTML;
+    var nominal = document.getElementById("nominal").value;
 
+    var kembalian = nominal - total;
+
+    $("#kembalian").text(kembalian);
+
+}
+
+//DISCOUNT
+function addDiscount() {
+
+    var discountId = document.getElementById("diskon");
+    var diskon = discountId.options[discountId.selectedIndex].value;
+    var disc1 = document.getElementById("disc1");
+    var disc2 = document.getElementById("disc2");
+
+    $.getJSON('http://localhost:8080/cashier/discount/' + diskon, function (data) {
+        $("#discountPercentage").text(data.disc);
+
+        countTotal(data.disc);
+
+    });
+
+    disc1.value = diskon;
+    disc2.value = diskon;
+}
+
+function countTotal(percentage) {
+
+    var subtotal = document.getElementById("subtotal");
+
+    var total = subtotal.innerHTML * (100-percentage)/100;
+
+    $("#total").text(total);
+    $("#totalModal").text(total);
     
 }
+
+function getCustName() {
+
+    var customer = document.getElementById("customer");
+    var cust1 = document.getElementById("cust1");
+    var cust2 = document.getElementById("cust2");
+
+    cust1.value = customer.value;
+    cust2.value = customer.value;
+
+}
+
+
+

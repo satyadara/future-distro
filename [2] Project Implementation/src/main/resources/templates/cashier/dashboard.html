@@ -162,7 +162,21 @@
                     </tbody>
                 </table>
                 <br/>
-                <!--<button><a href="/cashier/checkout">Cekot</a></button>-->
+                <select id="diskon" name="diskon" class="form-control"
+                        style="margin-top: 30px" onchange="addDiscount()">
+                    <option value="">Tambah Diskon</option>
+                    <option th:each="discount:${discount}" th:value="${discount.getId_disc()}"
+                            th:text="${discount.getName()}"></option>
+                </select>
+
+                <br/>
+
+                Subtotal: <span id="subtotal" th:text="${transaction}"></span> <br/>
+                Diskon: <span id="discountPercentage"></span>
+
+                <br/>
+                Total: <span id="total"></span>
+
 
                 <!--Ngecek ada barang di keranjang apa engga, kalo engga buttonnya disabled-->
                 <th:block th:switch="${cart.size()}">
@@ -184,13 +198,15 @@
                                            placeholder="Nama Customer.."
                                            style="border: none;
                                     background-color: transparent;
-                                    outline: 0;"/>
+                                    outline: 0;" oninput="getCustName()"/>
                                 </h3>
                             </div>
 
                             <div class="modal-body col-md-8 col-md-offset-2">
                                 <h1 class="text-center" style="border-bottom: 1px solid grey;
-                                padding-bottom: 5px">Total: <b style="color: #1eaae2">RP 500.000</b></h1>
+                                padding-bottom: 5px">Total: <b style="color: #1eaae2">
+                                    <span id="totalModal"></span>
+                                </b></h1>
                                 <select id="payment" name="payment" class="form-control" onchange="inputDisabled()"
                                         style="margin-top: 30px">
                                     <option value="">Metode Pembayaran</option>
@@ -200,24 +216,26 @@
                                 <input id="nominal" class="form-control" type="number" name="nominal"
                                        placeholder="Masukkan nominal pembayaran"
                                        style="border-radius: 8px;margin-top: 5px"
-                                       disabled="disabled"/>
-                                <input id="diskon" class="form-control" type="number" name="diskon" value=""
-                                       style="border-radius: 8px;margin-top: 5px;display: none"/>
+                                       disabled="disabled" oninput="hitungKembalian()"/>
                             </div>
 
                             <div class="modal-footer">
                                 <button class="btn btn-default btn-flat col-md-6" data-dismiss="modal"
                                         style="border-radius: 0px">BATAL
                                 </button>
-                                <a href="/cashier/checkout">
+                                <a href="#">
                                     <button id="bayar" class="btn btn-primary btn-flat col-md-6"
                                             style="border-radius: 0px"
                                             disabled="disabled">BAYAR
                                     </button>
                                 </a>
-                                <button id="receiptKartu" class="btn btn-primary btn-flat col-md-6"
-                                        style="border-radius: 0px;display: none">CETAK RECEIPT
-                                </button>
+                                <form action="/cashier/checkout">
+                                    <input type="text" id="cust1" name="customer" hidden="hidden"/>
+                                    <input type="text" id="disc1" name="discount" hidden="hidden">
+                                    <button id="receiptKartu" class="btn btn-primary btn-flat col-md-6"
+                                            style="border-radius: 0px;display: none">CETAK RECEIPT
+                                    </button>
+                                </form>
 
                             </div>
                         </div>
@@ -225,25 +243,25 @@
                 </div> <!--MODAL TOTAL BAYAR-->
 
                 <!--MODAL KEMBALIAN-->
-                <form>
-                    <div class="modal fade" id="changeModal" role="dialog" tabindex="-1" aria-hidden="true"
-                         aria-labelledby="namaCustomer">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body col-md-8 col-md-offset-2">
-                                    <h2 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">
-                                        JUMLAH
-                                        KEMBALIAN</h2>
-                                    <h1 class="text-center"><b>RP 500.000</b></h1>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="/cashier/checkout">
-                                        <button id="receiptTunai" class="btn btn-primary btn-flat col-md-12"
-                                                style="border-radius: 0px">
-                                            CETAK RECEIPT
-                                        </button>
-                                    </a>
-                                </div>
+                <div class="modal fade" id="changeModal" role="dialog" tabindex="-1" aria-hidden="true"
+                     aria-labelledby="namaCustomer">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body col-md-8 col-md-offset-2">
+                                <h2 class="text-center" style="border-bottom: 1px solid grey;padding-bottom: 5px">JUMLAH
+                                    KEMBALIAN</h2>
+                                <h1 class="text-center" style="padding-bottom: 5px"><b style="color: #1eaae2">
+                                    <span id="kembalian"></span>
+                                </b></h1>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="/cashier/checkout">
+                                <input type="text" id="cust2" name="customer" hidden="hidden"/>
+                                <input type="text" id="disc2" name="discount" hidden="hidden">
+                                <button id="receiptTunai" class="btn btn-primary btn-flat col-md-6"
+                                        style="border-radius: 0px;display: none">CETAK RECEIPT
+                                </button>
+                            </form>
                             </div>
                         </div>
                     </div> <!--MODAL KEMBALIAN-->
@@ -252,6 +270,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- REQUIRED JS SCRIPTS -->
 

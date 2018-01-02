@@ -178,7 +178,7 @@ public class TransactionService {
         return modelAndView;
     }
 
-    public ModelAndView checkout(String username, String id_disc, Authentication authentication) {
+    public ModelAndView checkout(String customer, String id_disc, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
         List<ShoppingCart> list = shoppingCartInterface.getAll(authentication.getName());
         String id_trans = transactionInterface.getTransID();
@@ -191,7 +191,7 @@ public class TransactionService {
         }
 
         Transaction transaction = new Transaction(id_trans, id_disc, authentication.getName(),
-                username, 0.0, simpleDateFormat.format(today), "Aktif");
+                customer, 0.0, simpleDateFormat.format(today), "Aktif");
         transactionInterface.save(transaction);
 
         for (ShoppingCart cart : list) {
@@ -255,9 +255,7 @@ public class TransactionService {
     }
 
     public Discount getDiscount(String id_disc) {
-
         Discount discount = discountInterface.getOne(id_disc);
-
         return discount;
     }
 }

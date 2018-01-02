@@ -133,6 +133,9 @@
                 </div>
                 <h5>Kam, 24 Agt 2017 | 21:00:21</h5>
                 <hr/>
+                <th:block th:if="${error != null}">
+                    <p th:text="${error['customer']}" style="color: red;"></p>
+                </th:block>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -142,7 +145,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="cart: ${cart}">
+                    <tr th:each="cart: ${carts}">
                         <td th:text="${cart.getItem_name()}"></td>
                         <td class="text-quantity">
                             <th:block th:text="${cart.getQuantity()} + '  +  '"></th:block>
@@ -179,7 +182,7 @@
 
 
                 <!--Ngecek ada barang di keranjang apa engga, kalo engga buttonnya disabled-->
-                <th:block th:switch="${cart.size()}">
+                <th:block th:switch="${carts.size()}">
                     <button th:case="${0}" type="button" class="btn btn-primary col-md-12"
                             data-toggle="modal" data-target="#cartModal" disabled="disabled">BAYAR
                     </button>
@@ -195,7 +198,7 @@
                             <div class="modal-header">
                                 <h3 class="modal-title text-center">
                                     <input class="text-center" type="text" name="customer" id="customer"
-                                           placeholder="Nama Customer.."
+                                           placeholder="Masukkan Nama Customer"
                                            style="border: none;
                                     background-color: transparent;
                                     outline: 0;" oninput="getCustName()"/>

@@ -62,14 +62,14 @@ public class TransactionService {
         }
 
         //Hitung total belanja
-        for (ShoppingCart shoppingCart: list) {
+        for (ShoppingCart shoppingCart : list) {
 
             totalTransaction += shoppingCart.getSubtotal();
         }
         map.put("types", subItemList);
         map.put("items", itemList);
 
-        modelAndView.addObject("cart", list);
+        modelAndView.addObject("carts", list);
         modelAndView.addObject("itemMap", map);
         modelAndView.addObject("transaction", totalTransaction);
         modelAndView.addObject("discount", discountList);
@@ -130,7 +130,7 @@ public class TransactionService {
         if (stock_item < qty) {
             return modelAndView;
         }
-        if (shoppingCart.getId_item() != null) {
+        if (shoppingCart.getId_item() != null && shoppingCart.getUsername() == authentication.getName()) {
             System.out.println("update");
 
             itemInterface.addOrMinStock(id, qty * -1);
@@ -179,7 +179,15 @@ public class TransactionService {
     }
 
     public ModelAndView checkout(String customer, String id_disc, Authentication authentication) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
+        ModelAndView modelAndView = new ModelAndView();
+        if (customer.isEmpty()) {
+            modelAndView = index(authentication);
+            modelAndView.setViewName("cashier/dashboard");
+            Map<String, String> map = new HashMap<>();
+            map.put("customer", "Nama Pelanggan tidak boleh kosong !");
+            modelAndView.addObject("error", map);
+            return modelAndView;
+        }
         List<ShoppingCart> list = shoppingCartInterface.getAll(authentication.getName());
         String id_trans = transactionInterface.getTransID();
         Double total_trans = 0.0;
@@ -205,6 +213,8 @@ public class TransactionService {
         transaction.setTotal_trans(total_trans);
         transactionInterface.update(transaction);
         shoppingCartInterface.clear(authentication.getName());
+
+        modelAndView.setViewName("redirect:/cashier/invoice/" + transaction.getId_trans());
         return modelAndView;
     }
 
@@ -228,7 +238,7 @@ public class TransactionService {
         return modelAndView;
     }
 
-    public ModelAndView invoice(String id_trans)    {
+    public ModelAndView invoice(String id_trans) {
         ModelAndView modelAndView = new ModelAndView("transaction/invoice");
         Transaction transaction = transactionInterface.getOne(id_trans);
         List<OrderLine> orderLines = orderLineInterface.getByIdTransaction(id_trans);

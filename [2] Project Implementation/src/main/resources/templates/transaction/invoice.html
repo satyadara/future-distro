@@ -38,7 +38,7 @@
             <div class="col-xs-12">
                 <h2 class="page-header">
                     <i class="fa fa-globe"></i> Future Distro, Inc.
-                    <small class="pull-right" th:text="'Date: ' + ${date}"></small>
+                    <small class="pull-right" th:text="'Tanggal: ' + ${date}"></small>
                 </h2>
             </div>
             <!-- /.col -->
@@ -46,18 +46,16 @@
         <!-- info row -->
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
-                From
+                Dari
                 <address>
                     <strong>Future Distro, Inc.</strong><br/>
-                    xxxxxxxxx<br/>
-                    xxxxxxx, yyyyyy<br/>
-                    Phone: (804) 123-5432<br/>
-                    Email: info@almasaeedstudio.com
+                    Phone: (0274) 123-5432<br/>
+                    Email: distro_mantab@futureprogram.com
                 </address>
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
-                To
+                Untuk
                 <address>
                     <strong th:text="${transaction.getCustomer_name()}"></strong>
                 </address>
@@ -87,7 +85,7 @@
                         <td th:text="${ord.getQuantity()}"></td>
                         <td th:text="${ord.getItem_name()}"></td>
                         <td th:text="${ord.getId_orderline()}"></td>
-                        <td th:text="'Rp ' + ${ord.getSubtotal()}"></td>
+                        <td th:text="'Rp ' + ${#numbers.formatDecimal(ord.getSubtotal(),0,2)}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -99,11 +97,7 @@
         <div class="row">
             <!-- accepted payments column -->
             <div class="col-xs-6">
-                <p class="lead">Payment Methods:</p>
 
-                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                    wkwk
-                </p>
             </div>
             <!-- /.col -->
             <div class="col-xs-6">
@@ -113,7 +107,7 @@
                     <table class="table">
                         <tr>
                             <th>Total:</th>
-                            <td th:text="'Rp ' + ${transaction.getTotal_trans()}"></td>
+                            <td th:text="'Rp ' + ${#numbers.formatDecimal(transaction.getTotal_trans(),0,2)}"></td>
                         </tr>
                     </table>
                 </div>

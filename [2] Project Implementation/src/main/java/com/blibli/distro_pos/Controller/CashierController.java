@@ -1,5 +1,6 @@
 package com.blibli.distro_pos.Controller;
 
+import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -45,6 +47,7 @@ public class CashierController {
 
     @RequestMapping(value = "/checkout", method = GET)
     public ModelAndView checkout(Authentication authentication) {
+
         return transactionService.checkout(authentication);
     }
 
@@ -53,5 +56,35 @@ public class CashierController {
                                        @RequestParam("quantity") int qty,
                                        Authentication authentication) {
         return transactionService.cancelCartItem(id, qty, authentication);
+    }
+
+    @RequestMapping(value = "/cancel-order", method = GET)
+    public ModelAndView cancelOrder(Authentication authentication) {
+
+        return transactionService.cancelOrder(authentication);
+    }
+
+    @RequestMapping(value = "/discount/{id_disc}", method = GET, produces = "application/json")
+    @ResponseBody
+    public  GetDiscountPercentage getDiscount(@PathVariable("id_disc") String id_disc) {
+        Discount discount = transactionService.getDiscount(id_disc);
+
+        GetDiscountPercentage getDiscountPercentage = new GetDiscountPercentage();
+        getDiscountPercentage.setDisc(discount.getPercentage());
+
+        return getDiscountPercentage;
+    }
+
+
+    class GetDiscountPercentage {
+        Float disc;
+
+        public Float getDisc() {
+            return disc;
+        }
+
+        public void setDisc(Float disc) {
+            this.disc = disc;
+        }
     }
 }

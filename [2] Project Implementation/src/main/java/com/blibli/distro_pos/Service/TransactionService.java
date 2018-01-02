@@ -3,17 +3,18 @@ package com.blibli.distro_pos.Service;
 import com.blibli.distro_pos.DAO.cashier.Interface.OrderLineInterface;
 import com.blibli.distro_pos.DAO.cashier.Interface.ShoppingCartInterface;
 import com.blibli.distro_pos.DAO.cashier.Interface.TransactionInterface;
+import com.blibli.distro_pos.DAO.discount.Interface.DiscountInterface;
 import com.blibli.distro_pos.DAO.item.Interface.ItemInterface;
 import com.blibli.distro_pos.DAO.item.Interface.ItemTypeInterface;
 import com.blibli.distro_pos.Model.cashier.OrderLine;
 import com.blibli.distro_pos.Model.cashier.ShoppingCart;
 import com.blibli.distro_pos.Model.cashier.Transaction;
+import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.item.Item;
 import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
@@ -27,16 +28,18 @@ public class TransactionService {
     private final OrderLineInterface orderLineInterface;
     private final ItemInterface itemInterface;
     private final ItemTypeInterface itemTypeInterface;
+    private final DiscountInterface discountInterface;
 
     @Autowired
     public TransactionService(TransactionInterface transactionInterface,
                               ShoppingCartInterface shoppingCartInterface, OrderLineInterface orderLineInterface,
-                              ItemInterface itemInterface, ItemTypeInterface itemTypeInterface) {
+                              ItemInterface itemInterface, ItemTypeInterface itemTypeInterface, DiscountInterface discountInterface) {
         this.transactionInterface = transactionInterface;
         this.shoppingCartInterface = shoppingCartInterface;
         this.orderLineInterface = orderLineInterface;
         this.itemInterface = itemInterface;
         this.itemTypeInterface = itemTypeInterface;
+        this.discountInterface = discountInterface;
     }
 
     public ModelAndView index() {
@@ -44,21 +47,31 @@ public class TransactionService {
         List<ShoppingCart> list = shoppingCartInterface.getAll();
         List<SubItem> subItemList = itemTypeInterface.getAll();
         List<List<Item>> itemList = new ArrayList<>();
+        List<Discount> discountList = discountInterface.getAll();
         Map<String, List> map = new HashMap<>();
-
+        double totalTransaction = 0;
         for (SubItem subItem : subItemList) {
             List<Item> iList = itemInterface.getByType(subItem.getId());
             itemList.add(iList);
+
         }
 
         for (Item list1 : itemList.get(0)) {
             System.out.println(list1.getId_item());
+        }
+
+        //Hitung total belanja
+        for (ShoppingCart shoppingCart: list) {
+
+            totalTransaction += shoppingCart.getSubtotal();
         }
         map.put("types", subItemList);
         map.put("items", itemList);
 
         modelAndView.addObject("cart", list);
         modelAndView.addObject("itemMap", map);
+        modelAndView.addObject("transaction", totalTransaction);
+        modelAndView.addObject("discount", discountList);
         return modelAndView;
     }
 
@@ -224,5 +237,12 @@ public class TransactionService {
         shoppingCart.setSubtotal(subtotal);
 
         return shoppingCart;
+    }
+
+    public Discount getDiscount(String id_disc) {
+
+        Discount discount = discountInterface.getOne(id_disc);
+
+        return discount;
     }
 }

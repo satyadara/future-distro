@@ -14,13 +14,14 @@ import java.util.List;
 @Repository
 public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterface {
     @Override
-    public List<ShoppingCart> getAll() {
-        String sql = "SELECT * FROM CART;";
+    public List<ShoppingCart> getAll(String username) {
+        String sql = "SELECT * FROM CART WHERE username = ?;";
         List<ShoppingCart> list = new ArrayList<>();
         try {
             this.connect();
-            Statement statement = this.con.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement preparedStatement= this.con.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
                 while (resultSet.next()) {
                     ShoppingCart shoppingCart = new ShoppingCart(
@@ -84,6 +85,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             preparedStatement.setString(1, id);
             preparedStatement.setString(2, username);
             preparedStatement.execute();
+            System.out.println("wkwkwkwk");
             this.disconnect();
         } catch (Exception e) {
             System.out.println("#DELETE# something error : " + e.toString());

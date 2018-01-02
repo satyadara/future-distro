@@ -5,7 +5,7 @@ import com.blibli.distro_pos.Model.cashier.ShoppingCart;
 import java.util.List;
 
 public interface ShoppingCartInterface {
-    List<ShoppingCart> getAll();
+    List<ShoppingCart> getAll(String username);
 
     void save(ShoppingCart shoppingCart);
 

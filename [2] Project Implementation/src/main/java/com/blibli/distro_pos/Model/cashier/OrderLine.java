@@ -7,6 +7,7 @@ public class OrderLine {
     private double item_price;
     private double subtotal;
     private int quantity;
+    private String item_name;
 
     public OrderLine() {
     }
@@ -18,6 +19,16 @@ public class OrderLine {
         this.setItem_price(item_price);
         this.setSubtotal(subtotal);
         this.setQuantity(quantity);
+    }
+
+    public OrderLine(String id_orderline, String id_trans, String id_item, double item_price, double subtotal, int quantity, String item_name) {
+        this.id_orderline = id_orderline;
+        this.id_trans = id_trans;
+        this.id_item = id_item;
+        this.item_price = item_price;
+        this.subtotal = subtotal;
+        this.quantity = quantity;
+        this.item_name = item_name;
     }
 
     public String getId_orderline() {
@@ -68,4 +79,11 @@ public class OrderLine {
         this.quantity = quantity;
     }
 
+    public String getItem_name() {
+        return item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
 }

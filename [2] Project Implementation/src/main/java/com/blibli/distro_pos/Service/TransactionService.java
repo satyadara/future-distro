@@ -13,6 +13,7 @@ import com.blibli.distro_pos.Model.discount.Discount;
 import com.blibli.distro_pos.Model.item.Item;
 import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,9 +43,9 @@ public class TransactionService {
         this.discountInterface = discountInterface;
     }
 
-    public ModelAndView index() {
+    public ModelAndView index(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("cashier/dashboard");
-        List<ShoppingCart> list = shoppingCartInterface.getAll();
+        List<ShoppingCart> list = shoppingCartInterface.getAll(authentication.getName());
         List<SubItem> subItemList = itemTypeInterface.getAll();
         List<List<Item>> itemList = new ArrayList<>();
         List<Discount> discountList = discountInterface.getAll();
@@ -177,9 +178,9 @@ public class TransactionService {
         return modelAndView;
     }
 
-    public ModelAndView checkout(Authentication authentication) {
+    public ModelAndView checkout(String customer, String id_disc, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        List<ShoppingCart> list = shoppingCartInterface.getAll();
+        List<ShoppingCart> list = shoppingCartInterface.getAll(authentication.getName());
         String id_trans = transactionInterface.getTransID();
         Double total_trans = 0.0;
         Date today = new Date();
@@ -188,8 +189,9 @@ public class TransactionService {
         if (id_trans.equals("")) {
             return modelAndView;
         }
-        Transaction transaction = new Transaction(id_trans, null, authentication.getName(),
-                "-", 0.0, simpleDateFormat.format(today), "Aktif");
+
+        Transaction transaction = new Transaction(id_trans, id_disc, authentication.getName(),
+                customer, 0.0, simpleDateFormat.format(today), "Aktif");
         transactionInterface.save(transaction);
 
         for (ShoppingCart cart : list) {
@@ -218,10 +220,23 @@ public class TransactionService {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
 
         //Stok kembali setelah cart dihapus
-        for (ShoppingCart shoppingCart : shoppingCartInterface.getAll()) {
+        for (ShoppingCart shoppingCart : shoppingCartInterface.getAll(authentication.getName())) {
             itemInterface.addOrMinStock(shoppingCart.getId_item(), shoppingCart.getQuantity());
         }
         shoppingCartInterface.clear(authentication.getName());
+
+        return modelAndView;
+    }
+
+    public ModelAndView invoice(String id_trans)    {
+        ModelAndView modelAndView = new ModelAndView("transaction/invoice");
+        Transaction transaction = transactionInterface.getOne(id_trans);
+        List<OrderLine> orderLines = orderLineInterface.getByIdTransaction(id_trans);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        modelAndView.addObject("transaction", transaction);
+        modelAndView.addObject("orderLines", orderLines);
+        modelAndView.addObject("date", simpleDateFormat.format(new Date()));
 
         return modelAndView;
     }
@@ -240,9 +255,7 @@ public class TransactionService {
     }
 
     public Discount getDiscount(String id_disc) {
-
         Discount discount = discountInterface.getOne(id_disc);
-
         return discount;
     }
 }

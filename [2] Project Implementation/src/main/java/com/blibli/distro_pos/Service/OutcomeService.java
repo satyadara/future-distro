@@ -158,7 +158,7 @@ public class OutcomeService {
         return modelAndView;
     }
 
-    public String getDescription(String id)  {
+    public String getDescription(String id) {
         return outcomeInterface.getDescription(id);
     }
 }

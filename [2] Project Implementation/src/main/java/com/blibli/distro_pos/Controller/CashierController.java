@@ -24,8 +24,8 @@ public class CashierController {
     }
 
     @RequestMapping(value = "", method = GET)
-    public ModelAndView index() {
-        return transactionService.index();
+    public ModelAndView index(Authentication authentication) {
+        return transactionService.index(authentication);
     }
 
     @RequestMapping(value = "/cart/{id}", method = GET)
@@ -41,14 +41,13 @@ public class CashierController {
     @RequestMapping(value = "/cart/{id}/edit", method = GET)
     public ModelAndView editCart(@PathVariable("id") String id,
                                  @RequestParam("quantity") int qty,
-                                 Authentication authentication)  {
-        return transactionService.editCart(id,qty, authentication);
+                                 Authentication authentication) {
+        return transactionService.editCart(id, qty, authentication);
     }
 
     @RequestMapping(value = "/checkout", method = GET)
-    public ModelAndView checkout(Authentication authentication) {
-
-        return transactionService.checkout(authentication);
+    public ModelAndView checkout(@RequestParam("customer") String customer, @RequestParam("discount") String id_disc, Authentication authentication) {
+        return transactionService.checkout(customer, id_disc, authentication);
     }
 
     @RequestMapping(value = "/cart/{id}/cancel", method = GET)
@@ -58,23 +57,24 @@ public class CashierController {
         return transactionService.cancelCartItem(id, qty, authentication);
     }
 
-    @RequestMapping(value = "/cancel-order", method = GET)
-    public ModelAndView cancelOrder(Authentication authentication) {
-
-        return transactionService.cancelOrder(authentication);
+    @RequestMapping("/invoice/{id_trans}")
+    public ModelAndView invoice(@PathVariable("id_trans") String id_trans) {
+        return transactionService.invoice(id_trans);
     }
 
+    @RequestMapping(value = "/cancel-order", method = GET)
+    public ModelAndView cancelOrder(Authentication authentication) {
+        return transactionService.cancelOrder(authentication);
+    }
     @RequestMapping(value = "/discount/{id_disc}", method = GET, produces = "application/json")
     @ResponseBody
-    public  GetDiscountPercentage getDiscount(@PathVariable("id_disc") String id_disc) {
+    public GetDiscountPercentage getDiscount(@PathVariable("id_disc") String id_disc) {
         Discount discount = transactionService.getDiscount(id_disc);
-
         GetDiscountPercentage getDiscountPercentage = new GetDiscountPercentage();
         getDiscountPercentage.setDisc(discount.getPercentage());
 
         return getDiscountPercentage;
     }
-
 
     class GetDiscountPercentage {
         Float disc;
@@ -87,4 +87,5 @@ public class CashierController {
             this.disc = disc;
         }
     }
+
 }

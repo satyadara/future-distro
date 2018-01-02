@@ -22,8 +22,8 @@ public class CashierController {
     }
 
     @RequestMapping(value = "", method = GET)
-    public ModelAndView index() {
-        return transactionService.index();
+    public ModelAndView index(Authentication authentication) {
+        return transactionService.index(authentication);
     }
 
     @RequestMapping(value = "/cart/{id}", method = GET)
@@ -44,8 +44,8 @@ public class CashierController {
     }
 
     @RequestMapping(value = "/checkout", method = GET)
-    public ModelAndView checkout(Authentication authentication) {
-        return transactionService.checkout(authentication);
+    public ModelAndView checkout(@RequestParam("username") String username, @RequestParam("disc") String id_disc, Authentication authentication) {
+        return transactionService.checkout(username, id_disc, authentication);
     }
 
     @RequestMapping(value = "/cart/{id}/cancel", method = GET)

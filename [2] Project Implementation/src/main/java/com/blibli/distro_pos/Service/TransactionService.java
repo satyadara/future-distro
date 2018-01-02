@@ -39,9 +39,9 @@ public class TransactionService {
         this.itemTypeInterface = itemTypeInterface;
     }
 
-    public ModelAndView index() {
+    public ModelAndView index(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("cashier/dashboard");
-        List<ShoppingCart> list = shoppingCartInterface.getAll();
+        List<ShoppingCart> list = shoppingCartInterface.getAll(authentication.getName());
         List<SubItem> subItemList = itemTypeInterface.getAll();
         List<List<Item>> itemList = new ArrayList<>();
         Map<String, List> map = new HashMap<>();
@@ -164,9 +164,9 @@ public class TransactionService {
         return modelAndView;
     }
 
-    public ModelAndView checkout(Authentication authentication) {
+    public ModelAndView checkout(String username, String id_disc, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        List<ShoppingCart> list = shoppingCartInterface.getAll();
+        List<ShoppingCart> list = shoppingCartInterface.getAll(authentication.getName());
         String id_trans = transactionInterface.getTransID();
         Double total_trans = 0.0;
         Date today = new Date();
@@ -175,8 +175,9 @@ public class TransactionService {
         if (id_trans.equals("")) {
             return modelAndView;
         }
-        Transaction transaction = new Transaction(id_trans, null, authentication.getName(),
-                "-", 0.0, simpleDateFormat.format(today), "Aktif");
+
+        Transaction transaction = new Transaction(id_trans, id_disc, authentication.getName(),
+                username, 0.0, simpleDateFormat.format(today), "Aktif");
         transactionInterface.save(transaction);
 
         for (ShoppingCart cart : list) {
@@ -205,7 +206,7 @@ public class TransactionService {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
 
         //Stok kembali setelah cart dihapus
-        for (ShoppingCart shoppingCart : shoppingCartInterface.getAll()) {
+        for (ShoppingCart shoppingCart : shoppingCartInterface.getAll(authentication.getName())) {
             itemInterface.addOrMinStock(shoppingCart.getId_item(), shoppingCart.getQuantity());
         }
         shoppingCartInterface.clear(authentication.getName());

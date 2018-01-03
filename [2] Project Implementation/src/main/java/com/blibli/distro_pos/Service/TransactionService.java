@@ -211,6 +211,12 @@ public class TransactionService {
             total_trans += subtotal;
         }
         transaction.setTotal_trans(total_trans);
+
+        if (!(id_disc.isEmpty())) {
+            Discount discount = discountInterface.getOne(id_disc);
+            transaction.setTotal_trans(total_trans * (100 - discount.getPercentage()) / 100);
+        }
+
         transactionInterface.update(transaction);
         shoppingCartInterface.clear(authentication.getName());
 
@@ -243,9 +249,19 @@ public class TransactionService {
         Transaction transaction = transactionInterface.getOne(id_trans);
         List<OrderLine> orderLines = orderLineInterface.getByIdTransaction(id_trans);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
+        double percentage = 0;
+        double totalTrans = 0;
+        if (!(transaction.getId_disc().isEmpty()))  {
+            Discount discount = discountInterface.getOne(transaction.getId_disc());
+            percentage = discount.getPercentage();
+        }
+        for (OrderLine o: orderLines)   {
+            totalTrans += o.getSubtotal();
+        }
         modelAndView.addObject("transaction", transaction);
         modelAndView.addObject("orderLines", orderLines);
+        modelAndView.addObject("discount", percentage);
+        modelAndView.addObject("totalTrans", totalTrans);
         modelAndView.addObject("date", simpleDateFormat.format(new Date()));
 
         return modelAndView;

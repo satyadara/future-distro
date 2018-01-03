@@ -57,25 +57,24 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100"
-                                                 height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" style="width: 100px; height: 100px;"
                                                  class="img img-responsive center-block"/>
-                                            <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
+                                            <p th:text="${item.getName_item()+' - '+ item.getSize() +' ('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
+                                            <form th:action="${'/cashier/cart/' + item.getId_item()}">
+                                                <input type="text" hidden="hidden" name="item_name"
+                                                       th:value="${item.getName_item()}"/>
+                                                <input type="text" hidden="hidden" name="price_item"
+                                                       th:value="${item.getPrice()}"/>
+                                                <input type="text" hidden="hidden" name="stock_item"
+                                                       th:value="${item.getStock()}"/>
+                                                <input class="form-control col-md-6" type="hidden" name="quantity"
+                                                       value="1"/>
+                                                <button class="btn btn-primary col-md-8 col-md-offset-2" type="submit">
+                                                    Tambah
+                                                </button>
+                                            </form>
                                         </div>
-                                        <form th:action="${'/cashier/cart/' + item.getId_item()}">
-                                            <input type="text" hidden="hidden" name="item_name"
-                                                   th:value="${item.getName_item()}"/>
-                                            <input type="text" hidden="hidden" name="price_item"
-                                                   th:value="${item.getPrice()}"/>
-                                            <input type="text" hidden="hidden" name="stock_item"
-                                                   th:value="${item.getStock()}"/>
-                                            <input class="form-control col-md-6" type="hidden" name="quantity"
-                                                   value="1"/>
-                                            <button class="btn btn-primary col-md-8 col-md-offset-2" type="submit">
-                                                Tambah
-                                            </button>
-                                        </form>
                                     </div>
                                 </th:block>
                             </div>
@@ -87,10 +86,9 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/item/' + item.getImage()}" width="100"
-                                                 height="100"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}" style="width: 100px; height: 100px;"
                                                  class="img img-responsive center-block"/>
-                                            <p th:text="${item.getName_item()+'('+item.getStock()+')'}"></p>
+                                            <p th:text="${item.getName_item()+' - '+ item.getSize() +' ('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
                                         </div>
                                         <form th:action="${'/cashier/cart/' + item.getId_item()}">
@@ -131,7 +129,7 @@
                         </form>
                     </div>
                 </div>
-                <h5>Kam, 24 Agt 2017 | 21:00:21</h5>
+                <!--<h5>Kam, 24 Agt 2017 | 21:00:21</h5>-->
                 <hr/>
                 <th:block th:if="${error != null}">
                     <p th:text="${error['customer']}" style="color: red;"></p>

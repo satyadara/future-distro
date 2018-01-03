@@ -107,7 +107,15 @@
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
-                            <th>Total:</th>
+                            <th>Total :</th>
+                            <td th:text="'Rp ' + ${#numbers.formatDecimal(totalTrans,0,2)}"></td>
+                        </tr>
+                        <tr>
+                            <th>Diskon :</th>
+                            <td th:text="'Rp ' + ${#numbers.formatDecimal(discount,0,2)}"></td>
+                        </tr>
+                        <tr>
+                            <th>Total bayar :</th>
                             <td th:text="'Rp ' + ${#numbers.formatDecimal(transaction.getTotal_trans(),0,2)}"></td>
                         </tr>
                     </table>

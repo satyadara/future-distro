@@ -23,4 +23,6 @@ public interface ItemInterface extends BasicDAO<Item, String> {
     List<Item> getOutOfStock(int page);
 
     int countOutOfStock();
+
+    int getNextId();
 }

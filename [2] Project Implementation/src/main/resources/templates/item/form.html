@@ -132,10 +132,9 @@
                                     <th:block th:switch="*{color}">
                                         <th:block th:case="${colorx.getId()}">
                                             <option th:value="${colorx.getId()}" th:text="${colorx.getName()}"
-                                                    selected="selected">
-                                            </option>
+                                                    selected="selected"></option>
                                         </th:block>
-                                        <th:block>
+                                        <th:block th:case="*">
                                             <option th:value="${colorx.getId()}" th:text="${colorx.getName()}"></option>
                                         </th:block>
                                     </th:block>
@@ -179,6 +178,10 @@
                                 </div>
                             </span>
                             </div><!-- /input-group image-preview [TO HERE]-->
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["image"] != null}' th:text='${errors2["image"]}'
+                                   style="color: red;"></p>
+                            </th:block>
                         </div>
 
                         <div class="col-md-12">

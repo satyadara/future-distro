@@ -73,23 +73,18 @@ public class ItemService {
     public ModelAndView store(Item item, MultipartFile image, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
 
-        if (image.isEmpty()) {
-
-            return modelAndView;
-        }
         try {
-
-            String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
+            String id_item = itemInterface.getNextId() + "-" + item.getMerk() + "-" + item.getType() + "-" + item.getSize();
             item.setId_item(id_item);
             item.setUsername(authentication.getName());
+            item.setImage("image_" + id_item + ".jpg");
+            modelAndView = validateAndExecution(item, STORE, image);
 
             //Get the file and save it somewhere
             byte[] bytes = image.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + "image_" + id_item + ".jpg");
             Files.write(path, bytes);
-            item.setImage("image_" + id_item + ".jpg");
 
-            modelAndView = validateAndExecution(item, STORE);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -127,18 +122,14 @@ public class ItemService {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
 
         try {
-
-            //Kalo gambarnya ga kosong
-            if (!image.isEmpty()) {
-
+            if (!(image.isEmpty())) {
                 //Get the file and save it somewhere
                 byte[] bytes = image.getBytes();
                 Path path = Paths.get(UPLOADED_FOLDER + "image_" + item.getId_item() + ".jpg");
                 Files.write(path, bytes);
-                item.setImage("image_" + item.getId_item() + ".jpg");
             }
-
-            modelAndView = validateAndExecution(item, UPDATE);
+            item.setImage("image_" + item.getId_item() + ".jpg");
+            modelAndView = validateAndExecution(item, UPDATE, image);
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -338,7 +329,7 @@ public class ItemService {
     }
 
     /********************* SUPPORT METHOD *********************/
-    public ModelAndView create(String sub)  {
+    public ModelAndView create(String sub) {
         ModelAndView modelAndView = new ModelAndView("item/sub/form");
 
         try {
@@ -423,7 +414,7 @@ public class ItemService {
         return modelAndView;
     }
 
-    private ModelAndView validateAndExecution(Item item, String action) {
+    private ModelAndView validateAndExecution(Item item, String action, MultipartFile image) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         List<String> errors = new ArrayList<>();
         Map<String, String> errors2 = new HashMap<>();
@@ -431,7 +422,7 @@ public class ItemService {
         List<SubItem> itemColorList;
         List<SubItem> itemMerkList;
         try {
-            if (!(item.getStock() < 0 || item.getPrice() < 0)) {
+            if (!(item.getStock() < 0 || item.getPrice() < 0 || (image.isEmpty()) && action.equals(STORE))) {
                 if (action.equals(STORE)) {
                     itemInterface.save(item);
                 } else if (action.equals(UPDATE)) {
@@ -440,13 +431,17 @@ public class ItemService {
             } else {
                 modelAndView.setViewName("item/form");
                 modelAndView.addObject("item", item);
-                if (item.getPrice() < 0) {
-                    errors.add("Harga barang tidak boleh negatif !");
-                    errors2.put("price", "Harga barang tidak boleh negatif !");
+                if (item.getPrice() <= 0) {
+                    errors.add("Harga barang tidak boleh nol atau negatif !");
+                    errors2.put("price", "Harga barang tidak boleh nol atau negatif !");
                 }
                 if (item.getStock() < 0) {
                     errors.add("Stok barang tidak boleh negatif !");
                     errors2.put("stock", "Stok barang tidak boleh negatif !");
+                }
+                if (image.isEmpty()) {
+                    errors.add("Gambar harus disertakan !");
+                    errors2.put("image", "Gambar harus disertakan !");
                 }
                 modelAndView.addObject("errors", errors);
                 modelAndView.addObject("errors2", errors2);

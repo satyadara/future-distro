@@ -70,11 +70,11 @@ public class ItemImpl extends MyConnection implements ItemInterface {
     @Override
     public void save(Item item) {
         String sql = "INSERT INTO item(id_item, username, name_item, price_item, image_item, merk_item, color_item, size_item, type_item, status_item, stock_item) " +
-                "VALUES (nextval('sec_item') || ?,?,?,?,?,?,?,?,?,?,?)";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
-            preparedStatement.setString(1, "-" + item.getId_item());
+            preparedStatement.setString(1, item.getId_item());
             preparedStatement.setString(2, item.getUsername());
             preparedStatement.setString(3, item.getName_item());
             preparedStatement.setFloat(4, item.getPrice());
@@ -335,6 +335,26 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             System.out.println("#COUNT# something error : " + e.toString());
         }
 
+        return result;
+    }
+
+    @Override
+    public int getNextId() {
+        String sql = "SELECT nextval('sec_item')";
+        int result = 0;
+        try {
+            this.connect();
+            Statement statement = this.con.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    result = resultSet.getInt("nextval");
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+
+        }
         return result;
     }
 

@@ -82,7 +82,7 @@ function inputDisabled() {
         document.getElementById("nominal").disabled = false;
         receiptButton.style.display = "none";
         bayarButton.style.display = "block";
-        bayarButton.disabled = false;
+        bayarButton.disabled = true;
     }
 }
 

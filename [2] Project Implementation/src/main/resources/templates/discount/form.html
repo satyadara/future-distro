@@ -31,38 +31,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><b>Distro</b>POS</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/admin"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li><a href="/item"><i class="fa fa-archive"></i> <span>Stok</span></a></li>
-                <li><a href="/discount"><i class="fa fa-percent"></i> <span>Diskon</span></a></li>
-                <li><a href="/view_user"><i class="fa fa-users"></i> <span>Pengguna</span></a></li>
-                <li><a href="/outcome"><i class="fa fa-money"></i> <span>Pengeluaran</span></a></li>
-                <li>
-                    <!--<a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse"-->
-                    <!--th:href="@{/logout}" aria-expanded="false" aria-controls="nav-collapse2">Sign out</a>-->
-                    <form name="logout" th:action="@{/logout}" method="POST">
-                        <input type="submit" class="btn btn-default btn-outline btn-circle" value="Sign Out"/>
-                    </form>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-</nav><!-- /.navbar -->
+<div th:replace="fragments/header_cashier :: header_cashier">...</div>
 
 <div class="container">
     <div class="row">

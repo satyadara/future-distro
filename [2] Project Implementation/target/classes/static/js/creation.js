@@ -100,10 +100,19 @@ function hitungKembalian() {
 
     var total = document.getElementById("totalModal").innerHTML;
     var nominal = document.getElementById("nominal").value;
+    var bayarButton = document.getElementById("bayar");
 
     var kembalian = nominal - total;
 
     $("#kembalian").text(kembalian);
+
+    //Cek jika jumlah pembayaran masih kurang dari total belanja
+    if (nominal < total) {
+        bayarButton.disabled = true;
+    }
+    else {
+        bayarButton.disabled = false;
+    }
 
 }
 

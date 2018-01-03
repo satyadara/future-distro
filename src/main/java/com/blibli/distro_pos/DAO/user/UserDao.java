@@ -21,7 +21,7 @@ public class UserDao {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://google/distro_pos?socketFactory=com.google.cloud.sql.postgres.SocketFactory&socketFactoryArg=future-distro-pos:asia-south1:distroposo_pos",
+                    "jdbc:postgresql://google/distro_pos?socketFactory=com.google.cloud.sql.postgres.SocketFactory&socketFactoryArg=future-distro-pos:asia-south1:distropos",
                     "postgres",
                     "postgres"
             );

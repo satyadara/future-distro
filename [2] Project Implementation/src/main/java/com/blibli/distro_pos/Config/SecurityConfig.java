@@ -42,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 //                .antMatchers("").permitAll()
-                .antMatchers("/admin/**", "/add_user/**", "/view_user/**", "/admin2/**", "/add_user2/**", "/item/**",
-                        "/discount/**", "/outcome/**", "/ledger/**").access("hasAuthority('MANAGER')")
+                .antMatchers("/admin/**", "/user/**", "/item/**",
+                        "/discount/**", "/outcome/**", "/ledger/**", "/transaction/**").access("hasAuthority('MANAGER')")
                 .antMatchers("/cashier/**").access("hasAnyAuthority('CASHIER', 'MANAGER')")
                 .and()
                 .formLogin().loginPage("/login")

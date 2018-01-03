@@ -17,4 +17,14 @@ public interface SummaryInterface {
     List<MostSoldItem> getMostSoldItem(String sql);
 
     List<LoyalCustomer> getLoyalCustomer(String sql);
+
+    String getChartByMonth();
+
+    int countTransactionOfThisYear();
+
+    int countItemOutOfStock();
+
+    double getNetSalesOfThisYear();
+
+    double getGrossSalesOfThisYear();
 }

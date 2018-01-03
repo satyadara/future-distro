@@ -260,4 +260,26 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
     public String getStringList() {
         return LIST;
     }
+
+    @Override
+    public String getDescription(String id) {
+        String sql = "SELECT row_to_json(out) as response FROM (SELECT desc_out FROM outcome WHERE id_outcome = ?) out;";
+        String result = "";
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (result != null) {
+                while (resultSet.next()) {
+                    result = resultSet.getString("response");
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+
+        }
+        return result;
+    }
+
 }

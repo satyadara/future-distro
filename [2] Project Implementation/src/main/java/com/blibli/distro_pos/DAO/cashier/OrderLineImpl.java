@@ -101,4 +101,34 @@ public class OrderLineImpl extends MyConnection implements OrderLineInterface {
             System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
+
+    @Override
+    public List<OrderLine> getByIdTransaction(String id_trans) {
+        String sql = "SELECT o.id_orderline, o.id_trans, o.id_item, o.item_price, o.subtotal, o.quantity, i.name_item  FROM orderline o JOIN item i ON(o.id_item = i.id_item) WHERE id_trans = ?;";
+        List<OrderLine> list = new ArrayList<>();
+        try {
+            this.connect();
+            PreparedStatement preparedStatement = this.con.prepareStatement(sql);
+            preparedStatement.setString(1, id_trans);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    OrderLine orderLine = new OrderLine(
+                            resultSet.getString("id_orderline"),
+                            resultSet.getString("id_trans"),
+                            resultSet.getString("id_item"),
+                            resultSet.getDouble("item_price"),
+                            resultSet.getDouble("subtotal"),
+                            resultSet.getInt("quantity"),
+                            resultSet.getString("name_item")
+                    );
+                    list.add(orderLine);
+                }
+            }
+            this.disconnect();
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error : " + e.toString());
+        }
+        return list;
+    }
 }

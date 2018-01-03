@@ -1,19 +1,19 @@
 package com.blibli.distro_pos.Controller;
 
 import com.blibli.distro_pos.Model.item.Item;
-import com.blibli.distro_pos.Model.item.ItemColor;
-import com.blibli.distro_pos.Model.item.ItemMerk;
-import com.blibli.distro_pos.Model.item.ItemType;
+import com.blibli.distro_pos.Model.item.SubItem;
 import com.blibli.distro_pos.Service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -23,8 +23,8 @@ public class ItemController {
     private final ItemService itemService;
 
     @Autowired
-
     public ItemController(ItemService itemService) {
+
         this.itemService = itemService;
     }
 
@@ -39,8 +39,9 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/create", method = POST)
-    public ModelAndView store(@ModelAttribute(name = "item") Item item, Authentication authentication) {
-        return itemService.store(item, authentication);
+    public ModelAndView store(@ModelAttribute(name = "item") Item item,
+                              @RequestParam("file")MultipartFile image, Authentication authentication) {
+        return itemService.store(item, image, authentication);
     }
 
     @RequestMapping(value = "/{id}/edit", method = GET)
@@ -49,8 +50,9 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = POST)
-    public ModelAndView update(@ModelAttribute(name = "item") Item item) {
-        return itemService.update(item);
+    public ModelAndView update(@ModelAttribute(name = "item") Item item,
+                               @RequestParam("file")MultipartFile image) {
+        return itemService.update(item, image);
     }
 
     @RequestMapping(value = "/{id}/delete", method = GET)
@@ -73,6 +75,11 @@ public class ItemController {
         return itemService.search(key, page);
     }
 
+    @RequestMapping(value = "/outofstock/page/{page}", method = GET)
+    public ModelAndView outOfStock(@PathVariable(name = "page") int page) {
+        return itemService.outOfStock(page);
+    }
+
     /**
      * ITEM TYPE
      **/
@@ -87,7 +94,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/type/create", method = POST)
-    public ModelAndView storeType(@ModelAttribute("type") ItemType type) {
+    public ModelAndView storeType(@ModelAttribute("type") SubItem type) {
         return itemService.storeType(type);
     }
 
@@ -97,7 +104,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/type/{id}/edit", method = POST)
-    public ModelAndView updateType(@ModelAttribute("type") ItemType type) {
+    public ModelAndView updateType(@ModelAttribute("type") SubItem type) {
         return itemService.updateType(type);
     }
 
@@ -121,7 +128,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/create", method = POST)
-    public ModelAndView storeMerk(@ModelAttribute("merk") ItemMerk merk) {
+    public ModelAndView storeMerk(@ModelAttribute("merk") SubItem merk) {
         return itemService.storeMerk(merk);
     }
 
@@ -131,7 +138,7 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/merk/{id}/edit", method = POST)
-    public ModelAndView updateMerk(@ModelAttribute("merk") ItemMerk merk) {
+    public ModelAndView updateMerk(@ModelAttribute("merk") SubItem merk) {
         return itemService.updateMerk(merk);
     }
 
@@ -152,13 +159,13 @@ public class ItemController {
     public ModelAndView createColor() {return itemService.createColor();}
 
     @RequestMapping(value = "/color/create", method = POST)
-    public ModelAndView storeColor(@ModelAttribute("merk") ItemColor color) {return itemService.storeColor(color);}
+    public ModelAndView storeColor(@ModelAttribute("merk") SubItem color) {return itemService.storeColor(color);}
 
     @RequestMapping(value = "/color/{id}/edit", method = GET)
     public ModelAndView editColor(@PathVariable("id") String id) {return itemService.editColor(id);}
 
     @RequestMapping(value = "/color/{id}/edit", method = POST)
-    public ModelAndView updateColor(@ModelAttribute("merk") ItemColor color) {return itemService.updateColor(color);}
+    public ModelAndView updateColor(@ModelAttribute("merk") SubItem color) {return itemService.updateColor(color);}
 
     @RequestMapping(value = "/color/page/{page}", method = GET)
     public ModelAndView paginateColor(@PathVariable(name = "page") String page) {return itemService.paginateColor(page);}

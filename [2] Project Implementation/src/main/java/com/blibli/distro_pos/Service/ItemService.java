@@ -1,46 +1,48 @@
 package com.blibli.distro_pos.Service;
 
+import com.blibli.distro_pos.DAO.item.Interface.ItemColorInterface;
 import com.blibli.distro_pos.DAO.item.Interface.ItemInterface;
-import com.blibli.distro_pos.DAO.item.ItemColorDAO;
-import com.blibli.distro_pos.DAO.item.ItemImpl;
-import com.blibli.distro_pos.DAO.item.ItemMerkDAO;
-import com.blibli.distro_pos.DAO.item.ItemTypeDAO;
+import com.blibli.distro_pos.DAO.item.Interface.ItemMerkInterface;
+import com.blibli.distro_pos.DAO.item.Interface.ItemTypeInterface;
 import com.blibli.distro_pos.Model.item.Item;
-import com.blibli.distro_pos.Model.item.ItemColor;
-import com.blibli.distro_pos.Model.item.ItemMerk;
-import com.blibli.distro_pos.Model.item.ItemType;
+import com.blibli.distro_pos.Model.item.SubItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
 @Service
 public class ItemService {
     private final ItemInterface itemInterface;
-    private final ItemTypeDAO itemTypeDAO;
-    private final ItemColorDAO itemColorDAO;
-    private final ItemMerkDAO itemMerkDAO;
+    private final ItemTypeInterface itemTypeInterface;
+    private final ItemMerkInterface itemMerkInterface;
+    private final ItemColorInterface itemColorInterface;
     private static final String STORE = "store";
     private static final String UPDATE = "update";
+    private static final String COLOR = "Color";
+    private static final String TYPE = "Type";
+    private static final String MERK = "Merk";
+
+    //Lokasi buat ngesave gambar
+    private static String UPLOADED_FOLDER = System.getProperty("user.dir") + "/src/main/resources/static/img/item/";
 
     @Autowired
-    public ItemService(ItemInterface itemInterface, ItemTypeDAO itemTypeDAO, ItemColorDAO itemColorDAO, ItemMerkDAO itemMerkDAO) {
+    public ItemService(ItemInterface itemInterface, ItemTypeInterface itemTypeInterface,
+                       ItemMerkInterface itemMerkInterface, ItemColorInterface itemColorInterface) {
         this.itemInterface = itemInterface;
-        this.itemTypeDAO = itemTypeDAO;
-        this.itemColorDAO = itemColorDAO;
-        this.itemMerkDAO = itemMerkDAO;
+        this.itemTypeInterface = itemTypeInterface;
+        this.itemMerkInterface = itemMerkInterface;
+        this.itemColorInterface = itemColorInterface;
     }
 
     /************************ITEM MASTER************************/
@@ -51,13 +53,13 @@ public class ItemService {
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item = new Item();
-        List<ItemType> itemTypeList;
-        List<ItemColor> itemColorList;
-        List<ItemMerk> itemMerkList;
+        List<SubItem> itemTypeList;
+        List<SubItem> itemColorList;
+        List<SubItem> itemMerkList;
         try {
-            itemTypeList = itemTypeDAO.getAll();
-            itemColorList = itemColorDAO.getAll();
-            itemMerkList = itemMerkDAO.getAll();
+            itemColorList = itemColorInterface.getAll();
+            itemMerkList = itemMerkInterface.getAll();
+            itemTypeList = itemTypeInterface.getAll();
             modelAndView.addObject("item", item);
             modelAndView.addObject("types", itemTypeList);
             modelAndView.addObject("colors", itemColorList);
@@ -68,14 +70,21 @@ public class ItemService {
         return modelAndView;
     }
 
-    public ModelAndView store(Item item, Authentication authentication) {
+    public ModelAndView store(Item item, MultipartFile image, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
+
         try {
-            String id_item = item.getMerk() + "-" + item.getType() + "-" + item.getSize();
+            String id_item = itemInterface.getNextId() + "-" + item.getMerk() + "-" + item.getType() + "-" + item.getSize();
             item.setId_item(id_item);
             item.setUsername(authentication.getName());
-            item.setImage("default");
-            modelAndView = validateAndExecution(item, STORE);
+            item.setImage("image_" + id_item + ".jpg");
+            modelAndView = validateAndExecution(item, STORE, image);
+
+            //Get the file and save it somewhere
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + "image_" + id_item + ".jpg");
+            Files.write(path, bytes);
+
         } catch (Exception e) {
             System.out.println("something error : " + e.toString());
         }
@@ -86,14 +95,14 @@ public class ItemService {
     public ModelAndView edit(String id) {
         ModelAndView modelAndView = new ModelAndView("item/form");
         Item item;
-        List<ItemType> itemTypeList;
-        List<ItemColor> itemColorList;
-        List<ItemMerk> itemMerkList;
+        List<SubItem> itemTypeList;
+        List<SubItem> itemColorList;
+        List<SubItem> itemMerkList;
         try {
+            itemColorList = itemColorInterface.getAll();
+            itemMerkList = itemMerkInterface.getAll();
+            itemTypeList = itemTypeInterface.getAll();
             item = itemInterface.getOne(id);
-            itemTypeList = itemTypeDAO.getAll();
-            itemColorList = itemColorDAO.getAll();
-            itemMerkList = itemMerkDAO.getAll();
             System.out.println(id + " " + item.getId_item());
             modelAndView.addObject("message", "success");
             modelAndView.addObject("item", item);
@@ -108,8 +117,23 @@ public class ItemService {
         return modelAndView;
     }
 
-    public ModelAndView update(Item item) {
-        ModelAndView modelAndView = validateAndExecution(item, UPDATE);
+    public ModelAndView update(Item item, MultipartFile image) {
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/item");
+
+        try {
+            if (!(image.isEmpty())) {
+                //Get the file and save it somewhere
+                byte[] bytes = image.getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER + "image_" + item.getId_item() + ".jpg");
+                Files.write(path, bytes);
+            }
+            item.setImage("image_" + item.getId_item() + ".jpg");
+            modelAndView = validateAndExecution(item, UPDATE, image);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
         return modelAndView;
     }
 
@@ -183,15 +207,222 @@ public class ItemService {
         return modelAndView;
     }
 
-    private ModelAndView validateAndExecution(Item item, String action) {
+    public ModelAndView outOfStock(int page) {
+        ModelAndView modelAndView = new ModelAndView("item/outofstock");
+        List<Item> itemList;
+        int itemCount;
+        int pageCount;
+        int currentpage = page;
+        try {
+            itemList = itemInterface.getOutOfStock(currentpage);
+            itemCount = itemInterface.countOutOfStock();
+            pageCount = (itemCount / 10) + 1;
+            modelAndView.addObject("items", itemList);
+            modelAndView.addObject("count", itemCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", currentpage);
+            modelAndView.addObject("search", false);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    /************************SUB-ITEM TYPE************************/
+    public ModelAndView indexType() {
+        return paginateType("1");
+    }
+
+    public ModelAndView createType() {
+        return create(TYPE);
+    }
+
+    public ModelAndView storeType(SubItem type) {
+        return subItemValidate(TYPE, STORE, type);
+    }
+
+    public ModelAndView editType(String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        SubItem type;
+        try {
+            type = itemTypeInterface.getOne(id);
+            modelAndView.addObject("data", type);
+            modelAndView.addObject("content", TYPE);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    public ModelAndView updateType(SubItem type) {
+        return subItemValidate(TYPE, UPDATE, type);
+    }
+
+    public ModelAndView paginateType(String page) {
+        return paginate(Integer.parseInt(page), TYPE);
+    }
+
+    /************************SUB-ITEM MERK************************/
+    public ModelAndView indexMerk() {
+        return paginateMerk("1");
+    }
+
+    public ModelAndView createMerk() {
+        return create(MERK);
+    }
+
+    public ModelAndView storeMerk(SubItem merk) {
+        return subItemValidate(MERK, STORE, merk);
+    }
+
+    public ModelAndView editMerk(String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        SubItem merk;
+        try {
+            merk = itemMerkInterface.getOne(id);
+            modelAndView.addObject("data", merk);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    public ModelAndView updateMerk(SubItem merk) {
+        return subItemValidate(MERK, UPDATE, merk);
+    }
+
+    public ModelAndView paginateMerk(String page) {
+        return paginate(Integer.parseInt(page), MERK);
+    }
+
+    /************************SUB-ITEM COLOR************************/
+    public ModelAndView indexColor() {
+        return paginateColor("1");
+    }
+
+    public ModelAndView createColor() {
+        return create(COLOR);
+    }
+
+    public ModelAndView storeColor(SubItem color) {
+        return subItemValidate(COLOR, STORE, color);
+    }
+
+    public ModelAndView editColor(String id) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+        SubItem color;
+        try {
+            color = itemColorInterface.getOne(id);
+            modelAndView.addObject("data", color);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    public ModelAndView updateColor(SubItem color) {
+        return subItemValidate(COLOR, UPDATE, color);
+    }
+
+    public ModelAndView paginateColor(String page) {
+        return paginate(Integer.parseInt(page), COLOR);
+    }
+
+    /********************* SUPPORT METHOD *********************/
+    public ModelAndView create(String sub) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/form");
+
+        try {
+            SubItem subItem = new SubItem();
+            modelAndView.addObject("data", subItem);
+            modelAndView.addObject("content", sub);
+        } catch (Exception e) {
+            System.out.println("something error : " + e.toString());
+        }
+
+        return modelAndView;
+    }
+
+    public ModelAndView paginate(int page, String content) {
+        ModelAndView modelAndView = new ModelAndView("item/sub/index");
+        List<SubItem> datas = new ArrayList<>();
+        int dataCount = 0;
+        int pageCount;
+        try {
+            if (content.equals(COLOR)) {
+                datas = itemColorInterface.paginate(page);
+                dataCount = itemColorInterface.count();
+            } else if (content.equals(TYPE)) {
+                datas = itemTypeInterface.paginate(page);
+                dataCount = itemTypeInterface.count();
+            } else if (content.equals(MERK)) {
+                datas = itemMerkInterface.paginate(page);
+                dataCount = itemMerkInterface.count();
+            }
+            pageCount = (dataCount / 10) + 1;
+            modelAndView.addObject("datas", datas);
+            modelAndView.addObject("count", dataCount);
+            modelAndView.addObject("pages", pageCount);
+            modelAndView.addObject("currentPage", page);
+            modelAndView.addObject("content", content);
+        } catch (Exception e) {
+            System.out.println("#FETCH# something error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    private ModelAndView subItemValidate(String content, String action, SubItem subItem) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/item/" + content.toLowerCase());
+        Map<String, String> errors = new HashMap<>();
+        try {
+            if (subItem.getId().isEmpty() || subItem.getId().length() != 3 || subItem.getName().isEmpty()) {
+                modelAndView.setViewName("item/sub/form");
+                modelAndView.addObject("data", subItem);
+                if (subItem.getId().isEmpty()) {
+                    errors.put("id", "ID tidak boleh kosong !");
+                    modelAndView.addObject("content", content);
+                } else if (subItem.getId().length() != 3) {
+                    errors.put("id", "ID harus 3 digit !");
+                } else if (subItem.getName().isEmpty()) {
+                    errors.put("name", "Nama tidak boleh kosong !");
+                }
+                modelAndView.addObject("errors", errors);
+            } else {
+                if (content.equals(COLOR)) {
+                    if (action.equals(STORE)) {
+                        itemColorInterface.save(subItem);
+                    } else if (action.equals(UPDATE)) {
+                        itemColorInterface.update(subItem);
+                    }
+                } else if (content.equals(TYPE)) {
+                    if (action.equals(STORE)) {
+                        itemTypeInterface.save(subItem);
+                    } else if (action.equals(UPDATE)) {
+                        itemTypeInterface.update(subItem);
+                    }
+                } else if (content.equals(MERK)) {
+                    if (action.equals(STORE)) {
+                        itemMerkInterface.save(subItem);
+                    } else if (action.equals(UPDATE)) {
+                        itemMerkInterface.update(subItem);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Sub Item Validate error : " + e.toString());
+        }
+        return modelAndView;
+    }
+
+    private ModelAndView validateAndExecution(Item item, String action, MultipartFile image) {
         ModelAndView modelAndView = new ModelAndView("redirect:/item");
         List<String> errors = new ArrayList<>();
         Map<String, String> errors2 = new HashMap<>();
-        List<ItemType> itemTypeList;
-        List<ItemColor> itemColorList;
-        List<ItemMerk> itemMerkList;
+        List<SubItem> itemTypeList;
+        List<SubItem> itemColorList;
+        List<SubItem> itemMerkList;
         try {
-            if (!(item.getStock() < 0 || item.getPrice() < 0)) {
+            if (!(item.getStock() < 0 || item.getPrice() < 0 || (image.isEmpty()) && action.equals(STORE))) {
                 if (action.equals(STORE)) {
                     itemInterface.save(item);
                 } else if (action.equals(UPDATE)) {
@@ -200,296 +431,31 @@ public class ItemService {
             } else {
                 modelAndView.setViewName("item/form");
                 modelAndView.addObject("item", item);
-                if (item.getPrice() < 0) {
-                    errors.add("Harga barang tidak boleh negatif !");
-                    errors2.put("price", "Harga barang tidak boleh negatif !");
+                if (item.getPrice() <= 0) {
+                    errors.add("Harga barang tidak boleh nol atau negatif !");
+                    errors2.put("price", "Harga barang tidak boleh nol atau negatif !");
                 }
                 if (item.getStock() < 0) {
                     errors.add("Stok barang tidak boleh negatif !");
                     errors2.put("stock", "Stok barang tidak boleh negatif !");
                 }
+                if (image.isEmpty()) {
+                    errors.add("Gambar harus disertakan !");
+                    errors2.put("image", "Gambar harus disertakan !");
+                }
                 modelAndView.addObject("errors", errors);
                 modelAndView.addObject("errors2", errors2);
             }
 
-            itemTypeList = itemTypeDAO.getAll();
-            itemColorList = itemColorDAO.getAll();
-            itemMerkList = itemMerkDAO.getAll();
+            itemTypeList = itemTypeInterface.getAll();
+            itemColorList = itemColorInterface.getAll();
+            itemMerkList = itemMerkInterface.getAll();
             modelAndView.addObject("types", itemTypeList);
             modelAndView.addObject("colors", itemColorList);
             modelAndView.addObject("merks", itemMerkList);
 
         } catch (Exception e) {
             System.out.println("something error : ");
-        }
-        return modelAndView;
-    }
-
-    /************************SUB-ITEM TYPE************************/
-    public ModelAndView indexType() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemType> types;
-        int typeCount;
-        int pageCount;
-        int currentPage = 1;
-        String content = "type";
-        try {
-            types = itemTypeDAO.paginate(currentPage);
-            typeCount = itemTypeDAO.count();
-            pageCount = (typeCount / 10) + 1;
-            modelAndView.addObject("datas", types);
-            modelAndView.addObject("count", typeCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView createType() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            ItemType type = new ItemType();
-            modelAndView.addObject("datas", type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
-
-    public ModelAndView storeType(ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
-        try {
-            itemTypeDAO.save(type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView editType(String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemType type;
-        try {
-            type = itemTypeDAO.getOne(id);
-            modelAndView.addObject("data", type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView updateType(ItemType type) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/type");
-        try {
-            itemTypeDAO.update(type);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView paginateType(String page) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemType> types;
-        int typeCount;
-        int pageCount;
-        String content = "type";
-        try {
-            types = itemTypeDAO.paginate(1);
-            typeCount = itemTypeDAO.count();
-            pageCount = (typeCount / 10) + 1;
-            modelAndView.addObject("datas", types);
-            modelAndView.addObject("count", typeCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    /************************SUB-ITEM MERK************************/
-    public ModelAndView indexMerk() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemMerk> merks;
-        int merkCount;
-        int pageCount;
-        int currentPage = 1;
-        String content = "merk";
-        try {
-            merks = itemMerkDAO.paginate(currentPage);
-            merkCount = itemMerkDAO.count();
-            pageCount = (merkCount / 10) + 1;
-            modelAndView.addObject("datas", merks);
-            modelAndView.addObject("count", merkCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView createMerk() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            ItemMerk merk = new ItemMerk();
-            modelAndView.addObject("datas", merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
-
-    public ModelAndView storeMerk(ItemMerk merk) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
-        try {
-            itemMerkDAO.save(merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView editMerk(String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemMerk merk;
-        try {
-            merk = itemMerkDAO.getOne(id);
-            System.out.println(merk.getId() + " " + merk.getName());
-            modelAndView.addObject("data", merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView updateMerk(ItemMerk merk) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/merk");
-        try {
-            itemMerkDAO.update(merk);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView paginateMerk(String page) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemMerk> merks;
-        int merkCount;
-        int pageCount;
-        String content = "merk";
-        try {
-            merks = itemMerkDAO.paginate(1);
-            merkCount = itemMerkDAO.count();
-            pageCount = (merkCount / 10) + 1;
-            modelAndView.addObject("datas", merks);
-            modelAndView.addObject("count", merkCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    /************************SUB-ITEM COLOR************************/
-    public ModelAndView indexColor() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemColor> colors;
-        int merkCount;
-        int pageCount;
-        int currentPage = 1;
-        String content = "color";
-        try {
-            colors = itemColorDAO.paginate(currentPage);
-            merkCount = itemMerkDAO.count();
-            pageCount = (merkCount / 10) + 1;
-            modelAndView.addObject("datas", colors);
-            modelAndView.addObject("count", merkCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", currentPage);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView createColor() {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-
-        try {
-            ItemColor color = new ItemColor();
-            modelAndView.addObject("datas", color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-
-        return modelAndView;
-    }
-
-    public ModelAndView storeColor(ItemColor color) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
-        try {
-            itemColorDAO.save(color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView editColor(String id) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/form");
-        ItemColor color;
-        try {
-            color = itemColorDAO.getOne(id);
-            System.out.println(color.getId() + " " + color.getName());
-            modelAndView.addObject("data", color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView updateColor(ItemColor color) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/item/color");
-        try {
-            itemColorDAO.update(color);
-        } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
-        }
-        return modelAndView;
-    }
-
-    public ModelAndView paginateColor(String page) {
-        ModelAndView modelAndView = new ModelAndView("item/sub/index");
-        List<ItemColor> colors;
-        int colorCount;
-        int pageCount;
-        String content = "color";
-        try {
-            colors = itemColorDAO.paginate(1);
-            colorCount = itemColorDAO.count();
-            pageCount = (colorCount / 10) + 1;
-            modelAndView.addObject("datas", colors);
-            modelAndView.addObject("count", colorCount);
-            modelAndView.addObject("pages", pageCount);
-            modelAndView.addObject("currentPage", page);
-            modelAndView.addObject("content", content);
-        } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
         }
         return modelAndView;
     }

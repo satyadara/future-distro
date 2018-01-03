@@ -31,38 +31,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><b>Distro</b>POS</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/admin"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li><a href="/item"><i class="fa fa-archive"></i> <span>Stok</span></a></li>
-                <li><a href="/discount"><i class="fa fa-percent"></i> <span>Diskon</span></a></li>
-                <li><a href="/view_user"><i class="fa fa-users"></i> <span>Pengguna</span></a></li>
-                <li><a href="/outcome"><i class="fa fa-money"></i> <span>Pengeluaran</span></a></li>
-                <li>
-                    <!--<a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse"-->
-                    <!--th:href="@{/logout}" aria-expanded="false" aria-controls="nav-collapse2">Sign out</a>-->
-                    <form name="logout" th:action="@{/logout}" method="POST">
-                        <input type="submit" class="btn btn-default btn-outline btn-circle" value="Sign Out"/>
-                    </form>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-</nav><!-- /.navbar -->
+<div th:replace="fragments/header :: header">...</div>
 
 <div class="container">
     <div class="row">
@@ -72,7 +41,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form class="form" method="POST" th:object="${item}">
+                    <form class="form" method="POST" th:object="${item}" enctype="multipart/form-data">
                         <th:block th:if="${errors != null}">
                             <ul>
                                 <li th:each="err: ${errors}" th:text="${err}" style="color: red;"></li>
@@ -163,10 +132,9 @@
                                     <th:block th:switch="*{color}">
                                         <th:block th:case="${colorx.getId()}">
                                             <option th:value="${colorx.getId()}" th:text="${colorx.getName()}"
-                                                    selected="selected">
-                                            </option>
+                                                    selected="selected"></option>
                                         </th:block>
-                                        <th:block>
+                                        <th:block th:case="*">
                                             <option th:value="${colorx.getId()}" th:text="${colorx.getName()}"></option>
                                         </th:block>
                                     </th:block>
@@ -189,6 +157,33 @@
                                    style="color: red;"></p>
                             </th:block>
                         </div>
+
+                        <div class="col-md-4">
+                            <label>Upload foto</label>
+                            <!-- image-preview-filename input [CUT FROM HERE]-->
+                            <div class="input-group image-preview">
+                                <input type="text" class="form-control image-preview-filename" disabled="disabled"/>
+                                <!-- don't give a name === doesn't send on POST/GET -->
+                                <span class="input-group-btn">
+                                <!-- image-preview-clear button -->
+                                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                    <span class="glyphicon glyphicon-remove"></span> Clear
+                                </button>
+                                    <!-- image-preview-input -->
+                                <div class="btn btn-default image-preview-input">
+                                    <span class="glyphicon glyphicon-folder-open"></span>
+                                    <span class="image-preview-input-title">Browse</span>
+                                    <input type="file" accept="image/png, image/jpeg, image/gif"
+                                           name="file"/> <!-- rename it -->
+                                </div>
+                            </span>
+                            </div><!-- /input-group image-preview [TO HERE]-->
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["image"] != null}' th:text='${errors2["image"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-default" style="float: right;">Simpan</button>
                         </div>
@@ -216,6 +211,7 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script th:src="@{/static/js/creation.js}"></script>
 
 </body>
 </html>

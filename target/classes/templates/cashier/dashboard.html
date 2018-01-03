@@ -51,7 +51,6 @@
                 <div class="tab-content">
                     <th:block th:each="tab,number : ${itemMap['types']}" th:switch="${number.index}">
                         <div th:case="${0}" class="tab-pane fade in active" th:id="${tab.getId()}">
-                            <input type="text" name="search" placeholder="search" class="form-control"/>
                             <br/>
                             <div class="text-center">
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
@@ -80,7 +79,6 @@
                             </div>
                         </div>
                         <div th:case="*" class="tab-pane fade" th:id="${tab.getId()}">
-                            <input type="text" name="search" placeholder="search" class="form-control"/>
                             <br/>
                             <div class="text-center">
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">

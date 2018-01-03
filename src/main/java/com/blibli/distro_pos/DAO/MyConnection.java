@@ -17,7 +17,7 @@ public class MyConnection {
         try {
             String db_username = "postgres";
             String db_password = "postgres";
-            String uri = "jdbc:postgresql://35.200.231.200:5432/distro_pos";
+            String uri = "jdbc:postgresql://google/distro_pos?socketFactory=com.google.cloud.sql.postgres.SocketFactory&socketFactoryArg=future-distro-pos:asia-south1:distropos";
             this.con = DriverManager.getConnection(uri, db_username, db_password);
 //            System.out.println("*****open connection*****");
 

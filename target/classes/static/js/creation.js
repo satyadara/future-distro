@@ -124,7 +124,7 @@ function addDiscount() {
     var disc1 = document.getElementById("disc1");
     var disc2 = document.getElementById("disc2");
 
-    $.getJSON('http://localhost:8080/cashier/discount/' + diskon, function (data) {
+    $.getJSON('http://future-distro-pos.appspot.com/cashier/discount/' + diskon, function (data) {
         $("#discountPercentage").text(data.disc);
 
         countTotal(data.disc);

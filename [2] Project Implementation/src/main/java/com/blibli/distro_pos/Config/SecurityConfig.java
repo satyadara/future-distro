@@ -19,11 +19,14 @@ import javax.xml.crypto.Data;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-   @Autowired
-   DataSource dataSource;
+    final DataSource dataSource;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    public SecurityConfig(DataSource dataSource, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.dataSource = dataSource;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -35,36 +38,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//            http.authorizeRequests()
-//                    .antMatchers("/", "/home").permitAll()
-//                    .antMatchers("/admin", "/view_user","/add_user").access("hasAuthority('ROLE_ADMIN')")
-//                    .anyRequest().authenticated()
-//                    .and()
-//                        .formLogin().loginPage("/login").permitAll()
-//                    .and()
-//                        .logout().permitAll()
-//                    .and()
-//                        .exceptionHandling().accessDeniedPage("/403")
-//                    .and()
-//                        .csrf();
-//
-//
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/add_user","/view_user").permitAll()
-                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("").permitAll()
+                .antMatchers("/admin/**", "/user/**", "/item/**",
+                        "/discount/**", "/outcome/**", "/ledger/**", "/transaction/**").access("hasAuthority('MANAGER')")
+                .antMatchers("/cashier/**").access("hasAnyAuthority('CASHIER', 'MANAGER')")
                 .and()
                 .formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password")
+                .defaultSuccessUrl("/success")
                 .and()
-                .logout().logoutSuccessUrl("/login?logout")
+                .logout().logoutSuccessUrl("/?logout")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()

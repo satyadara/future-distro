@@ -1,10 +1,8 @@
 package com.blibli.distro_pos.Model.discount;
 
-import java.sql.Date;
-
 public class Discount {
     private String id_disc;
-    private String id_emp;
+    private String username;
     private String name;
     private String desc;
     private float percentage;
@@ -15,10 +13,10 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(String id_disc, String id_emp, String name, String desc,
+    public Discount(String id_disc, String username, String name, String desc,
                     float percentage, String start_date, String end_date, String status) {
         this.setId_disc(id_disc);
-        this.setId_emp(id_emp);
+        this.setUsername(username);
         this.setName(name);
         this.setDesc(desc);
         this.setPercentage(percentage);
@@ -36,12 +34,12 @@ public class Discount {
         this.id_disc = id_disc;
     }
 
-    public String getId_emp() {
-        return id_emp;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId_emp(String id_emp) {
-        this.id_emp = id_emp;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {

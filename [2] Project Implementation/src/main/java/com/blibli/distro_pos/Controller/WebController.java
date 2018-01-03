@@ -1,76 +1,53 @@
 package com.blibli.distro_pos.Controller;
 
-import com.blibli.distro_pos.DAO.UserDao;
-import com.blibli.distro_pos.Model.Role;
-import com.blibli.distro_pos.Model.User;
+import com.blibli.distro_pos.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller
 public class WebController {
+    private final UserService userService;
 
-    @RequestMapping(value={"/","home"})
-    public String home(){
-        return "home";
+    @Autowired
+    public WebController(UserService userService) {
+        this.userService = userService;
     }
 
-    @RequestMapping(value={"/dashboard"})
-    public String welcome(){
-        return "dashboard";
-    }
+    @RequestMapping(value = {"/"})
+    public String home() {
 
-    @RequestMapping(value="/admin")
-    public String admin(){
-        return "admin";
-    }
-
-    @RequestMapping(value={"/login"})
-    public String login(){
         return "login";
     }
 
+    @RequestMapping(value = {"/login"})
+    public String login() {
 
-    @RequestMapping(value="/403")
-    public String Error403(){
+        return "login";
+    }
+
+    @RequestMapping(value = {"/cashier"})
+    public ModelAndView cashier(Authentication authentication) {
+        return userService.cashierDashboard(authentication);
+    }
+
+    @RequestMapping(value = "/admin")
+    public ModelAndView admin(Authentication authentication) {
+        return userService.managerDashboard(authentication);
+    }
+
+    @RequestMapping(value = "/chart")
+    @ResponseBody
+    public String chartData()   {
+        return userService.chartJson();
+    }
+
+    @RequestMapping(value = "/403")
+    public String Error403() {
         return "403";
-    }
-
-
-    @GetMapping("/add_user")
-    public ModelAndView addUser() {
-
-        return new ModelAndView("add_user");
-    }
-
-    @PostMapping("/add_user")
-    public ModelAndView addUser(@ModelAttribute("user") User user,
-                                @ModelAttribute("role")Role role) {
-
-        System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
-                ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
-                ", HP: " + user.getTelp() + ", Jenis Kelamin: " + user.getJenisKelamin());
-        int status = UserDao.insertUser(user, role);
-
-        if (status == 1) {
-            System.out.println("BERHASIL");
-            return new ModelAndView("redirect:/view_user");
-        }
-        else {
-            System.out.println("GAGAL!");
-            return new ModelAndView("redirect:/view_user");
-        }
-    }
-
-
-    @RequestMapping("/view_user")
-    public ModelAndView viewAllUser() {
-
-        List<User> userList = UserDao.getAllUser();
-
-        return new ModelAndView("view_user", "userList", userList);
     }
 
 }

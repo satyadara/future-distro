@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager - Tambah Pengeluaran</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/creation.css}"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+    <link rel="stylesheet" th:href="@{/static/plugins/morris/morris.css}"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/static/dist/css/AdminLTE.min.css}"/>
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" th:href="@{/static/dist/css/skins/skin-blue.min.css}"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">...</div>
+
+<div class="container">
+    <div class="row">
+        <h1>Tambah Pengeluaran</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form" th:method="post" th:object="${outcome}">
+                        <th:block th:if="${errors != null}">
+                            <ul>
+                                <li th:each="err: ${errors}" th:text="${err}" style="color: red;"></li>
+                            </ul>
+                        </th:block>
+                        <input type="text" name="id_outcome" th:field="*{id_outcome}" hidden="hidden"/>
+                        <input type="text" name="username" th:field="*{username}" hidden="hidden"/>
+                        <div class="form-group col-md-12">
+                            <label>Nama Pengeluaran</label>
+                            <input type="text" name="title" class="form-control" th:field="*{title}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Amount</label>
+                            <input type="number" name="amount" class="form-control"
+                                   th:field="*{amount}" step="0.001"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["amount"] != null}' th:text='${errors2["amount"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Quantity</label>
+                            <input type="number" name="quantity" class="form-control"
+                                   th:field="*{quantity}"/>
+                            <th:block th:if='${errors2 != null}'>
+                                <p th:if='${errors2["quantity"] != null}' th:text='${errors2["quantity"]}'
+                                   style="color: red;"></p>
+                            </th:block>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Tanggal</label>
+                            <input type="date" name="date" class="form-control"
+                                   th:field="*{date}"/>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Deskripsi</label>
+                            <input type="text" name="desc" class="form-control" th:field="*{desc}"/>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-default" style="float: right;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.2.3 -->
+<script th:src="@{/static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/static/dist/js/app.min.js}"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script th:src="@{/static/plugins/morris/morris.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/static/plugins/fastclick/fastclick.js}"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
+
+</body>
+</html>

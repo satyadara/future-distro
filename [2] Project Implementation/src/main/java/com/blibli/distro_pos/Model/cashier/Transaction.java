@@ -1,0 +1,81 @@
+package com.blibli.distro_pos.Model.cashier;
+
+public class Transaction {
+    private String id_trans;
+    private String id_disc;
+    private String username;
+    private String customer_name;
+    private String date;
+    private String status;
+    private Double total_trans;
+
+    public Transaction(String id_trans, String id_disc, String username, String customer_name, Double total_trans, String date, String status) {
+        this.setId_trans(id_trans);
+        this.setId_disc(id_disc);
+        this.setUsername(username);
+        this.setCustomer_name(customer_name);
+        this.setDate(date);
+        this.setStatus(status);
+        this.setTotal_trans(total_trans);
+    }
+
+    public Transaction() {
+    }
+
+    public String getId_trans() {
+
+        return id_trans;
+    }
+
+    public void setId_trans(String id_trans) {
+        this.id_trans = id_trans;
+    }
+
+    public String getId_disc() {
+        return id_disc;
+    }
+
+    public void setId_disc(String id_disc) {
+        this.id_disc = id_disc;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Double getTotal_trans() {
+        return total_trans;
+    }
+
+    public void setTotal_trans(Double total_trans) {
+        this.total_trans = total_trans;
+    }
+}

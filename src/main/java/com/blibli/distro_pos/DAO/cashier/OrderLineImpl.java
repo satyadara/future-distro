@@ -37,7 +37,7 @@ public class OrderLineImpl extends MyConnection implements OrderLineInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return list;
     }
@@ -64,7 +64,7 @@ public class OrderLineImpl extends MyConnection implements OrderLineInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#GET# something error : " + e.toString());
+//            System.out.println("#GET# something error : " + e.toString());
         }
         return orderLine;
     }
@@ -84,7 +84,7 @@ public class OrderLineImpl extends MyConnection implements OrderLineInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SAVE# something error : " + e.toString());
+//            System.out.println("#SAVE# something error : " + e.toString());
         }
     }
 
@@ -98,7 +98,7 @@ public class OrderLineImpl extends MyConnection implements OrderLineInterface {
             preparedStatement.setString(2, orderLine.getId_orderline());
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -127,7 +127,7 @@ public class OrderLineImpl extends MyConnection implements OrderLineInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return list;
     }

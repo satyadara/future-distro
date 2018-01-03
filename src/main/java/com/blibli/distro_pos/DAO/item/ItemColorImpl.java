@@ -23,7 +23,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs != null) {
-                System.out.println("getAll Colors : ");
+//                System.out.println("getAll Colors : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_color"));
                     SubItem subItem = new SubItem(rs.getString("id_item_color"),
@@ -33,7 +33,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return subItemList;
     }
@@ -56,7 +56,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#GET ONE# somthing error : " + e.toString());
+//            System.out.println("#GET ONE# somthing error : " + e.toString());
         }
 
         return color;
@@ -73,7 +73,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error : " + e.toString());
+//            System.out.println("#INSERT# something error : " + e.toString());
         }
     }
 
@@ -88,7 +88,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -116,7 +116,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             System.out.println("item color counted : " + result);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return result;
@@ -133,7 +133,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs != null) {
-                System.out.println("getAll Colors : ");
+//                System.out.println("getAll Colors : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_color"));
                     SubItem subItem = new SubItem(rs.getString("id_item_color"),
@@ -143,7 +143,7 @@ public class ItemColorImpl extends MyConnection implements ItemColorInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return subItemList;
     }

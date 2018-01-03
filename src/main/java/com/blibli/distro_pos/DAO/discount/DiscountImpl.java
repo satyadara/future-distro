@@ -66,7 +66,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#GETONE# something error :" + e.toString());
+//            System.out.println("#GETONE# something error :" + e.toString());
         }
 
         return discount;
@@ -92,7 +92,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error : " + e.toString());
+//            System.out.println("#INSERT# something error : " + e.toString());
         }
     }
 
@@ -113,7 +113,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -128,7 +128,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#DELETE# something error : " + e.toString());
+//            System.out.println("#DELETE# something error : " + e.toString());
         }
     }
 
@@ -144,7 +144,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SOFT DELETE# something error : " + e.toString());
+//            System.out.println("#SOFT DELETE# something error : " + e.toString());
         }
     }
 
@@ -163,7 +163,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return count;
@@ -184,7 +184,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             discountList = getDiscountList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error :" + e.toString());
+//            System.out.println("#FETCH# something error :" + e.toString());
         }
 
         return discountList;
@@ -202,7 +202,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SET ACTIVE# something error : " + e.toString());
+//            System.out.println("#SET ACTIVE# something error : " + e.toString());
         }
     }
 
@@ -238,7 +238,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
             map.put("count", count);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error :" + e.toString());
+//            System.out.println("#FETCH# something error :" + e.toString());
         }
 
         return map;
@@ -249,9 +249,9 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
         List<Discount> discountList = new ArrayList<>();
         try {
             if (rs != null) {
-                System.out.println("getAll discount\t:");
+//                System.out.println("getAll discount\t:");
                 while (rs.next()) {
-                    System.out.println("\t" + rs.getString("id_disc"));
+//                    System.out.println("\t" + rs.getString("id_disc"));
                     Discount discount = new Discount(
                             rs.getString("id_disc"),
                             rs.getString("username"),
@@ -266,7 +266,7 @@ public class DiscountImpl extends MyConnection implements DiscountInterface {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Get Discount List Problem : " + e.toString());
+//            System.out.println("Get Discount List Problem : " + e.toString());
         }
         return discountList;
     }

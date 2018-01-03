@@ -29,7 +29,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             ResultSet rs = statement.executeQuery(sql);
             outcomeList = getOutcomeList(rs);
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         this.disconnect();
 
@@ -63,7 +63,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#GET# something error : " + e.toString());
+//            System.out.println("#GET# something error : " + e.toString());
         }
 
         return outcome;
@@ -85,7 +85,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SAVE# something error : " + e.toString());
+//            System.out.println("#SAVE# something error : " + e.toString());
         }
     }
 
@@ -105,7 +105,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -120,7 +120,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#DELETE# something error : " + e.toString());
+//            System.out.println("#DELETE# something error : " + e.toString());
         }
     }
 
@@ -135,7 +135,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SOFT.DELETE# something error : " + e.toString());
+//            System.out.println("#SOFT.DELETE# something error : " + e.toString());
         }
     }
 
@@ -154,7 +154,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
         return count;
     }
@@ -174,7 +174,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             outcomeList = getOutcomeList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
 
         return outcomeList;
@@ -191,7 +191,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SET ACTIVE# something error : " + e.toString());
+//            System.out.println("#SET ACTIVE# something error : " + e.toString());
         }
     }
 
@@ -215,7 +215,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Get Outcome List Problem : " + e.toString());
+//            System.out.println("Get Outcome List Problem : " + e.toString());
         }
         return outcomeList;
     }
@@ -250,7 +250,7 @@ public class OutcomeImpl extends MyConnection implements OutcomeInterface {
             map.put("count", count);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error :" + e.toString());
+//            System.out.println("#FETCH# something error :" + e.toString());
         }
 
         return map;

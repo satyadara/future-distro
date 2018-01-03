@@ -29,7 +29,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             itemList = getItemList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+//            System.out.println("something error :" + e.toString());
         }
 
         return itemList;
@@ -45,7 +45,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             ResultSet rs = statement.executeQuery(sql);
             if (rs != null) {
                 while (rs.next()) {
-                    System.out.println("getOne : " + rs.getString("id_item"));
+//                    System.out.println("getOne : " + rs.getString("id_item"));
                     item.setId_item(rs.getString("id_item"));
                     item.setUsername(rs.getString("username"));
                     item.setName_item(rs.getString("name_item"));
@@ -61,7 +61,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+//            System.out.println("something error :" + e.toString());
         }
 
         return item;
@@ -88,7 +88,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error :" + e.toString());
+//            System.out.println("#INSERT# something error :" + e.toString());
         }
     }
 
@@ -111,7 +111,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error :" + e.toString());
+//            System.out.println("#UPDATE# something error :" + e.toString());
         }
     }
 
@@ -124,7 +124,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             statement.execute(sql);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#DELETE# something error :" + e.toString());
+//            System.out.println("#DELETE# something error :" + e.toString());
         }
     }
 
@@ -139,7 +139,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             statement.executeQuery(sql);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SOFT.DELETE# something error :" + e.toString());
+//            System.out.println("#SOFT.DELETE# something error :" + e.toString());
         }
     }
 
@@ -156,7 +156,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return result;
@@ -179,7 +179,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             itemList = getItemList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+//            System.out.println("something error :" + e.toString());
         }
 
         return itemList;
@@ -209,7 +209,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Get List item error : " + e.toString());
+//            System.out.println("Get List item error : " + e.toString());
         }
         return itemList;
     }
@@ -224,7 +224,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             statement.execute(sql);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#SET ACTIVE# something error :" + e.toString());
+//            System.out.println("#SET ACTIVE# something error :" + e.toString());
         }
     }
 
@@ -259,7 +259,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             map.put("count", count);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error :" + e.toString());
+//            System.out.println("#FETCH# something error :" + e.toString());
         }
 
         return map;
@@ -274,7 +274,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             statement.execute(sql);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#ADD OR MINUS STOCK#  : " + e.toString());
+//            System.out.println("#ADD OR MINUS STOCK#  : " + e.toString());
         }
     }
 
@@ -290,7 +290,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             itemList = getItemList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+//            System.out.println("something error :" + e.toString());
         }
 
         return itemList;
@@ -313,7 +313,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             itemList = getItemList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+//            System.out.println("something error :" + e.toString());
         }
 
         return itemList;
@@ -332,7 +332,7 @@ public class ItemImpl extends MyConnection implements ItemInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return result;

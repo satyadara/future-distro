@@ -35,7 +35,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
 
         return list;
@@ -56,7 +56,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error : " + e.toString());
+//            System.out.println("#INSERT# something error : " + e.toString());
         }
     }
 
@@ -72,7 +72,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -88,7 +88,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             System.out.println("wkwkwkwk");
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#DELETE# something error : " + e.toString());
+//            System.out.println("#DELETE# something error : " + e.toString());
         }
     }
 
@@ -101,7 +101,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             statement.execute(sql);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#CLEAR# something error : " + e.toString());
+//            System.out.println("#CLEAR# something error : " + e.toString());
         }
     }
 
@@ -125,7 +125,7 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#CHECK# something error : " + e.toString());
+//            System.out.println("#CHECK# something error : " + e.toString());
         }
         return shoppingCart;
     }

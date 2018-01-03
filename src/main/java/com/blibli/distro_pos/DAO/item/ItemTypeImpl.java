@@ -22,7 +22,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs != null) {
-                System.out.println("getAll Types : ");
+//                System.out.println("getAll Types : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_type"));
                     SubItem SubItem = new SubItem(rs.getString("id_item_type"),
@@ -32,7 +32,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return SubItemList;
     }
@@ -55,7 +55,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#GET ONE# somthing error : " + e.toString());
+//            System.out.println("#GET ONE# somthing error : " + e.toString());
         }
 
         return type;
@@ -72,7 +72,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error : " + e.toString());
+//            System.out.println("#INSERT# something error : " + e.toString());
         }
     }
 
@@ -87,7 +87,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -112,10 +112,10 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             while (rs.next()) {
                 result = rs.getInt("count");
             }
-            System.out.println("item type counted : " + result);
+//            System.out.println("item type counted : " + result);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return result;
@@ -132,7 +132,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs != null) {
-                System.out.println("getAll Types : ");
+//                System.out.println("getAll Types : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_type"));
                     SubItem SubItem = new SubItem(rs.getString("id_item_type"),
@@ -142,7 +142,7 @@ public class ItemTypeImpl extends MyConnection implements ItemTypeInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return SubItemList;
     }

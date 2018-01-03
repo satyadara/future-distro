@@ -152,7 +152,7 @@ public class LedgerImpl extends MyConnection implements LedgerInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
 
         return list;

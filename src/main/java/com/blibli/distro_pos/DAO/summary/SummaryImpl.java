@@ -68,7 +68,7 @@ public class SummaryImpl extends MyConnection implements SummaryInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#MOSTSOLDITEM# somthing error : " + e.toString());
+//            System.out.println("#MOSTSOLDITEM# somthing error : " + e.toString());
         }
 
         return list;

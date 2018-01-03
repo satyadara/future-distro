@@ -57,10 +57,6 @@ public class TransactionService {
 
         }
 
-        for (Item list1 : itemList.get(0)) {
-            System.out.println(list1.getId_item());
-        }
-
         //Hitung total belanja
         for (ShoppingCart shoppingCart : list) {
 
@@ -92,7 +88,6 @@ public class TransactionService {
             modelAndView.addObject("currentPage", currentpage);
             modelAndView.addObject("search", false);
         } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
         }
 
         return modelAndView;
@@ -114,7 +109,6 @@ public class TransactionService {
             modelAndView.addObject("pages", pageCount);
             modelAndView.addObject("search", true);
         } catch (Exception e) {
-            System.out.println("something error : " + e.toString());
         }
         return modelAndView;
     }
@@ -131,7 +125,6 @@ public class TransactionService {
             return modelAndView;
         }
         if (shoppingCart.getId_item() != null && shoppingCart.getUsername() == authentication.getName()) {
-            System.out.println("update");
 
             itemInterface.addOrMinStock(id, qty * -1);
             qty += shoppingCart.getQuantity();
@@ -141,7 +134,6 @@ public class TransactionService {
             shoppingCart = setShoppingCart(id, authentication.getName(), qty, item_name, price_item);
             shoppingCartInterface.update(shoppingCart);
         } else {
-            System.out.println("save");
             if (qty < 1) {
                 return modelAndView;
             }
@@ -226,7 +218,6 @@ public class TransactionService {
 
     public ModelAndView cancelCartItem(String id, int qty, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        System.out.println(qty);
         itemInterface.addOrMinStock(id, qty);
         shoppingCartInterface.cancel(id, authentication.getName());
         return modelAndView;
@@ -251,11 +242,11 @@ public class TransactionService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         double percentage = 0;
         double totalTrans = 0;
-        if (!(transaction.getId_disc().isEmpty()))  {
+        if (!(transaction.getId_disc().isEmpty())) {
             Discount discount = discountInterface.getOne(transaction.getId_disc());
             percentage = discount.getPercentage();
         }
-        for (OrderLine o: orderLines)   {
+        for (OrderLine o : orderLines) {
             totalTrans += o.getSubtotal();
         }
         modelAndView.addObject("transaction", transaction);

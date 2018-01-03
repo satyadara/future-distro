@@ -22,7 +22,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs != null) {
-                System.out.println("getAll Merks : ");
+//                System.out.println("getAll Merks : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_merk"));
                     SubItem SubItem = new SubItem(rs.getString("id_item_merk"),
@@ -32,7 +32,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return SubItemList;
     }
@@ -55,7 +55,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#GET ONE# somthing error : " + e.toString());
+//            System.out.println("#GET ONE# somthing error : " + e.toString());
         }
 
         return merk;
@@ -72,7 +72,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error : " + e.toString());
+//            System.out.println("#INSERT# something error : " + e.toString());
         }
     }
 
@@ -87,7 +87,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             preparedStatement.executeQuery();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -115,7 +115,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             System.out.println("item merk counted : " + result);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return result;
@@ -132,7 +132,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             preparedStatement.setInt(1, offset);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs != null) {
-                System.out.println("getAll Merks : ");
+//                System.out.println("getAll Merks : ");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_item_merk"));
                     SubItem SubItem = new SubItem(rs.getString("id_item_merk"),
@@ -142,7 +142,7 @@ public class ItemMerkImpl extends MyConnection implements ItemMerkInterface {
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error : " + e.toString());
+//            System.out.println("#FETCH# something error : " + e.toString());
         }
         return SubItemList;
     }

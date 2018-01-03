@@ -57,7 +57,7 @@ public class UserDao {
 
             preparedStatement.executeUpdate();
 
-            System.out.println("Finished creating user table");
+//            System.out.println("Finished creating user table");
         }
         catch (Exception e) {
 
@@ -83,7 +83,7 @@ public class UserDao {
 
             preparedStatement.executeUpdate();
 
-            System.out.println("Finished creating user_role table");
+//            System.out.println("Finished creating user_role table");
         }
         catch (Exception e) {
 
@@ -119,11 +119,11 @@ public class UserDao {
             status = preparedStatement.executeUpdate();
             insertUserRole(user.getUsername(), role.getRole());
 
-            System.out.println("Finished inserting user");
+//            System.out.println("Finished inserting user");
         }
         catch (Exception e) {
 
-            System.out.println("ERROR : "+ e.getMessage());
+//            System.out.println("ERROR : "+ e.getMessage());
         }
 
         return status;
@@ -146,7 +146,7 @@ public class UserDao {
 
             status = preparedStatement.executeUpdate();
 
-            System.out.println("Finished inserting user role");
+//            System.out.println("Finished inserting user role");
         }
         catch (Exception e) {
 
@@ -184,11 +184,11 @@ public class UserDao {
             status = preparedStatement.executeUpdate();
             editUserRole(user.getUsername(), role.getRole());
 
-            System.out.println("Finished edit user");
+//            System.out.println("Finished edit user");
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return status;
@@ -216,11 +216,11 @@ public class UserDao {
             status = preparedStatement.executeUpdate();
             editUserRole(user.getUsername(), role.getRole());
 
-            System.out.println("Finished edit user");
+//            System.out.println("Finished edit user");
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return status;
@@ -246,7 +246,7 @@ public class UserDao {
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return status;
@@ -284,7 +284,7 @@ public class UserDao {
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return userList;
@@ -319,7 +319,7 @@ public class UserDao {
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return user;
@@ -345,7 +345,7 @@ public class UserDao {
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return role;
@@ -394,7 +394,7 @@ public class UserDao {
         }
         catch (Exception e) {
 
-            System.out.println(e.toString());
+//            System.out.println(e.toString());
         }
 
         return status;

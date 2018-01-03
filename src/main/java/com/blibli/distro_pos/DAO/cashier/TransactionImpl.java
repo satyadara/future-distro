@@ -31,7 +31,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             transactionList = getTransactionList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error :" + e.toString());
+//            System.out.println("#FETCH# something error :" + e.toString());
         }
 
         return transactionList;
@@ -48,7 +48,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             Statement statement = this.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if (rs != null) {
-                System.out.println("get transaction\t:");
+//                System.out.println("get transaction\t:");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_trans"));
                     transaction = new Transaction(
@@ -69,6 +69,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
 
         return transaction;
     }
+
     @Override
     public void save(Transaction transaction) {
         String sql = "INSERT INTO transaction(id_trans, id_disc, username, customer_trans, total_trans, date_trans, status_trans) " +
@@ -86,7 +87,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#INSERT# something error : " + e.toString());
+//            System.out.println("#INSERT# something error : " + e.toString());
         }
     }
 
@@ -105,7 +106,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#UPDATE# something error : " + e.toString());
+//            System.out.println("#UPDATE# something error : " + e.toString());
         }
     }
 
@@ -124,13 +125,13 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             list = getTransactionList(rs);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("something error :" + e.toString());
+//            System.out.println("something error :" + e.toString());
         }
 
         return list;
     }
 
-    public int count()  {
+    public int count() {
         String sql = "SELECT COUNT(*) FROM transaction;";
         int result = 0;
         try {
@@ -142,7 +143,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             }
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#COUNT# something error : " + e.toString());
+//            System.out.println("#COUNT# something error : " + e.toString());
         }
 
         return result;
@@ -178,7 +179,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
             map.put("count", count);
             this.disconnect();
         } catch (Exception e) {
-            System.out.println("#FETCH# something error :" + e.toString());
+//            System.out.println("#FETCH# something error :" + e.toString());
         }
 
         return map;
@@ -189,7 +190,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
         List<Transaction> transactionList = new ArrayList<>();
         try {
             if (rs != null) {
-                System.out.println("getAll transaction\t:");
+//                System.out.println("getAll transaction\t:");
                 while (rs.next()) {
                     System.out.println("\t" + rs.getString("id_trans"));
                     Transaction transaction = new Transaction(
@@ -205,7 +206,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
                 }
             }
         } catch (Exception e) {
-            System.out.println("Get Transaction List Problem : " + e.toString());
+//            System.out.println("Get Transaction List Problem : " + e.toString());
         }
         return transactionList;
     }
@@ -231,7 +232,7 @@ public class TransactionImpl extends MyConnection implements TransactionInterfac
     }
 
     @Override
-    public String getListString()   {
+    public String getListString() {
         return LIST;
     }
 

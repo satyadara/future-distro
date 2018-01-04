@@ -62,13 +62,14 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
 
     @Override
     public void update(ShoppingCart shoppingCart) {
-        String sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE id_item = ?;";
+        String sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE id_item = ? AND username = ?;";
         try {
             this.connect();
             PreparedStatement preparedStatement = this.con.prepareStatement(sql);
             preparedStatement.setInt(1, shoppingCart.getQuantity());
             preparedStatement.setDouble(2, shoppingCart.getSubtotal());
             preparedStatement.setString(3, shoppingCart.getId_item());
+            preparedStatement.setString(4, shoppingCart.getUsername());
             preparedStatement.execute();
             this.disconnect();
         } catch (Exception e) {
@@ -106,8 +107,8 @@ public class ShoppingCartImpl extends MyConnection implements ShoppingCartInterf
     }
 
     @Override
-    public ShoppingCart getOne(String id) {
-        String sql = "SELECT * FROM CART WHERE id_item = '" + id + "';";
+    public ShoppingCart getOne(String id, String username) {
+        String sql = "SELECT * FROM CART WHERE id_item = '" + id + "' AND username = '" + username + "';";
         ShoppingCart shoppingCart = new ShoppingCart();
         try {
             this.connect();

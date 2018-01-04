@@ -47,7 +47,7 @@
                     <div class="inner">
                         <h3 th:text="'Rp'+${#numbers.formatDecimal(netSales, 0, 2)}"></h3>
 
-                        <p>Net Sales</p>
+                        <p>Penjualan bersih Tahun ini</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-arrow-graph-up-right"></i>
@@ -61,7 +61,7 @@
                     <div class="inner">
                         <h3 th:text="'Rp'+${#numbers.formatDecimal(grossSales, 0, 2)}"></h3>
 
-                        <p>Gross Sales</p>
+                        <p>Penjualan Bersih Tahun ini</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-arrow-graph-up-right"></i>
@@ -234,6 +234,8 @@
     </div>
 </div>
 
+<div id="url-default" th:text="${#httpServletRequest.getRequestURL()}" hidden="hidden"></div>
+
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
@@ -257,8 +259,9 @@
      fixed layout. -->
 
 <script>
+    var local = document.getElementById("url-default").innerHTML;
 
-    $.getJSON('http://localhost:8080/chart', function (data) {
+    $.getJSON(local + '/chart', function (data) {
         var data1 = [];
 
         console.log(data);
@@ -274,7 +277,6 @@
             hideHover: 'auto'
         });
     })
-
 </script>
 
 </body>

@@ -112,7 +112,7 @@
                         </tr>
                         <tr>
                             <th>Diskon :</th>
-                            <td th:text="'Rp ' + ${#numbers.formatDecimal(discount,0,2)}"></td>
+                            <td th:text="${#numbers.formatDecimal(discount,0,2)} + '%'"></td>
                         </tr>
                         <tr>
                             <th>Total bayar :</th>

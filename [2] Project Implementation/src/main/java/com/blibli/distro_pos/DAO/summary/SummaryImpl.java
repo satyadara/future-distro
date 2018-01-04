@@ -139,7 +139,7 @@ public class SummaryImpl extends MyConnection implements SummaryInterface {
 
     @Override
     public double getNetSalesOfThisYear() {
-        String sql = "SELECT AVG(RESULT) AS RESULT FROM (SELECT t.TOTAL_TRANS AS RESULT FROM TRANSACTION AS t WHERE DATE_TRANS BETWEEN DATE_TRUNC('year', now()) AND now() UNION SELECT o.AMOUNT_OUT*-1 FROM OUTCOME AS o WHERE o.DATE_OUT BETWEEN DATE_TRUNC('year', now()) AND now()) SUMMARY;";
+        String sql = "SELECT SUM(RESULT) AS RESULT FROM (SELECT t.TOTAL_TRANS AS RESULT FROM TRANSACTION AS t WHERE DATE_TRANS BETWEEN DATE_TRUNC('year', now()) AND now() UNION SELECT o.AMOUNT_OUT*-1 FROM OUTCOME AS o WHERE o.status = 'Aktif' AND o.DATE_OUT BETWEEN DATE_TRUNC('year', now()) AND now()) SUMMARY;";
         return getSales(sql);
     }
 

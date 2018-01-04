@@ -39,7 +39,7 @@ public class WebController {
         return userService.managerDashboard(authentication);
     }
 
-    @RequestMapping(value = "/chart")
+    @RequestMapping(value = "/admin/chart")
     @ResponseBody
     public String chartData()   {
         return userService.chartJson();

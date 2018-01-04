@@ -123,8 +123,9 @@ function addDiscount() {
     var diskon = discountId.options[discountId.selectedIndex].value;
     var disc1 = document.getElementById("disc1");
     var disc2 = document.getElementById("disc2");
-
-    $.getJSON('http://localhost:8080/cashier/discount/' + diskon, function (data) {
+    var local = document.getElementById("url-default").innerHTML;
+    console.log(local);
+    $.getJSON( local + '/discount/' + diskon, function (data) {
         $("#discountPercentage").text(data.disc);
 
         countTotal(data.disc);

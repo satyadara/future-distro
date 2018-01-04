@@ -33,15 +33,6 @@
 <div th:replace="fragments/header_cashier :: header_cashier">...</div>
 
 <div class="container-fluid">
-    <div th:class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h3 th:text="'Masuk sebagai '+ ${cashierName}"></h3>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-md-8">
         <div class="panel with-nav-tabs panel-primary">
             <div class="panel-heading">
@@ -280,7 +271,7 @@
         </div>
     </div>
 </div>
-
+<div id="url-default" th:text="${#httpServletRequest.getRequestURL()}" hidden="hidden"></div>
 
 <!-- REQUIRED JS SCRIPTS -->
 

@@ -15,5 +15,5 @@ public interface ShoppingCartInterface {
 
     void clear(String username);
 
-    ShoppingCart getOne(String id);
+    ShoppingCart getOne(String id, String username);
 }

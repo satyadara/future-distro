@@ -123,7 +123,7 @@ public class TransactionService {
     public ModelAndView addCart(String id, String quantity, String item_name, double price_item, int stock_item,
                                 Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        ShoppingCart shoppingCart = shoppingCartInterface.getOne(id);
+        ShoppingCart shoppingCart = shoppingCartInterface.getOne(id, authentication.getName());
         if (quantity.isEmpty()) {
             return modelAndView;
         }
@@ -131,7 +131,10 @@ public class TransactionService {
         if (stock_item < qty) {
             return modelAndView;
         }
-        if (shoppingCart.getId_item() != null && shoppingCart.getUsername() == authentication.getName()) {
+
+        System.out.println(shoppingCart.toString());
+
+        if (shoppingCart.getId_item() != null && shoppingCart.getUsername().equals(authentication.getName())) {
             System.out.println("update");
 
             itemInterface.addOrMinStock(id, qty * -1);
@@ -156,7 +159,7 @@ public class TransactionService {
 
     public ModelAndView editCart(String id, int quantity, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("redirect:/cashier");
-        ShoppingCart shoppingCart = shoppingCartInterface.getOne(id);
+        ShoppingCart shoppingCart = shoppingCartInterface.getOne(id, authentication.getName());
         Item item = itemInterface.getOne(id);
         if (quantity == 0) {
             return modelAndView;

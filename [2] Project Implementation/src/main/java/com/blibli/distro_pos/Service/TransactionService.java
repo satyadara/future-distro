@@ -73,6 +73,7 @@ public class TransactionService {
         modelAndView.addObject("itemMap", map);
         modelAndView.addObject("transaction", totalTransaction);
         modelAndView.addObject("discount", discountList);
+        modelAndView.addObject("cashierName", authentication.getName());
         return modelAndView;
     }
 

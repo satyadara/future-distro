@@ -66,6 +66,7 @@ public class CashierController {
     public ModelAndView cancelOrder(Authentication authentication) {
         return transactionService.cancelOrder(authentication);
     }
+    
     @RequestMapping(value = "/discount/{id_disc}", method = GET, produces = "application/json")
     @ResponseBody
     public GetDiscountPercentage getDiscount(@PathVariable("id_disc") String id_disc) {

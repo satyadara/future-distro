@@ -33,6 +33,15 @@
 <div th:replace="fragments/header_cashier :: header_cashier">...</div>
 
 <div class="container-fluid">
+    <div th:class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 th:text="'Masuk sebagai '+ ${cashierName}"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-md-8">
         <div class="panel with-nav-tabs panel-primary">
             <div class="panel-heading">
@@ -56,7 +65,8 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/item/' + item.getImage()}" style="width: 100px; height: 100px;"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}"
+                                                 style="width: 100px; height: 100px;"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+' - '+ item.getSize() +' ('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>
@@ -84,7 +94,8 @@
                                 <th:block th:each="item : ${itemMap['items'].get(number.index)}">
                                     <div class="card card-1">
                                         <div class="panel-body">
-                                            <img th:src="${'/static/img/item/' + item.getImage()}" style="width: 100px; height: 100px;"
+                                            <img th:src="${'/static/img/item/' + item.getImage()}"
+                                                 style="width: 100px; height: 100px;"
                                                  class="img img-responsive center-block"/>
                                             <p th:text="${item.getName_item()+' - '+ item.getSize() +' ('+item.getStock()+')'}"></p>
                                             <p th:text="${'Rp'+item.getPrice()}"></p>

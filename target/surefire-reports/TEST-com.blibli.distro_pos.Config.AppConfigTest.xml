@@ -7,7 +7,7 @@
     <property name="user.country.format" value="ID"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/raditia/Documents/Programming/Intellij IDEA/distro_pos"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>

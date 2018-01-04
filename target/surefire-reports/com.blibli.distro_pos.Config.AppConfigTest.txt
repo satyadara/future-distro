@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.blibli.distro_pos.Config.AppConfigTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec - in com.blibli.distro_pos.Config.AppConfigTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in com.blibli.distro_pos.Config.AppConfigTest

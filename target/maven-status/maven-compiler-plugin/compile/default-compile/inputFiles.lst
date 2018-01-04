@@ -35,6 +35,7 @@
 /Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/DAO/item/ItemImpl.java
 /Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/DAO/cashier/Interface/OrderLineInterface.java
 /Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/Controller/ItemController.java
+/Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/DAO/user/Interface/UserInterface.java
 /Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/Controller/UserController.java
 /Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/Controller/DiscountController.java
 /Users/raditia/Documents/Programming/IntelliJ IDEA/distro_pos/src/main/java/com/blibli/distro_pos/DAO/ledger/LedgerImpl.java

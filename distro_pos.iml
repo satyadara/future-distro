@@ -6,6 +6,8 @@
         <fileset id="fileset" name="Spring Web Config" removed="false">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-web-config.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/spring-dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-security.xml</file>
+          <file>file://$MODULE_DIR$/WEB-INF/spring-security.xml</file>
         </fileset>
       </configuration>
     </facet>

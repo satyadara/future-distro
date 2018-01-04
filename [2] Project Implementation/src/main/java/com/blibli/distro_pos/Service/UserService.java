@@ -2,7 +2,7 @@ package com.blibli.distro_pos.Service;
 
 import com.blibli.distro_pos.DAO.ledger.Interface.LedgerInterface;
 import com.blibli.distro_pos.DAO.summary.Interface.SummaryInterface;
-import com.blibli.distro_pos.DAO.user.UserDao;
+import com.blibli.distro_pos.DAO.user.Interface.UserInterface;
 import com.blibli.distro_pos.Model.ledger.Ledger;
 import com.blibli.distro_pos.Model.summary.LoyalCustomer;
 import com.blibli.distro_pos.Model.summary.MostSoldItem;
@@ -11,25 +11,22 @@ import com.blibli.distro_pos.Model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class UserService {
     private final SummaryInterface summaryInterface;
     private final LedgerInterface ledgerInterface;
+    private final UserInterface userInterface;
 
     @Autowired
-    public UserService(SummaryInterface summaryInterface, LedgerInterface ledgerInterface) {
+    public UserService(SummaryInterface summaryInterface, LedgerInterface ledgerInterface, UserInterface userInterface) {
         this.summaryInterface = summaryInterface;
         this.ledgerInterface = ledgerInterface;
+        this.userInterface = userInterface;
     }
 
     public ModelAndView index(Authentication authentication) {
@@ -47,7 +44,7 @@ public class UserService {
     }
 
     public ModelAndView indexUser() {
-        List<User> userList = UserDao.getAllUser();
+        List<User> userList = userInterface.getAllUser();
         return new ModelAndView("manager/view_user", "userList", userList);
     }
 
@@ -62,7 +59,7 @@ public class UserService {
         System.out.println("Nama Lengkap: " + user.getNamaLengkap() + ", Username : " + user.getUsername() +
                 ", Password : " + user.getPassword() + ", Role : " + role.getRole() + ", KTP: " + user.getKtp() +
                 ", HP: " + user.getTelp() + ", Jenis Kelamin: " + user.getJenisKelamin());
-        int status = UserDao.insertUser(user, role);
+        int status = userInterface.insertUser(user, role);
 
         if (status == 1) {
             System.out.println("BERHASIL");
@@ -74,8 +71,8 @@ public class UserService {
     }
 
     public ModelAndView editUser(String username) {
-        User user = UserDao.getUserByUsername(username);
-        String role = UserDao.getUserRoleByUsername(user.getUsername());
+        User user = userInterface.getUserByUsername(username);
+        String role = userInterface.getUserRoleByUsername(user.getUsername());
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("manager/edit_user");
@@ -94,10 +91,10 @@ public class UserService {
 
         try {
             if (user.getPassword() == "") {
-                status = UserDao.editUserWithoutPassword(user, role);
+                status = userInterface.editUserWithoutPassword(user, role);
                 System.out.println("password:" + user.getPassword());
             } else {
-                status = UserDao.editUser(user, role);
+                status = userInterface.editUser(user, role);
             }
             if (status == 1) {
                 System.out.println("Berhasil edit user");
@@ -114,7 +111,7 @@ public class UserService {
     }
 
     public ModelAndView deleteUser(String username) {
-        int status = UserDao.deleteUser(username);
+        int status = userInterface.deleteUser(username);
         if (status == 1) {
             System.out.println("User with username: " + username + " is deleted");
             return new ModelAndView("redirect:/user");

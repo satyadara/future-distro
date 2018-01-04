@@ -1,8 +1,10 @@
 package com.blibli.distro_pos.DAO.user;
 
+import com.blibli.distro_pos.DAO.user.Interface.UserInterface;
 import com.blibli.distro_pos.Model.user.Role;
 import com.blibli.distro_pos.Model.user.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +13,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDao {
+@Repository
+public class UserDao implements UserInterface {
 
     //Membuat koneksi
     public static Connection getConnection() {
@@ -21,7 +24,7 @@ public class UserDao {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://35.200.231.200:5432/distro_pos",
+                    "jdbc:postgresql://localhost:5432/distro_pos",
                     "postgres",
                     "postgres"
             );
@@ -30,7 +33,7 @@ public class UserDao {
             System.out.println(e.toString());
         }
 
-        System.out.println("Database opened successfully");
+//        System.out.println("Database opened successfully");
 
         return connection;
     }
@@ -92,7 +95,7 @@ public class UserDao {
     }
 
     //Memasukkan data user
-    public static int insertUser(User user, Role role) {
+    public int insertUser(User user, Role role) {
 
         int status = 0;
 
@@ -130,7 +133,7 @@ public class UserDao {
     }
 
     //Memasukkan data user roles
-    public static int insertUserRole(String username, String role) {
+    public int insertUserRole(String username, String role) {
 
         int status = 0;
 
@@ -158,7 +161,7 @@ public class UserDao {
 
     //Mengedit user
     //Gagal ketika mengedit username
-    public static int editUser(User user, Role role) {
+    public int editUser(User user, Role role) {
 
         int status = 0;
         String sql = "UPDATE users set namalengkap=?, username=?, password=?, alamat=?, ktp=?, telp=?, " +
@@ -194,7 +197,7 @@ public class UserDao {
         return status;
     }
 
-    public static int editUserWithoutPassword(User user, Role role) {
+    public int editUserWithoutPassword(User user, Role role) {
 
         int status = 0;
         String sql = "UPDATE users set namalengkap=?, username=?, alamat=?, ktp=?, telp=?, " +
@@ -227,7 +230,7 @@ public class UserDao {
     }
 
     //Mengedit user_roles
-    public static int editUserRole(String username, String role) {
+    public int editUserRole(String username, String role) {
 
         int status = 0;
 
@@ -253,7 +256,7 @@ public class UserDao {
     }
 
     //Menampilkan semua user
-    public static List<User> getAllUser() {
+    public List<User> getAllUser() {
 
         List<User> userList = new ArrayList<User>();
 
@@ -291,7 +294,7 @@ public class UserDao {
     }
 
     //Menampilkan user berdasarkan username
-    public static User getUserByUsername(String username) {
+    public User getUserByUsername(String username) {
 
         User user = new User();
 
@@ -325,7 +328,7 @@ public class UserDao {
         return user;
     }
 
-    public static String getUserRoleByUsername(String username) {
+    public String getUserRoleByUsername(String username) {
 
         String role = "";
         String sql = "SELECT role FROM user_roles WHERE  username=?";
@@ -352,7 +355,7 @@ public class UserDao {
     }
 
     //Menghapus user
-    public static int deleteUser(String username) {
+    public int deleteUser(String username) {
 
 //        int status = 0;
 //

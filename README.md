@@ -9,3 +9,7 @@ Blibli.com FUTURE Program project to create Point of Sale (POS) for clothing ret
 - Spring Framework
 - PostgreSQL
 - Bootstrap
+
+# Deployment
+- Google App Engine
+- Google Cloud SQL

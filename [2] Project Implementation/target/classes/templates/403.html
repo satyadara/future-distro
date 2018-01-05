@@ -31,33 +31,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-
-    <div class="col-md-4">
-        <h4 style="color: white; text-align: match-parent"><b>Distro</b>POS</h4>
-    </div>
-    <div class="col-md-4">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="/admin"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li><a href="#"><i class="fa fa-archive"></i> <span>Stok</span></a></li>
-                <li><a href="#"><i class="fa fa-percent"></i> <span>Diskon</span></a></li>
-                <li><a href="/view_user"><i class="fa fa-users"></i> <span>Pengguna</span></a></li>
-            </ul>
-        </div>
-    </div>
-
-
-</nav>
+<div th:replace="fragments/header_cashier :: header_cashier">...</div>
 
 <div class="container">
     <section class="content">
@@ -70,7 +44,7 @@
 
                 <p>
                     You are not authorized to access this page.
-                    Meanwhile, you may <a href="../../index.html">return to dashboard</a> or try using the search form.
+                    Meanwhile, you may <a href="/cashier">return to dashboard</a> or try using the search form.
                 </p>
 
                 <form class="search-form">

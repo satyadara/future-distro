@@ -168,12 +168,12 @@ public class TransactionService {
         if (item.getStock() < quantity) {
             return modelAndView;
         }
-
-        itemInterface.addOrMinStock(id, quantity * -1);
-        quantity += shoppingCart.getQuantity();
         if (quantity < 1) {
             return modelAndView;
         }
+        itemInterface.addOrMinStock(id, quantity * -1);
+        quantity += shoppingCart.getQuantity();
+
         shoppingCart = setShoppingCart(id, authentication.getName(), quantity, shoppingCart.getItem_name(),
                 item.getPrice());
         shoppingCartInterface.update(shoppingCart);
